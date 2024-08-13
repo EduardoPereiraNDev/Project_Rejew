@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ElementosContainer">
+        <item name="android:background">@drawable/container_cores_elemento</item>
+        <item name="android:layout_marginStart">30dp</item>
+        <item name="android:layout_marginEnd">30dp</item>
+    </style>
+
+    <style name="ButtonPag">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/buttonraw</item>
+        <item name="android:layout_marginLeft">60dp</item>
+        <item name="android:layout_marginRight">60dp</item>
+        <item name="android:padding">15dp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="ButtonIn">
+        <item name="android:layout_width">150dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/buttoncadas</item>
+        <item name="android:layout_marginBottom">50dp</item>
+        <item name="android:padding">15dp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="QuadradoBranco">
+    <item name="android:background">@drawable/quadrado_branco</item>
+    </style>
+
+    <style name="EditText">
+        <item name="android:background">@drawable/edittext</item>
+        <item name="android:layout_width"> match_parent</item>
+        <item name="android:layout_height"> 70dp</item>
+        <item name="android:layout_marginStart">60dp</item>
+        <item name="android:layout_marginEnd">60dp</item>
+        <item name="android:layout_marginTop">25dp</item>
+        <item name="android:paddingLeft">20dp</item>
+    </style>
+
+    <style name="ViewTitle">
+        <item name="android:layout_width"> wrap_content</item>
+        <item name="android:layout_height"> wrap_content</item>
+        <item name="android:layout_marginStart">60dp</item>
+        <item name="android:layout_marginEnd">60dp</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">40sp</item>
+        <item name="android:fontFamily">sans-serif-black</item>
+    </style>
+
+    <style name="Link">
+        <item name="android:layout_width"> wrap_content</item>
+        <item name="android:layout_height"> wrap_content</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/azul_link</item>
+    </style>
+
+    <style name="Icons_p">
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_marginStart">15dp</item>
+        <item name="android:layout_marginEnd">15dp</item>
+    </style>
+
+    <style name="Icons_redes">
+        <item name="android:layout_width">30dp</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:layout_marginTop">25dp</item>
+        <item name="android:layout_marginStart">15dp</item>
+        <item name="android:layout_marginEnd">15dp</item>
+    </style>
+
+    <style name="QuadradoBrancoSB">
+        <item name="android:background">@drawable/quadrado_branco</item>
+    </style>
+
+    <style name="LetraBrancaG">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="circulo">
+        <item name="android:background">@drawable/circulo</item>
+    </style>
+
+    <style name="FundoTriangulo">
+        <item name="android:background">@drawable/figurabts</item>
+    </style>
+    <style name="QuadradoGradient">
+        <item name="android:background">@drawable/quadradogradiant</item>
+    </style>
+
+</resources>

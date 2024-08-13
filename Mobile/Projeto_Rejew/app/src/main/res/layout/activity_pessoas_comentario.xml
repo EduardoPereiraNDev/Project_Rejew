@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Pessoas_Comentario">
+
+    <View
+        android:id="@+id/view6"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:background="@color/cinzanovo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/setavoltar"
+        android:layout_width="50dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="30dp"
+        android:src="@drawable/setavoltarazul"
+        app:layout_constraintBottom_toBottomOf="@+id/view6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/pessoa"
+        android:textColor="@color/orange"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/view6"
+        app:layout_constraintEnd_toEndOf="@+id/view6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editText7"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+        android:paddingLeft="15dp"
+        android:hint="@string/pesquisePessoas"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/borda_radius"
+        app:layout_constraintTop_toBottomOf="@+id/view6"
+        tools:layout_editor_absoluteX="30dp" />
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/lupapreta"
+        android:layout_marginEnd="25dp"
+        app:layout_constraintBottom_toBottomOf="@+id/editText7"
+        app:layout_constraintEnd_toEndOf="@+id/editText7"
+        app:layout_constraintTop_toTopOf="@+id/editText7" />
+
+    <View
+        android:id="@+id/view4"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/orange"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+            android:id="@+id/home"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/chaticon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/view4"
+            app:srcCompat="@drawable/chatbrancooooo" />
+
+        <ImageView
+            android:id="@+id/chaticon"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/view4"
+            app:srcCompat="@drawable/casabrancaaa" />
+
+        <ImageView
+            android:id="@+id/pessoasicon"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/chaticon"
+            app:layout_constraintTop_toTopOf="@+id/view4"
+            app:srcCompat="@drawable/amigosazull" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
