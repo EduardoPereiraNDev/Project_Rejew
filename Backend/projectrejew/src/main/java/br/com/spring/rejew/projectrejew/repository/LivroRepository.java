@@ -18,4 +18,7 @@ import br.com.spring.rejew.projectrejew.entity.Livro;
 public interface LivroRepository extends JpaRepository<Livro, Long> {
 	@Query("SELECT l FROM Livro l WHERE l.nomeLivro LIKE %:nome%")
 	List<Livro> findByNome(String nome);
+	
+	@Query("SELECT l FROM Livro l WHERE l.autorLivro LIKE %:autor%")
+	List<Livro> findByAutor(String autor);
 }

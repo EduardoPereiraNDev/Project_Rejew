@@ -49,6 +49,13 @@ public class LivroController {
     	List<Livro> livros = livroRepository.findByNome(nome);
         return ResponseEntity.ok(livros);
     }
+    
+ // Buscar um livro por Autor
+    @GetMapping("/autor/{autor}")
+    public ResponseEntity<List<Livro>> buscarLivroPorAutor(@PathVariable String autor) {
+    	List<Livro> livros = livroRepository.findByAutor(autor);
+        return ResponseEntity.ok(livros);
+    }
 
     // Salvar um novo livro
     @PostMapping
@@ -107,6 +114,7 @@ public class LivroController {
         }
     }
 
+    @PutMapping("/{isbn}")
     // Atualizar um livro existente
     public ResponseEntity<Livro> atualizarLivro(@PathVariable Long isbn, 
     		@RequestParam("nomeLivro") String nomeLivro,
