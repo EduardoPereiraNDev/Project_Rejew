@@ -15,23 +15,48 @@ import lombok.Data;
 public class Livro implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
-	@Id
+
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	 private Long isbn;
-    private Long autor_id;
-    @Column(name = "nome_livro")
+    @Column(name = "isbn_Livro")
+    private Long isbnLivro; 
+
+    @Column(name = "nome_Livro")
     private String nomeLivro;
-    private String autor;
-    private int numeroPag;
-    private int qtdComent;
-    private int qtdLikes;
-    private String caminhoimgcapa;
-    private int anoLancamento;
-    private boolean favoritado;
-    private String genero;
-    private Double notaLivro;
+
+    @Column(name = "autor_Livro")
+    private String autorLivro;
+
+    @Column(name = "numero_Pag")
+    private int numeroPag; 
+
+    @Column(name = "ano_Lancamento")
+    private int anoLancamento; 
     
+    @Column(name = "Nota_Livro")
+    private int NotaLivro; 
+
+    @Column(name = "genero_Livro")
+    private String generoLivro;
     
-   
+    @Column(name = "qtd_Comentario")
+    private int qtdComentario;
+    
+    @Column(name = "cor_primaria")
+    private String corPrimaria;
+
+    @Column(name = "caminho_Imagem_Capa")
+    private String caminhoImgCapa;
+
+    public Livro() {}
+
+    public Livro(String nomeLivro, String autor, int numeroPag, Integer anoLancamento, String genero,String corPrimaria ,String caminhoImgCapa) {
+        this.nomeLivro = nomeLivro;
+        this.autorLivro = autor;
+        this.numeroPag = numeroPag;
+        this.anoLancamento = anoLancamento;
+        this.generoLivro = genero;
+        this.corPrimaria = corPrimaria;
+        this.caminhoImgCapa = caminhoImgCapa;
+    }
 }

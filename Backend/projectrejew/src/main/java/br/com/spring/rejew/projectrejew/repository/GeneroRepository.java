@@ -15,6 +15,6 @@ import br.com.spring.rejew.projectrejew.entity.Genero;
  */
 @Repository
 public interface GeneroRepository extends JpaRepository<Genero, Long> {
-	@Query("SELECT g FROM Genero g WHERE g.genero LIKE %:genero%")
-	List<Genero> findByGenero(String genero);
+	@Query("SELECT g FROM Genero g WHERE g.generoLivro LIKE %:genero%")
+    List<Genero> findByGenero(String genero);
 }

@@ -41,7 +41,7 @@ public class GeneroController {
     
  // Buscar um genero por tipo
     @GetMapping("/genero/{genero}")
-    public ResponseEntity<List<Genero>> buscarLivroPorNome(@PathVariable String genero) {
+    public ResponseEntity<List<Genero>> buscarGeneroPorNome(@PathVariable String genero) {
     	List<Genero> generos = generoRepository.findByGenero(genero);
         return ResponseEntity.ok(generos);
     }
@@ -57,7 +57,7 @@ public class GeneroController {
     @PutMapping("/{id}")
     public ResponseEntity<Genero> atualizarGenero(@PathVariable Long id, @RequestBody Genero genero) {
         if (generoRepository.existsById(id)) {
-        	genero.setId_Genero(id);
+        	genero.setIdGenero(id);
             Genero generoAtualizado = generoRepository.save(genero);
             return ResponseEntity.ok(generoAtualizado);
         }

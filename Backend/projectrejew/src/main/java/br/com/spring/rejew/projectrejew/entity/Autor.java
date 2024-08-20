@@ -1,35 +1,25 @@
 package br.com.spring.rejew.projectrejew.entity;
 
-/*
-public class Autor extends Usuario{
-	
-    private int qtdLivros;
-
-    public Autor() {}
-
-    public int getQtdLivros() {
-        return qtdLivros;
-    }
-
-    public void setQtdLivros(int qtdLivros) {
-        this.qtdLivros = qtdLivros;
-    }
-    
-}
-*/
-
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import lombok.Data;
-
 
 @Entity
 @Data
-public class Autor extends Usuario  {
+public class Autor {
 
     private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_Autor")
+    private Long idAutor;
     
-	private int qtdLivros;
-    
-    
-   
+    @Column(name = "qtd_Livros")
+    private Long qtdLivros;
+
 }

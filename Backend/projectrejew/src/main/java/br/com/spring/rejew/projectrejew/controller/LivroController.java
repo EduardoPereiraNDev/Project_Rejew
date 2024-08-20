@@ -1,11 +1,20 @@
 package br.com.spring.rejew.projectrejew.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import br.com.spring.rejew.projectrejew.entity.Livro;
 import br.com.spring.rejew.projectrejew.repository.LivroRepository;
@@ -14,7 +23,9 @@ import br.com.spring.rejew.projectrejew.repository.LivroRepository;
 @RestController
 @RequestMapping("/livros")
 public class LivroController {
-
+    
+	private static final String UPLOAD_DIR = "C:/Users/rm2869/Desktop/Project_Rejew/Database/UploadsIMG/";
+	
     @Autowired
     private LivroRepository livroRepository;
 
@@ -41,29 +52,132 @@ public class LivroController {
 
     // Salvar um novo livro
     @PostMapping
-    public ResponseEntity<Livro> salvarLivro(@RequestBody Livro livro) {
-        Livro livroSalvo = livroRepository.save(livro);
-        return ResponseEntity.ok(livroSalvo);
+    public ResponseEntity<String> adicionarLivro(
+            @RequestParam("nomeLivro") String nomeLivro,
+            @RequestParam("autorLivro") String autorLivro,
+            @RequestParam("numeroPag") int numeroPag,
+            @RequestParam("anoLancamento") int anoLancamento,
+            @RequestParam("generoLivro") String generoLivro,
+            @RequestParam("corPrimaria") String corPrimaria,
+            @RequestParam("caminhoImgCapa") MultipartFile caminhoImgCapa) {
+    	
+    	if (nomeLivro == null || nomeLivro.isEmpty()) {
+            return ResponseEntity.badRequest().body("Nome do livro é obrigatório.");
+        }
+        if (autorLivro == null || autorLivro.isEmpty()) {
+            return ResponseEntity.badRequest().body("Autor do livro é obrigatório.");
+        }
+        if (numeroPag <= 0) {
+            return ResponseEntity.badRequest().body("Número de páginas deve ser positivo.");
+        }
+        if (anoLancamento <= 0) {
+            return ResponseEntity.badRequest().body("Ano de lançamento deve ser positivo.");
+        }
+        if (generoLivro == null || generoLivro.isEmpty()) {
+            return ResponseEntity.badRequest().body("Gênero do livro é obrigatório.");
+        }
+        if (caminhoImgCapa.isEmpty()) {
+            return ResponseEntity.badRequest().body("Nenhum arquivo de imagem encontrado.");
+        }
+
+        if (caminhoImgCapa.isEmpty()) {
+            return ResponseEntity.badRequest().body("Nenhum arquivo de imagem encontrado.");
+        }else if (!caminhoImgCapa.getContentType().equals("image/jpeg") && !caminhoImgCapa.getContentType().equals("image/png")) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Tipo de arquivo não suportado.");
+        }else if (caminhoImgCapa.getSize() > 10 * 1024 * 1024) { // Limite tamanho IMG
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("O arquivo é muito grande.");
+        }
+        try {
+            File dir = new File(UPLOAD_DIR);
+            if (!dir.exists()) {
+                dir.mkdirs();
+            }
+            String originalFilename = caminhoImgCapa.getOriginalFilename();
+            String fileExtension = originalFilename != null ? originalFilename.substring(originalFilename.lastIndexOf(".")) : "";
+            String uniqueFilename = generateUniqueFilename(fileExtension);
+            Path path = Paths.get(UPLOAD_DIR + uniqueFilename);
+            Files.write(path, caminhoImgCapa.getBytes());
+            Livro livro = new Livro(nomeLivro, autorLivro, numeroPag, anoLancamento, generoLivro, corPrimaria, uniqueFilename);
+            livroRepository.save(livro);
+
+            return ResponseEntity.ok("Livro cadastrado com sucesso ");
+        } catch (IOException e) {
+            e.printStackTrace();
+            return ResponseEntity.status(500).body("Erro ao enviar o arquivo.");
+        }
     }
 
     // Atualizar um livro existente
-    @PutMapping("/{isbn}")
-    public ResponseEntity<Livro> atualizarLivro(@PathVariable Long isbn, @RequestBody Livro livro) {
-        if (livroRepository.existsById(isbn)) {
-            livro.setIsbn(isbn); // Supondo que Livro tem um método setId
-            Livro livroAtualizado = livroRepository.save(livro);
-            return ResponseEntity.ok(livroAtualizado);
-        }
-        return ResponseEntity.notFound().build();
+    public ResponseEntity<Livro> atualizarLivro(@PathVariable Long isbn, 
+    		@RequestParam("nomeLivro") String nomeLivro,
+            @RequestParam("autorLivro") String autorLivro,
+            @RequestParam("numeroPag") int numeroPag,
+            @RequestParam("anoLancamento") int anoLancamento,
+            @RequestParam("generoLivro") String generoLivro,
+            @RequestParam("corPrimaria") String corPrimaria,
+            @RequestParam("caminhoImgCapa") MultipartFile caminhoImgCapa) {
+    		if (livroRepository.existsById(isbn)) {
+    				try {
+    						Livro livroAtual = livroRepository.findById(isbn).orElse(null);
+    							if (livroAtual != null) {
+    								if (!caminhoImgCapa.isEmpty()) {
+    									String nomeAntigo = livroAtual.getCaminhoImgCapa(); //Nome antigo
+    									Path arquivoAntigo = Paths.get(UPLOAD_DIR + nomeAntigo); //caminho antigo
+    									String nomeOriginal = caminhoImgCapa.getOriginalFilename(); //nome do arquivo da requisiçao
+    									String extensãoArquivo = nomeOriginal != null ? nomeOriginal.substring(nomeOriginal.lastIndexOf(".")) : ""; //extensão do arquivo jpg, png
+    									String nomeNovo = generateUniqueFilename(extensãoArquivo); //gera um novo nome
+    									Files.move(arquivoAntigo, arquivoAntigo.resolveSibling(nomeNovo)); // renomeia para o novo nome
+    									livroAtual.setCaminhoImgCapa(nomeNovo); //atualiza o nome salvo no objeto Livro
+    									Path novoCaminho = Paths.get(UPLOAD_DIR + nomeNovo);//atualiza o caminho 
+    									Files.write(novoCaminho, caminhoImgCapa.getBytes());// insere os dados tudo nesse objeto
+    								}
+
+									// atualiza os outros dados
+    								livroAtual.setNomeLivro(nomeLivro);
+    								livroAtual.setAutorLivro(autorLivro);
+    								livroAtual.setNumeroPag(numeroPag);
+    								livroAtual.setAnoLancamento(anoLancamento);
+    								livroAtual.setGeneroLivro(generoLivro);
+    								livroAtual.setCorPrimaria(corPrimaria);
+
+									Livro livroAtualizado = livroRepository.save(livroAtual);
+									return ResponseEntity.ok(livroAtualizado);
+    							}
+    				} catch (IOException e) {
+    					e.printStackTrace();
+    					return ResponseEntity.status(500).body(null);
+    				}
+    		}
+    		return ResponseEntity.notFound().build();
     }
 
     // Deletar um livro por ID
     @DeleteMapping("/{isbn}")
-    public ResponseEntity<Void> deletarLivro(@PathVariable Long isbn) {
+    public ResponseEntity<String> deletarLivro(@PathVariable Long isbn) {
         if (livroRepository.existsById(isbn)) {
-            livroRepository.deleteById(isbn);
-            return ResponseEntity.noContent().build();
+        	try {
+        	Optional<Livro> livros = livroRepository.findById(isbn);
+        	 Livro livro = livros.get();
+        	 Path pathToDelete = Paths.get(UPLOAD_DIR + livro.getCaminhoImgCapa());
+             Files.deleteIfExists(pathToDelete);
+             livroRepository.deleteById(isbn);
+             return ResponseEntity.ok("Livro deletado com sucesso");
+         } catch (IOException e) {
+             e.printStackTrace();
+             return ResponseEntity.status(500).body("Erro ao deletar o arquivo.");
+         } catch (RuntimeException e) {
+             return ResponseEntity.status(404).body(e.getMessage());
+         }
         }
         return ResponseEntity.notFound().build();
+    }
+    
+    
+    //funcões lógicas
+    //Mudar nome Function
+    private String generateUniqueFilename(String extension) {
+        String timestamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+        String uniqueSuffix = String.valueOf(System.currentTimeMillis());
+        return timestamp + "-" + uniqueSuffix + extension;
     }
 }
