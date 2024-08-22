@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rejew | Home</title>
+  <link rel="icon" type="image/x-icon" href="IMG/rejewIconEscuro.png">
+  <link rel="stylesheet" type="text/css" href="CSS/Home.css">
+</head>
+
+<body>
+  <div>
+    <img src="IMG/fundoHome.jpg" class="fundoHome">
+  </div>
+  
+  <!-- Organizador BARRA-->
+  <div class="barra">
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img id="icon" src="IMG/iconebranco.png" alt="">
+        </div>
+        <div class="card-back">
+          <img src="IMG/rejewbrancomin.png" width="130px" height="85px">
+        </div>
+      </div>
+    </div>
+
+    <!-- buttonsROW-->
+    <div id="buttons-row">
+      <!--Botao Login-->
+      <a href="#openModal">
+        <button class="animated-button">
+          <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+            </path>
+          </svg>
+          <span class="textL">LOGIN</span>
+          <span class="circle"></span>
+          <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+            </path>
+          </svg>
+        </button>
+      </a>
+    </div>
+  </div>
+
+  <!--POP UP LOGIN-->
+  <div id="openModal" class="modalDialog">
+    <div>
+      <a href="#close" title="Close" class="close">X</a>
+      <div class="parent">
+        <div class="carda">
+          <div class="logo">
+            <span class="circle circle5">
+              <img id="iconeBrancoPopUp" src="img/iconebranco.png">
+              <path id="Path_6" data-name="Path 6"
+                d="M12.827,1.628A1.561,1.561,0,0,1,14.31,0h2.964a1.561,1.561,0,0,1,1.483,1.628v11.9a9.252,9.252,0,0,1-2.432,6.852q-2.432,2.409-6.963,2.409T2.4,20.452Q0,18.094,0,13.669V1.628A1.561,1.561,0,0,1,1.483,0h2.98A1.561,1.561,0,0,1,5.947,1.628V13.191a5.635,5.635,0,0,0,.85,3.451,3.153,3.153,0,0,0,2.632,1.094,3.032,3.032,0,0,0,2.582-1.076,5.836,5.836,0,0,0,.816-3.486Z"
+                transform="translate(0 0)"></path>
+              <path id="Path_7" data-name="Path 7"
+                d="M75.207,20.857a1.561,1.561,0,0,1-1.483,1.628h-2.98a1.561,1.561,0,0,1-1.483-1.628V1.628A1.561,1.561,0,0,1,70.743,0h2.98a1.561,1.561,0,0,1,1.483,1.628Z"
+                transform="translate(-45.91 0)"></path>
+              <path id="Path_8" data-name="Path 8"
+                d="M0,80.018A1.561,1.561,0,0,1,1.483,78.39h26.7a1.561,1.561,0,0,1,1.483,1.628v2.006a1.561,1.561,0,0,1-1.483,1.628H1.483A1.561,1.561,0,0,1,0,82.025Z"
+                transform="translate(0 -51.963)"></path>
+              </svg>
+            </span>
+
+          </div>
+          <div class="glass"></div>
+          <div class="content">
+            <span class="title">LOGIN ADM</span>
+            <span class="text">Credencial</span>
+            <input type="number" class="input_content">
+            <span class="text">Senha</span>
+            <input type="password" class="input_content">
+            <a href="Opcoesadm.html"><button class="button_Logar"> Entrar </button></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- Corpo Site-->
+  <div class="textao">
+    <h1>Seu espaço ADM!</h1>
+    <h3>Spark your management</h3>
+  </div>
+
+  <div class="rotate">
+    <hr class="linha1">
+    <p id="bookReviews">BOOK REVIEWS</p>
+  </div>
+
+  <div class="textoSeta">
+    <p id="slogan">Usufrua do seus poderes de administrador <br>da aplicação. Use-os com responsabilidade e honestidade.
+      <br>Com grandes poderes, vem grandes responsabilidades!
+    </p>
+  </div>
+  <img src="IMG/fundotransparente.png" class="fundoTransparente">
+  
+  <script src="JS/Home.js"></script>
+</body>
+</html>
