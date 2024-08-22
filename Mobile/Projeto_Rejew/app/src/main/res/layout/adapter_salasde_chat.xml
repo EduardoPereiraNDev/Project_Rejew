@@ -10,7 +10,7 @@
         android:layout_width="84dp"
         android:layout_height="92dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.134"
+        app:layout_constraintHorizontal_bias="0.192"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="105dp"
         tools:srcCompat="@tools:sample/avatars" />
@@ -22,7 +22,7 @@
         android:text="Aventura"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.145"
+        app:layout_constraintHorizontal_bias="0.202"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="220dp" />
 
@@ -53,7 +53,7 @@
         android:layout_height="92dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.134"
+        app:layout_constraintHorizontal_bias="0.192"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.499"
@@ -66,7 +66,7 @@
         android:text="Romance"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.147"
+        app:layout_constraintHorizontal_bias="0.19"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="431dp" />
 
@@ -98,7 +98,7 @@
         android:layout_width="84dp"
         android:layout_height="92dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.149"
+        app:layout_constraintHorizontal_bias="0.189"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="510dp"
         tools:srcCompat="@tools:sample/avatars" />
@@ -120,7 +120,7 @@
         android:text="Culinaria"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.147"
+        app:layout_constraintHorizontal_bias="0.189"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="618dp" />
 
@@ -136,31 +136,6 @@
         tools:layout_editor_absoluteY="618dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
