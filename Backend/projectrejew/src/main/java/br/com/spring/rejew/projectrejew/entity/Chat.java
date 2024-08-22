@@ -12,7 +12,7 @@ import lombok.Data;
 @Data
 public class Chat implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,6 +27,15 @@ public class Chat implements Serializable {
 
     @Column(name = "caminho_Imagem_Logo")
     private String caminhoImagemLogo;
-
+    
+    public Chat() {
+    	
+   	}
+    
+    public Chat(String generoChat, String caminhoImagemLogo, String caminhoImagemFundoChat) {
+    	this.generoChat = generoChat;
+    	this.caminhoImagemLogo = caminhoImagemLogo;
+    	this.caminhoImagemFundoChat = caminhoImagemFundoChat;
+   	}
 
 }
