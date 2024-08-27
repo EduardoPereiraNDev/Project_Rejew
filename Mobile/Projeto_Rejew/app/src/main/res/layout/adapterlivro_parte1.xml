@@ -128,36 +128,4 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.571" />
 
-    <TextView
-        android:id="@+id/tituloSinopse"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/open_sans_bold"
-        android:text="SINOPSE"
-        android:textColor="@color/black"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.103"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.77" />
-
-    <TextView
-        android:id="@+id/sinopse"
-        android:layout_width="337dp"
-        android:layout_height="99dp"
-        android:fontFamily="@font/open_sans"
-        android:gravity="left"
-        android:justifyContent="true"
-        android:padding="5dp"
-        android:text="Por dois séculos, todas as mulheres da família Darling desapareciam quando completavam dezoito anos. Na tarde do aniversário de dezoito anos de Winnie Darling, sua mãe tranca as janelas e portas. Mas não adianta nada. O rei da Terra do Nunca irá pegá-la, e ele e os Garotos Perdidos não a deixarão ir embora."
-        android:textColor="@color/black"
-        android:textSize="11sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/cabecalhoLivro"
-        app:layout_constraintVertical_bias="0.908" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
