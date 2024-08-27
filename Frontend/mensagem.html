@@ -23,10 +23,10 @@
         <div class="tab-content mt-2">
             <!-- Aba Lista -->
             <div class="tab-pane active" id="lista">
-                <h4>Lista de Generos</h4>
+                <h4>Lista de Mensagens</h4>
                 <input type="text" id="pesquisa" placeholder="Pesquisar.....">
                 <button class="btn btn-success" id="buttonPesquisar">Pesquisar</button>
-                <button class="btn btn-success" id="buttonApagar">Apagar</button>
+                <button class="btn btn-danger" id="buttonApagar">Apagar</button>
                 <table class="table table-bordered" id="tabela_lista">
                     <thead>
                         <tr>
@@ -70,7 +70,6 @@
 
                             const cellExcluir = document.createElement('td');
 
-
                             // Botão Excluir
                             const btnExcluir = document.createElement('button');
                             btnExcluir.textContent = 'Excluir';
@@ -86,7 +85,6 @@
             }
 
             async function carregarMensagensPorUsuario() {
-                console.log ("AAA");
                 const busca = document.getElementById("pesquisa").value;
 
                 if (busca.trim() === '') {

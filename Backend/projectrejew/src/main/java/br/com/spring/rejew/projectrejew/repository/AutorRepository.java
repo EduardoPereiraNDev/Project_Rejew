@@ -5,7 +5,6 @@ import org.springframework.stereotype.Repository;
 import br.com.spring.rejew.projectrejew.entity.Autor;
 
 /*
- * JpaRepository<Pais, Long>
  * Estende CrudRepository e fornece funcionalidades adicionais específicas do JPA.
  * Adiciona métodos como flush para sincronizar o contexto de persistência, saveAndFlush para salvar e sincronizar imediatamente, e métodos para operações de paginação e ordenação.
  * Mais adequado quando você precisa de funcionalidades específicas do JPA e quer se beneficiar das convenções adicionais fornecidas pelo Spring Data JPA.

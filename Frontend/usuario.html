@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento de Usuários</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="CSS/usuario.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <!-- Categorias -->
+        <ul class="nav nav-tabs" id="myTabs">
+            <li class="nav-item">
+                <a class="nav-link active" id="lista-tab" data-toggle="tab" href="#lista">Lista</a>
+            </li>
+        </ul>
+
+        <!-- Categorias2 -->
+        <div class="tab-content mt-2">
+            <!-- Aba Lista -->
+            <div class="tab-pane active" id="lista">
+                <h4>Lista de Usuários</h4>
+                <input type="text" id="pesquisa" placeholder="Pesquisar.....">
+                <button class="btn btn-success" id="buttonPesquisar">Pesquisar</button>
+                <button class="btn btn-danger" id="buttonApagar">Apagar</button>
+                <table class="table table-bordered mt-2" id="tabela_lista">
+                    <thead>
+                        <tr>
+                            <th>ID do Usuario </th>
+                            <th>Nome do Usuario</th>
+                            <th>Nome do Perfil</th>
+                            <th>Email do Usuario</th>
+                            <th>Data de Nascimento</th>
+                            <th>Caminho da Imagem Perfil</th>
+                            <th>Caminho da Imagem do Fundo</th>
+                            <th>Recado do Perfil</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            carregarListaUsuarios();
+        });
+
+        function carregarListaUsuarios() {
+            fetch('http://localhost:8080/usuarios')
+                .then(response => response.json())
+                .then(usuarios => {
+                    const tabelaLista = document.getElementById('tabela_lista').getElementsByTagName('tbody')[0];
+                    tabelaLista.innerHTML = '';
+                    usuarios.forEach(usuario => {
+                        const row = tabelaLista.insertRow();
+                        row.insertCell(0).textContent = usuario.idUsuario;
+                        row.insertCell(1).textContent = usuario.nomeUsuario;
+                        row.insertCell(2).textContent = usuario.nomePerfil;
+                        row.insertCell(3).textContent = usuario.emailEntrada;
+                        row.insertCell(4).textContent = usuario.dataNascimento;
+                        row.insertCell(5).textContent = usuario.caminhoImagem;
+                        row.insertCell(6).textContent = usuario.caminhoImagemFundo;
+                        row.insertCell(7).textContent = usuario.recadoPerfil;
+
+                        // Botão Editar
+                        const cellEditar = document.createElement('td');
+                        const btnEditar = document.createElement('button');
+                        btnEditar.textContent = 'Editar';
+                        btnEditar.className = 'btn btn-secondary';
+                        btnEditar.addEventListener('click', () => editarUsuario(usuario.idUsuario));
+                        cellEditar.appendChild(btnEditar);
+                        row.appendChild(cellEditar);
+
+                        // Botão Deletar
+                        const cellDeletar = document.createElement('td');
+                        const btnDeletar = document.createElement('button');
+                        btnDeletar.textContent = 'Deletar';
+                        btnDeletar.className = 'btn btn-danger';
+                        btnDeletar.addEventListener('click', () => deletarUsuario(usuario.idUsuario));
+                        cellDeletar.appendChild(btnDeletar);
+                        row.appendChild(cellDeletar);
+                    });
+                });
+        }
+
+
+        // Função para editar usuário
+        function editarUsuario(id) {
+            const button = event.target;
+            const linha = button.closest('tr');
+            const cells = linha.getElementsByTagName('td');
+
+            for (let i = 0; i < cells.length - 2; i++) {
+                const Valor = cells[i].textContent.trim();
+                //Valor = '09/12/2000';
+                let input = null;
+                if (i === 0) {
+                    cells[i].textContent = '';
+                    const text = document.createTextNode(Valor);
+                    cells[i].appendChild(text);
+                } else if (i === 5 || i == 6) {
+                    input = document.createElement('input');
+                    input.type = 'file';
+                    input.id = `caminhoImgEdit_${i}`;
+                    input.accept = "image/*"
+                } else if (i === 4) {
+                    input = document.createElement('input');
+                    input.type = 'date';
+                    input.id = 'DataNascimento';
+                    input.value = Valor;
+                }
+                else {
+                    input = document.createElement('input');
+                    input.type = 'text';
+                    input.value = Valor;
+                    input.className = 'textArea';
+                }
+
+                if (input !== null) {
+                    cells[i].textContent = '';
+                    cells[i].appendChild(input);
+                }
+            }
+
+            const salvarButton = document.createElement('button');
+            salvarButton.textContent = 'Salvar';
+            salvarButton.className = 'btn btn-primary';
+            salvarButton.onclick = function () {
+                salvarEdicao(linha, id);
+            };
+
+            const cancelarButton = document.createElement('button');
+            cancelarButton.textContent = 'Cancelar';
+            cancelarButton.className = 'btn btn-danger';
+            cancelarButton.onclick = function () {
+                tabela.classList.remove('edit')
+                carregarListaUsuarios();
+            };
+
+            cells[cells.length - 1].innerHTML = '';
+            cells[cells.length - 1].appendChild(cancelarButton);
+
+            cells[cells.length - 2].innerHTML = '';
+            cells[cells.length - 2].appendChild(salvarButton);
+
+            const tabela = document.getElementsByClassName('tab-content')[0];
+            tabela.classList.add('edit');
+
+            const textAreas = document.getElementsByClassName('textArea');
+            for (let i = 0; i < textAreas.length; i++) {
+                textAreas[i].addEventListener('focus', () => {
+                    textAreas[i].classList.add('expanded');
+                });
+
+                textAreas[i].addEventListener('blur', () => {
+                    textAreas[i].classList.remove('expanded');
+                });
+            }
+        }
+
+
+        //função salvar edição
+        async function salvarEdicao(linha, idUsuario) {
+            try {
+                const inputs = linha.getElementsByTagName('input');
+                const formData = new FormData();
+                const caminhoImgPerfil = document.getElementById('caminhoImgEdit_5').files[0];
+                const caminhoImgFundo = document.getElementById('caminhoImgEdit_6').files[0];
+
+                formData.append('nomeUsuario', inputs[0].value.trim());
+                formData.append('nomePerfil', inputs[1].value.trim());
+                formData.append('emailEntrada', inputs[2].value.trim());
+                const dataNascimento = inputs[3].value.trim();
+                formData.append('dataNascimento', dataNascimento);
+                formData.append('caminhoImagem', caminhoImgPerfil);
+                formData.append('caminhoImagemFundo', caminhoImgFundo);
+                formData.append('recadoPerfil', inputs[6].value.trim());
+                
+                for (const [key, value] of formData.entries()) {
+                    console.log(`${key}:`, value, `Tipo: ${typeof value}`);
+                }
+                const url = `http://localhost:8080/usuarios/${idUsuario}`;
+                const requestOptions = {
+                    method: 'PUT',
+                    body: formData
+                };
+                fetch(url, requestOptions)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`Falha ao atualizar o Usuario. Código de status: ${response.status}`);
+                        }
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Sucesso',
+                            text: 'O Usuario foi atualizado com sucesso.'
+                        });
+                        carregarListaUsuarios();
+                    })
+                    .catch(error => {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Erro',
+                            text: 'Erro ao tentar atualizar o Usuario.'
+                        });
+                        console.error('Erro ao tentar atualizar o Usuario:', error);
+                    });
+            } catch (error) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Atenção',
+                    text: `Dados Invalidos Ou Vazios, Error: ${error.message}`
+                });
+                console.error(error);
+            }
+        }
+
+        // Função para deletar usuário
+        function deletarUsuario(id) {
+            fetch(`http://localhost:8080/usuarios/${id}`, {
+                method: 'DELETE'
+            })
+                .then(response => {
+                    if (response.ok) {
+                        Swal.fire('Sucesso!', 'Usuário deletado com sucesso!', 'success');
+                        carregarListaUsuarios();
+                    } else {
+                        Swal.fire('Erro!', 'Erro ao deletar usuário!', 'error');
+                    }
+                })
+                .catch(error => {
+                    Swal.fire('Erro!', 'Erro ao deletar usuário!', 'error');
+                });
+        } 7
+
+        document.getElementById('buttonPesquisar').addEventListener('click', async function () {
+            const Busca = document.getElementById("pesquisa").value;
+
+            if (Busca.trim() === '') {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Atenção',
+                    text: 'Por favor, insira um nome para buscar.'
+                });
+                return;
+            }
+
+            const url = `http://localhost:8080/usuarios/nome/${Busca}`;
+            const url2 = `http://localhost:8080/usuarios/perfil/${Busca}`;
+
+            try {
+                const [response, response2] = await Promise.all([
+                    fetch(url, { method: 'GET', headers: { 'Content-Type': 'application/json' } }),
+                    fetch(url2, { method: 'GET', headers: { 'Content-Type': 'application/json' } })
+                ]);
+
+                if (!response.ok && !response2.ok) {
+                    Swal.fire({
+                        icon: 'info',
+                        title: 'Resultado da Busca',
+                        text: 'Nenhum Usuario com este nome encontrado.'
+                    });
+                    return;
+                }
+
+                const data = await response.json();
+                const data2 = await response2.json();
+
+                const usuarios = Array.isArray(data) ? data : [data];
+                const usuarios2 = Array.isArray(data2) ? data2 : [data2];
+
+                if (usuarios.length === 0 && usuarios2.length === 0) {
+                    Swal.fire({
+                        icon: 'info',
+                        title: 'Resultado da Busca',
+                        text: 'Nenhum Usuario com este nome encontrado.'
+                    });
+                    return;
+                }
+
+                const tabelaLista = document.getElementById('tabela_lista').getElementsByTagName('tbody')[0];
+
+                function adicionarUsuarios(usuarios) {
+                    usuarios.forEach(usuario => {
+                        tabelaLista.innerHTML = '';
+                        const row = tabelaLista.insertRow();
+                        row.insertCell(0).textContent = usuario.idUsuario;
+                        row.insertCell(1).textContent = usuario.nomeUsuario;
+                        row.insertCell(2).textContent = usuario.nomePerfil;
+                        row.insertCell(3).textContent = usuario.emailEntrada;
+                        row.insertCell(4).textContent = new Date(usuario.dataNascimento).toLocaleDateString();
+                        row.insertCell(5).textContent = usuario.caminhoImagem;
+                        row.insertCell(6).textContent = usuario.caminhoImagemFundo;
+                        row.insertCell(7).textContent = usuario.recadoPerfil;
+
+                        // Botão Editar
+                        const cellEditar = document.createElement('td');
+                        const btnEditar = document.createElement('button');
+                        btnEditar.textContent = 'Editar';
+                        btnEditar.className = 'btn btn-secondary';
+                        btnEditar.addEventListener('click', () => editarUsuario(usuario.idUsuario));
+                        cellEditar.appendChild(btnEditar);
+                        row.appendChild(cellEditar);
+
+                        // Botão Deletar
+                        const cellDeletar = document.createElement('td');
+                        const btnDeletar = document.createElement('button');
+                        btnDeletar.textContent = 'Deletar';
+                        btnDeletar.className = 'btn btn-danger';
+                        btnDeletar.addEventListener('click', () => deletarUsuario(usuario.idUsuario));
+                        cellDeletar.appendChild(btnDeletar);
+                        row.appendChild(cellDeletar);
+                    });
+                }
+                adicionarUsuarios(usuarios);
+                adicionarUsuarios(usuarios2);
+
+            } catch (error) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Atenção',
+                    text: `Erro ao buscar o Usuario: ${error.message}`
+                });
+            }
+        });
+
+        document.getElementById('buttonApagar').addEventListener('click', function () {
+            carregarListaUsuarios();
+        });
+
+
+    </script>
+</body>
+
+</html>
