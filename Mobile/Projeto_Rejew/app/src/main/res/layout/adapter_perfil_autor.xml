@@ -3,189 +3,95 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent">>
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="366dp"
+        android:layout_height="289dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
     <ImageView
         android:id="@+id/imageView12"
-        android:layout_width="350dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="59dp"
-        android:layout_marginBottom="90dp"
-        app:layout_constraintBottom_toTopOf="@+id/autor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.737"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.092"
-        app:srcCompat="@drawable/instaazull" />
-
-
-    <ImageView
-        android:id="@+id/imageView14"
-        android:layout_width="109dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/info"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.559"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.035"
-        app:srcCompat="@drawable/olho" />
+        tools:layout_editor_absoluteY="181dp"
+        tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/autor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="22dp"
-        android:text="Autor de Livros"
-        app:layout_constraintBottom_toTopOf="@+id/NomeAutor"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView12" />
-
-    <TextView
-        android:id="@+id/NomeAutor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="81dp"
-        android:text="Stephen King"
-        app:layout_constraintBottom_toTopOf="@+id/Seguindo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.515"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/autor" />
-
-    <TextView
-        android:id="@+id/NumerodeLivros"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Livros"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.176"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.533" />
-
-    <TextView
-        android:id="@+id/Seguidores"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="64dp"
-        android:text="Seguidor"
-        app:layout_constraintBottom_toTopOf="@+id/Mensagem"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/info" />
-
-    <TextView
-        android:id="@+id/Seguindo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="64dp"
-        android:text="Seguidores"
-        app:layout_constraintBottom_toTopOf="@+id/Seguir"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.824"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/NomeAutor" />
-
-    <Button
-        android:id="@+id/Seguir"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="44dp"
-        android:text="SEGUIR"
+        android:id="@+id/NomeDoUsuario"
+        android:layout_width="133dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="12dp"
+        android:text="NOME DO USER"
+        android:textColor="#ED1707"
         app:layout_constraintBottom_toTopOf="@+id/Livros"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.209"
+        app:layout_constraintHorizontal_bias="0.55"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Seguindo" />
-
-    <Button
-        android:id="@+id/Mensagem"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="220dp"
-        android:text="Mensagem"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.815"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Seguidores" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView12"
+        app:layout_constraintVertical_bias="0.295" />
 
     <TextView
         android:id="@+id/Livros"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="157dp"
-        android:text="Livros Escritos"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="LIVROS"
+        android:textColor="#FF1100"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.101"
+        app:layout_constraintHorizontal_bias="0.128"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Seguir" />
+        tools:layout_editor_absoluteY="414dp" />
 
     <TextView
-        android:id="@+id/quantidade"
+        android:id="@+id/Seguidores"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Quantidade"
-        android:textColor="#FF0707"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.164"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/quantidade2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Quantidade"
+        android:text="Seguidores"
         android:textColor="#FD0000"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteY="415dp" />
 
     <TextView
-        android:id="@+id/quantidade3"
+        android:id="@+id/Seguindo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Quantidade"
-        android:textColor="#FB0000"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="Seguindo"
+        android:textColor="#FF0000"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.832"
+        app:layout_constraintHorizontal_bias="0.871"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteY="414dp" />
 
     <TextView
-        android:id="@+id/info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="46dp"
-        android:text="InformacoesdoAutor"
-        android:textColor="#F60202"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/Seguidores"
+        android:id="@+id/textView16"
+        android:layout_width="248dp"
+        android:layout_height="21dp"
+        android:text="QUANTIDADES"
+        android:textColor="#01A2EC"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView14" />
+        tools:layout_editor_absoluteY="383dp" />
 
     <TextView
-        android:id="@+id/Vejatodos"
+        android:id="@+id/Info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="VejaTodos"
+        android:text="Informações do Autor"
+        android:textColor="#FF0000"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.816"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="555dp" />
+        tools:layout_editor_absoluteY="454dp" />
 
-
-</androidx.constraintlayout.widget.ConstraintLayout >
+</androidx.constraintlayout.widget.ConstraintLayout>
