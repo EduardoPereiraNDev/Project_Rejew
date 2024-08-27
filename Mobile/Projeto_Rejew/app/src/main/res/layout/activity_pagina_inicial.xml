@@ -68,14 +68,18 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="412dp"
-        android:layout_height="619dp"
+        android:id="@+id/recyclerView"
+        android:layout_width="409dp"
+        android:layout_height="323dp"
         app:layout_constraintBottom_toBottomOf="@+id/view4"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText6">
-    </androidx.recyclerview.widget.RecyclerView>
+        app:layout_constraintTop_toBottomOf="@+id/editText6"
+        app:layout_constraintVertical_bias="1.0"></androidx.recyclerview.widget.RecyclerView>
+
     <View
+        android:id="@+id/view5"
         android:layout_width="match_parent"
         android:layout_height="75dp"
         android:background="@color/orange"
@@ -106,6 +110,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view4"
         app:srcCompat="@drawable/casaazulll" />
+
+    <ImageView
+        android:layout_width="359dp"
+        android:layout_height="179dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.278"
+        app:srcCompat="@drawable/livrosnovos" />
 
     <ImageView
         android:id="@+id/pessoasicon"
