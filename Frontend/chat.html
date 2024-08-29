@@ -223,10 +223,22 @@
             formData.append('caminhoImagemLogo', caminhoImagemLogo);
             formData.append('caminhoImagemFundoChat', caminhoImagemFundoChat);
 
-            fetch('http://localhost:8080/chats', {
-                method: 'POST',
-                body: formData
-            })
+            fetch(`http://localhost:8080/chats/chat/${generoChat}`)
+                .then(response => response.json())
+                .then(chats => {
+                    if (chats[0] != null) {
+                        Swal.fire({
+                            icon: 'warning',
+                            title: 'Erro ao adicionar chat',
+                            text: 'Já existe um chat deste genero'
+                        });
+                        return;
+                    }
+                    return fetch('http://localhost:8080/chats', {
+                        method: 'POST',
+                        body: formData
+                    })
+                })
                 .then(response => response.text())
                 .then(data => {
                     alert("Chat Adicionado");
@@ -234,7 +246,10 @@
                     formCadastro.reset();
                 })
                 .catch(error => console.error('Erro ao cadastrar Chats:', error));
-        });
+        })
+
+
+
 
         //Função EDITAR Genero
         function editarChat(event, id) {
