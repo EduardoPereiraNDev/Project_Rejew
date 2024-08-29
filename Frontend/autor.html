@@ -138,13 +138,13 @@
             fetch(`http://localhost:8080/autores/usuarios/${id}`)
                 .then(response => response.json())
                 .then(usuarios => {
-                    if (usuarios[0] != null ) {
-                        Swal.fire({
+                    if (usuarios[0] != null) {
+                        Swal.fire({         
                             icon: 'warning',
                             title: 'Erro ao Tornar Autor',
                             text: 'O usuário já é um autor'
                         });
-                        return; 
+                        return;
                     }
                     const data = {
                         idUsuario: id,
