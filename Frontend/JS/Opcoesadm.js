@@ -11,7 +11,7 @@ function myFunction() {
         }
     } else {
         for (let i = 0; i < elementos.length; i++) {
-            elementos[i].style.backgroundColor = "#000000"
+            elementos[i].style.backgroundColor = "#3bc7ea"
             md = 0
         }
     }
