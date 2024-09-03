@@ -26,6 +26,9 @@ public class Livro implements Serializable {
 
     @Column(name = "autor_Livro")
     private String autorLivro;
+    
+    @Column(name = "sinopse_Livro")
+    private String sinopseLivro; 
 
     @Column(name = "numero_Pag")
     private int numeroPag; 
@@ -50,13 +53,17 @@ public class Livro implements Serializable {
 
     public Livro() {}
 
-    public Livro(String nomeLivro, String autor, int numeroPag, Integer anoLancamento, String genero,String corPrimaria ,String caminhoImgCapa) {
-        this.nomeLivro = nomeLivro;
-        this.autorLivro = autor;
-        this.numeroPag = numeroPag;
-        this.anoLancamento = anoLancamento;
-        this.generoLivro = genero;
-        this.corPrimaria = corPrimaria;
-        this.caminhoImgCapa = caminhoImgCapa;
-    }
+	public Livro(String nomeLivro, String autorLivro, String sinopseLivro , int numeroPag, int anoLancamento,
+			 String generoLivro, String corPrimaria, String caminhoImgCapa) {
+		this.nomeLivro = nomeLivro;
+		this.autorLivro = autorLivro;
+		this.numeroPag = numeroPag;
+		this.sinopseLivro = sinopseLivro;
+		this.anoLancamento = anoLancamento;
+		this.generoLivro = generoLivro;
+		this.corPrimaria = corPrimaria;
+		this.caminhoImgCapa = caminhoImgCapa;
+	}
+
+    
 }
