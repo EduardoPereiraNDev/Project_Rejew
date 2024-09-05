@@ -25,6 +25,6 @@ public class Autor {
     private Long qtdLivros;
     
     @Column(name = "id_Usuario")
-    private Long id_Usuario;
+    private Long idUsuario;
 
 }

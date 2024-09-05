@@ -62,6 +62,7 @@ public class LivroController {
     public ResponseEntity<String> adicionarLivro(
             @RequestParam("nomeLivro") String nomeLivro,
             @RequestParam("autorLivro") String autorLivro,
+            @RequestParam("sinopseLivro") String sinopseLivro,
             @RequestParam("numeroPag") int numeroPag,
             @RequestParam("anoLancamento") int anoLancamento,
             @RequestParam("generoLivro") String generoLivro,
@@ -73,6 +74,9 @@ public class LivroController {
         }
         if (autorLivro == null || autorLivro.isEmpty()) {
             return ResponseEntity.badRequest().body("Autor do livro é obrigatório.");
+        }
+        if (sinopseLivro == null || sinopseLivro.isEmpty()) {
+            return ResponseEntity.badRequest().body("Sinopse do Livro é obrigatório.");
         }
         if (numeroPag <= 0) {
             return ResponseEntity.badRequest().body("Número de páginas deve ser positivo.");
@@ -104,7 +108,7 @@ public class LivroController {
             String uniqueFilename = generateUniqueFilename(fileExtension);
             Path path = Paths.get(UPLOAD_DIR + uniqueFilename);
             Files.write(path, caminhoImgCapa.getBytes());
-            Livro livro = new Livro(nomeLivro, autorLivro, numeroPag, anoLancamento, generoLivro, corPrimaria, uniqueFilename);
+            Livro livro = new Livro(nomeLivro, autorLivro, sinopseLivro ,numeroPag, anoLancamento, generoLivro, corPrimaria, uniqueFilename);
             livroRepository.save(livro);
 
             return ResponseEntity.ok("Livro cadastrado com sucesso ");
@@ -119,6 +123,7 @@ public class LivroController {
     public ResponseEntity<Livro> atualizarLivro(@PathVariable Long isbn, 
     		@RequestParam("nomeLivro") String nomeLivro,
             @RequestParam("autorLivro") String autorLivro,
+            @RequestParam("sinopseLivro") String sinopseLivro,
             @RequestParam("numeroPag") int numeroPag,
             @RequestParam("anoLancamento") int anoLancamento,
             @RequestParam("generoLivro") String generoLivro,
@@ -143,6 +148,7 @@ public class LivroController {
 									// atualiza os outros dados
     								livroAtual.setNomeLivro(nomeLivro);
     								livroAtual.setAutorLivro(autorLivro);
+    								livroAtual.setSinopseLivro(sinopseLivro);
     								livroAtual.setNumeroPag(numeroPag);
     								livroAtual.setAnoLancamento(anoLancamento);
     								livroAtual.setGeneroLivro(generoLivro);

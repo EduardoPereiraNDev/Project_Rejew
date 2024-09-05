@@ -38,19 +38,26 @@ package br.com.spring.rejew.projectrejew.controller;
 	        Optional<Autor> autor = autorRepository.findById(id);
 	        return autor.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
 	    }
+	    
+	 // Buscar um autor por ID Usuario
+	    @GetMapping("/usuarios/{id}")
+	    public ResponseEntity<List<Autor>> buscarAutorIDusuario(@PathVariable Long id) {
+	        List<Autor> autor = autorRepository.buscarAutorIDusuario(id);
+	        return ResponseEntity.ok(autor);
+	    }
 
 	    // Salvar uma nova mensagem
 	    @PostMapping
-	    public ResponseEntity<Autor> salvarMensagem(@RequestBody Autor autor) {
+	    public ResponseEntity<Autor> tornarAutor(@RequestBody Autor autor) {
 	    	Autor autorSalvo = autorRepository.save(autor);
 	        return ResponseEntity.ok(autorSalvo);
 	    }
 
 	    // Atualizar uma mensagem existente
 	    @PutMapping("/{id}")
-	    public ResponseEntity<Autor> atualizarMensagem(@PathVariable Long id, @RequestBody Autor autor) {
+	    public ResponseEntity<Autor> atualizarAutor(@PathVariable Long id, @RequestBody Autor autor) {
 	        if (autorRepository.existsById(id)) {
-	        	autor.setId_Usuario(id);
+	        	autor.setIdAutor(id);
 	            Autor autorAtualizado = autorRepository.save(autor);
 	            return ResponseEntity.ok(autorAtualizado);
 	        }
@@ -59,7 +66,7 @@ package br.com.spring.rejew.projectrejew.controller;
 
 	    // Deletar uma mensagem por ID
 	    @DeleteMapping("/{id}")
-	    public ResponseEntity<Void> deletarMensagem(@PathVariable Long id) {
+	    public ResponseEntity<Void> deletarAutor(@PathVariable Long id) {
 	        if (autorRepository.existsById(id)) {
 	        	autorRepository.deleteById(id);
 	            return ResponseEntity.noContent().build();
