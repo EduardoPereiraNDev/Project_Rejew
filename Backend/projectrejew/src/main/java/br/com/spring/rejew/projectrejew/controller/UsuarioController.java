@@ -51,6 +51,14 @@ public class UsuarioController {
         Optional<Usuario> usuario = usuarioRepository.findByEmailEntrada(email);
         return usuario.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
+    
+ // Buscar um usuário por email like
+    @GetMapping("/email/{emailEntrada}")
+    public ResponseEntity<List<Usuario>> buscarUsuarioPorEmailLike(@PathVariable String emailEntrada) {
+        List<Usuario> usuarios = usuarioRepository.buscarUsuarioPorEmailLike(emailEntrada);
+        return ResponseEntity.ok(usuarios);
+    }
+    
 
     // Buscar um usuário por nome
     @GetMapping("/nome/{nome}")
@@ -209,7 +217,8 @@ public class UsuarioController {
                 Files.deleteIfExists(pathToDelete);
                 Path pathToDelete2 = Paths.get(UPLOAD_DIR2 + usuarioToDelete.getCaminhoImagemFundo());
                 Files.deleteIfExists(pathToDelete2);
-                usuarioRepository.findByEmailEntrada(emailUsuario);
+                usuarioRepository.deleteByEmailEntrada(emailUsuario);
+                return ResponseEntity.noContent().build(); 
             } catch (IOException e) {
                 e.printStackTrace();
                 return ResponseEntity.ok().build();

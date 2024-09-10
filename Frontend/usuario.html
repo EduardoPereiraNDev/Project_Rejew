@@ -24,10 +24,10 @@
             <!-- Aba Lista -->
             <div class="tab-pane active" id="lista">
                 <h4>Lista de Usuários</h4>
-                <input type="text" id="pesquisa" placeholder="Pesquisar....." class="form-control">
-                <button class="btn btn-success mt-2" id="buttonPesquisar">Pesquisar</button>
-                <button class="btn btn-danger mt-2" id="buttonApagar">Apagar</button>
-                <table class="table table-bordered mt-2" id="tabela_lista">
+                <input type="text" id="pesquisa" placeholder="Pesquisar.....">
+                <button class="btn btn-success" id="buttonPesquisar">Pesquisar</button>
+                <button class="btn btn-danger" id="buttonApagar">Apagar</button>
+                <table class="table table-bordered" id="tabela_lista">
                     <thead>
                         <tr>
                             <th>Email do Usuario</th>
@@ -191,21 +191,35 @@
             }
         }
 
+
         function deletarUsuario(email) {
-            fetch(`http://localhost:8080/usuarios/${email}`, {
-                method: 'DELETE'
-            })
-                .then(response => {
-                    if (response.ok) {
-                        Swal.fire('Sucesso!', 'Usuário deletado com sucesso!', 'success');
-                        carregarListaUsuarios();
-                    } else {
-                        Swal.fire('Erro!', 'Erro ao deletar usuário!', 'error');
-                    }
-                })
-                .catch(error => {
-                    Swal.fire('Erro!', 'Erro ao deletar usuário!', 'error');
-                });
+            Swal.fire({
+                title: 'Tem certeza?',
+                text: 'Esta ação não pode ser revertida!',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Sim, finalizar!',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    fetch(`http://localhost:8080/usuarios/${email}`, {
+                        method: 'DELETE'
+                    })
+                        .then(response => {
+                            if (response.ok) {
+                                Swal.fire('Sucesso!', 'Usuário deletado com sucesso!', 'success');
+                                carregarListaUsuarios();
+                            } else {
+                                Swal.fire('Erro!', 'Erro ao deletar usuário!', 'error');
+                            }
+                        })
+                        .catch(error => {
+                            Swal.fire('Erro!', 'Erro ao deletar usuário!', 'error');
+                        });
+                }
+            });
         }
 
         document.getElementById('buttonPesquisar').addEventListener('click', async function () {
@@ -221,7 +235,7 @@
             }
 
             const url = `http://localhost:8080/usuarios/email/${busca}`;
-            const url2 = `http://localhost:8080/usuarios/nome/${busca}`;
+            const url2 = `http://localhost:8080/usuarios/perfil/${busca}`;
 
             try {
                 const [response, response2] = await Promise.all([
@@ -240,11 +254,12 @@
 
                 const data = await response.json();
                 const data2 = await response2.json();
+                
+                const todosUsuarios = [...data, ...data2];
 
-                const usuarios = Array.isArray(data) ? data : [data];
-                const usuarios2 = Array.isArray(data2) ? data2 : [data2];
+                const usuariosUnicos = Array.from(new Map(todosUsuarios.map(usuario => [usuario.emailEntrada, usuario])).values());
 
-                if (usuarios.length === 0 && usuarios2.length === 0) {
+                if (usuariosUnicos.length === 0) {
                     Swal.fire({
                         icon: 'info',
                         title: 'Resultado da Busca',
@@ -287,8 +302,7 @@
                     });
                 }
 
-                adicionarUsuarios(usuarios);
-                adicionarUsuarios(usuarios2);
+                adicionarUsuarios(usuariosUnicos);
 
             } catch (error) {
                 Swal.fire({
@@ -299,7 +313,9 @@
             }
         });
 
+
         document.getElementById('buttonApagar').addEventListener('click', function () {
+            document.getElementById("pesquisa").value = "";
             carregarListaUsuarios();
         });
     </script>
