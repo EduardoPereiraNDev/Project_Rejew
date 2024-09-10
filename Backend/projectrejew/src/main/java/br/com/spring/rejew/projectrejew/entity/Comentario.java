@@ -1,6 +1,7 @@
 package br.com.spring.rejew.projectrejew.entity;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -22,7 +23,7 @@ public class Comentario implements Serializable {
     private Long idComentario;
 
     @Column(name = "data_Comentario")
-    private Date dataComentario;
+    private LocalDate dataComentario;
 
     @Column(name = "conteudo_Coment")
     private String conteudoComent;

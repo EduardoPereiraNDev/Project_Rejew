@@ -46,7 +46,7 @@ import br.com.spring.rejew.projectrejew.repository.AutorRepository;
 	    
 	 // Buscar um autor por ID Usuario
 	    @GetMapping("/usuarios/{usuarioEmailEntrada}")
-	    public ResponseEntity<List<Autor>> buscarAutorIDusuario(@PathVariable String usuarioEmailEntrada) {
+	    public ResponseEntity<List<Autor>> buscarAutorEmailUsuario(@PathVariable String usuarioEmailEntrada) {
 	        List<Autor> autor = autorRepository.buscarAutorEmail(usuarioEmailEntrada);
 	        return ResponseEntity.ok(autor);
 	    }
@@ -69,13 +69,15 @@ import br.com.spring.rejew.projectrejew.repository.AutorRepository;
 	        return ResponseEntity.notFound().build();
 	    }
 
-	    // Deletar uma mensagem por ID
+	    // Deletar mensagem por ID
 	    @DeleteMapping("/{id}")
 	    public ResponseEntity<Void> deletarAutor(@PathVariable Long id) {
 	        if (autorRepository.existsById(id)) {
-	        	autorRepository.deleteById(id);
-	            }
+	            autorRepository.deleteById(id);
+	            return ResponseEntity.noContent().build(); 
+	        } else {
 	            return ResponseEntity.notFound().build();
+	        }
 	    }
 	}
 

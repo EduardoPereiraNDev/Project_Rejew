@@ -47,7 +47,7 @@ public class Usuario implements Serializable {
     private String nomePerfil;
 
     @Id
-    @Column(name = "email_Entrada")
+    @Column(name = "email_Entrada", updatable = false)
     private String emailEntrada;
 
     @Column(name = "senha_Entrada")

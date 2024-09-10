@@ -4,10 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import br.com.spring.rejew.projectrejew.entity.Usuario;
+import jakarta.transaction.Transactional;
 
 /*
  * Estende CrudRepository e fornece funcionalidades adicionais específicas do JPA.
@@ -18,8 +20,14 @@ import br.com.spring.rejew.projectrejew.entity.Usuario;
 public interface UsuarioRepository extends JpaRepository<Usuario, String> {
 
     Optional<Usuario> findByEmailEntrada(String emailEntrada);
-
+    
+    @Modifying
+    @Transactional
+    @Query("DELETE FROM Usuario u WHERE u.emailEntrada = emailEntrada")
     void deleteByEmailEntrada(String emailEntrada);
+    
+    @Query("SELECT u FROM Usuario u WHERE u.emailEntrada LIKE %:emailEntrada%")
+    List<Usuario> buscarUsuarioPorEmailLike(String emailEntrada);
 
     @Query("SELECT u FROM Usuario u WHERE u.nomeUsuario LIKE %:nomeUsuario%")
     List<Usuario> buscarUsuarioPorNome(String nomeUsuario);

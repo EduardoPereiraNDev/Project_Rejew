@@ -31,7 +31,7 @@
                     <thead>
                         <tr>
                             <th>ID Comentário</th>
-                            <th>ID Usuário</th>
+                            <th>Email Usuario</th>
                             <th>Nome Usuário</th>
                             <th>ID Livro</th>
                             <th>Conteudo </th>
@@ -64,7 +64,7 @@
                         comentarios.forEach(comentario => {
                             const row = tabelaLista.insertRow();
                             row.insertCell(0).textContent = comentario.idComentario;
-                            row.insertCell(1).textContent = comentario.idusuarioComent;
+                            row.insertCell(1).textContent = comentario.emailUsuarioComent;
                             row.insertCell(2).textContent = comentario.usuarioComent;
                             row.insertCell(3).textContent = comentario.id_livroComent;
                             row.insertCell(4).textContent = comentario.conteudoComent;
@@ -135,7 +135,7 @@
                         comentarios.forEach(comentario => {
                             const row = tabelaLista.insertRow();
                             row.insertCell(0).textContent = comentario.idComentario;
-                            row.insertCell(1).textContent = comentario.idusuarioComent;
+                            row.insertCell(1).textContent = comentario.emailUsuarioComent;
                             row.insertCell(2).textContent = comentario.usuarioComent;
                             row.insertCell(3).textContent = comentario.id_livroComent;
                             row.insertCell(4).textContent = comentario.conteudoComent;
