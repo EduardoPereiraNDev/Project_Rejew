@@ -81,19 +81,20 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/home"
+        android:id="@+id/chat"
         android:layout_width="54dp"
         android:layout_height="54dp"
-        android:layout_marginStart="4dp"
+        android:layout_marginStart="44dp"
         android:layout_marginEnd="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/chaticon"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view4"
+        app:layout_constraintVertical_bias="0.523"
         app:srcCompat="@drawable/chatbrancooooo" />
 
     <ImageView
-        android:id="@+id/chaticon"
+        android:id="@+id/homeicon"
         android:layout_width="54dp"
         android:layout_height="54dp"
         android:layout_marginStart="4dp"
@@ -120,11 +121,12 @@
         android:layout_width="54dp"
         android:layout_height="54dp"
         android:layout_marginStart="5dp"
-        android:layout_marginEnd="4dp"
+        android:layout_marginEnd="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/chaticon"
         app:layout_constraintTop_toBottomOf="@+id/view4"
+        app:layout_constraintVertical_bias="0.523"
         app:srcCompat="@drawable/amigosbrancooo" />
 
     <androidx.recyclerview.widget.RecyclerView
