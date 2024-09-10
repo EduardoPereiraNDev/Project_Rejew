@@ -1,6 +1,10 @@
 package br.com.spring.rejew.projectrejew.controller;
 
-	import java.util.List;
+	import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
 	import java.util.Optional;
 
 	import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +19,8 @@ package br.com.spring.rejew.projectrejew.controller;
 	import org.springframework.web.bind.annotation.RestController;
 
 	import br.com.spring.rejew.projectrejew.entity.Autor;
-	import br.com.spring.rejew.projectrejew.repository.AutorRepository;
+import br.com.spring.rejew.projectrejew.entity.Livro;
+import br.com.spring.rejew.projectrejew.repository.AutorRepository;
 
 
 	@RestController
@@ -40,9 +45,9 @@ package br.com.spring.rejew.projectrejew.controller;
 	    }
 	    
 	 // Buscar um autor por ID Usuario
-	    @GetMapping("/usuarios/{id}")
-	    public ResponseEntity<List<Autor>> buscarAutorIDusuario(@PathVariable Long id) {
-	        List<Autor> autor = autorRepository.buscarAutorIDusuario(id);
+	    @GetMapping("/usuarios/{usuarioEmailEntrada}")
+	    public ResponseEntity<List<Autor>> buscarAutorIDusuario(@PathVariable String usuarioEmailEntrada) {
+	        List<Autor> autor = autorRepository.buscarAutorEmail(usuarioEmailEntrada);
 	        return ResponseEntity.ok(autor);
 	    }
 
@@ -69,9 +74,8 @@ package br.com.spring.rejew.projectrejew.controller;
 	    public ResponseEntity<Void> deletarAutor(@PathVariable Long id) {
 	        if (autorRepository.existsById(id)) {
 	        	autorRepository.deleteById(id);
-	            return ResponseEntity.noContent().build();
-	        }
-	        return ResponseEntity.notFound().build();
+	            }
+	            return ResponseEntity.notFound().build();
 	    }
 	}
 

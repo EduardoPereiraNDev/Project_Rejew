@@ -38,10 +38,7 @@ public class Usuario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_Usuario")
-    private Long idUsuario;
+	   
 
     @Column(name = "nome_Usuario")
     private String nomeUsuario;
@@ -49,6 +46,7 @@ public class Usuario implements Serializable {
     @Column(name = "nome_Perfil")
     private String nomePerfil;
 
+    @Id
     @Column(name = "email_Entrada")
     private String emailEntrada;
 

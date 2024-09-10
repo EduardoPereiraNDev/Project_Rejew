@@ -26,8 +26,8 @@ import jakarta.persistence.Column;
 	    @Column(name = "data_Mensagem")
 	    private Date dataMensagem;
 	    
-	    @Column(name = "usuario_Mensagem")
-	    private String usuarioMensagem;
+	    @Column(name = "usuario_Email_Entrada")
+	    private String usuarioEmailEntrada;
 	    
 	    @Column(name = "chat_Mensagem")
 	    private String chatMensagem;
