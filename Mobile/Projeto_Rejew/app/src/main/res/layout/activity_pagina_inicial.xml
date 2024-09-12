@@ -130,6 +130,7 @@
         app:srcCompat="@drawable/amigosbrancooo" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/fotoperfil"
         android:layout_width="88dp"
         android:layout_height="78dp"
         app:layout_constraintBottom_toBottomOf="parent"
