@@ -126,7 +126,7 @@
         app:layout_constraintVertical_bias="0.599"  />
 
     <TextView
-        android:id="ficcao_texto"
+        android:id="@+id/ficcao_texto"
         android:layout_width="63dp"
         android:layout_height="48dp"
         android:text="Ficção-  Científica"
