@@ -1,6 +1,9 @@
 package br.com.spring.rejew.projectrejew.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import br.com.spring.rejew.projectrejew.entity.Comentario;
 
@@ -11,5 +14,10 @@ import br.com.spring.rejew.projectrejew.entity.Comentario;
  */
 @Repository
 public interface ComentarioRepository extends JpaRepository<Comentario, Long> {
-
+	
+	@Query("SELECT c FROM Comentario c WHERE c.usuarioComent LIKE %:usuarioComent%")
+	List<Comentario> findByUsuarioComent(String usuarioComent);
+	
+	@Query("SELECT c FROM Comentario c WHERE c.idLivroComent = idLivroComent")
+	List<Comentario> findByIdLivroComent(Long idLivroComent);
 }

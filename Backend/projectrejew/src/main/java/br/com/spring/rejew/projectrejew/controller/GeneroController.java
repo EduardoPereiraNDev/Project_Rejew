@@ -69,7 +69,6 @@ public class GeneroController {
     public ResponseEntity<Void> deletarGenero(@PathVariable Long id) {
         if (generoRepository.existsById(id)) {
         	generoRepository.deleteById(id);
-            return ResponseEntity.noContent().build();
         }
         return ResponseEntity.notFound().build();
     }

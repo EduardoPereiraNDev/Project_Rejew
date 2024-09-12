@@ -10,7 +10,7 @@ import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name = "usuario_autor")
+@Table(name = "usuario_Autor")
 @Data
 public class Autor {
 
@@ -24,7 +24,7 @@ public class Autor {
     @Column(name = "qtd_Livros")
     private Long qtdLivros;
     
-    @Column(name = "id_Usuario")
-    private Long idUsuario;
+    @Column(name = "usuario_Email_Entrada")
+    private String usuarioEmailEntrada;
 
 }

@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="aventura_imagem"
+        android:id="@+id/aventura_imagem"
         android:layout_width="50dp"
         android:layout_height="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -20,7 +20,7 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <ImageView
-        android:id="terror_imagem"
+        android:id="@+id/terror_imagem"
         android:layout_width="50dp"
         android:layout_height="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -34,7 +34,7 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <ImageView
-        android:id="romance_imagem"
+        android:id="@+id/romance_imagem"
         android:layout_width="50dp"
         android:layout_height="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -48,7 +48,7 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <ImageView
-        android:id="ficcao_imagem"
+        android:id="@+id/ficcao_imagem"
         android:layout_width="50dp"
         android:layout_height="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -62,7 +62,7 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <ImageView
-        android:id="culinaria_imagem"
+        android:id="@+id/culinaria_imagem"
         android:layout_width="50dp"
         android:layout_height="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -76,7 +76,7 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <ImageView
-        android:id="inf_imagem"
+        android:id="@+id/inf_imagem"
         android:layout_width="50dp"
         android:layout_height="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -90,7 +90,7 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="aventura_texto"
+        android:id="@+id/aventura_texto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Aventura"
@@ -102,7 +102,7 @@
         app:layout_constraintVertical_bias="0.599"  />
 
     <TextView
-        android:id="terror_texto"
+        android:id="@+id/terror_texto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Terror"
@@ -114,7 +114,7 @@
         app:layout_constraintVertical_bias="0.599" />
 
     <TextView
-        android:id="romance_texto"
+        android:id="@+id/romance_texto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Romance"
@@ -126,7 +126,7 @@
         app:layout_constraintVertical_bias="0.599"  />
 
     <TextView
-        android:id="ficcao_texto"
+        android:id="@+id/ficcao_texto"
         android:layout_width="63dp"
         android:layout_height="48dp"
         android:text="Ficção-  Científica"
@@ -138,7 +138,7 @@
         app:layout_constraintVertical_bias="0.625"/>
 
     <TextView
-        android:id="culinaria_texto"
+        android:id="@+id/culinaria_texto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Culinária"
@@ -150,7 +150,7 @@
         app:layout_constraintVertical_bias="0.599"  />
 
     <TextView
-        android:id="inf_texto"
+        android:id="@+id/inf_texto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=" Infantil"

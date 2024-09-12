@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="sugestoes_texto"
+        android:id="@+id/sugestoes_texto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sugestôes para você:"
@@ -19,7 +19,7 @@
         app:layout_constraintVertical_bias="0.682" />
 
     <TextView
-        android:id="veja_texto"
+        android:id="@+id/veja_texto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Veja todos ->"
@@ -60,7 +60,7 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="titulo_livro"
+        android:id="@+id/titulo_livro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
@@ -72,7 +72,7 @@
         app:layout_constraintVertical_bias="0.903" />
 
     <TextView
-        android:id="nome_autor"
+        android:id="@+id/nome_autor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
@@ -113,7 +113,7 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="titulo_livro2"
+        android:id="@+id/titulo_livro2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
@@ -125,7 +125,7 @@
         app:layout_constraintVertical_bias="0.903" />
 
     <TextView
-        android:id="nome_autor2"
+        android:id="@+id/nome_autor2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"

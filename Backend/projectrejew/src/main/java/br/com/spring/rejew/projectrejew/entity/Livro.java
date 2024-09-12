@@ -45,7 +45,7 @@ public class Livro implements Serializable {
     @Column(name = "qtd_Comentario")
     private int qtdComentario;
     
-    @Column(name = "cor_primaria")
+    @Column(name = "cor_Primaria")
     private String corPrimaria;
 
     @Column(name = "caminho_Imagem_Capa")

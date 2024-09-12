@@ -34,7 +34,7 @@
                     <thead>
                         <tr>
                             <th>ID de Autor </th>
-                            <th>ID do usuario</th>
+                            <th>Email do Usuario</th>
                             <th>Quantidade de Paginas</th>
                         </tr>
                     </thead>
@@ -53,10 +53,9 @@
                 <table class="table table-bordered" id="tabela_listaU">
                     <thead>
                         <tr>
-                            <th>ID do Usuario </th>
+                            <th>Email do Usuario</th>
                             <th>Nome do Usuario</th>
                             <th>Nome do Perfil</th>
-                            <th>Email do Usuario</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -82,8 +81,8 @@
                     autores.forEach(autor => {
                         const row = tabelaLista.insertRow();
                         row.insertCell(0).textContent = autor.idAutor;
-                        row.insertCell(1).textContent = autor.idUsuario;
-                        row.insertCell(2).textContent = autor.qtdLivros;
+                        row.insertCell(1).textContent = autor.usuarioEmailEntrada;
+                        row.insertCell(2).textContent = autor.qtdLivros || "Sem Livros";
 
 
                         //Botao excluir
@@ -110,10 +109,9 @@
                     tabelaLista.innerHTML = '';
                     usuarios.forEach(usuario => {
                         const row = tabelaLista.insertRow();
-                        row.insertCell(0).textContent = usuario.idUsuario;
+                        row.insertCell(0).textContent = usuario.emailEntrada;
                         row.insertCell(1).textContent = usuario.nomeUsuario;
                         row.insertCell(2).textContent = usuario.nomePerfil;
-                        row.insertCell(3).textContent = usuario.emailEntrada;
 
                         //Botao Tornar Autor
 
@@ -122,7 +120,7 @@
                         btnAutor.textContent = 'Tornar Autor';
                         btnAutor.className = 'btn btn-primary';
                         btnAutor.onclick = function () {
-                            tornarAutor(usuario.idUsuario);
+                            tornarAutor(usuario.emailEntrada);
                         };
                         cellAutor.appendChild(btnAutor);
                         row.appendChild(cellAutor);
@@ -134,8 +132,8 @@
 
 
         //Função para tornar usuario um Autor 
-        function tornarAutor(id) {
-            fetch(`http://localhost:8080/autores/usuarios/${id}`)
+        function tornarAutor(emailEntrada) {
+            fetch(`http://localhost:8080/autores/usuarios/${emailEntrada}`)
                 .then(response => response.json())
                 .then(usuarios => {
                     if (usuarios[0] != null) {
@@ -147,7 +145,7 @@
                         return;
                     }
                     const data = {
-                        idUsuario: id,
+                        usuarioEmailEntrada: emailEntrada,
                     };
                     return fetch('http://localhost:8080/autores', {
                         method: 'POST',
@@ -193,7 +191,6 @@
                             if (!response.ok) {
                                 throw new Error(`Falha ao retitar modo Autor. Código de status: ${response.status}`);
                             }
-
                             Swal.fire({
                                 icon: 'success',
                                 title: 'Atenção',
@@ -206,7 +203,7 @@
                             Swal.fire({
                                 icon: 'error',
                                 title: 'Atenção',
-                                text: 'Erro ao tentar retirar modo Autor.'
+                                text: `Houve um problema ao tentar excluir o autor: ${error.message}`
                             });
                             carregarListaAutores();
                             carregarListaUsuarios();

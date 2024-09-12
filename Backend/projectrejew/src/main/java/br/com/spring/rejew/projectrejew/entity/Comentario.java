@@ -1,6 +1,7 @@
 package br.com.spring.rejew.projectrejew.entity;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -22,11 +23,17 @@ public class Comentario implements Serializable {
     private Long idComentario;
 
     @Column(name = "data_Comentario")
-    private Date dataComentario;
+    private LocalDate dataComentario;
 
     @Column(name = "conteudo_Coment")
     private String conteudoComent;
     
-    @Column(name = "usuario_Coment")
-    private Long usuarioComent;
+    @Column(name = "email_Usuario_Coment")
+    private Long emailUsuarioComent;
+    
+    @Column(name = "id_Livro_Coment")
+    private Long idLivroComent;
+    
+    @Column(name = "Usuario_Coment")
+    private String usuarioComent;
 }

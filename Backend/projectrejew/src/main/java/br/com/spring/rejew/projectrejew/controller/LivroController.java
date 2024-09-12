@@ -167,7 +167,7 @@ public class LivroController {
 
     // Deletar um livro por ID
     @DeleteMapping("/{isbn}")
-    public ResponseEntity<String> deletarLivro(@PathVariable Long isbn) {
+    public ResponseEntity<Void> deletarLivro(@PathVariable Long isbn) {
         if (livroRepository.existsById(isbn)) {
         	try {
         	Optional<Livro> livros = livroRepository.findById(isbn);
@@ -175,12 +175,9 @@ public class LivroController {
         	 Path pathToDelete = Paths.get(UPLOAD_DIR + livro.getCaminhoImgCapa());
              Files.deleteIfExists(pathToDelete);
              livroRepository.deleteById(isbn);
-             return ResponseEntity.ok("Livro deletado com sucesso");
          } catch (IOException e) {
              e.printStackTrace();
-             return ResponseEntity.status(500).body("Erro ao deletar o arquivo.");
-         } catch (RuntimeException e) {
-             return ResponseEntity.status(404).body(e.getMessage());
+             return ResponseEntity.ok().build();
          }
         }
         return ResponseEntity.notFound().build();

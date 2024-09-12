@@ -48,7 +48,7 @@ public class MensagemController {
  // Buscar mensagens por usuário
     @GetMapping("/usuario/{usuario}")
     public ResponseEntity<List<Mensagem>> buscarMensagensPorUsuario(@PathVariable String usuario) {
-        List<Mensagem> mensagens = mensagemRepository.findByUsuarioMensagem(usuario);
+        List<Mensagem> mensagens = mensagemRepository.findByUsuarioEmailMensagem(usuario);
         return ResponseEntity.ok(mensagens);
     }
 
@@ -75,7 +75,6 @@ public class MensagemController {
     public ResponseEntity<Void> deletarMensagem(@PathVariable Long id) {
         if (mensagemRepository.existsById(id)) {
             mensagemRepository.deleteById(id);
-            return ResponseEntity.noContent().build();
         }
         return ResponseEntity.notFound().build();
     }

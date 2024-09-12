@@ -167,7 +167,7 @@ public class ChatController {
 
     // Deletar um livro por ID
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deletaChat(@PathVariable Long id) {
+    public ResponseEntity<Void> deletaChat(@PathVariable Long id) {
         if (chatRepository.existsById(id)) {
         	try {
         	Optional<Chat> chats = chatRepository.findById(id);
@@ -177,13 +177,10 @@ public class ChatController {
              Path pathToDelete2 = Paths.get(UPLOAD_DIR2 + chat.getCaminhoImagemFundoChat());
              Files.deleteIfExists(pathToDelete2);
              chatRepository.deleteById(id);
-             return ResponseEntity.ok("Chat deletado com sucesso");
          } catch (IOException e) {
              e.printStackTrace();
-             return ResponseEntity.status(500).body("Erro ao deletar o arquivo.");
-         } catch (RuntimeException e) {
-             return ResponseEntity.status(404).body(e.getMessage());
-         }
+             return ResponseEntity.ok().build();
+         } 
         }
         return ResponseEntity.notFound().build();
     }

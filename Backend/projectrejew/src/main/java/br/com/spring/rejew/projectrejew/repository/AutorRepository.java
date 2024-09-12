@@ -16,6 +16,6 @@ import br.com.spring.rejew.projectrejew.entity.Autor;
 @Repository
 public interface AutorRepository extends JpaRepository<Autor, Long> {
 	
-	@Query("SELECT a FROM Autor a WHERE a.idUsuario = idUsuario")
-	List<Autor> buscarAutorIDusuario(Long idUsuario);
+	@Query("SELECT a FROM Autor a WHERE a.usuarioEmailEntrada = usuarioEmailEntrada")
+	List<Autor> buscarAutorEmail(String usuarioEmailEntrada);
 }

@@ -2,6 +2,7 @@ package br.com.spring.rejew.projectrejew.entity;
 
 	import java.io.Serializable;
 import java.sql.Date;
+import java.time.LocalDate;
 
 import jakarta.persistence.Column;
 	import jakarta.persistence.Entity;
@@ -24,10 +25,10 @@ import jakarta.persistence.Column;
 	    private String textoMensagem;
 	    
 	    @Column(name = "data_Mensagem")
-	    private Date dataMensagem;
+	    private LocalDate dataMensagem;
 	    
-	    @Column(name = "usuario_Mensagem")
-	    private String usuarioMensagem;
+	    @Column(name = "usuario_Email_Entrada")
+	    private String usuarioEmailEntrada;
 	    
 	    @Column(name = "chat_Mensagem")
 	    private String chatMensagem;
