@@ -49,6 +49,13 @@ public class ComentarioController {
         return ResponseEntity.ok(comentarios);
     }
     
+    // Salvar um novo comentario
+    @PostMapping
+    public ResponseEntity<Comentario> adicionarComentario(@RequestBody Comentario comentario){
+    	Comentario comentarioSalvo = comentarioRepository.save(comentario);
+        return ResponseEntity.ok(comentarioSalvo);
+    }
+    
     // Atualizar um comentario
     @PutMapping("/{id}")
     public ResponseEntity<Comentario> atualizarMensagem(@PathVariable Long id, @RequestBody Comentario comentario) {

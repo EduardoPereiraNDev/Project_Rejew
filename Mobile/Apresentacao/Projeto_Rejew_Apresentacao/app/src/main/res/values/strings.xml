@@ -1,0 +1,49 @@
+<resources>
+
+    <string name="app_name">Projeto_Rejew_Apresentacao</string>
+    <string name="subt">Seu Espaço Literário!</string>
+    <string name="slogan">O meio perfeito para compartilhar suas ideias e opiniões sobre livros.</string>
+
+
+    <string name="TextLogin">Login</string>
+    <string name="email">Email</string>
+    <string name="senha">Senha</string>
+    <string name="esque_senha">Esqueceu a senha?</string>
+    <string name="notConta">Não tem uma conta? </string>
+    <string name="linkCadastra">CADASTRE-SE</string>
+    <string name="redes">Entre com as redes sociais</string>
+
+
+    <string name="TextCadastro">Cadastro</string>
+    <string name="nome">Nome</string>
+    <string name="nome_usuario">Nome de Usuario</string>
+    <string name="textCadastre">Cadastre-se</string>
+    <string name="termos">Ao clicar em cadastrar você concorda com os</string>
+    <string name="termos2">Termos de uso e política de privacidade</string>
+    <string name="contemConta">Já tem uma conta? </string>
+    <string name="linkLogin">LOGIN</string>
+
+    <string name="Tipoconta">Escolha um </string>
+    <string name="Tipoconta2">Tipo de Conta</string>
+    <string name="TipoAut">Autor</string>
+    <string name="TipoLei">Leitor</string>
+
+    <string name="pesquiseLivros">Pesquise por livros</string>
+    <string name="topico1">Populares</string>
+    <string name="ver_perfil">Ver Perfil</string>
+    <string name="configuração">Configuração</string>
+    <string name="notificação">Notificação</string>
+    <string name="sair_conta">Sair da Conta</string>
+
+    <string name="CHATS">CHATS</string>
+
+
+    <string name="pesquisePessoas">Pesquise por pessoas</string>
+    <string name="home">Home</string>
+    <string name="chat">Chats</string>
+    <string name="pessoa">Pessoas</string>
+
+    <string name="digiteMsg">Digite sua mensagem...</string>
+
+
+</resources>
