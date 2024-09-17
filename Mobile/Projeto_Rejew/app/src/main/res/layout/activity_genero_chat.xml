@@ -70,7 +70,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.223"
-        app:srcCompat="@drawable/" />
+        app:srcCompat="@drawable/rejewazulescuro" />
 
     <ImageView
         android:id="@+id/fcientifica"
@@ -83,7 +83,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.48"
-        app:srcCompat="@drawable/fcientifica" />
+        app:srcCompat="@drawable/rejewazulescuro" />
 
     <ImageView
         android:id="@+id/romance"
@@ -96,7 +96,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.74"
-        app:srcCompat="@drawable/romance" />
+        app:srcCompat="@drawable/rejewazulescuro" />
 
     <ImageView
         android:id="@+id/culinaria"
@@ -109,7 +109,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.223"
-        app:srcCompat="@drawable/culinaria" />
+        app:srcCompat="@drawable/rejewazulescuro" />
 
     <ImageView
         android:id="@+id/infantil"
@@ -122,7 +122,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.479"
-        app:srcCompat="@drawable/infantil" />
+        app:srcCompat="@drawable/rejewazulescuro" />
 
     <ImageView
         android:id="@+id/terror"
@@ -135,7 +135,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.74"
-        app:srcCompat="@drawable/terror" />
+        app:srcCompat="@drawable/rejewazulescuro" />
 
     <ImageView
         android:id="@+id/chaticon"
