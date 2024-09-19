@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -76,10 +77,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="sans-serif-black"
+        android:layout_marginTop="4dp"
         android:text="Aventura"
         app:layout_constraintStart_toStartOf="parent"
+        android:fontFamily="@font/merriweather_bold"
         app:layout_constraintTop_toBottomOf="@+id/aventura" />
 
     <ImageView
@@ -97,12 +98,16 @@
         android:id="@+id/textterror"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="sans-serif-black"
+        android:layout_marginTop="4dp"
+        android:layout_marginStart="4dp"
+        android:fontFamily="@font/merriweather_bold"
         android:text="Terror"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.273"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/aventura" />
+        app:layout_constraintTop_toBottomOf="@+id/aventura"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/romance"
@@ -120,8 +125,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="176dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="sans-serif-black"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/merriweather_bold"
         android:text="Romance"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/aventura" />
@@ -139,11 +144,11 @@
 
     <TextView
         android:id="@+id/textficcaocienti"
-        android:layout_width="65dp"
-        android:layout_height="wrap_content"
+        android:layout_width="85dp"
+        android:layout_height="50dp"
         android:layout_marginStart="252dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="sans-serif-black"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/merriweather_bold"
         android:text="Ficção- Científica"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/aventura" />
@@ -164,8 +169,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="328dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="sans-serif-black"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/merriweather_bold"
         android:text="Culinaria"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/aventura" />
@@ -225,6 +230,107 @@
         app:layout_constraintTop_toBottomOf="@+id/view4"
         app:layout_constraintVertical_bias="0.523"
         app:srcCompat="@drawable/amigosbrancooo" />
+
+    <FrameLayout
+        android:layout_width="355dp"
+        android:layout_height="185dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.553"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.862">
+
+            <RelativeLayout
+            android:id="@+id/containerit"
+            android:layout_width="145dp"
+            android:layout_height="165dp"
+            android:orientation="horizontal">
+
+            <View
+                android:id="@+id/fundoum"
+                android:layout_width="125dp"
+                android:layout_height="90dp"
+                android:layout_marginStart="7dp"
+                android:layout_marginTop="35dp"
+                android:background="@color/cinzait" />
+
+            <ImageView
+                android:id="@+id/livroum"
+                android:layout_width="90dp"
+                android:layout_height="125dp"
+                android:layout_marginStart="25dp"
+                android:src="@drawable/itcapa" />
+
+            <TextView
+                android:id="@+id/ittitulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="125dp"
+                android:fontFamily="@font/merriweather_bold"
+                android:text="It: A Coisa"
+                android:textSize="17dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/itautor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="145dp"
+                android:fontFamily="@font/merriweather_light_italic"
+                android:text="Stephen King"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/containerter"
+            android:layout_width="145dp"
+            android:layout_height="185dp"
+            android:layout_marginStart="200dp"
+            android:orientation="horizontal">
+
+            <View
+                android:id="@+id/fundodois"
+                android:layout_width="125dp"
+                android:layout_height="90dp"
+                android:layout_marginStart="7dp"
+                android:layout_marginTop="35dp"
+                android:background="@color/terran" />
+
+            <ImageView
+                android:id="@+id/livrodois"
+                android:layout_width="90dp"
+                android:layout_height="125dp"
+                android:layout_marginStart="25dp"
+                android:src="@drawable/livro" />
+
+            <TextView
+                android:id="@+id/tertitulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="125dp"
+                android:fontFamily="@font/merriweather_bold"
+                android:text="O Rei da Terra do Nunca"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/terautor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="165dp"
+                android:fontFamily="@font/merriweather_light_italic"
+                android:text="Nikki ST. Crowe"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </FrameLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

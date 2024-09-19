@@ -28,8 +28,6 @@ public class CatalogoRejew extends AppCompatActivity {
 
         });
 
-        imageView = findViewById(R.id.fotoperfil);
-
     }
 
     public void abrirMenu(View v) {
@@ -52,4 +50,3 @@ public class CatalogoRejew extends AppCompatActivity {
         startActivity(intent);
     }
 }
-
