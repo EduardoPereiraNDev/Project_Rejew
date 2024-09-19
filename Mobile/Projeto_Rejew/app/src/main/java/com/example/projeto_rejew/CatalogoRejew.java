@@ -26,14 +26,8 @@ public class CatalogoRejew extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-<<<<<<< HEAD
-        imageView = findViewById(R.id.fotoperfil);
 
-=======
-
-        imageView = findViewById(R.id.fotoperfil);
-
->>>>>>> 816842c3358dc00edc8b7d2c0b14b7dcabc26a06
+                imageView = findViewById(R.id.fotoperfil);
     }
 
     public void abrirMenu(View v) {
@@ -56,4 +50,3 @@ public class CatalogoRejew extends AppCompatActivity {
         startActivity(intent);
     }
 }
-
