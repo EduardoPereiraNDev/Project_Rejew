@@ -3,7 +3,11 @@
     <array name="preloaded_fonts" translatable="false">
         <item>@font/arimo</item>
         <item>@font/merriweather_bold</item>
+        <item>@font/montserrat_extrabold</item>
+        <item>@font/montserrat_medium_italic</item>
         <item>@font/open_sans</item>
         <item>@font/open_sans_bold</item>
+        <item>@font/open_sans_medium</item>
+        <item>@font/open_sans_semibold</item>
     </array>
 </resources>
