@@ -23,9 +23,9 @@
 
     <ImageView
         android:id="@+id/rejewlogocat"
-        android:layout_width="134dp"
+        android:layout_width="137dp"
         android:layout_height="75dp"
-        android:src="@drawable/rejewazulescuro"
+        android:src="@drawable/logorejewazes"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.09"
@@ -41,7 +41,7 @@
         android:layout_marginEnd="25dp"
         android:background="@drawable/pesquisacinza"
         android:hint="@string/pesquiseLivros"
-        android:paddingLeft="15dp"
+        android:paddingStart="15dp"
         android:textColor="@color/orange"
         android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
