@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -45,6 +46,19 @@ public class UsuarioController {
         return ResponseEntity.ok(usuarios);
     }
 
+    @PostMapping("/login")
+    public ResponseEntity<String> login(@RequestBody Usuario Usuario) {
+    	Usuario usuarioEncontrado = usuarioRepository.realizarLogin(Usuario.getEmailEntrada(), Usuario.getSenhaEntrada());
+
+        if (usuarioEncontrado != null)
+        {
+            return ResponseEntity.ok("Login successful");
+        } else 
+        {
+            return ResponseEntity.status(401).body("Invalid credentials");
+        }
+    }
+    
     // Buscar um usuário por email
     @GetMapping("/{email}")
     public ResponseEntity<Usuario> buscarUsuarioPorEmail(@PathVariable String email) {
