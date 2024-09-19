@@ -27,7 +27,6 @@ public class CatalogoRejew extends AppCompatActivity {
             return insets;
 
         });
-
     }
 
     public void abrirMenu(View v) {
