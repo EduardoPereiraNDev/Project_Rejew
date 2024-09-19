@@ -7,6 +7,18 @@
     android:layout_height="match_parent"
     tools:context=".PerfilUsuario">
 
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="420dp"
+        android:layout_height="300dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/quadroBranco"
+        app:layout_constraintVertical_bias="0.037"
+        tools:srcCompat="@drawable/saladafundoperfil" />
+
     <TextView
         android:id="@+id/livrosFavoritos"
         android:layout_width="wrap_content"
@@ -29,20 +41,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <View
-        android:id="@+id/imagemPerfil"
-        android:layout_width="140dp"
-        android:layout_height="147dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.267" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/seguidores"
@@ -53,6 +52,7 @@
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.586" />
@@ -66,10 +66,10 @@
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.445"
+        app:layout_constraintHorizontal_bias="0.45"
         app:layout_constraintStart_toEndOf="@+id/seguidores"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.585" />
+        app:layout_constraintVertical_bias="0.586" />
 
     <TextView
         android:id="@+id/comentarios"
@@ -80,10 +80,10 @@
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/seguidores"
-        app:layout_constraintHorizontal_bias="0.611"
+        app:layout_constraintHorizontal_bias="0.539"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.585" />
+        app:layout_constraintVertical_bias="0.586" />
 
     <View
         android:id="@+id/quadroBranco"
@@ -91,9 +91,9 @@
         android:layout_height="80dp"
         android:background="@color/white"
         android:backgroundTint="@color/white"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="2dp" />
 
     <TextView
         android:id="@+id/vejaTodos"
@@ -118,5 +118,65 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/setavoltarazul" />
+
+    <ImageView
+        android:id="@+id/imageView12"
+        android:layout_width="175dp"
+        android:layout_height="201dp"
+        app:civ_border_width="2dp"
+        tools:layout_editor_absoluteX="116dp"
+        tools:layout_editor_absoluteY="172dp"
+        tools:srcCompat="@drawable/jamesfoto" />
+
+    <TextView
+        android:id="@+id/Nickjames"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="James Juice Fruit"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="354dp" />
+
+    <TextView
+        android:id="@+id/nick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="fruitsalad86🍎🍌😎"
+        app:layout_constraintEnd_toEndOf="@+id/quadroBranco"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@+id/quadroBranco"
+        app:layout_constraintTop_toTopOf="@+id/quadroBranco" />
+
+    <TextView
+        android:id="@+id/comentarionumeros"
+        android:layout_width="24dp"
+        android:layout_height="22dp"
+        android:text="3"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.209"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="397dp" />
+
+    <TextView
+        android:id="@+id/seguidornumeros"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2.056"
+        android:textSize="16sp"
+        tools:layout_editor_absoluteX="185dp"
+        tools:layout_editor_absoluteY="397dp" />
+
+    <TextView
+        android:id="@+id/seguindonumeros"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="432"
+        tools:layout_editor_absoluteX="309dp"
+        tools:layout_editor_absoluteY="397dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
