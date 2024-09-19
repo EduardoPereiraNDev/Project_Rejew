@@ -227,19 +227,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.441"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.91"
-        tools:srcCompat="@drawable/xLogo" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/buttonLogin"
-        style="@style/ButtonPag"
-        android:text="@string/TextLogin"
-        android:onClick="passarTelaCat"
-        android:layout_marginTop="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view" />
+
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.91"
+    tools:srcCompat="@drawable/xLogo" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
