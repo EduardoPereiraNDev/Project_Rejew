@@ -123,7 +123,6 @@
         android:id="@+id/imageView12"
         android:layout_width="175dp"
         android:layout_height="201dp"
-        app:civ_border_width="2dp"
         tools:layout_editor_absoluteX="116dp"
         tools:layout_editor_absoluteY="172dp"
         tools:srcCompat="@drawable/jamesfoto" />
