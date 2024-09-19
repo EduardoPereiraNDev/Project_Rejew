@@ -6,7 +6,10 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+
+import com.carbank.backserver.model.User;
 
 import br.com.spring.rejew.projectrejew.entity.Usuario;
 import jakarta.transaction.Transactional;
@@ -34,5 +37,8 @@ public interface UsuarioRepository extends JpaRepository<Usuario, String> {
 
     @Query("SELECT u FROM Usuario u WHERE u.nomePerfil LIKE %:nomePerfil%")
     List<Usuario> buscarUsuarioPorNomePerfil(String nomePerfil);
+    
+    @Query("SELECT u FROM User u WHERE u.email = :email AND u.password = :password") 
+    Usuario findByEmailAndPassword(@Param("email") String email, @Param("password") String password);  
 
 }

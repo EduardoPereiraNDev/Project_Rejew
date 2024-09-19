@@ -116,7 +116,7 @@ public class APIConnection {
         @DELETE("livros/{isbn}")
         Call<Void> deletarLivro(@Path("isbn") Long isbn);
 
-        /////////// CHAT
+        ///////////////////////////// CHAT
 
         @GET("chats")
         Call<List<Chat>> listarTodosChats();
@@ -226,6 +226,9 @@ public class APIConnection {
         @GET("comentarios/livro/{idLivro}")
         Call<List<Comentario>> buscarComentariosPorLivro(@Path("idLivro") Long idLivro);
 
+        @POST("comentarios")
+        Call<Comentario> adicionarComentario(@Body Comentario comentario);
+
         @PUT("comentarios/{id}")
         Call<Comentario> atualizarComentario(@Path("id") Long id, @Body Comentario comentario);
 
@@ -289,7 +292,7 @@ public class APIConnection {
     }
 
 /////////////////////////////////////FUNÇÔES////////////////////////////////////////////////
-/*
+
     ///////////////////////////////////AUTORES
 
     public void listarTodosAutores(AutorCallback callback) {
@@ -531,80 +534,108 @@ public class APIConnection {
         });
     }
 
-    public void buscarLivroPorId(Long id, LivroCallback callback) {
-        requestUser.buscarLivroPorId(id).enqueue(new Callback<Livro>() {
+
+    public void buscarLivroPorId(Long isbn, LivroCallback callback) {
+        requestUser.buscarLivroPorId(isbn).enqueue(new Callback<Livro>() {
             @Override
             public void onResponse(Call<Livro> call, Response<Livro> response) {
                 if (response.isSuccessful()) {
                     callback.onSuccess(response.body());
                 } else {
-                    callback.onFailure(new Exception("Falha ao buscar livro, ERRO: " + response.code()));
+                    callback.onFailure(new Exception("Falha ao buscar livro por ISBN, ERRO: " + response.code()));
                 }
             }
 
             @Override
             public void onFailure(Call<Livro> call, Throwable t) {
-                callback.onFailure(new Exception("Erro na requisição de livro", t));
+                callback.onFailure(new Exception("Erro na requisição de livro por ISBN", t));
             }
         });
     }
 
-    public void buscarLivroPorTitulo(String titulo, LivroCallback callback) {
-        requestUser.buscarLivroPorNome(titulo).enqueue(new Callback<List<Livro>>() {
+    public void buscarLivroPorAutor(String autor, LivroCallback callback) {
+        requestUser.buscarLivroPorAutor(autor).enqueue(new Callback<List<Livro>>() {
             @Override
             public void onResponse(Call<List<Livro>> call, Response<List<Livro>> response) {
                 if (response.isSuccessful()) {
                     callback.onSuccessList(response.body());
                 } else {
-                    callback.onFailure(new Exception("Falha ao buscar livro por título, ERRO: " + response.code()));
+                    callback.onFailure(new Exception("Falha ao buscar livros por autor, ERRO: " + response.code()));
                 }
             }
 
             @Override
             public void onFailure(Call<List<Livro>> call, Throwable t) {
-                callback.onFailure(new Exception("Erro na requisição de livro por título", t));
+                callback.onFailure(new Exception("Erro na requisição de livros por autor", t));
             }
         });
     }
 
-    public void salvarLivro(Livro livro, LivroCallback callback) {
-        requestUser.adicionarLivro(livro).enqueue(new Callback<Livro>() {
+    public void buscarLivroPorNome(String nome, LivroCallback callback) {
+        requestUser.buscarLivroPorNome(nome).enqueue(new Callback<List<Livro>>() {
             @Override
-            public void onResponse(Call<Livro> call, Response<Livro> response) {
+            public void onResponse(Call<List<Livro>> call, Response<List<Livro>> response) {
                 if (response.isSuccessful()) {
-                    callback.onSuccess(response.body());
+                    callback.onSuccessList(response.body());
                 } else {
-                    callback.onFailure(new Exception("Falha ao salvar livro, ERRO: " + response.code()));
+                    callback.onFailure(new Exception("Falha ao buscar livros por nome, ERRO: " + response.code()));
                 }
             }
 
             @Override
-            public void onFailure(Call<Livro> call, Throwable t) {
-                callback.onFailure(new Exception("Erro na requisição para salvar livro", t));
+            public void onFailure(Call<List<Livro>> call, Throwable t) {
+                callback.onFailure(new Exception("Erro na requisição de livros por nome", t));
             }
         });
     }
 
-    public void atualizarLivro(Long id, Livro livro, LivroCallback callback) {
-        requestUser.atualizarLivro(id, livro).enqueue(new Callback<Livro>() {
-            @Override
-            public void onResponse(Call<Livro> call, Response<Livro> response) {
-                if (response.isSuccessful()) {
-                    callback.onSuccess(response.body());
-                } else {
-                    callback.onFailure(new Exception("Falha ao atualizar livro, ERRO: " + response.code()));
-                }
-            }
 
-            @Override
-            public void onFailure(Call<Livro> call, Throwable t) {
-                callback.onFailure(new Exception("Erro na requisição de atualização de livro", t));
-            }
-        });
+
+    public void adicionarLivro(RequestBody nomeLivro, RequestBody autorLivro, RequestBody sinopseLivro,
+                               RequestBody numeroPag, RequestBody anoLancamento, RequestBody generoLivro,
+                               RequestBody corPrimaria, MultipartBody.Part caminhoImgCapa, LivroCallback callback) {
+        requestUser.adicionarLivro(nomeLivro, autorLivro, sinopseLivro, numeroPag, anoLancamento, generoLivro, corPrimaria, caminhoImgCapa)
+                .enqueue(new Callback<String>() {
+                    @Override
+                    public void onResponse(Call<String> call, Response<String> response) {
+                        if (response.isSuccessful()) {
+                            callback.onSuccess(null);
+                        } else {
+                            callback.onFailure(new Exception("Falha ao adicionar livro, ERRO: " + response.code()));
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<String> call, Throwable t) {
+                        callback.onFailure(new Exception("Erro na requisição de adição de livro", t));
+                    }
+                });
     }
 
-    public void deletarLivro(Long id, LivroCallback callback) {
-        requestUser.deletarLivro(id).enqueue(new Callback<Void>() {
+    public void atualizarLivro(Long isbn, RequestBody nomeLivro, RequestBody autorLivro,
+                               RequestBody sinopseLivro, RequestBody numeroPag, RequestBody anoLancamento,
+                               RequestBody generoLivro, RequestBody corPrimaria, MultipartBody.Part caminhoImgCapa, LivroCallback callback) {
+        requestUser.atualizarLivro(isbn, nomeLivro, autorLivro, sinopseLivro, numeroPag, anoLancamento, generoLivro, corPrimaria, caminhoImgCapa)
+                .enqueue(new Callback<Livro>() {
+                    @Override
+                    public void onResponse(Call<Livro> call, Response<Livro> response) {
+                        if (response.isSuccessful()) {
+                            callback.onSuccess(response.body());
+                        } else {
+                            callback.onFailure(new Exception("Falha ao atualizar livro, ERRO: " + response.code()));
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<Livro> call, Throwable t) {
+                        callback.onFailure(new Exception("Erro na requisição de atualização de livro", t));
+                    }
+                });
+    }
+
+
+    public void deletarLivro(Long isbn, LivroCallback callback) {
+        requestUser.deletarLivro(isbn).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {
@@ -620,6 +651,10 @@ public class APIConnection {
             }
         });
     }
+
+
+
+    //////////////////////////////CHATS
 
     public void listarTodosChats(ChatCallback callback) {
         requestUser.listarTodosChats().enqueue(new Callback<List<Chat>>() {
@@ -639,6 +674,7 @@ public class APIConnection {
         });
     }
 
+
     public void buscarChatPorId(Long id, ChatCallback callback) {
         requestUser.buscarChatPorId(id).enqueue(new Callback<Chat>() {
             @Override
@@ -646,125 +682,259 @@ public class APIConnection {
                 if (response.isSuccessful()) {
                     callback.onSuccess(response.body());
                 } else {
-                    callback.onFailure(new Exception("Falha ao buscar chat, ERRO: " + response.code()));
+                    callback.onFailure(new Exception("Falha ao buscar chat por ID, ERRO: " + response.code()));
                 }
             }
 
             @Override
             public void onFailure(Call<Chat> call, Throwable t) {
-                callback.onFailure(new Exception("Erro na requisição de chat", t));
+                callback.onFailure(new Exception("Erro na requisição de chat por ID", t));
             }
         });
     }
 
-    public void salvarChat(Chat chat, ChatCallback callback) {
-        requestUser.adicionarChat(chat).enqueue(new Callback<Chat>() {
+    public void buscarChatPorGenero(String genero, ChatCallback callback) {
+        requestUser.buscarChatPorGenero(genero).enqueue(new Callback<List<Chat>>() {
+            @Override
+            public void onResponse(Call<List<Chat>> call, Response<List<Chat>> response) {
+                if (response.isSuccessful()) {
+                    callback.onSuccessList(response.body());
+                } else {
+                    callback.onFailure(new Exception("Falha ao buscar chats por gênero, ERRO: " + response.code()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Chat>> call, Throwable t) {
+                callback.onFailure(new Exception("Erro na requisição de chats por gênero", t));
+            }
+        });
+    }
+
+
+    public void adicionarChat(RequestBody generoChat, MultipartBody.Part caminhoImagemLogo,
+                              MultipartBody.Part caminhoImagemFundoChat, ChatCallback callback) {
+        requestUser.adicionarChat(generoChat, caminhoImagemLogo, caminhoImagemFundoChat).enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                if (response.isSuccessful()) {
+                    callback.onSuccess(null);
+                } else {
+                    callback.onFailure(new Exception("Falha ao adicionar chat, ERRO: " + response.code()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                callback.onFailure(new Exception("Erro na requisição de adição de chat", t));
+            }
+        });
+    }
+
+    public void atualizarChat(Long id, RequestBody generoChat, MultipartBody.Part caminhoImagemLogo,
+                              MultipartBody.Part caminhoImagemFundoChat, ChatCallback callback) {
+        requestUser.atualizarChat(id, generoChat, caminhoImagemLogo, caminhoImagemFundoChat).enqueue(new Callback<Chat>() {
             @Override
             public void onResponse(Call<Chat> call, Response<Chat> response) {
                 if (response.isSuccessful()) {
                     callback.onSuccess(response.body());
                 } else {
-                    callback.onFailure(new Exception("Falha ao salvar chat, ERRO: " + response.code()));
+                    callback.onFailure(new Exception("Falha ao atualizar chat, ERRO: " + response.code()));
                 }
             }
 
             @Override
             public void onFailure(Call<Chat> call, Throwable t) {
-                callback.onFailure(new Exception("Erro na requisição para salvar chat", t));
+                callback.onFailure(new Exception("Erro na requisição de atualização de chat", t));
             }
         });
     }
 
-
-    //////////////////////////////CHATS
-
-    public void listarTodosChats(ChatListCallback callback) {
-    requestUser.listarTodosChats().enqueue(new Callback<List<Chat>>() {
-        @Override
-        public void onResponse(Call<List<Chat>> call, Response<List<Chat>> response) {
-            if (response.isSuccessful()) {
-                callback.onSuccess(response.body());
-            } else {
-                callback.onFailure(new Exception("Falha ao listar chats, ERRO: " + response.code()));
+    public void deletarChat(Long id, ChatCallback callback) {
+        requestUser.deletarChat(id).enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()) {
+                    callback.onSuccess(null);
+                } else {
+                    callback.onFailure(new Exception("Falha ao deletar chat, ERRO: " + response.code()));
+                }
             }
-        }
 
-        @Override
-        public void onFailure(Call<List<Chat>> call, Throwable t) {
-            callback.onFailure(new Exception("Erro na requisição de chats", t));
-        }
-    });
-}
-
-public void buscarChatPorId(Long id, ChatCallback callback) {
-    requestUser.buscarChatPorId(id).enqueue(new Callback<Chat>() {
-        @Override
-        public void onResponse(Call<Chat> call, Response<Chat> response) {
-            if (response.isSuccessful()) {
-                callback.onSuccess(response.body());
-            } else {
-                callback.onFailure(new Exception("Falha ao buscar chat, ERRO: " + response.code()));
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                callback.onFailure(new Exception("Erro na requisição de deleção de chat", t));
             }
-        }
+        });
+    }
 
-        @Override
-        public void onFailure(Call<Chat> call, Throwable t) {
-            callback.onFailure(new Exception("Erro na requisição de chat", t));
-        }
-    });
-}
-
-public void salvarChat(Chat chat, ChatCallback callback) {
-    requestUser.salvarChat(chat).enqueue(new Callback<Chat>() {
-        @Override
-        public void onResponse(Call<Chat> call, Response<Chat> response) {
-            if (response.isSuccessful()) {
-                callback.onSuccess(response.body());
-            } else {
-                callback.onFailure(new Exception("Falha ao salvar chat, ERRO: " + response.code()));
-            }
-        }
-
-        @Override
-        public void onFailure(Call<Chat> call, Throwable t) {
-            callback.onFailure(new Exception("Erro na requisição para salvar chat", t));
-        }
-    });
-}
-
-
-public void deletarChat(Long id, VoidCallback callback) {
-    requestUser.deletarChat(id).enqueue(new Callback<Void>() {
-        @Override
-        public void onResponse(Call<Void> call, Response<Void> response) {
-            if (response.isSuccessful()) {
-                callback.onSuccess();
-            } else {
-                callback.onFailure(new Exception("Falha ao deletar chat, ERRO: " + response.code()));
-            }
-        }
-
-        @Override
-        public void onFailure(Call<Void> call, Throwable t) {
-            callback.onFailure(new Exception("Erro na requisição de deleção de chat", t));
-        }
-    });
-}
 
 
 
 
     /////////////////////////////////////////////////////USUARIOS
 
+    public void listarTodosUsuarios(UsuarioCallback callback) {
+        requestUser.listarTodosUsuarios().enqueue(new Callback<List<Usuario>>() {
+            @Override
+            public void onResponse(Call<List<Usuario>> call, Response<List<Usuario>> response) {
+                if (response.isSuccessful()) {
+                    callback.onSuccessList(response.body());
+                } else {
+                    callback.onFailure(new Exception("Falha ao listar usuários, ERRO: " + response.code()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Usuario>> call, Throwable t) {
+                callback.onFailure(new Exception("Erro na requisição de usuários", t));
+            }
+        });
+    }
+
+    public void buscarUsuarioPorEmail(String email, UsuarioCallback callback) {
+        requestUser.buscarUsuarioPorEmail(email).enqueue(new Callback<Usuario>() {
+            @Override
+            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                if (response.isSuccessful()) {
+                    callback.onSuccess(response.body());
+                } else {
+                    callback.onFailure(new Exception("Falha ao buscar usuário por email, ERRO: " + response.code()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Usuario> call, Throwable t) {
+                callback.onFailure(new Exception("Erro na requisição de usuário por email", t));
+            }
+        });
+    }
+
+    public void buscarUsuarioPorEmailLike(String emailEntrada, UsuarioCallback callback) {
+        requestUser.buscarUsuarioPorEmailLike(emailEntrada).enqueue(new Callback<List<Usuario>>() {
+            @Override
+            public void onResponse(Call<List<Usuario>> call, Response<List<Usuario>> response) {
+                if (response.isSuccessful()) {
+                    callback.onSuccessList(response.body());
+                } else {
+                    callback.onFailure(new Exception("Falha ao buscar usuários por email, ERRO: " + response.code()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Usuario>> call, Throwable t) {
+                callback.onFailure(new Exception("Erro na requisição de usuários por email (LIKE)", t));
+            }
+        });
+    }
+
+    public void buscarUsuarioPorNome(String nome, UsuarioCallback callback) {
+        requestUser.buscarUsuarioPorNome(nome).enqueue(new Callback<List<Usuario>>() {
+            @Override
+            public void onResponse(Call<List<Usuario>> call, Response<List<Usuario>> response) {
+                if (response.isSuccessful()) {
+                    callback.onSuccessList(response.body());
+                } else {
+                    callback.onFailure(new Exception("Falha ao buscar usuários por nome, ERRO: " + response.code()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Usuario>> call, Throwable t) {
+                callback.onFailure(new Exception("Erro na requisição de usuários por nome", t));
+            }
+        });
+    }
+
+    public void buscarUsuarioPorNomePerfil(String nome, UsuarioCallback callback) {
+        requestUser .buscarUsuarioPorNomePerfil(nome).enqueue(new Callback<List<Usuario>>() {
+            @Override
+            public void onResponse(Call<List<Usuario>> call, Response<List<Usuario>> response) {
+                if (response.isSuccessful()) {
+                    callback.onSuccessList(response.body());
+                } else {
+                    callback.onFailure(new Exception("Falha ao buscar usuários por nome de perfil, ERRO: " + response.code()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Usuario>> call, Throwable t) {
+                callback.onFailure(new Exception("Erro na requisição de usuários por nome de perfil", t));
+            }
+        });
+    }
+
+    public void criarUsuario(RequestBody nomeUsuario, RequestBody nomePerfil, RequestBody emailEntrada,
+                             RequestBody senhaEntrada, RequestBody dataNascimento, MultipartBody.Part caminhoImagem,
+                             MultipartBody.Part caminhoImagemFundo, RequestBody recadoPerfil, UsuarioCallback callback) {
+        requestUser.criarUsuario(nomeUsuario, nomePerfil, emailEntrada, senhaEntrada, dataNascimento, caminhoImagem, caminhoImagemFundo, recadoPerfil)
+                .enqueue(new Callback<String>() {
+                    @Override
+                    public void onResponse(Call<String> call, Response<String> response) {
+                        if (response.isSuccessful()) {
+                            callback.onSuccess(null);
+                        } else {
+                            callback.onFailure(new Exception("Falha ao criar usuário, ERRO: " + response.code()));
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<String> call, Throwable t) {
+                        callback.onFailure(new Exception("Erro na requisição de criação de usuário", t));
+                    }
+                });
+    }
+
+    public void atualizarUsuario(String emailUsuario, RequestBody nomeUsuario, RequestBody nomePerfil,
+                                 RequestBody emailEntrada, RequestBody dataNascimento, MultipartBody.Part caminhoImagem,
+                                 MultipartBody.Part caminhoImagemFundo, RequestBody recadoPerfil, UsuarioCallback callback) {
+        requestUser.atualizarUsuario(emailUsuario, nomeUsuario, nomePerfil, emailEntrada, dataNascimento, caminhoImagem, caminhoImagemFundo, recadoPerfil)
+                .enqueue(new Callback<Usuario>() {
+                    @Override
+                    public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                        if (response.isSuccessful()) {
+                            callback.onSuccess(response.body());
+                        } else {
+                            callback.onFailure(new Exception("Falha ao atualizar usuário, ERRO: " + response.code()));
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<Usuario> call, Throwable t) {
+                        callback.onFailure(new Exception("Erro na requisição de atualização de usuário", t));
+                    }
+                });
+    }
+
+    public void deletarUsuario(String emailUsuario, UsuarioCallback callback) {
+        requestUser.deletarUsuario(emailUsuario).enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()) {
+                    callback.onSuccess(null);
+                } else {
+                    callback.onFailure(new Exception("Falha ao deletar usuário, ERRO: " + response.code()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                callback.onFailure(new Exception("Erro na requisição de deleção de usuário", t));
+            }
+        });
+    }
+
+
+
 
     ////////////////////////////////////////MENSAGENS
 
-    public void listarTodasMensagens(MensagemListCallback callback) {
+    public void listarTodasMensagens(MensagemCallback callback) {
     requestUser.listarTodasMensagens().enqueue(new Callback<List<Mensagem>>() {
         @Override
         public void onResponse(Call<List<Mensagem>> call, Response<List<Mensagem>> response) {
             if (response.isSuccessful()) {
-                callback.onSuccess(response.body());
+                callback.onSuccessList(response.body());
             } else {
                 callback.onFailure(new Exception("Falha ao listar mensagens, ERRO: " + response.code()));
             }
@@ -795,7 +965,45 @@ public void buscarMensagemPorId(Long id, MensagemCallback callback) {
     });
 }
 
-public void salvarMensagem(Mensagem mensagem, MensagemCallback callback) {
+    public void buscarMensagensPorChat(String chat, MensagemCallback callback) {
+        requestUser.buscarMensagensPorChat(chat).enqueue(new Callback<List<Mensagem>>() {
+            @Override
+            public void onResponse(Call<List<Mensagem>> call, Response<List<Mensagem>> response) {
+                if (response.isSuccessful()) {
+                    callback.onSuccessList(response.body());
+                } else {
+                    callback.onFailure(new Exception("Falha ao buscar mensagens por chat, ERRO: " + response.code()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Mensagem>> call, Throwable t) {
+                callback.onFailure(new Exception("Erro na requisição de mensagens por chat", t));
+            }
+        });
+    }
+
+    public void buscarMensagensPorUsuario(String usuario, MensagemCallback callback) {
+        requestUser.buscarMensagensPorUsuario(usuario).enqueue(new Callback<List<Mensagem>>() {
+            @Override
+            public void onResponse(Call<List<Mensagem>> call, Response<List<Mensagem>> response) {
+                if (response.isSuccessful()) {
+                    callback.onSuccessList(response.body());
+                } else {
+                    callback.onFailure(new Exception("Falha ao buscar mensagens por usuário, ERRO: " + response.code()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Mensagem>> call, Throwable t) {
+                callback.onFailure(new Exception("Erro na requisição de mensagens por usuário", t));
+            }
+        });
+    }
+
+
+
+    public void salvarMensagem(Mensagem mensagem, MensagemCallback callback) {
     requestUser.salvarMensagem(mensagem).enqueue(new Callback<Mensagem>() {
         @Override
         public void onResponse(Call<Mensagem> call, Response<Mensagem> response) {
@@ -831,12 +1039,12 @@ public void atualizarMensagem(Long id, Mensagem mensagem, MensagemCallback callb
     });
 }
 
-public void deletarMensagem(Long id, VoidCallback callback) {
+public void deletarMensagem(Long id, MensagemCallback callback) {
     requestUser.deletarMensagem(id).enqueue(new Callback<Void>() {
         @Override
         public void onResponse(Call<Void> call, Response<Void> response) {
             if (response.isSuccessful()) {
-                callback.onSuccess();
+                callback.onSuccess(null);
             } else {
                 callback.onFailure(new Exception("Falha ao deletar mensagem, ERRO: " + response.code()));
             }
@@ -848,9 +1056,133 @@ public void deletarMensagem(Long id, VoidCallback callback) {
         }
     });
 }
-
     /////////////////////////////////////////COMENTARIOS
+    public void listarComentarios(ComentarioCallback callback) {
+        requestUser.listarComentarios().enqueue(new Callback<List<Comentario>>() {
+            @Override
+            public void onResponse(Call<List<Comentario>> call, Response<List<Comentario>> response) {
+                if (response.isSuccessful()) {
+                    callback.onSuccessList(response.body());
+                } else {
+                    callback.onFailure(new Exception("Falha ao listar comentários, ERRO: " + response.code()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Comentario>> call, Throwable t) {
+                callback.onFailure(new Exception("Erro na requisição de comentários", t));
+            }
+        });
+    }
+
+    public void buscarComentarioPorId(Long id, ComentarioCallback callback) {
+        requestUser.buscarComentarioPorId(id).enqueue(new Callback<Comentario>() {
+            @Override
+            public void onResponse(Call<Comentario> call, Response<Comentario> response) {
+                if (response.isSuccessful()) {
+                    callback.onSuccess(response.body());
+                } else {
+                    callback.onFailure(new Exception("Falha ao buscar comentário por ID, ERRO: " + response.code()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Comentario> call, Throwable t) {
+                callback.onFailure(new Exception("Erro na requisição de comentário por ID", t));
+            }
+        });
+    }
+
+    public void buscarComentariosPorUsuario(String usuarioComent, ComentarioCallback callback) {
+        requestUser.buscarComentariosPorUsuario(usuarioComent).enqueue(new Callback<List<Comentario>>() {
+            @Override
+            public void onResponse(Call<List<Comentario>> call, Response<List<Comentario>> response) {
+                if (response.isSuccessful()) {
+                    callback.onSuccessList(response.body());
+                } else {
+                    callback.onFailure(new Exception("Falha ao buscar comentários por usuário, ERRO: " + response.code()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Comentario>> call, Throwable t) {
+                callback.onFailure(new Exception("Erro na requisição de comentários por usuário", t));
+            }
+        });
+    }
+
+    public void buscarComentariosPorLivro(Long idLivro, ComentarioCallback callback) {
+        requestUser.buscarComentariosPorLivro(idLivro).enqueue(new Callback<List<Comentario>>() {
+            @Override
+            public void onResponse(Call<List<Comentario>> call, Response<List<Comentario>> response) {
+                if (response.isSuccessful()) {
+                    callback.onSuccessList(response.body());
+                } else {
+                    callback.onFailure(new Exception("Falha ao buscar comentários por livro, ERRO: " + response.code()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Comentario>> call, Throwable t) {
+                callback.onFailure(new Exception("Erro na requisição de comentários por livro", t));
+            }
+        });
+    }
+
+    public void adicionarComentario(Comentario comentario, ComentarioCallback callback) {
+        requestUser.adicionarComentario(comentario).enqueue(new Callback<Comentario>() {
+            @Override
+            public void onResponse(Call<Comentario> call, Response<Comentario> response) {
+                if (response.isSuccessful()) {
+                    callback.onSuccess(response.body());
+                } else {
+                    callback.onFailure(new Exception("Falha ao adicionar comentário, ERRO: " + response.code()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Comentario> call, Throwable t) {
+                callback.onFailure(new Exception("Erro na requisição de adicionar comentário", t));
+            }
+        });
+    }
 
 
-*/
+    public void atualizarComentario(Long id, Comentario comentario, ComentarioCallback callback) {
+        requestUser.atualizarComentario(id, comentario).enqueue(new Callback<Comentario>() {
+            @Override
+            public void onResponse(Call<Comentario> call, Response<Comentario> response) {
+                if (response.isSuccessful()) {
+                    callback.onSuccess(response.body());
+                } else {
+                    callback.onFailure(new Exception("Falha ao atualizar comentário, ERRO: " + response.code()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Comentario> call, Throwable t) {
+                callback.onFailure(new Exception("Erro na requisição de atualização de comentário", t));
+            }
+        });
+    }
+
+    public void deletarComentario(Long id, ComentarioCallback callback) {
+        requestUser.deletarComentario(id).enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()) {
+                    callback.onSuccess(null);
+                } else {
+                    callback.onFailure(new Exception("Falha ao deletar comentário, ERRO: " + response.code()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                callback.onFailure(new Exception("Erro na requisição de deleção de comentário", t));
+            }
+        });
+    }
+
+
 }
