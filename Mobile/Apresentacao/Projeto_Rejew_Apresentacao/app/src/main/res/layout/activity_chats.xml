@@ -45,7 +45,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.021"
+<<<<<<< HEAD
+        app:srcCompat="@drawable/setaazul" />
+=======
         tools:srcCompat="@drawable/setavoltarazul" />
+>>>>>>> 18a1da3fa9d91519b2b1a06e4c6a74183c3e1913
 
     <TextView
         android:id="@+id/chat"
@@ -73,7 +77,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.482"
+<<<<<<< HEAD
+        app:srcCompat="@drawable/ficcaocientificachat" />
+=======
         android:src="@drawable/ficcaocientificachat" />
+>>>>>>> 18a1da3fa9d91519b2b1a06e4c6a74183c3e1913
 
     <TextView
         android:id="@+id/ficcaoCientifica"
@@ -131,7 +139,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.482"
+<<<<<<< HEAD
+        app:srcCompat="@drawable/romancechat" />
+=======
         android:src="@drawable/romancechat" />
+>>>>>>> 18a1da3fa9d91519b2b1a06e4c6a74183c3e1913
 
     <ImageView
         android:id="@+id/terrorChat"
@@ -143,7 +155,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.187"
+<<<<<<< HEAD
+        app:srcCompat="@drawable/terrorchat" />
+=======
         android:src="@drawable/terrorchat" />
+>>>>>>> 18a1da3fa9d91519b2b1a06e4c6a74183c3e1913
 
     <ImageView
         android:id="@+id/infantilChat"
@@ -155,7 +171,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.78"
+<<<<<<< HEAD
+        app:srcCompat="@drawable/infantilchat" />
+=======
         android:src="@drawable/infantilchat" />
+>>>>>>> 18a1da3fa9d91519b2b1a06e4c6a74183c3e1913
 
     <TextView
         android:id="@+id/culinaria"
@@ -182,7 +202,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.187"
+<<<<<<< HEAD
+        app:srcCompat="@drawable/aventurachat" />
+=======
         android:src="@drawable/aventurachat" />
+>>>>>>> 18a1da3fa9d91519b2b1a06e4c6a74183c3e1913
 
     <TextView
         android:id="@+id/aventura"
@@ -224,7 +248,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.78"
+<<<<<<< HEAD
+        app:srcCompat="@drawable/culinariachat" />
+=======
         android:src="@drawable/culinariachat" />
+>>>>>>> 18a1da3fa9d91519b2b1a06e4c6a74183c3e1913
 
     <ImageView
         android:id="@+id/homeLogo"
@@ -236,7 +264,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.991"
-        tools:srcCompat="@drawable/homelogo" />
+        app:srcCompat="@drawable/homelogo" />
 
     <ImageView
         android:id="@+id/chatAzul"
@@ -247,7 +275,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/quadroCinza"
         app:layout_constraintVertical_bias="0.989"
-        tools:srcCompat="@drawable/chatazul" />
+        app:srcCompat="@drawable/chatazul" />
 
     <ImageView
         android:id="@+id/pessoasLogo"
@@ -259,7 +287,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.994"
-        tools:srcCompat="@drawable/pessoaslogo" />
+        app:srcCompat="@drawable/pessoaslogo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
