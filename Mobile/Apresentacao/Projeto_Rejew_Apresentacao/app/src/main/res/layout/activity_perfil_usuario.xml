@@ -113,14 +113,9 @@
         android:id="@+id/imageView12"
         android:layout_width="175dp"
         android:layout_height="201dp"
-<<<<<<< HEAD
-
         tools:layout_editor_absoluteX="116dp"
         tools:layout_editor_absoluteY="172dp"
        android:layout_marginTop="96dp"
-=======
-        android:layout_marginTop="96dp"
->>>>>>> b865ab2a31f9418a9c799bf612cf11464ce110e4
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/quadroBranco"
@@ -242,7 +237,7 @@
         android:id="@+id/biotres"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="🏍Motoby de frutas"
+        android:text="🏍Motoboy de frutas"
         tools:layout_editor_absoluteX="166dp"
         tools:layout_editor_absoluteY="482dp" />
 
