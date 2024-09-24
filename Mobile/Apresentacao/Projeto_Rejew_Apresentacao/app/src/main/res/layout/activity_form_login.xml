@@ -104,12 +104,19 @@
         android:id="@+id/pergunta1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="8dp"
         android:fontFamily="@font/open_sans"
         android:text="Esqueceu a senha?"
         android:textColor="@color/black"
         android:textSize="12dp"
+<<<<<<< HEAD
         tools:layout_editor_absoluteX="231dp"
         tools:layout_editor_absoluteY="474dp" />
+=======
+        app:layout_constraintBottom_toTopOf="@+id/senha"
+        app:layout_constraintEnd_toEndOf="@+id/view" />
+>>>>>>> 78ae2200e0544b06bddca286f0c26ff233477027
 
     <TextView
         android:id="@+id/resposta"
@@ -119,6 +126,7 @@
         android:text="CADRASTE-SE"
         android:textColor="#004aad"
         android:textSize="11dp"
+        android:onClick="passarTelaCad"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.786"
@@ -231,7 +239,7 @@
 
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintVertical_bias="0.91"
-    tools:srcCompat="@drawable/xLogo" />
+    tools:srcCompat="@drawable/microsoftlogo" />
 
 
 

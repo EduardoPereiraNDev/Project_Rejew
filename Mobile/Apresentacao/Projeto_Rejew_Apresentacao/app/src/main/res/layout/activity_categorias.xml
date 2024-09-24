@@ -30,7 +30,7 @@
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Categoria"
+        android:text="Terror"
         android:textColor="@color/orange"
         android:textSize="40sp"
         android:textStyle="bold"
@@ -82,6 +82,306 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/chaticon"
         app:layout_constraintTop_toTopOf="@+id/view4"
-        app:srcCompat="@drawable/amigosazull" />
+        app:srcCompat="@drawable/amigosbrancooo" />
+
+    <RelativeLayout
+        android:id="@+id/containerit"
+        android:layout_width="145dp"
+        android:layout_height="165dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.12"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.16">
+
+        <View
+            android:id="@+id/fundoum"
+            android:layout_width="125dp"
+            android:layout_height="90dp"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="35dp"
+            android:background="@color/cinzait" />
+
+        <ImageView
+            android:id="@+id/livroum"
+            android:layout_width="90dp"
+            android:layout_height="125dp"
+            android:layout_marginStart="25dp"
+            android:src="@drawable/itcapa" />
+
+        <TextView
+            android:id="@+id/ittitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="125dp"
+            android:fontFamily="@font/merriweather_bold"
+            android:text="It: A Coisa"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/itautor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="145dp"
+            android:fontFamily="@font/merriweather_light_italic"
+            android:text="Stephen King"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/containertel"
+        android:layout_width="145dp"
+        android:layout_height="185dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.845"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.166">
+
+        <View
+            android:id="@+id/fundodois"
+            android:layout_width="125dp"
+            android:layout_height="90dp"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="35dp"
+            android:background="@color/marromtel" />
+
+        <ImageView
+            android:id="@+id/livrodois"
+            android:layout_width="90dp"
+            android:layout_height="125dp"
+            android:layout_marginStart="25dp"
+            android:src="@drawable/capatelpreto" />
+
+        <TextView
+            android:id="@+id/teltitulo"
+            android:layout_width="127dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="125dp"
+            android:fontFamily="@font/merriweather_bold"
+            android:text="O Telefone Preto"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/telautor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="165dp"
+            android:fontFamily="@font/merriweather_light_italic"
+            android:text="Joe Hill"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/containercarrie"
+        android:layout_width="145dp"
+        android:layout_height="165dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.12"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.524">
+
+        <View
+            android:id="@+id/fundotres"
+            android:layout_width="125dp"
+            android:layout_height="90dp"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="35dp"
+            android:background="@color/rosacar" />
+
+        <ImageView
+            android:id="@+id/livrotres"
+            android:layout_width="90dp"
+            android:layout_height="125dp"
+            android:layout_marginStart="25dp"
+            android:src="@drawable/capacarrie" />
+
+        <TextView
+            android:id="@+id/cartitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="125dp"
+            android:fontFamily="@font/merriweather_bold"
+            android:text="Carrie"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/carautor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="145dp"
+            android:fontFamily="@font/merriweather_light_italic"
+            android:text="Stephen King"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/containerleve"
+        android:layout_width="145dp"
+        android:layout_height="185dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.845"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.543">
+
+        <View
+            android:id="@+id/fundoquatro"
+            android:layout_width="125dp"
+            android:layout_height="90dp"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="35dp"
+            android:background="@color/marromlev" />
+
+        <ImageView
+            android:id="@+id/livroquatro"
+            android:layout_width="90dp"
+            android:layout_height="125dp"
+            android:layout_marginStart="25dp"
+            android:src="@drawable/levecapa" />
+
+        <TextView
+            android:id="@+id/levetitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="125dp"
+            android:fontFamily="@font/merriweather_bold"
+            android:text="Leve Miha Alma"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/leveautor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="165dp"
+            android:fontFamily="@font/merriweather_light_italic"
+            android:text="Harley Laroux"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/containerexo"
+        android:layout_width="145dp"
+        android:layout_height="165dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.12"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.867">
+
+        <View
+            android:id="@+id/fundocinco"
+            android:layout_width="125dp"
+            android:layout_height="90dp"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="35dp"
+            android:background="@color/cinzaexo" />
+
+        <ImageView
+            android:id="@+id/livrocinco"
+            android:layout_width="90dp"
+            android:layout_height="125dp"
+            android:layout_marginStart="25dp"
+            android:src="@drawable/capaexorcista" />
+
+        <TextView
+            android:id="@+id/exotitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="125dp"
+            android:fontFamily="@font/merriweather_bold"
+            android:text="O Exorcista"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/exoautor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="145dp"
+            android:fontFamily="@font/merriweather_light_italic"
+            android:text="William P. Blatty"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/containersal"
+        android:layout_width="145dp"
+        android:layout_height="165dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.845"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.867">
+
+        <View
+            android:id="@+id/fundoseis"
+            android:layout_width="125dp"
+            android:layout_height="90dp"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="35dp"
+            android:background="@color/vermelhosal" />
+
+        <ImageView
+            android:id="@+id/livroseis"
+            android:layout_width="90dp"
+            android:layout_height="125dp"
+            android:layout_marginStart="25dp"
+            android:src="@drawable/capasal" />
+
+        <TextView
+            android:id="@+id/saltitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="125dp"
+            android:fontFamily="@font/merriweather_bold"
+            android:text="Salem"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/salautor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="145dp"
+            android:fontFamily="@font/merriweather_light_italic"
+            android:text="Stephen King"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
