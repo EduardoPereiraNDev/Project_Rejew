@@ -40,12 +40,9 @@
         android:text="SEGUIDORES"
         android:textColor="#000000"
         android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.586" />
+        app:layout_constraintTop_toBottomOf="@+id/seguidornumeros" />
 
     <TextView
         android:id="@+id/seguindo"
@@ -54,12 +51,10 @@
         android:text="SEGUINDO"
         android:textColor="#000000"
         android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.45"
+        app:layout_constraintHorizontal_bias="0.445"
         app:layout_constraintStart_toEndOf="@+id/seguidores"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.586" />
+        app:layout_constraintTop_toBottomOf="@+id/seguindonumeros" />
 
     <TextView
         android:id="@+id/comentarios"
@@ -68,12 +63,9 @@
         android:text="COMENTÁRIOS"
         android:textColor="#000000"
         android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/seguidores"
-        app:layout_constraintHorizontal_bias="0.539"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.586" />
+        app:layout_constraintTop_toBottomOf="@+id/comentarionumeros" />
 
     <View
         android:id="@+id/quadroBranco"
@@ -81,9 +73,10 @@
         android:layout_height="80dp"
         android:background="@color/white"
         android:backgroundTint="@color/white"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="2dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/vejaTodos"
@@ -113,14 +106,9 @@
         android:id="@+id/imageView12"
         android:layout_width="175dp"
         android:layout_height="201dp"
-<<<<<<< HEAD
-
         tools:layout_editor_absoluteX="116dp"
         tools:layout_editor_absoluteY="172dp"
        android:layout_marginTop="96dp"
-=======
-        android:layout_marginTop="96dp"
->>>>>>> b865ab2a31f9418a9c799bf612cf11464ce110e4
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/quadroBranco"
@@ -141,8 +129,8 @@
         android:id="@+id/nick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
         android:text="fruitsalad86🍎🍌😎"
+        app:layout_constraintBottom_toBottomOf="@+id/quadroBranco"
         app:layout_constraintEnd_toEndOf="@+id/quadroBranco"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="@+id/quadroBranco"
@@ -227,24 +215,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="🌞Cria do rj"
-        tools:layout_editor_absoluteX="167dp"
-        tools:layout_editor_absoluteY="444dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seguidores" />
 
     <TextView
         android:id="@+id/biodois"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="📆 29 years"
-        tools:layout_editor_absoluteX="166dp"
-        tools:layout_editor_absoluteY="463dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bioum" />
 
     <TextView
         android:id="@+id/biotres"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="🏍Motoby de frutas"
-        tools:layout_editor_absoluteX="166dp"
-        tools:layout_editor_absoluteY="482dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/biodois" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
