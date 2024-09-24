@@ -110,18 +110,18 @@
         android:onClick="passarTelaEsc"
         app:layout_constraintBottom_toBottomOf="@+id/buttonCadastrar"
         app:layout_constraintTop_toTopOf="@+id/buttonCadastrar"
-        tools:layout_editor_absoluteX="155dp"
-        tools:srcCompat="@drawable/setaBranca" />
+        tools:layout_editor_absoluteX="152dp"
+        />
 
     <ImageView
-        android:id="@+id/setaBranca2"
+        android:id="@+id/setabranca2"
         android:layout_width="35dp"
         android:layout_height="40dp"
         android:onClick="passarTelaL"
         app:layout_constraintBottom_toBottomOf="@+id/buttonLogin"
+        app:layout_constraintEnd_toEndOf="@+id/buttonLogin"
         app:layout_constraintTop_toTopOf="@+id/buttonLogin"
-        tools:layout_editor_absoluteX="324dp"
-        tools:srcCompat="@drawable/setaBranca" />
+         />
 
     <TextView
         android:id="@+id/booksReview"
@@ -150,7 +150,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/booksReview"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.552"
+        app:layout_constraintVertical_bias="0.559"
         tools:srcCompat="@drawable/linha" />
 
 

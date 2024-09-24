@@ -16,7 +16,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/quadroBranco"
-        tools:srcCompat="@drawable/saladafundoperfil" />
+        android:src="@drawable/saladafundoperfil" />
 
     <TextView
         android:id="@+id/livrosFavoritos"
@@ -28,10 +28,10 @@
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.126"
+        app:layout_constraintHorizontal_bias="0.122"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.767" />
+        app:layout_constraintVertical_bias="0.629" />
 
     <TextView
         android:id="@+id/seguidores"
@@ -40,12 +40,9 @@
         android:text="SEGUIDORES"
         android:textColor="#000000"
         android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.586" />
+        app:layout_constraintTop_toBottomOf="@+id/seguidornumeros" />
 
     <TextView
         android:id="@+id/seguindo"
@@ -54,12 +51,10 @@
         android:text="SEGUINDO"
         android:textColor="#000000"
         android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.45"
+        app:layout_constraintHorizontal_bias="0.445"
         app:layout_constraintStart_toEndOf="@+id/seguidores"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.586" />
+        app:layout_constraintTop_toBottomOf="@+id/seguindonumeros" />
 
     <TextView
         android:id="@+id/comentarios"
@@ -68,12 +63,9 @@
         android:text="COMENTÁRIOS"
         android:textColor="#000000"
         android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/seguidores"
-        app:layout_constraintHorizontal_bias="0.539"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.586" />
+        app:layout_constraintTop_toBottomOf="@+id/comentarionumeros" />
 
     <View
         android:id="@+id/quadroBranco"
@@ -81,9 +73,10 @@
         android:layout_height="80dp"
         android:background="@color/white"
         android:backgroundTint="@color/white"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="2dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/vejaTodos"
@@ -119,7 +112,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/quadroBranco"
-        tools:srcCompat="@drawable/jamesfoto" />
+        android:src="@drawable/jamesfoto" />
 
     <TextView
         android:id="@+id/Nickjames"
@@ -136,8 +129,8 @@
         android:id="@+id/nick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
         android:text="fruitsalad86🍎🍌😎"
+        app:layout_constraintBottom_toBottomOf="@+id/quadroBranco"
         app:layout_constraintEnd_toEndOf="@+id/quadroBranco"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="@+id/quadroBranco"
@@ -188,10 +181,12 @@
         android:id="@+id/fundofavoritosdois"
         android:layout_width="120dp"
         android:layout_height="100dp"
+        android:layout_marginEnd="60dp"
         android:background="@color/design_default_color_error"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/livrosFavoritos" />
+        app:layout_constraintTop_toBottomOf="@+id/livrosFavoritos"
+        app:layout_constraintVertical_bias="0.502" />
 
     <ImageView
         android:id="@+id/imagelua"
@@ -203,7 +198,7 @@
         app:layout_constraintStart_toStartOf="@+id/fundofavoritosdois"
         app:layout_constraintTop_toTopOf="@+id/fundofavoritosdois"
         app:layout_constraintVertical_bias="1.0"
-        tools:srcCompat="@drawable/luacrescente" />
+        android:src="@drawable/luacrescente" />
 
     <ImageView
         android:id="@+id/imagehobbit"
@@ -215,31 +210,40 @@
         app:layout_constraintStart_toStartOf="@+id/fundofavoritosdois2"
         app:layout_constraintTop_toTopOf="@+id/fundofavoritosdois2"
         app:layout_constraintVertical_bias="1.0"
-        tools:srcCompat="@drawable/hobbit" />
+        android:src="@drawable/hobbit" />
 
     <TextView
         android:id="@+id/bioum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="🌞Cria do rj"
-        tools:layout_editor_absoluteX="167dp"
-        tools:layout_editor_absoluteY="444dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seguidores" />
 
     <TextView
         android:id="@+id/biodois"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="📆 29 years"
-        tools:layout_editor_absoluteX="166dp"
-        tools:layout_editor_absoluteY="463dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bioum" />
 
     <TextView
         android:id="@+id/biotres"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:text="🏍Motoboy de frutas"
         tools:layout_editor_absoluteX="166dp"
         tools:layout_editor_absoluteY="482dp" />
+=======
+        android:text="🏍Motoby de frutas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/biodois" />
+>>>>>>> 18a1da3fa9d91519b2b1a06e4c6a74183c3e1913
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
