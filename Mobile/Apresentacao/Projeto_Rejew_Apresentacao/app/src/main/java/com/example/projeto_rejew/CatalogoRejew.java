@@ -62,6 +62,17 @@ public class CatalogoRejew extends AppCompatActivity {
         popupMenu.show();
     }
 */
+
+    public void passarPessoas(View v) {
+        Intent intent = new Intent(CatalogoRejew.this, Pessoas_Comentario.class);
+        startActivity(intent);
+    }
+
+    public void passarChat(View v) {
+        Intent intent = new Intent(CatalogoRejew.this, GeneroChat.class);
+        startActivity(intent);
+    }
+
     public void passarTelaTerror(View v) {
         Intent intent = new Intent(CatalogoRejew.this, Categorias.class);
         startActivity(intent);
