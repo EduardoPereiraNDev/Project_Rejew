@@ -16,29 +16,30 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-    <View
-        android:id="@+id/view4"
-        android:layout_width="416dp"
-        android:layout_height="match_parent"
-        android:background="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginBottom="75dp"
-       />
 
-    <ImageView
-        android:id="@+id/rejewlogocat"
-        android:layout_width="134dp"
-        android:layout_height="75dp"
-        android:src="@drawable/rejewazulescuro"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.09"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.024" />
+
+            <ImageView
+                android:id="@+id/rejewlogocat"
+                android:layout_width="134dp"
+                android:layout_height="75dp"
+                android:src="@drawable/rejewazulescuro"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.09"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.024" />
+
+            <ImageView
+                android:id="@+id/fotoperfil"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_marginTop="16dp"
+                android:onClick="abrirMenu"
+                android:layout_marginEnd="24dp"
+                android:src="@drawable/jamesfoto"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
                 android:id="@+id/editText6"
@@ -96,6 +97,7 @@
         android:layout_marginTop="36dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
+        android:onClick="passarTelaTerror"
         app:srcCompat="@drawable/terror" />
 
 
