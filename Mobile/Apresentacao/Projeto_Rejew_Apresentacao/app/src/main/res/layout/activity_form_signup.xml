@@ -82,7 +82,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.04"
+<<<<<<< HEAD
         app:srcCompat="@drawable/logocanto" />
+=======
+         />
+>>>>>>> 18a1da3fa9d91519b2b1a06e4c6a74183c3e1913
 
     <EditText
         android:id="@+id/nome"
@@ -205,7 +209,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.339"
+<<<<<<< HEAD
         app:srcCompat="@drawable/boneco" />
+=======
+        android:src="@drawable/boneco" />
+>>>>>>> 18a1da3fa9d91519b2b1a06e4c6a74183c3e1913
 
     <ImageView
         android:id="@+id/nomeusuarioIcon"
@@ -217,7 +225,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.446"
+<<<<<<< HEAD
         app:srcCompat="@drawable/boneco2" />
+=======
+        android:src="@drawable/boneco2" />
+>>>>>>> 18a1da3fa9d91519b2b1a06e4c6a74183c3e1913
 
     <ImageView
         android:id="@+id/emailIcon"
@@ -229,7 +241,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.551"
+<<<<<<< HEAD
         app:srcCompat="@drawable/email" />
+=======
+        android:src="@drawable/email" />
+>>>>>>> 18a1da3fa9d91519b2b1a06e4c6a74183c3e1913
 
     <ImageView
         android:id="@+id/senhaIcon"
@@ -241,6 +257,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.66"
+<<<<<<< HEAD
         app:srcCompat="@drawable/olho" />
+=======
+        android:src="@drawable/olho" />
+>>>>>>> 18a1da3fa9d91519b2b1a06e4c6a74183c3e1913
 
 </androidx.constraintlayout.widget.ConstraintLayout>
