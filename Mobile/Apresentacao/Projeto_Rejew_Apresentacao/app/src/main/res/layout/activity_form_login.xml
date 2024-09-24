@@ -11,10 +11,10 @@
     <View
         android:id="@+id/circuloAzul"
         style="@style/circuloAzul"
-        android:layout_width="960dp"
-        android:layout_height="900dp"
-        tools:layout_editor_absoluteX="-523dp"
-        tools:layout_editor_absoluteY="165dp" />
+        android:layout_width="950dp"
+        android:layout_height="890dp"
+        tools:layout_editor_absoluteX="-503dp"
+        tools:layout_editor_absoluteY="185dp" />
 
     <TextView
         android:id="@+id/login"
@@ -56,6 +56,38 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.476" />
 
+    <EditText
+        android:id="@+id/email"
+        style="@style/EditText"
+        android:layout_width="280dp"
+        android:layout_height="56dp"
+        android:fontFamily="@font/open_sans"
+        android:hint="Email"
+        android:textColorHint="@color/black"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.386" />
+
+    <EditText
+        android:id="@+id/senha"
+        style="@style/EditText"
+        android:layout_width="280dp"
+        android:layout_height="56dp"
+        android:fontFamily="@font/open_sans"
+        android:hint="Senha"
+        android:textColorHint="@color/black"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.526" />
+
     <ImageView
         android:id="@+id/senhaIcon"
         android:layout_width="30dp"
@@ -76,8 +108,8 @@
         android:text="Esqueceu a senha?"
         android:textColor="@color/black"
         android:textSize="12dp"
-        tools:layout_editor_absoluteX="237dp"
-        tools:layout_editor_absoluteY="427dp" />
+        tools:layout_editor_absoluteX="231dp"
+        tools:layout_editor_absoluteY="474dp" />
 
     <TextView
         android:id="@+id/resposta"
@@ -106,22 +138,6 @@
         app:layout_constraintVertical_bias="0.412"
         tools:srcCompat="@drawable/email" />
 
-    <EditText
-        android:id="@+id/email"
-        style="@style/EditText"
-        android:layout_width="280dp"
-        android:layout_height="56dp"
-        android:fontFamily="@font/open_sans"
-        android:hint="Email"
-        android:textColorHint="@color/black"
-        android:textSize="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.386" />
-
     <TextView
         android:id="@+id/pergunta2"
         android:layout_width="wrap_content"
@@ -132,26 +148,10 @@
         android:textSize="11dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.523"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.812" />
-
-    <EditText
-        android:id="@+id/senha"
-        style="@style/EditText"
-        android:layout_width="280dp"
-        android:layout_height="56dp"
-        android:fontFamily="@font/open_sans"
-        android:hint="Senha"
-        android:textColorHint="@color/black"
-        android:textSize="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.526" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonEntrar"

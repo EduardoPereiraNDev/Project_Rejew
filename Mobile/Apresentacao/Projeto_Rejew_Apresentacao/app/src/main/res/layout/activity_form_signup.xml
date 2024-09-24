@@ -11,10 +11,10 @@
     <View
         android:id="@+id/circuloAzul"
         style="@style/circuloAzul"
-        android:layout_width="960dp"
-        android:layout_height="900dp"
-        tools:layout_editor_absoluteX="-523dp"
-        tools:layout_editor_absoluteY="165dp" />
+        android:layout_width="950dp"
+        android:layout_height="890dp"
+        tools:layout_editor_absoluteX="-503dp"
+        tools:layout_editor_absoluteY="185dp" />
 
     <TextView
         android:id="@+id/pergunta"
@@ -26,7 +26,7 @@
         android:textSize="11dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.653"
+        app:layout_constraintHorizontal_bias="0.642"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.947" />
