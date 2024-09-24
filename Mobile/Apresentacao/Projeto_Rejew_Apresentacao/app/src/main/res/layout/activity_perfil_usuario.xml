@@ -123,15 +123,10 @@
         android:id="@+id/imageView12"
         android:layout_width="175dp"
         android:layout_height="201dp"
-<<<<<<< HEAD
-        tools:layout_editor_absoluteX="116dp"
-        tools:layout_editor_absoluteY="172dp"
-=======
         android:layout_marginTop="96dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/quadroBranco"
->>>>>>> 1812440464036f88695ca67677c3bc0608ead9b5
         tools:srcCompat="@drawable/jamesfoto" />
 
     <TextView
