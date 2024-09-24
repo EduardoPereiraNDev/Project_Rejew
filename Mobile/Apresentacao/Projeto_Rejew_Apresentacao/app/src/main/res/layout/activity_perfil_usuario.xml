@@ -7,16 +7,15 @@
     android:layout_height="match_parent"
     tools:context=".PerfilUsuario">
 
+
     <ImageView
         android:id="@+id/imageView7"
         android:layout_width="420dp"
         android:layout_height="300dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/quadroBranco"
-        app:layout_constraintVertical_bias="0.037"
         tools:srcCompat="@drawable/saladafundoperfil" />
 
     <TextView
@@ -32,16 +31,7 @@
         app:layout_constraintHorizontal_bias="0.126"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.796" />
-
-    <View
-        android:id="@+id/imagemFundo"
-        android:layout_width="410dp"
-        android:layout_height="230dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintVertical_bias="0.767" />
 
     <TextView
         android:id="@+id/seguidores"
@@ -106,7 +96,7 @@
         app:layout_constraintHorizontal_bias="0.906"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.797" />
+        app:layout_constraintVertical_bias="0.769" />
 
     <ImageView
         android:id="@+id/setavoltar"
@@ -117,21 +107,19 @@
         app:layout_constraintHorizontal_bias="0.11"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/setavoltarazul" />
+        app:srcCompat="@drawable/setavoltarazul"/>
 
     <ImageView
         android:id="@+id/imageView12"
         android:layout_width="175dp"
         android:layout_height="201dp"
-<<<<<<< HEAD
+
         tools:layout_editor_absoluteX="116dp"
         tools:layout_editor_absoluteY="172dp"
-=======
-        android:layout_marginTop="96dp"
+       android:layout_marginTop="96dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/quadroBranco"
->>>>>>> 1812440464036f88695ca67677c3bc0608ead9b5
         tools:srcCompat="@drawable/jamesfoto" />
 
     <TextView
@@ -163,7 +151,7 @@
         android:text="3"
         android:textSize="14sp"
         app:layout_constraintEnd_toStartOf="@+id/seguidornumeros"
-        app:layout_constraintHorizontal_bias="0.209"
+        app:layout_constraintHorizontal_bias="0.475"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/seguidornumeros" />
 
@@ -185,6 +173,74 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/seguidornumeros"
         app:layout_constraintTop_toTopOf="@+id/seguidornumeros" />
+
+    <View
+        android:id="@+id/fundofavoritosdois2"
+        android:layout_width="120dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="40dp"
+        android:background="@android:color/holo_green_light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/livrosFavoritos"
+        app:layout_constraintVertical_bias="0.492" />
+
+    <View
+        android:id="@+id/fundofavoritosdois"
+        android:layout_width="120dp"
+        android:layout_height="100dp"
+        android:background="@color/design_default_color_error"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/livrosFavoritos" />
+
+    <ImageView
+        android:id="@+id/imagelua"
+        android:layout_width="155dp"
+        android:layout_height="124dp"
+        app:layout_constraintBottom_toBottomOf="@+id/fundofavoritosdois"
+        app:layout_constraintEnd_toEndOf="@+id/fundofavoritosdois"
+        app:layout_constraintHorizontal_bias="0.428"
+        app:layout_constraintStart_toStartOf="@+id/fundofavoritosdois"
+        app:layout_constraintTop_toTopOf="@+id/fundofavoritosdois"
+        app:layout_constraintVertical_bias="1.0"
+        tools:srcCompat="@drawable/luacrescente" />
+
+    <ImageView
+        android:id="@+id/imagehobbit"
+        android:layout_width="120dp"
+        android:layout_height="124dp"
+        app:layout_constraintBottom_toBottomOf="@+id/fundofavoritosdois2"
+        app:layout_constraintEnd_toEndOf="@+id/fundofavoritosdois2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/fundofavoritosdois2"
+        app:layout_constraintTop_toTopOf="@+id/fundofavoritosdois2"
+        app:layout_constraintVertical_bias="1.0"
+        tools:srcCompat="@drawable/hobbit" />
+
+    <TextView
+        android:id="@+id/bioum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="🌞Cria do rj"
+        tools:layout_editor_absoluteX="167dp"
+        tools:layout_editor_absoluteY="444dp" />
+
+    <TextView
+        android:id="@+id/biodois"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="📆 29 years"
+        tools:layout_editor_absoluteX="166dp"
+        tools:layout_editor_absoluteY="463dp" />
+
+    <TextView
+        android:id="@+id/biotres"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="🏍Motoby de frutas"
+        tools:layout_editor_absoluteX="166dp"
+        tools:layout_editor_absoluteY="482dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
