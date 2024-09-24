@@ -82,7 +82,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.04"
-        tools:srcCompat="@drawable/logoCanto" />
+         />
 
     <EditText
         android:id="@+id/nome"
@@ -205,7 +205,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.339"
-        tools:srcCompat="@drawable/boneco" />
+        android:src="@drawable/boneco" />
 
     <ImageView
         android:id="@+id/nomeusuarioIcon"
@@ -217,7 +217,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.446"
-        tools:srcCompat="@drawable/boneco2" />
+        android:src="@drawable/boneco2" />
 
     <ImageView
         android:id="@+id/emailIcon"
@@ -229,7 +229,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.551"
-        tools:srcCompat="@drawable/email" />
+        android:src="@drawable/email" />
 
     <ImageView
         android:id="@+id/senhaIcon"
@@ -241,6 +241,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.66"
-        tools:srcCompat="@drawable/olho" />
+        android:src="@drawable/olho" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

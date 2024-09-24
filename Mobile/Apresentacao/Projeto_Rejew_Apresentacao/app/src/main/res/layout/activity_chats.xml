@@ -45,7 +45,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.021"
-        tools:srcCompat="@drawable/setaAzul" />
+        tools:srcCompat="@drawable/setavoltarazul" />
 
     <TextView
         android:id="@+id/chat"
@@ -73,7 +73,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.482"
-        tools:srcCompat="@drawable/ficcaocientificachat" />
+        android:src="@drawable/ficcaocientificachat" />
 
     <TextView
         android:id="@+id/ficcaoCientifica"
@@ -131,7 +131,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.482"
-        tools:srcCompat="@drawable/romancechat" />
+        android:src="@drawable/romancechat" />
 
     <ImageView
         android:id="@+id/terrorChat"
@@ -143,7 +143,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.187"
-        tools:srcCompat="@drawable/terrorchat" />
+        android:src="@drawable/terrorchat" />
 
     <ImageView
         android:id="@+id/infantilChat"
@@ -155,7 +155,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.78"
-        tools:srcCompat="@drawable/infantilchat" />
+        android:src="@drawable/infantilchat" />
 
     <TextView
         android:id="@+id/culinaria"
@@ -182,7 +182,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.187"
-        tools:srcCompat="@drawable/aventurachat" />
+        android:src="@drawable/aventurachat" />
 
     <TextView
         android:id="@+id/aventura"
@@ -224,7 +224,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.78"
-        tools:srcCompat="@drawable/culinariachat" />
+        android:src="@drawable/culinariachat" />
 
     <ImageView
         android:id="@+id/homeLogo"
