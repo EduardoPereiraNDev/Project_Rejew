@@ -45,7 +45,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.021"
-        tools:srcCompat="@drawable/setaAzul" />
+        app:srcCompat="@drawable/setaazul" />
 
     <TextView
         android:id="@+id/chat"
@@ -73,7 +73,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.482"
-        tools:srcCompat="@drawable/ficcaocientificachat" />
+        app:srcCompat="@drawable/ficcaocientificachat" />
 
     <TextView
         android:id="@+id/ficcaoCientifica"
@@ -131,7 +131,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.482"
-        tools:srcCompat="@drawable/romancechat" />
+        app:srcCompat="@drawable/romancechat" />
 
     <ImageView
         android:id="@+id/terrorChat"
@@ -143,7 +143,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.187"
-        tools:srcCompat="@drawable/terrorchat" />
+        app:srcCompat="@drawable/terrorchat" />
 
     <ImageView
         android:id="@+id/infantilChat"
@@ -155,7 +155,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.78"
-        tools:srcCompat="@drawable/infantilchat" />
+        app:srcCompat="@drawable/infantilchat" />
 
     <TextView
         android:id="@+id/culinaria"
@@ -182,7 +182,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.187"
-        tools:srcCompat="@drawable/aventurachat" />
+        app:srcCompat="@drawable/aventurachat" />
 
     <TextView
         android:id="@+id/aventura"
@@ -224,7 +224,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.78"
-        tools:srcCompat="@drawable/culinariachat" />
+        app:srcCompat="@drawable/culinariachat" />
 
     <ImageView
         android:id="@+id/homeLogo"
@@ -236,7 +236,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.991"
-        tools:srcCompat="@drawable/homelogo" />
+        app:srcCompat="@drawable/homelogo" />
 
     <ImageView
         android:id="@+id/chatAzul"
@@ -247,7 +247,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/quadroCinza"
         app:layout_constraintVertical_bias="0.989"
-        tools:srcCompat="@drawable/chatazul" />
+        app:srcCompat="@drawable/chatazul" />
 
     <ImageView
         android:id="@+id/pessoasLogo"
@@ -259,7 +259,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.994"
-        tools:srcCompat="@drawable/pessoaslogo" />
+        app:srcCompat="@drawable/pessoaslogo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

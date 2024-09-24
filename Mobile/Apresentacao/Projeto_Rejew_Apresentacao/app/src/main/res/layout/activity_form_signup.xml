@@ -13,8 +13,8 @@
         style="@style/circuloAzul"
         android:layout_width="950dp"
         android:layout_height="890dp"
-        tools:layout_editor_absoluteX="-503dp"
-        tools:layout_editor_absoluteY="185dp" />
+        app:layout_editor_absoluteX="-503dp"
+        app:layout_editor_absoluteY="185dp" />
 
     <TextView
         android:id="@+id/pergunta"
@@ -82,7 +82,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.04"
-        tools:srcCompat="@drawable/logoCanto" />
+        app:srcCompat="@drawable/logocanto" />
 
     <EditText
         android:id="@+id/nome"
@@ -205,7 +205,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.339"
-        tools:srcCompat="@drawable/boneco" />
+        app:srcCompat="@drawable/boneco" />
 
     <ImageView
         android:id="@+id/nomeusuarioIcon"
@@ -217,7 +217,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.446"
-        tools:srcCompat="@drawable/boneco2" />
+        app:srcCompat="@drawable/boneco2" />
 
     <ImageView
         android:id="@+id/emailIcon"
@@ -229,7 +229,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.551"
-        tools:srcCompat="@drawable/email" />
+        app:srcCompat="@drawable/email" />
 
     <ImageView
         android:id="@+id/senhaIcon"
@@ -241,6 +241,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.66"
-        tools:srcCompat="@drawable/olho" />
+        app:srcCompat="@drawable/olho" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
