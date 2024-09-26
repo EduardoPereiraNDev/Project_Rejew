@@ -15,7 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/quadroBranco"
+        app:layout_constraintTop_toTopOf="@+id/brancoquadrado"
         android:src="@drawable/saladafundoperfil" />
 
     <TextView
@@ -68,7 +68,7 @@
         app:layout_constraintTop_toBottomOf="@+id/comentarionumeros" />
 
     <View
-        android:id="@+id/quadroBranco"
+        android:id="@+id/brancoquadrado"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:background="@color/white"
@@ -79,7 +79,7 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/vejaTodos"
+        android:id="@+id/vejatodos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="VEJA TODOS"
@@ -95,7 +95,7 @@
         android:id="@+id/setavoltar"
         android:layout_width="50dp"
         android:layout_height="34dp"
-        app:layout_constraintBottom_toBottomOf="@+id/quadroBranco"
+        app:layout_constraintBottom_toBottomOf="@+id/brancoquadrado"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.11"
         app:layout_constraintStart_toStartOf="parent"
@@ -111,11 +111,11 @@
        android:layout_marginTop="96dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/quadroBranco"
+        app:layout_constraintTop_toBottomOf="@+id/brancoquadrado"
         android:src="@drawable/jamesfoto" />
 
     <TextView
-        android:id="@+id/Nickjames"
+        android:id="@+id/nickjames"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="James Juice Fruit"
@@ -130,11 +130,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="fruitsalad86🍎🍌😎"
-        app:layout_constraintBottom_toBottomOf="@+id/quadroBranco"
-        app:layout_constraintEnd_toEndOf="@+id/quadroBranco"
+        app:layout_constraintBottom_toBottomOf="@+id/brancoquadrado"
+        app:layout_constraintEnd_toEndOf="@+id/brancoquadrado"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="@+id/quadroBranco"
-        app:layout_constraintTop_toTopOf="@+id/quadroBranco" />
+        app:layout_constraintStart_toStartOf="@+id/brancoquadrado"
+        app:layout_constraintTop_toTopOf="@+id/brancoquadrado" />
 
     <TextView
         android:id="@+id/comentarionumeros"
@@ -155,7 +155,7 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Nickjames" />
+        app:layout_constraintTop_toBottomOf="@+id/nickjames" />
 
     <TextView
         android:id="@+id/seguindonumeros"
