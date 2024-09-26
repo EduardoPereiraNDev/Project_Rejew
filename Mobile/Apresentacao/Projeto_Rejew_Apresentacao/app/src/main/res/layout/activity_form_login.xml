@@ -44,12 +44,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.04"
-<<<<<<< HEAD
-        app:srcCompat="@drawable/logoCanto" />
-=======
         android:src="@drawable/logocanto" />
 
->>>>>>> cac9bf71f51e01608b62adf0b15b8d3cbbe9e5e4
 
 
     <View
@@ -107,12 +103,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.543"
-<<<<<<< HEAD
-        app:srcCompat="@drawable/olho" />
-=======
         android:src="@drawable/olho" />
 
->>>>>>> cac9bf71f51e01608b62adf0b15b8d3cbbe9e5e4
 
     <TextView
         android:id="@+id/pergunta1"
@@ -127,11 +119,8 @@
         app:layout_constraintHorizontal_bias="0.782"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-<<<<<<< HEAD
-        app:layout_constraintVertical_bias="0.6" />
-=======
         app:layout_constraintVertical_bias="0.585" />
->>>>>>> cac9bf71f51e01608b62adf0b15b8d3cbbe9e5e4
+
 
     <TextView
         android:id="@+id/resposta"
@@ -153,21 +142,14 @@
         android:id="@+id/emailIcon"
         android:layout_width="30dp"
         android:layout_height="30dp"
-<<<<<<< HEAD
-=======
         android:src="@drawable/email"
->>>>>>> cac9bf71f51e01608b62adf0b15b8d3cbbe9e5e4
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-<<<<<<< HEAD
-        app:layout_constraintVertical_bias="0.412"
-        app:srcCompat="@drawable/email" />
-=======
         app:layout_constraintVertical_bias="0.409" />
->>>>>>> cac9bf71f51e01608b62adf0b15b8d3cbbe9e5e4
+
 
     <TextView
         android:id="@+id/pergunta2"
@@ -209,13 +191,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.91"
-<<<<<<< HEAD
-        app:srcCompat="@drawable/facebookLogo" />
-=======
-        android:src="@drawable/facebooklogo"
-         />
-
->>>>>>> cac9bf71f51e01608b62adf0b15b8d3cbbe9e5e4
+        android:src="@drawable/facebooklogo" />
 
     <ImageView
         android:id="@+id/instagramLogo"
@@ -227,13 +203,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.91"
-<<<<<<< HEAD
-        app:srcCompat="@drawable/instagramLogo" />
-=======
-        android:src="@drawable/googlelogo"
-        />
+        android:src="@drawable/googlelogo" />
 
->>>>>>> cac9bf71f51e01608b62adf0b15b8d3cbbe9e5e4
 
     <ImageView
         android:id="@+id/googleLogo"
@@ -245,12 +216,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.91"
-<<<<<<< HEAD
-        app:srcCompat="@drawable/googleLogo" />
-=======
-        android:src="@drawable/instagramlogo"
-         />
->>>>>>> cac9bf71f51e01608b62adf0b15b8d3cbbe9e5e4
+        android:src="@drawable/instagramlogo" />
+
 
 
     <TextView
@@ -278,12 +245,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.91"
-<<<<<<< HEAD
-        app:srcCompat="@drawable/microsoftlogo" />
-=======
         android:src="@drawable/microsoftlogo" />
 
->>>>>>> cac9bf71f51e01608b62adf0b15b8d3cbbe9e5e4
 
 
 
