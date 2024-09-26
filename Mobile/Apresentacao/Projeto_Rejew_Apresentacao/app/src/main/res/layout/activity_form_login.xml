@@ -40,11 +40,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.04"
-<<<<<<< HEAD
-        app:srcCompat="@drawable/logocanto" />
-=======
-         />
->>>>>>> 18a1da3fa9d91519b2b1a06e4c6a74183c3e1913
+        android:src="@drawable/logocanto" />
+
 
 
     <View
@@ -102,11 +99,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.543"
-<<<<<<< HEAD
-        app:srcCompat="@drawable/olho" />
-=======
         android:src="@drawable/olho" />
->>>>>>> 18a1da3fa9d91519b2b1a06e4c6a74183c3e1913
+
 
     <TextView
         android:id="@+id/pergunta1"
@@ -116,18 +110,9 @@
         android:text="Esqueceu a senha?"
         android:textColor="@color/black"
         android:textSize="12dp"
-<<<<<<< HEAD
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.804"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.6" />
-=======
         app:layout_constraintBottom_toTopOf="@+id/senha"
         app:layout_constraintEnd_toEndOf="@+id/view" />
 
->>>>>>> 18a1da3fa9d91519b2b1a06e4c6a74183c3e1913
 
     <TextView
         android:id="@+id/resposta"
@@ -149,21 +134,11 @@
         android:id="@+id/emailIcon"
         android:layout_width="30dp"
         android:layout_height="30dp"
-<<<<<<< HEAD
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.8"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.412"
-        app:srcCompat="@drawable/email" />
-=======
         android:layout_marginEnd="20dp"
         app:layout_constraintBottom_toBottomOf="@+id/email"
         app:layout_constraintEnd_toEndOf="@+id/email"
         app:layout_constraintTop_toTopOf="@+id/email"
         android:src="@drawable/email" />
->>>>>>> 18a1da3fa9d91519b2b1a06e4c6a74183c3e1913
 
     <TextView
         android:id="@+id/pergunta2"
@@ -205,11 +180,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.91"
-<<<<<<< HEAD
-        app:srcCompat="@drawable/facebookLogo" />
-=======
-        />
->>>>>>> 18a1da3fa9d91519b2b1a06e4c6a74183c3e1913
+        android:src="@drawable/facebookLogo" />
+
 
     <ImageView
         android:id="@+id/instagramLogo"
@@ -221,11 +193,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.91"
-<<<<<<< HEAD
-        app:srcCompat="@drawable/instagramLogo" />
-=======
-         />
->>>>>>> 18a1da3fa9d91519b2b1a06e4c6a74183c3e1913
+        android:src="@drawable/instagramLogo" />
+
 
     <ImageView
         android:id="@+id/googleLogo"
@@ -237,11 +206,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.91"
-<<<<<<< HEAD
-        app:srcCompat="@drawable/googleLogo" />
-=======
-       />
->>>>>>> 18a1da3fa9d91519b2b1a06e4c6a74183c3e1913
+        android:src="@drawable/googleLogo" />
+
 
     <TextView
         android:id="@+id/redesSociais"
@@ -268,11 +234,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.91"
-<<<<<<< HEAD
-        app:srcCompat="@drawable/microsoftlogo" />
-=======
-         />
->>>>>>> 18a1da3fa9d91519b2b1a06e4c6a74183c3e1913
+        android:src="@drawable/microsoftlogo" />
+
 
 
 
