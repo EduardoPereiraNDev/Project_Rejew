@@ -46,11 +46,6 @@
         app:layout_constraintVertical_bias="0.04"
         android:src="@drawable/logocanto" />
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 6d07de11058b24f00be0f0def3324decec21bdb9
-
     <View
         android:id="@+id/view"
         style="@style/ElementosContainer"
@@ -108,10 +103,6 @@
         app:layout_constraintVertical_bias="0.543"
         android:src="@drawable/olho" />
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 6d07de11058b24f00be0f0def3324decec21bdb9
     <TextView
         android:id="@+id/pergunta1"
         android:layout_width="wrap_content"
@@ -125,12 +116,7 @@
         app:layout_constraintHorizontal_bias="0.804"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-<<<<<<< HEAD
-        app:layout_constraintVertical_bias="0.590" />
-=======
         app:layout_constraintVertical_bias="0.585" />
-
->>>>>>> 6d07de11058b24f00be0f0def3324decec21bdb9
 
     <TextView
         android:id="@+id/resposta"
@@ -159,10 +145,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.409" />
-<<<<<<< HEAD
-=======
-
->>>>>>> 6d07de11058b24f00be0f0def3324decec21bdb9
 
     <TextView
         android:id="@+id/pergunta2"
@@ -204,12 +186,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.91"
-<<<<<<< HEAD
-        android:src="@drawable/facebooklogo"
-         />
-=======
         android:src="@drawable/facebooklogo" />
->>>>>>> 6d07de11058b24f00be0f0def3324decec21bdb9
 
     <ImageView
         android:id="@+id/instagramLogo"
@@ -221,15 +198,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.91"
-<<<<<<< HEAD
-        android:src="@drawable/googlelogo"
-        />
-
-=======
         android:src="@drawable/googlelogo" />
 
-
->>>>>>> 6d07de11058b24f00be0f0def3324decec21bdb9
     <ImageView
         android:id="@+id/googleLogo"
         android:layout_width="35dp"
@@ -240,14 +210,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.91"
-<<<<<<< HEAD
-        android:src="@drawable/instagramlogo"
-         />
-=======
         android:src="@drawable/instagramlogo" />
-
-
->>>>>>> 6d07de11058b24f00be0f0def3324decec21bdb9
 
     <TextView
         android:id="@+id/redesSociais"
@@ -275,11 +238,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.91"
         android:src="@drawable/microsoftlogo" />
-
-<<<<<<< HEAD
-=======
-
->>>>>>> 6d07de11058b24f00be0f0def3324decec21bdb9
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
