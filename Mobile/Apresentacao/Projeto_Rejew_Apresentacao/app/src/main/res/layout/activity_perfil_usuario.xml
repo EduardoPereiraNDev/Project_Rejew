@@ -234,16 +234,11 @@
         android:id="@+id/biotres"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-<<<<<<< HEAD
         android:text="🏍Motoboy de frutas"
-        tools:layout_editor_absoluteX="166dp"
-        tools:layout_editor_absoluteY="482dp" />
-=======
-        android:text="🏍Motoby de frutas"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/biodois" />
->>>>>>> 18a1da3fa9d91519b2b1a06e4c6a74183c3e1913
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

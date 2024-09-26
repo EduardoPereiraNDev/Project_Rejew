@@ -48,8 +48,9 @@
 <<<<<<< HEAD
         app:srcCompat="@drawable/setaazul" />
 =======
-        tools:srcCompat="@drawable/setavoltarazul" />
->>>>>>> 18a1da3fa9d91519b2b1a06e4c6a74183c3e1913
+        android:src="@drawable/setavoltarazul"/>
+
+>>>>>>> cac9bf71f51e01608b62adf0b15b8d3cbbe9e5e4
 
     <TextView
         android:id="@+id/chat"
@@ -81,7 +82,8 @@
         app:srcCompat="@drawable/ficcaocientificachat" />
 =======
         android:src="@drawable/ficcaocientificachat" />
->>>>>>> 18a1da3fa9d91519b2b1a06e4c6a74183c3e1913
+
+>>>>>>> cac9bf71f51e01608b62adf0b15b8d3cbbe9e5e4
 
     <TextView
         android:id="@+id/ficcaoCientifica"
@@ -143,7 +145,8 @@
         app:srcCompat="@drawable/romancechat" />
 =======
         android:src="@drawable/romancechat" />
->>>>>>> 18a1da3fa9d91519b2b1a06e4c6a74183c3e1913
+
+>>>>>>> cac9bf71f51e01608b62adf0b15b8d3cbbe9e5e4
 
     <ImageView
         android:id="@+id/terrorChat"
@@ -159,7 +162,8 @@
         app:srcCompat="@drawable/terrorchat" />
 =======
         android:src="@drawable/terrorchat" />
->>>>>>> 18a1da3fa9d91519b2b1a06e4c6a74183c3e1913
+
+>>>>>>> cac9bf71f51e01608b62adf0b15b8d3cbbe9e5e4
 
     <ImageView
         android:id="@+id/infantilChat"
@@ -175,7 +179,8 @@
         app:srcCompat="@drawable/infantilchat" />
 =======
         android:src="@drawable/infantilchat" />
->>>>>>> 18a1da3fa9d91519b2b1a06e4c6a74183c3e1913
+
+>>>>>>> cac9bf71f51e01608b62adf0b15b8d3cbbe9e5e4
 
     <TextView
         android:id="@+id/culinaria"
@@ -206,7 +211,8 @@
         app:srcCompat="@drawable/aventurachat" />
 =======
         android:src="@drawable/aventurachat" />
->>>>>>> 18a1da3fa9d91519b2b1a06e4c6a74183c3e1913
+
+>>>>>>> cac9bf71f51e01608b62adf0b15b8d3cbbe9e5e4
 
     <TextView
         android:id="@+id/aventura"
@@ -252,7 +258,8 @@
         app:srcCompat="@drawable/culinariachat" />
 =======
         android:src="@drawable/culinariachat" />
->>>>>>> 18a1da3fa9d91519b2b1a06e4c6a74183c3e1913
+
+>>>>>>> cac9bf71f51e01608b62adf0b15b8d3cbbe9e5e4
 
     <ImageView
         android:id="@+id/homeLogo"
@@ -264,7 +271,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.991"
-        app:srcCompat="@drawable/homelogo" />
+        android:src="@drawable/homelogo"/>
 
     <ImageView
         android:id="@+id/chatAzul"
@@ -275,7 +282,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/quadroCinza"
         app:layout_constraintVertical_bias="0.989"
-        app:srcCompat="@drawable/chatazul" />
+        android:src="@drawable/chatazul" />
 
     <ImageView
         android:id="@+id/pessoasLogo"
@@ -287,7 +294,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.994"
-        app:srcCompat="@drawable/pessoaslogo" />
+        android:src="@drawable/pessoaslogo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

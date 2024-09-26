@@ -11,10 +11,14 @@
     <View
         android:id="@+id/circuloAzul"
         style="@style/circuloAzul"
-        android:layout_width="950dp"
-        android:layout_height="890dp"
-        app:layout_editor_absoluteX="-503dp"
-        app:layout_editor_absoluteY="185dp" />
+        android:layout_width="920dp"
+        android:layout_height="880dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="17" />
 
     <TextView
         android:id="@+id/login"
@@ -41,10 +45,11 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.04"
 <<<<<<< HEAD
-        app:srcCompat="@drawable/logocanto" />
+        app:srcCompat="@drawable/logoCanto" />
 =======
-         />
->>>>>>> 18a1da3fa9d91519b2b1a06e4c6a74183c3e1913
+        android:src="@drawable/logocanto" />
+
+>>>>>>> cac9bf71f51e01608b62adf0b15b8d3cbbe9e5e4
 
 
     <View
@@ -106,7 +111,8 @@
         app:srcCompat="@drawable/olho" />
 =======
         android:src="@drawable/olho" />
->>>>>>> 18a1da3fa9d91519b2b1a06e4c6a74183c3e1913
+
+>>>>>>> cac9bf71f51e01608b62adf0b15b8d3cbbe9e5e4
 
     <TextView
         android:id="@+id/pergunta1"
@@ -116,18 +122,16 @@
         android:text="Esqueceu a senha?"
         android:textColor="@color/black"
         android:textSize="12dp"
-<<<<<<< HEAD
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.804"
+        app:layout_constraintHorizontal_bias="0.782"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+<<<<<<< HEAD
         app:layout_constraintVertical_bias="0.6" />
 =======
-        app:layout_constraintBottom_toTopOf="@+id/senha"
-        app:layout_constraintEnd_toEndOf="@+id/view" />
-
->>>>>>> 18a1da3fa9d91519b2b1a06e4c6a74183c3e1913
+        app:layout_constraintVertical_bias="0.585" />
+>>>>>>> cac9bf71f51e01608b62adf0b15b8d3cbbe9e5e4
 
     <TextView
         android:id="@+id/resposta"
@@ -150,20 +154,20 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
 <<<<<<< HEAD
+=======
+        android:src="@drawable/email"
+>>>>>>> cac9bf71f51e01608b62adf0b15b8d3cbbe9e5e4
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+<<<<<<< HEAD
         app:layout_constraintVertical_bias="0.412"
         app:srcCompat="@drawable/email" />
 =======
-        android:layout_marginEnd="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/email"
-        app:layout_constraintEnd_toEndOf="@+id/email"
-        app:layout_constraintTop_toTopOf="@+id/email"
-        android:src="@drawable/email" />
->>>>>>> 18a1da3fa9d91519b2b1a06e4c6a74183c3e1913
+        app:layout_constraintVertical_bias="0.409" />
+>>>>>>> cac9bf71f51e01608b62adf0b15b8d3cbbe9e5e4
 
     <TextView
         android:id="@+id/pergunta2"
@@ -208,8 +212,10 @@
 <<<<<<< HEAD
         app:srcCompat="@drawable/facebookLogo" />
 =======
-        />
->>>>>>> 18a1da3fa9d91519b2b1a06e4c6a74183c3e1913
+        android:src="@drawable/facebooklogo"
+         />
+
+>>>>>>> cac9bf71f51e01608b62adf0b15b8d3cbbe9e5e4
 
     <ImageView
         android:id="@+id/instagramLogo"
@@ -224,8 +230,10 @@
 <<<<<<< HEAD
         app:srcCompat="@drawable/instagramLogo" />
 =======
-         />
->>>>>>> 18a1da3fa9d91519b2b1a06e4c6a74183c3e1913
+        android:src="@drawable/googlelogo"
+        />
+
+>>>>>>> cac9bf71f51e01608b62adf0b15b8d3cbbe9e5e4
 
     <ImageView
         android:id="@+id/googleLogo"
@@ -240,8 +248,10 @@
 <<<<<<< HEAD
         app:srcCompat="@drawable/googleLogo" />
 =======
-       />
->>>>>>> 18a1da3fa9d91519b2b1a06e4c6a74183c3e1913
+        android:src="@drawable/instagramlogo"
+         />
+>>>>>>> cac9bf71f51e01608b62adf0b15b8d3cbbe9e5e4
+
 
     <TextView
         android:id="@+id/redesSociais"
@@ -271,8 +281,9 @@
 <<<<<<< HEAD
         app:srcCompat="@drawable/microsoftlogo" />
 =======
-         />
->>>>>>> 18a1da3fa9d91519b2b1a06e4c6a74183c3e1913
+        android:src="@drawable/microsoftlogo" />
+
+>>>>>>> cac9bf71f51e01608b62adf0b15b8d3cbbe9e5e4
 
 
 

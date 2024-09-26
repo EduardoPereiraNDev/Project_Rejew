@@ -46,6 +46,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginStart="25dp"
+                android:layout_marginTop="24dp"
                 android:layout_marginEnd="25dp"
                 android:background="@drawable/pesquisacinza"
                 android:hint="@string/pesquiseLivros"
@@ -53,10 +54,11 @@
                 android:textColor="@color/orange"
                 android:textSize="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                tools:layout_editor_absoluteY="114dp" />
+                app:layout_constraintTop_toBottomOf="@+id/fotoperfil" />
 
-    <ImageView
+            <ImageView
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginEnd="25dp"
