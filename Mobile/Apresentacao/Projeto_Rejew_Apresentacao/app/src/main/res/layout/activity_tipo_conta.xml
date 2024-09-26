@@ -32,7 +32,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.021"
-        android:src="@drawable/setaazul" />
+        android:src="@drawable/setavoltarazul" />
 
     <TextView
         android:id="@+id/escolha"
