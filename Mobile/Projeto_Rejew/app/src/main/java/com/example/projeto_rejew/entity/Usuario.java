@@ -19,6 +19,11 @@ public class Usuario {
 
     }
 
+    public Usuario( String emailEntrada, String senhaEntrada) {
+        this.emailEntrada = emailEntrada;
+        this.senhaEntrada = senhaEntrada;
+    }
+
     public Usuario(String nomeUsuario, String nomePerfil, String emailEntrada, String senhaEntrada,
                    LocalDate dataNascimentoU, String uniqueFilename, String uniqueFilename2, String recadoPerfil) {
 
