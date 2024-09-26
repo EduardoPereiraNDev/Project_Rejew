@@ -47,15 +47,15 @@ public class UsuarioController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody Usuario Usuario) {
+    public Usuario loginUsuario(@RequestBody Usuario Usuario) {
     	Usuario usuarioEncontrado = usuarioRepository.realizarLogin(Usuario.getEmailEntrada(), Usuario.getSenhaEntrada());
 
         if (usuarioEncontrado != null)
         {
-            return ResponseEntity.ok("Login successful");
-        } else 
-        {
-            return ResponseEntity.status(401).body("Invalid credentials");
+        	return usuarioEncontrado;
+        } else {
+        	Usuario usuarioVazio = new Usuario();
+            return usuarioVazio;
         }
     }
     

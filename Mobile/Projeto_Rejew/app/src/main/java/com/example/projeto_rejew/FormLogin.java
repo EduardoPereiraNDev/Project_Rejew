@@ -2,6 +2,7 @@ package com.example.projeto_rejew;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
@@ -46,25 +47,28 @@ public class FormLogin extends AppCompatActivity {
         retrofitClient = new RetrofitClient();
 
         UsuarioAPIController userAPIController = new UsuarioAPIController(retrofitClient);
-
-        //apiConnection.loginUser(user,new APIConnection.LoginUserCallback(){
         userAPIController.getLoginUser(email, senha, new UsuarioAPIController.UsuarioCallback(){
 
             @Override
             public void onSuccess(Usuario usuario) {
-                AlertDialog.Builder alerta = new AlertDialog.Builder(FormLogin.this);
-                alerta.setCancelable(false);
-                alerta.setTitle("Login");
-                alerta.setMessage(usuario.toString());
-                alerta.setNegativeButton("Ok",null);
-                alerta.create().show();
+                if (usuario.getEmailEntrada() == null){
+                    AlertDialog.Builder alerta = new AlertDialog.Builder(FormLogin.this);
+                    alerta.setCancelable(false);
+                    alerta.setTitle("Falha No Login");
+                    alerta.setMessage("Não Existe nenhum usuário com estes dados");
+                    alerta.setNegativeButton("Ok",null);
+                    alerta.create().show();
+                }else{
+                    Intent intent = new Intent(FormLogin.this, EscolhaTipoConta.class);
+                    startActivity(intent);
+                }
             }
             @Override
             public void onFailure(Throwable t) {
                 AlertDialog.Builder alerta = new AlertDialog.Builder(FormLogin.this);
                 alerta.setCancelable(false);
                 alerta.setTitle("Login");
-                alerta.setMessage(t.toString());
+                alerta.setMessage("Falha ao realizar Login" +t.getMessage());
                 alerta.setNegativeButton("Falouu",null);
                 alerta.create().show();
             }
@@ -76,9 +80,9 @@ public class FormLogin extends AppCompatActivity {
         Intent intent = new Intent(FormLogin.this, EscolhaTipoConta.class);
         startActivity(intent);
     }
-
     public void passarTelaCat(View v) {
         Intent intent = new Intent(FormLogin.this, CatalogoRejew.class);
         startActivity(intent);
     }
+
 }

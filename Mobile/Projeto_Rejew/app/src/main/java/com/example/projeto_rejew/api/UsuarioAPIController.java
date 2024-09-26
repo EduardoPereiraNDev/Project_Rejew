@@ -27,9 +27,9 @@ public class UsuarioAPIController {
         this.status = "";
     }
 
-    public void getLoginUser(String email, String password, UsuarioAPIController.UsuarioCallback responseCallback) {
+    public void getLoginUser(String emailEntrada, String senhaEntrada, UsuarioAPIController.UsuarioCallback responseCallback) {
 
-        Usuario usuario = new Usuario(email, password );
+        Usuario usuario = new Usuario(emailEntrada, senhaEntrada);
 
         Call<Usuario> call = this.usuarioApi.loginUsuario(usuario);
         call.enqueue(new Callback<Usuario>() {

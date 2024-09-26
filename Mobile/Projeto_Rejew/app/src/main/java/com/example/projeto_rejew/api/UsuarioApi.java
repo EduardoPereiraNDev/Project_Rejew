@@ -39,7 +39,7 @@ public interface UsuarioApi {
     @GET("usuarios/perfil/{nome}")
     Call<List<Usuario>> buscarUsuarioPorNomePerfil(@Path("nome") String nome);
 
-    @POST("/usuario/login")
+    @POST("usuarios/login")
     Call<Usuario> loginUsuario(@Body Usuario usuario);
 
     @Multipart
