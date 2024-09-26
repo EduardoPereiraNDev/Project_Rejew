@@ -32,7 +32,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.021"
-        tools:srcCompat="@drawable/setaazul" />
+        android:src="@drawable/setaazul" />
 
     <TextView
         android:id="@+id/escolha"
@@ -46,7 +46,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.196" />
+        app:layout_constraintVertical_bias="0.199" />
 
     <TextView
         android:id="@+id/tipoConta"
@@ -73,7 +73,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/quadroBranco"
         app:layout_constraintVertical_bias="0.459"
-        tools:srcCompat="@drawable/autoricon" />
+        android:src="@drawable/autoricon"/>
 
     <TextView
         android:id="@+id/autor"
@@ -100,7 +100,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.826"
-        tools:srcCompat="@drawable/leitoricon" />
+        android:src="@drawable/leitoricon"/>
 
     <TextView
         android:id="@+id/leitor"
