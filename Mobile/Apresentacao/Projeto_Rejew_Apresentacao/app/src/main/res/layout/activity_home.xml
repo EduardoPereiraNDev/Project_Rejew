@@ -111,11 +111,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/buttonCadastrar"
         app:layout_constraintTop_toTopOf="@+id/buttonCadastrar"
         tools:layout_editor_absoluteX="152dp"
-<<<<<<< HEAD
-        app:srcCompat="@drawable/setaBranca" />
-=======
         />
->>>>>>> 18a1da3fa9d91519b2b1a06e4c6a74183c3e1913
 
     <ImageView
         android:id="@+id/setabranca2"
@@ -125,12 +121,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/buttonLogin"
         app:layout_constraintEnd_toEndOf="@+id/buttonLogin"
         app:layout_constraintTop_toTopOf="@+id/buttonLogin"
-<<<<<<< HEAD
-        tools:layout_editor_absoluteX="309dp"
-        app:srcCompat="@drawable/setaBranca" />
-=======
          />
->>>>>>> 18a1da3fa9d91519b2b1a06e4c6a74183c3e1913
 
     <TextView
         android:id="@+id/booksReview"
