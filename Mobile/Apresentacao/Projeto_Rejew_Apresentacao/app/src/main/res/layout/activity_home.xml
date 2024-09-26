@@ -103,11 +103,6 @@
         app:layout_constraintVertical_bias="0.063"
         android:src="@drawable/rejewbranconovo" />
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 6d07de11058b24f00be0f0def3324decec21bdb9
     <TextView
         android:id="@+id/booksReview"
         android:layout_width="wrap_content"

@@ -47,10 +47,6 @@
         app:layout_constraintVertical_bias="0.021"
         android:src="@drawable/setavoltarazul"/>
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 6d07de11058b24f00be0f0def3324decec21bdb9
     <TextView
         android:id="@+id/chat"
         android:layout_width="wrap_content"
@@ -79,10 +75,6 @@
         app:layout_constraintVertical_bias="0.482"
         android:src="@drawable/ficcaocientificachat" />
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 6d07de11058b24f00be0f0def3324decec21bdb9
     <TextView
         android:id="@+id/ficcaoCientifica"
         android:layout_width="83dp"
@@ -141,10 +133,6 @@
         app:layout_constraintVertical_bias="0.482"
         android:src="@drawable/romancechat" />
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 6d07de11058b24f00be0f0def3324decec21bdb9
     <ImageView
         android:id="@+id/terrorChat"
         android:layout_width="110dp"
@@ -157,10 +145,7 @@
         app:layout_constraintVertical_bias="0.187"
         android:src="@drawable/terrorchat" />
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 6d07de11058b24f00be0f0def3324decec21bdb9
     <ImageView
         android:id="@+id/infantilChat"
         android:layout_width="110dp"
@@ -173,10 +158,6 @@
         app:layout_constraintVertical_bias="0.78"
         android:src="@drawable/infantilchat" />
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 6d07de11058b24f00be0f0def3324decec21bdb9
     <TextView
         android:id="@+id/culinaria"
         android:layout_width="wrap_content"
@@ -204,10 +185,7 @@
         app:layout_constraintVertical_bias="0.187"
         android:src="@drawable/aventurachat" />
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 6d07de11058b24f00be0f0def3324decec21bdb9
     <TextView
         android:id="@+id/aventura"
         android:layout_width="wrap_content"
