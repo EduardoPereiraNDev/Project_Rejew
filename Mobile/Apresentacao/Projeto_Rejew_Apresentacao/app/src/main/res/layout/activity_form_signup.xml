@@ -11,10 +11,14 @@
     <View
         android:id="@+id/circuloAzul"
         style="@style/circuloAzul"
-        android:layout_width="950dp"
-        android:layout_height="890dp"
-        app:layout_editor_absoluteX="-503dp"
-        app:layout_editor_absoluteY="185dp" />
+        android:layout_width="920dp"
+        android:layout_height="880dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="17" />
 
     <TextView
         android:id="@+id/pergunta"
@@ -48,7 +52,7 @@
         android:id="@+id/view"
         style="@style/ElementosContainer"
         android:layout_width="330dp"
-        android:layout_height="350dp"
+        android:layout_height="400dp"
         android:background="@drawable/container_cores_elemento"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -81,7 +85,8 @@
         app:layout_constraintHorizontal_bias="0.917"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.04" />
+        app:layout_constraintVertical_bias="0.04"
+        android:src="@drawable/logocanto"/>
 
 
     <EditText

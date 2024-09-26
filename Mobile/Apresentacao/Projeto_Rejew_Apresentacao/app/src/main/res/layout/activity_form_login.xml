@@ -11,10 +11,14 @@
     <View
         android:id="@+id/circuloAzul"
         style="@style/circuloAzul"
-        android:layout_width="950dp"
-        android:layout_height="890dp"
-        app:layout_editor_absoluteX="-503dp"
-        app:layout_editor_absoluteY="185dp" />
+        android:layout_width="920dp"
+        android:layout_height="880dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="17" />
 
     <TextView
         android:id="@+id/login"
@@ -110,9 +114,12 @@
         android:text="Esqueceu a senha?"
         android:textColor="@color/black"
         android:textSize="12dp"
-        app:layout_constraintBottom_toTopOf="@+id/senha"
-        app:layout_constraintEnd_toEndOf="@+id/view" />
-
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.782"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.585" />
 
     <TextView
         android:id="@+id/resposta"
@@ -134,11 +141,13 @@
         android:id="@+id/emailIcon"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginEnd="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/email"
-        app:layout_constraintEnd_toEndOf="@+id/email"
-        app:layout_constraintTop_toTopOf="@+id/email"
-        android:src="@drawable/email" />
+        android:src="@drawable/email"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.409" />
 
     <TextView
         android:id="@+id/pergunta2"
@@ -180,6 +189,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.91"
+        android:src="@drawable/facebooklogo"
          />
 
 
@@ -193,6 +203,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.91"
+        android:src="@drawable/googlelogo"
         />
 
 
@@ -206,6 +217,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.91"
+        android:src="@drawable/instagramlogo"
          />
 
 

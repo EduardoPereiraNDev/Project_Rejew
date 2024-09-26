@@ -45,7 +45,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.021"
-        tools:srcCompat="@drawable/setavoltarazul" />
+        android:src="@drawable/setavoltarazul"/>
 
 
     <TextView
@@ -243,7 +243,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.991"
-        app:srcCompat="@drawable/homelogo" />
+        android:src="@drawable/homelogo"/>
 
     <ImageView
         android:id="@+id/chatAzul"
@@ -254,7 +254,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/quadroCinza"
         app:layout_constraintVertical_bias="0.989"
-        app:srcCompat="@drawable/chatazul" />
+        android:src="@drawable/chatazul" />
 
     <ImageView
         android:id="@+id/pessoasLogo"
@@ -266,7 +266,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.994"
-        app:srcCompat="@drawable/pessoaslogo" />
+        android:src="@drawable/pessoaslogo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
