@@ -23,7 +23,7 @@
         tools:ignore="MissingConstraints" />
 
     <ImageView
-        android:id="@+id/setaAzul"
+        android:id="@+id/setaazulautor"
         android:layout_width="50dp"
         android:layout_height="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
