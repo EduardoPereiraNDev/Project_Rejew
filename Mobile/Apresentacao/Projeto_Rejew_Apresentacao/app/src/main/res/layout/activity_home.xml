@@ -101,28 +101,31 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.063"
-        tools:srcCompat="@drawable/rejewbranconovo" />
+        app:srcCompat="@drawable/rejewbranconovo" />
 
+<<<<<<< HEAD
+=======
     <ImageView
-        android:id="@+id/setaBranca1"
+        android:id="@+id/setabranca1"
         android:layout_width="35dp"
         android:layout_height="40dp"
         android:onClick="passarTelaEsc"
         app:layout_constraintBottom_toBottomOf="@+id/buttonCadastrar"
         app:layout_constraintTop_toTopOf="@+id/buttonCadastrar"
         tools:layout_editor_absoluteX="152dp"
-        tools:srcCompat="@drawable/setaBranca" />
+        />
 
     <ImageView
-        android:id="@+id/setaBranca2"
+        android:id="@+id/setabranca2"
         android:layout_width="35dp"
         android:layout_height="40dp"
         android:onClick="passarTelaL"
         app:layout_constraintBottom_toBottomOf="@+id/buttonLogin"
+        app:layout_constraintEnd_toEndOf="@+id/buttonLogin"
         app:layout_constraintTop_toTopOf="@+id/buttonLogin"
-        tools:layout_editor_absoluteX="309dp"
-        tools:srcCompat="@drawable/setaBranca" />
+         />
 
+>>>>>>> cac9bf71f51e01608b62adf0b15b8d3cbbe9e5e4
     <TextView
         android:id="@+id/booksReview"
         android:layout_width="wrap_content"
@@ -151,7 +154,7 @@
         app:layout_constraintStart_toStartOf="@+id/booksReview"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.559"
-        tools:srcCompat="@drawable/linha" />
+        app:srcCompat="@drawable/linha" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

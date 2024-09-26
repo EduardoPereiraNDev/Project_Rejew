@@ -13,128 +13,321 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.105"
+        app:layout_constraintHorizontal_bias="0.141"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.682" />
+        app:layout_constraintVertical_bias="0.043"
+        android:textSize="17dp"/>
 
-    <TextView
-        android:id="@+id/veja_texto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Veja todos ->"
-        android:textAllCaps="true"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="429dp"
+        android:layout_height="943dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.912"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.682" />
+        app:layout_constraintTop_toBottomOf="@+id/sugestoes_texto"
+        app:layout_constraintVertical_bias="0.0">
 
-    <ImageView
-        android:id="@+id/imageView18"
-        android:layout_width="130dp"
-        android:layout_height="90dp"
-        android:background="@drawable/borda_10dp"
-        android:padding="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.103"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.862"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        <FrameLayout
+            android:id="@+id/frameLayout"
+            android:layout_width="355dp"
+            android:layout_height="185dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    <ImageView
-        android:id="@+id/imageView19"
-        android:layout_width="70dp"
-        android:layout_height="120dp"
-        android:background="@drawable/borda_10dp"
-        android:padding="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.167"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.842"
-        tools:srcCompat="@tools:sample/avatars" />
+            <RelativeLayout
+                android:id="@+id/containerit"
+                android:layout_width="145dp"
+                android:layout_height="165dp"
+                android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/titulo_livro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.172"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.903" />
+                <View
+                    android:id="@+id/fundoum"
+                    android:layout_width="125dp"
+                    android:layout_height="90dp"
+                    android:layout_marginStart="7dp"
+                    android:layout_marginTop="35dp"
+                    android:background="@color/cinzait" />
 
-    <TextView
-        android:id="@+id/nome_autor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:textAllCaps="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.165"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.929" />
+                <ImageView
+                    android:id="@+id/livroum"
+                    android:layout_width="90dp"
+                    android:layout_height="125dp"
+                    android:layout_marginStart="25dp"
+                    android:src="@tools:sample/avatars" />
 
-    <ImageView
-        android:id="@+id/imageView20"
-        android:layout_width="130dp"
-        android:layout_height="90dp"
-        android:background="@drawable/borda_10dp"
-        android:padding="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.871"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.862"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+                <TextView
+                    android:id="@+id/ittitulo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="125dp"
+                    android:fontFamily="@font/merriweather_bold"
+                    android:text="It: A Coisa"
+                    android:textSize="17dp"
+                    android:textStyle="bold" />
 
-    <ImageView
-        android:id="@+id/imageView21"
-        android:layout_width="70dp"
-        android:layout_height="120dp"
-        android:background="@drawable/borda_10dp"
-        android:padding="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.821"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.842"
-        tools:srcCompat="@tools:sample/avatars" />
+                <TextView
+                    android:id="@+id/itautor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="145dp"
+                    android:fontFamily="@font/merriweather_light_italic"
+                    android:text="Stephen King"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
 
-    <TextView
-        android:id="@+id/titulo_livro2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.796"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.903" />
+            <RelativeLayout
+                android:id="@+id/containerter"
+                android:layout_width="145dp"
+                android:layout_height="185dp"
+                android:layout_marginStart="200dp"
+                android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/nome_autor2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:textAllCaps="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.813"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.928" />
+                <View
+                    android:id="@+id/fundodois"
+                    android:layout_width="125dp"
+                    android:layout_height="90dp"
+                    android:layout_marginStart="7dp"
+                    android:layout_marginTop="35dp"
+                    android:background="@color/terran" />
+
+                <ImageView
+                    android:id="@+id/livrodois"
+                    android:layout_width="90dp"
+                    android:layout_height="125dp"
+                    android:layout_marginStart="25dp"
+                    android:src="@tools:sample/avatars" />
+
+                <TextView
+                    android:id="@+id/tertitulo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="125dp"
+                    android:fontFamily="@font/merriweather_bold"
+                    android:text="O Rei da Terra do Nunca"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/terautor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="165dp"
+                    android:fontFamily="@font/merriweather_light_italic"
+                    android:text="Nikki ST. Crowe"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/frameLayout2"
+            android:layout_width="355dp"
+            android:layout_height="185dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/frameLayout">
+
+            <RelativeLayout
+                android:id="@+id/containerit2"
+                android:layout_width="145dp"
+                android:layout_height="165dp"
+                android:orientation="horizontal">
+
+                <View
+                    android:id="@+id/fundoum2"
+                    android:layout_width="125dp"
+                    android:layout_height="90dp"
+                    android:layout_marginStart="7dp"
+                    android:layout_marginTop="35dp"
+                    android:background="@color/rosacar" />
+
+                <ImageView
+                    android:id="@+id/livroum2"
+                    android:layout_width="90dp"
+                    android:layout_height="125dp"
+                    android:layout_marginStart="25dp"
+                    android:src="@tools:sample/avatars" />
+
+                <TextView
+                    android:id="@+id/ittitulo2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="125dp"
+                    android:fontFamily="@font/merriweather_bold"
+                    android:text="Carrie"
+                    android:textSize="17dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/itautor2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="145dp"
+                    android:fontFamily="@font/merriweather_light_italic"
+                    android:text="Stephen King"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/containerter2"
+                android:layout_width="145dp"
+                android:layout_height="185dp"
+                android:layout_marginStart="200dp"
+                android:orientation="horizontal">
+
+                <View
+                    android:id="@+id/fundodois2"
+                    android:layout_width="125dp"
+                    android:layout_height="90dp"
+                    android:layout_marginStart="7dp"
+                    android:layout_marginTop="35dp"
+                    android:background="@color/marromlev" />
+
+                <ImageView
+                    android:id="@+id/livrodois2"
+                    android:layout_width="90dp"
+                    android:layout_height="125dp"
+                    android:layout_marginStart="25dp"
+                    android:src="@tools:sample/avatars" />
+
+                <TextView
+                    android:id="@+id/tertitulo2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="125dp"
+                    android:fontFamily="@font/merriweather_bold"
+                    android:text="Leve Minha Alma"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/terautor2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="165dp"
+                    android:fontFamily="@font/merriweather_light_italic"
+                    android:text="Harley Laroux"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/frameLayout3"
+            android:layout_width="355dp"
+            android:layout_height="185dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/frameLayout2">
+
+            <RelativeLayout
+                android:id="@+id/containerit3"
+                android:layout_width="145dp"
+                android:layout_height="165dp"
+                android:orientation="horizontal">
+
+                <View
+                    android:id="@+id/fundoum3"
+                    android:layout_width="125dp"
+                    android:layout_height="90dp"
+                    android:layout_marginStart="7dp"
+                    android:layout_marginTop="35dp"
+                    android:background="@color/vermelhosal" />
+
+                <ImageView
+                    android:id="@+id/livroum3"
+                    android:layout_width="90dp"
+                    android:layout_height="125dp"
+                    android:layout_marginStart="25dp"
+                    android:src="@tools:sample/avatars" />
+
+                <TextView
+                    android:id="@+id/ittitulo3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="125dp"
+                    android:fontFamily="@font/merriweather_bold"
+                    android:text="Salem"
+                    android:textSize="17dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/itautor3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="145dp"
+                    android:fontFamily="@font/merriweather_light_italic"
+                    android:text="Stephen King"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/containerter3"
+                android:layout_width="145dp"
+                android:layout_height="185dp"
+                android:layout_marginStart="200dp"
+                android:orientation="horizontal">
+
+                <View
+                    android:id="@+id/fundodois3"
+                    android:layout_width="125dp"
+                    android:layout_height="90dp"
+                    android:layout_marginStart="7dp"
+                    android:layout_marginTop="35dp"
+                    android:background="@color/marromtel" />
+
+                <ImageView
+                    android:id="@+id/livrodois3"
+                    android:layout_width="90dp"
+                    android:layout_height="125dp"
+                    android:layout_marginStart="25dp"
+                    android:src="@tools:sample/avatars" />
+
+                <TextView
+                    android:id="@+id/tertitulo3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="125dp"
+                    android:fontFamily="@font/merriweather_bold"
+                    android:text="O Rei da Terra do Nunca"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/terautor3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="165dp"
+                    android:fontFamily="@font/merriweather_light_italic"
+                    android:text="Nikki ST. Crowe"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+        </FrameLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
 

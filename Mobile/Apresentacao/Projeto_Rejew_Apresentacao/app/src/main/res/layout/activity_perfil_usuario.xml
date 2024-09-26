@@ -16,7 +16,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/quadroBranco"
-        tools:srcCompat="@drawable/saladafundoperfil" />
+        android:src="@drawable/saladafundoperfil" />
 
     <TextView
         android:id="@+id/livrosFavoritos"
@@ -28,10 +28,10 @@
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.126"
+        app:layout_constraintHorizontal_bias="0.122"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.767" />
+        app:layout_constraintVertical_bias="0.629" />
 
     <TextView
         android:id="@+id/seguidores"
@@ -112,7 +112,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/quadroBranco"
-        tools:srcCompat="@drawable/jamesfoto" />
+        android:src="@drawable/jamesfoto" />
 
     <TextView
         android:id="@+id/Nickjames"
@@ -181,10 +181,12 @@
         android:id="@+id/fundofavoritosdois"
         android:layout_width="120dp"
         android:layout_height="100dp"
+        android:layout_marginEnd="60dp"
         android:background="@color/design_default_color_error"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/livrosFavoritos" />
+        app:layout_constraintTop_toBottomOf="@+id/livrosFavoritos"
+        app:layout_constraintVertical_bias="0.502" />
 
     <ImageView
         android:id="@+id/imagelua"
@@ -196,7 +198,7 @@
         app:layout_constraintStart_toStartOf="@+id/fundofavoritosdois"
         app:layout_constraintTop_toTopOf="@+id/fundofavoritosdois"
         app:layout_constraintVertical_bias="1.0"
-        tools:srcCompat="@drawable/luacrescente" />
+        android:src="@drawable/luacrescente" />
 
     <ImageView
         android:id="@+id/imagehobbit"
@@ -208,7 +210,7 @@
         app:layout_constraintStart_toStartOf="@+id/fundofavoritosdois2"
         app:layout_constraintTop_toTopOf="@+id/fundofavoritosdois2"
         app:layout_constraintVertical_bias="1.0"
-        tools:srcCompat="@drawable/hobbit" />
+        android:src="@drawable/hobbit" />
 
     <TextView
         android:id="@+id/bioum"
@@ -232,10 +234,11 @@
         android:id="@+id/biotres"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="🏍Motoby de frutas"
+        android:text="🏍Motoboy de frutas"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/biodois" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

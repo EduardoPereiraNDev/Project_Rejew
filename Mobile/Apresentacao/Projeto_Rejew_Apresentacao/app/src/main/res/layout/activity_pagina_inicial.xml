@@ -19,16 +19,16 @@
 
 
             <ImageView
-                android:id="@+id/rejewlogocat"
-                android:layout_width="134dp"
-                android:layout_height="75dp"
-                android:src="@drawable/rejewazulescuro"
+                android:id="@+id/logoBranco"
+                android:layout_width="160dp"
+                android:layout_height="40dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.09"
+                app:layout_constraintHorizontal_bias="0.109"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.024" />
+                app:layout_constraintVertical_bias="0.035"
+                app:srcCompat="@drawable/rejewazulnovo" />
 
             <ImageView
                 android:id="@+id/fotoperfil"
@@ -46,19 +46,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginStart="25dp"
+                android:layout_marginTop="24dp"
                 android:layout_marginEnd="25dp"
-                android:layout_marginTop="15dp"
                 android:background="@drawable/pesquisacinza"
                 android:hint="@string/pesquiseLivros"
                 android:paddingLeft="15dp"
                 android:textColor="@color/orange"
                 android:textSize="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rejewlogocat"
-                 />
+                app:layout_constraintTop_toBottomOf="@+id/fotoperfil" />
 
-    <ImageView
+            <ImageView
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginEnd="25dp"
@@ -496,6 +496,8 @@
         </FrameLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 

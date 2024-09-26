@@ -45,7 +45,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.021"
-        tools:srcCompat="@drawable/setaAzul" />
+<<<<<<< HEAD
+        app:srcCompat="@drawable/setaazul" />
+=======
+        android:src="@drawable/setavoltarazul"/>
+
+>>>>>>> cac9bf71f51e01608b62adf0b15b8d3cbbe9e5e4
 
     <TextView
         android:id="@+id/chat"
@@ -73,7 +78,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.482"
-        tools:srcCompat="@drawable/ficcaocientificachat" />
+<<<<<<< HEAD
+        app:srcCompat="@drawable/ficcaocientificachat" />
+=======
+        android:src="@drawable/ficcaocientificachat" />
+
+>>>>>>> cac9bf71f51e01608b62adf0b15b8d3cbbe9e5e4
 
     <TextView
         android:id="@+id/ficcaoCientifica"
@@ -131,7 +141,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.482"
-        tools:srcCompat="@drawable/romancechat" />
+<<<<<<< HEAD
+        app:srcCompat="@drawable/romancechat" />
+=======
+        android:src="@drawable/romancechat" />
+
+>>>>>>> cac9bf71f51e01608b62adf0b15b8d3cbbe9e5e4
 
     <ImageView
         android:id="@+id/terrorChat"
@@ -143,7 +158,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.187"
-        tools:srcCompat="@drawable/terrorchat" />
+<<<<<<< HEAD
+        app:srcCompat="@drawable/terrorchat" />
+=======
+        android:src="@drawable/terrorchat" />
+
+>>>>>>> cac9bf71f51e01608b62adf0b15b8d3cbbe9e5e4
 
     <ImageView
         android:id="@+id/infantilChat"
@@ -155,7 +175,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.78"
-        tools:srcCompat="@drawable/infantilchat" />
+<<<<<<< HEAD
+        app:srcCompat="@drawable/infantilchat" />
+=======
+        android:src="@drawable/infantilchat" />
+
+>>>>>>> cac9bf71f51e01608b62adf0b15b8d3cbbe9e5e4
 
     <TextView
         android:id="@+id/culinaria"
@@ -182,7 +207,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.187"
-        tools:srcCompat="@drawable/aventurachat" />
+<<<<<<< HEAD
+        app:srcCompat="@drawable/aventurachat" />
+=======
+        android:src="@drawable/aventurachat" />
+
+>>>>>>> cac9bf71f51e01608b62adf0b15b8d3cbbe9e5e4
 
     <TextView
         android:id="@+id/aventura"
@@ -224,7 +254,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.78"
-        tools:srcCompat="@drawable/culinariachat" />
+<<<<<<< HEAD
+        app:srcCompat="@drawable/culinariachat" />
+=======
+        android:src="@drawable/culinariachat" />
+
+>>>>>>> cac9bf71f51e01608b62adf0b15b8d3cbbe9e5e4
 
     <ImageView
         android:id="@+id/homeLogo"
@@ -236,7 +271,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.991"
-        tools:srcCompat="@drawable/homelogo" />
+        android:src="@drawable/homelogo"/>
 
     <ImageView
         android:id="@+id/chatAzul"
@@ -247,7 +282,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/quadroCinza"
         app:layout_constraintVertical_bias="0.989"
-        tools:srcCompat="@drawable/chatazul" />
+        android:src="@drawable/chatazul" />
 
     <ImageView
         android:id="@+id/pessoasLogo"
@@ -259,7 +294,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.994"
-        tools:srcCompat="@drawable/pessoaslogo" />
+        android:src="@drawable/pessoaslogo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
