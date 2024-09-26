@@ -50,7 +50,7 @@
                     android:layout_height="90dp"
                     android:layout_marginStart="7dp"
                     android:layout_marginTop="35dp"
-                    android:background="none" />
+                    />
 
                 <ImageView
                     android:id="@+id/livroum"
@@ -95,7 +95,7 @@
                     android:layout_height="90dp"
                     android:layout_marginStart="7dp"
                     android:layout_marginTop="35dp"
-                    android:background="none" />
+                    />
 
                 <ImageView
                     android:id="@+id/livrodois"
@@ -149,7 +149,7 @@
                     android:layout_height="90dp"
                     android:layout_marginStart="7dp"
                     android:layout_marginTop="35dp"
-                    android:background="none" />
+                    />
 
                 <ImageView
                     android:id="@+id/livrocinco"
@@ -194,7 +194,7 @@
                     android:layout_height="90dp"
                     android:layout_marginStart="7dp"
                     android:layout_marginTop="35dp"
-                    android:background="none" />
+                    />
 
                 <ImageView
                     android:id="@+id/livroseis"
@@ -249,7 +249,7 @@
                     android:layout_height="90dp"
                     android:layout_marginStart="7dp"
                     android:layout_marginTop="35dp"
-                    android:background="none" />
+                    />
 
                 <ImageView
                     android:id="@+id/livrosete"
@@ -294,7 +294,7 @@
                     android:layout_height="90dp"
                     android:layout_marginStart="7dp"
                     android:layout_marginTop="35dp"
-                    android:background="none" />
+                    />
 
                 <ImageView
                     android:id="@+id/livrooito"
@@ -348,7 +348,7 @@
                     android:layout_height="90dp"
                     android:layout_marginStart="7dp"
                     android:layout_marginTop="35dp"
-                    android:background="none" />
+                    />
 
                 <ImageView
                     android:id="@+id/livrotres"
@@ -393,7 +393,7 @@
                     android:layout_height="90dp"
                     android:layout_marginStart="7dp"
                     android:layout_marginTop="35dp"
-                    android:background="none" />
+                    />
 
                 <ImageView
                     android:id="@+id/livroquatro"
@@ -447,7 +447,7 @@
                     android:layout_height="90dp"
                     android:layout_marginStart="7dp"
                     android:layout_marginTop="35dp"
-                    android:background="none" />
+                    />
 
                 <ImageView
                     android:id="@+id/livronove"
@@ -492,7 +492,7 @@
                     android:layout_height="90dp"
                     android:layout_marginStart="7dp"
                     android:layout_marginTop="35dp"
-                    android:background="none" />
+                    />
 
                 <ImageView
                     android:id="@+id/livrodez"
