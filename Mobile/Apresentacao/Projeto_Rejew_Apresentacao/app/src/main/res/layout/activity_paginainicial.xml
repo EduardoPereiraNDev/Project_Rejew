@@ -15,7 +15,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.044"
-        app:srcCompat="@drawable/rejewazulnovo" />
+        android:src="@drawable/rejewazulnovo" />
 
     <ImageView
         android:id="@+id/fotoPerfil"
@@ -27,7 +27,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.042"
-        app:srcCompat="@drawable/fotoperfil" />
+        android:src="@drawable/fotoperfil" />
 
     <EditText
         android:id="@+id/pesquisa"
@@ -59,7 +59,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.154"
-        app:srcCompat="@drawable/lupanovo" />
+        android:src="@drawable/lupanovo" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
