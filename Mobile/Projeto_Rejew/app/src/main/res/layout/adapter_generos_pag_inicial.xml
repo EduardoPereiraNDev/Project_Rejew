@@ -5,160 +5,128 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/aventura_imagem"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.02"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.543"
-        android:background="@drawable/borda_10dp"
-        android:padding="5dp"
-        tools:srcCompat="@tools:sample/avatars" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
 
-    <ImageView
-        android:id="@+id/terror_imagem"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.21"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.543"
-        android:background="@drawable/borda_10dp"
-        android:padding="5dp"
-        tools:srcCompat="@tools:sample/avatars" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center">
 
-    <ImageView
-        android:id="@+id/romance_imagem"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.543"
-        android:background="@drawable/borda_10dp"
-        android:padding="5dp"
-        tools:srcCompat="@tools:sample/avatars" />
+                        <ImageView
+                            android:id="@+id/aventura"
+                            android:layout_width="55dp"
+                            android:layout_height="55dp"
+                            android:src="@drawable/aventura" />
 
-    <ImageView
-        android:id="@+id/ficcao_imagem"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.543"
-        android:background="@drawable/borda_10dp"
-        android:padding="5dp"
-        tools:srcCompat="@tools:sample/avatars" />
+                        <TextView
+                            android:id="@+id/textaventura"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Aventura"
+                            android:gravity="center"
+                            android:fontFamily="@font/merriweather_bold" />
+                </LinearLayout>
 
-    <ImageView
-        android:id="@+id/culinaria_imagem"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.8"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.543"
-        android:background="@drawable/borda_10dp"
-        android:padding="5dp"
-        tools:srcCompat="@tools:sample/avatars" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_marginStart="16dp">
 
-    <ImageView
-        android:id="@+id/inf_imagem"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.98"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.543"
-        android:background="@drawable/borda_10dp"
-        android:padding="5dp"
-        tools:srcCompat="@tools:sample/avatars" />
+                        <ImageView
+                            android:id="@+id/terror"
+                            android:layout_width="55dp"
+                            android:layout_height="55dp"
+                            android:src="@drawable/terror" />
 
-    <TextView
-        android:id="@+id/aventura_texto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Aventura"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.014"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.599"  />
+                        <TextView
+                            android:id="@+id/textterror"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Terror"
+                            android:gravity="center"
+                            android:fontFamily="@font/merriweather_bold" />
+                </LinearLayout>
 
-    <TextView
-        android:id="@+id/terror_texto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Terror"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.22"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.599" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_marginStart="16dp">
 
-    <TextView
-        android:id="@+id/romance_texto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Romance"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.411"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.599"  />
+                        <ImageView
+                            android:id="@+id/romance"
+                            android:layout_width="55dp"
+                            android:layout_height="55dp"
+                            android:src="@drawable/romance" />
 
-    <TextView
-        android:id="@+id/ficcao_texto"
-        android:layout_width="63dp"
-        android:layout_height="48dp"
-        android:text="Ficção-  Científica"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.623"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.625"/>
+                        <TextView
+                            android:id="@+id/textromance"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Romance"
+                            android:gravity="center"
+                            android:fontFamily="@font/merriweather_bold" />
+                </LinearLayout>
 
-    <TextView
-        android:id="@+id/culinaria_texto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Culinária"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.797"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.599"  />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_marginStart="16dp">
 
-    <TextView
-        android:id="@+id/inf_texto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=" Infantil"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.98"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.599" />
+                        <ImageView
+                            android:id="@+id/ficcaocienti"
+                            android:layout_width="55dp"
+                            android:layout_height="55dp"
+                            android:layout_marginTop="15dp"
+                            android:src="@drawable/fcientifica" />
+
+                        <TextView
+                            android:id="@+id/textficcaocienti"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/merriweather_bold"
+                            android:gravity="center"
+                            android:text="Ficção Científica" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_marginStart="16dp">
+
+                        <ImageView
+                            android:id="@+id/culinaria"
+                            android:layout_width="55dp"
+                            android:layout_height="55dp"
+                            android:src="@drawable/culinaria" />
+
+                        <TextView
+                            android:id="@+id/textculinaria"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Culinária"
+                            android:gravity="center"
+                            android:fontFamily="@font/merriweather_bold" />
+                </LinearLayout>
+
+        </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
