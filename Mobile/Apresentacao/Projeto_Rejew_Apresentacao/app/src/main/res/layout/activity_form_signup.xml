@@ -88,6 +88,10 @@
         app:layout_constraintVertical_bias="0.04"
         android:src="@drawable/logocanto"/>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6d07de11058b24f00be0f0def3324decec21bdb9
     <EditText
         android:id="@+id/nome"
         style="@style/EditText"
@@ -210,6 +214,10 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.339"
         android:src="@drawable/boneco" />
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6d07de11058b24f00be0f0def3324decec21bdb9
 
     <ImageView
         android:id="@+id/nomeusuarioIcon"
@@ -222,6 +230,10 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.446"
         android:src="@drawable/boneco2" />
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6d07de11058b24f00be0f0def3324decec21bdb9
 
     <ImageView
         android:id="@+id/emailIcon"
@@ -234,6 +246,10 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.551"
         android:src="@drawable/email" />
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6d07de11058b24f00be0f0def3324decec21bdb9
 
     <ImageView
         android:id="@+id/senhaIcon"
@@ -246,5 +262,9 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.66"
         android:src="@drawable/olho" />
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6d07de11058b24f00be0f0def3324decec21bdb9
 
 </androidx.constraintlayout.widget.ConstraintLayout>
