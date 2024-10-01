@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Detalhes do Pokémon</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    #detalhesPokemon {
+      margin-top: 20px;
+    }
+    #imagemPokemon {
+      max-width: 200px;
+      max-height: 200px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Detalhes do Pokémon</h1>
+  <!-- Input para inserir o ID do Pokémon -->
+  <label for="entradaIdPokemon">ID do Pokémon:</label>
+  <input type="number" id="entradaIdPokemon" min="1">
+  <button id="botaoBuscar">Buscar</button>
+  <div id="detalhesPokemon">
+    <!-- Aqui os detalhes do Pokémon serão exibidos dinamicamente -->
+  </div>
+  <script>
+    // Função para exibir os detalhes do Pokémon na página HTML
+    function mostrarDetalhesPokemon(dadosPokemon) {
+      const detalhesPokemon = document.getElementById('detalhesPokemon');
+      detalhesPokemon.innerHTML = ''; // Limpa o conteúdo anterior, se houver
+      // Cria elementos para exibir os detalhes
+      const nomePokemon = document.createElement('h2');
+      nomePokemon.textContent = `Nome: ${dadosPokemon.name}`;
+      const tipoPokemon = document.createElement('p');
+      tipoPokemon.textContent = `Tipo: ${dadosPokemon.types[0].type.name}`;
+      const imagemPokemon = document.createElement('img');
+      imagemPokemon.src = dadosPokemon.sprites.front_default;
+      imagemPokemon.alt = dadosPokemon.name;
+      imagemPokemon.id = 'imagemPokemon';
+      // Adiciona os elementos à div na página HTML
+      detalhesPokemon.appendChild(nomePokemon);
+      detalhesPokemon.appendChild(imagemPokemon);
+      detalhesPokemon.appendChild(tipoPokemon);
+    }
+    // Função para buscar os detalhes do Pokémon com base no ID inserido pelo usuário
+    function buscarPokemon() {
+      const entradaIdPokemon = document.getElementById('entradaIdPokemon');
+      const idPokemon = entradaIdPokemon.value; // Obtém o valor do input
+      // Verifica se o navegador suporta a Cache API
+      if ('caches' in window) {
+        const nomeCache = 'exemploCache';
+        // Abre a cache ou cria uma nova
+        caches.open(nomeCache)
+          .then(cache => {
+            const url = `https://pokeapi.co/api/v2/pokemon/${idPokemon}`;
+            const requisicao = new Request(url);
+            fetch(requisicao)
+              .then(resposta => {
+                // Verifica se a resposta foi bem-sucedida
+                if (resposta.ok) {
+                  return resposta.json(); // Converte a resposta para JSON
+                }
+                throw new Error('Erro na requisição');
+              })
+              .then(dados => {
+                // Armazena os dados do Pokémon na cache
+                cache.put(requisicao, new Response(JSON.stringify(dados)));
+                // Mostra os detalhes do Pokémon na página HTML
+                mostrarDetalhesPokemon(dados);
+              })
+              .catch(erro => {
+                console.error('Erro ao buscar dados:', erro);
+              });
+          });
+      } else {
+        console.error('O navegador não suporta a Cache API.');
+      }
+    }
+    // Associa a função buscarPokemon ao clique do botão
+    const botaoBuscar = document.getElementById('botaoBuscar');
+    botaoBuscar.addEventListener('click', buscarPokemon);
+  </script>
+</body>
+</html>
+ 
