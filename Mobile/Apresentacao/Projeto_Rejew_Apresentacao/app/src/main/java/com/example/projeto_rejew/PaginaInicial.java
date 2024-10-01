@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.PopupMenu;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,7 +12,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class CatalogoRejew extends AppCompatActivity {
+public class PaginaInicial extends AppCompatActivity {
     ImageView imageView;
 
     @Override
@@ -31,7 +29,7 @@ public class CatalogoRejew extends AppCompatActivity {
     }
 
     public void abrirMenu(View v) {
-        Intent intent = new Intent(CatalogoRejew.this, PerfilUsuario.class);
+        Intent intent = new Intent(PaginaInicial.this, PerfilUsuario.class);
         startActivity(intent);
     }
 
@@ -63,23 +61,23 @@ public class CatalogoRejew extends AppCompatActivity {
     }
 */
 
-    public void passarPessoas(View v) {
-        Intent intent = new Intent(CatalogoRejew.this, Pessoas_Comentario.class);
+    public void abrirPessoas(View v) {
+        Intent intent = new Intent(PaginaInicial.this, Pessoas_Comentarios.class);
         startActivity(intent);
     }
 
-    public void passarChat(View v) {
-        Intent intent = new Intent(CatalogoRejew.this, GeneroChat.class);
+    public void abrirChats(View v) {
+        Intent intent = new Intent(PaginaInicial.this, GenerosChat.class);
         startActivity(intent);
     }
 
-    public void passarTelaTerror(View v) {
-        Intent intent = new Intent(CatalogoRejew.this, Categorias.class);
+    public void abrirCategoriaTerror(View v) {
+        Intent intent = new Intent(PaginaInicial.this, Categorias.class);
         startActivity(intent);
     }
 
     public void sairConta(View v) {
-        Intent intent = new Intent(CatalogoRejew.this, MainActivity.class);
+        Intent intent = new Intent(PaginaInicial.this, Home.class);
         startActivity(intent);
     }
 

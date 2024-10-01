@@ -5,8 +5,7 @@
     android:id="@+id/main"
     android:background="@drawable/rejewapp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Home">
+    android:layout_height="match_parent">
 
 
     <TextView
@@ -61,7 +60,7 @@
         android:layout_width="140dp"
         android:layout_height="50dp"
         android:fontFamily="@font/open_sans_semibold"
-        android:onClick="passarTelaCad"
+        android:onClick="abrirLogin"
         android:padding="0dp"
         android:text="LOGIN"
         android:textColor="@color/white"
@@ -79,7 +78,7 @@
         android:layout_width="140dp"
         android:layout_height="50dp"
         android:fontFamily="@font/open_sans_semibold"
-        android:onClick="passarTelaC"
+        android:onClick="abrirSignUp"
         android:padding="0dp"
         android:text="SIGN UP"
         android:textColor="@color/white"

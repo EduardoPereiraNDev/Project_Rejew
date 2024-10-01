@@ -21,7 +21,7 @@
             android:name=".PerfilUsuario"
             android:exported="false" />
         <activity
-            android:name=".GeneroChat"
+            android:name=".GenerosChat"
             android:exported="false" />
         <activity
             android:name=".LivroInterface"
@@ -33,22 +33,22 @@
             android:name=".Chat_Genero"
             android:exported="false" />
         <activity
-            android:name=".Pessoas_Comentario"
+            android:name=".Pessoas_Comentarios"
             android:exported="false" />
         <activity
-            android:name=".CatalogoRejew"
+            android:name=".PaginaInicial"
             android:exported="false" />
         <activity
-            android:name=".EscolhaTipoConta"
+            android:name=".TipoContaLogin"
             android:exported="false" />
         <activity
-            android:name=".FormCadastro"
+            android:name=".FormSignUp"
             android:exported="false" />
         <activity
             android:name=".FormLogin"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Home"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

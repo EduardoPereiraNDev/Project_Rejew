@@ -54,7 +54,7 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/fotostephen"
-        android:layout_width="p"
+        android:layout_width="match_parent"
         android:layout_height="202dp"
         android:src="@drawable/stephen"
         app:layout_constraintBottom_toBottomOf="parent"

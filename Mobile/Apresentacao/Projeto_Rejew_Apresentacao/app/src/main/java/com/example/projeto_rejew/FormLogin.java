@@ -23,19 +23,17 @@ public class FormLogin extends AppCompatActivity {
             return insets;
         });
     }
-
-    public void passarTelaCad(View v) {
-        Intent intent = new Intent(FormLogin.this, FormCadastro.class);
+    public void passarHome(View v){
+        Intent intent = new Intent(FormLogin.this, Home.class);
+        startActivity(intent);
+    }
+    public void entrar(View v){
+        Intent intent = new Intent(FormLogin.this, PaginaInicial.class);
+        startActivity(intent);
+    }
+    public void passarCadastro(View v) {
+        Intent intent = new Intent(FormLogin.this, FormSignUp.class);
         startActivity(intent);
     }
 
-    public void passarTelaEsc(View v) {
-        Intent intent = new Intent(FormLogin.this, EscolhaTipoConta.class);
-        startActivity(intent);
-    }
-
-    public void passarTelaCat(View v) {
-        Intent intent = new Intent(FormLogin.this, CatalogoRejew.class);
-        startActivity(intent);
-    }
 }

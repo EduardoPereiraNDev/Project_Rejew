@@ -10,7 +10,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class MainActivity extends AppCompatActivity {
+public class Home extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,13 +24,13 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void passarTelaL(View v) {
-        Intent intent = new Intent(MainActivity.this, FormLogin.class);
+    public void abrirLogin(View v) {
+        Intent intent = new Intent(Home.this, FormLogin.class);
         startActivity(intent);
     }
 
-    public void passarTelaEsc(View v) {
-        Intent intent = new Intent(MainActivity.this, EscolhaTipoConta.class);
+    public void abrirSignUp(View v) {
+        Intent intent = new Intent(Home.this, TipoContaSignUp.class);
         startActivity(intent);
     }
 

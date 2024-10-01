@@ -10,25 +10,29 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class FormCadastro extends AppCompatActivity {
-
+public class TipoContaSignUp extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_form_signup);
+        setContentView(R.layout.activity_tipo_conta);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
     }
-    public void passarTelaL(View v) {
-        Intent intent = new Intent(FormCadastro.this, FormLogin.class);
+
+    public void voltarHome(View v){
+        Intent intent = new Intent(TipoContaSignUp.this, Home.class);
         startActivity(intent);
     }
-    public void passarTelaCat(View v) {
-        Intent intent = new Intent(FormCadastro.this, CatalogoRejew.class);
+    public void abrirAutor(View v) {
+        Intent intent = new Intent(TipoContaSignUp.this, FormSignUp.class);
+        startActivity(intent);
+    }
+    public void abrirLeitor(View v){
+        Intent intent = new Intent(TipoContaSignUp.this, FormSignUp.class);
         startActivity(intent);
     }
 }
