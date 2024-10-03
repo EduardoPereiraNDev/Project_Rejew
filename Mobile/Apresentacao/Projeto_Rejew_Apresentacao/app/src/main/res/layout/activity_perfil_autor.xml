@@ -53,14 +53,14 @@
 
             <ImageView
                 android:id="@+id/imageView3"
-                android:layout_width="461dp"
-                android:layout_height="269dp"
+                android:layout_width="486dp"
+                android:layout_height="276dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintHorizontal_bias="0.506"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.126"
+                app:layout_constraintVertical_bias="0.136"
                 tools:srcCompat="@drawable/maostephen" />
 
             <de.hdodenhof.circleimageview.CircleImageView
@@ -139,21 +139,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/numerodelivros" />
 
-<<<<<<< HEAD
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/fotostephen"
-        android:layout_width="match_parent"
-        android:layout_height="202dp"
-        android:src="@drawable/stephen"
-        app:layout_constraintBottom_toBottomOf="parent"
-=======
+
     <TextView
         android:id="@+id/tituloseguidores"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Seguidores"
         android:textSize="16sp"
->>>>>>> b37bcaab683c4c96742e219497abd5efd534da22
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
