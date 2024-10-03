@@ -5,8 +5,7 @@
     android:id="@+id/main"
     android:background="@color/orange"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".TipoContaLogin">
+    android:layout_height="match_parent">
 
     <View
         android:id="@+id/brancoquadrado"
