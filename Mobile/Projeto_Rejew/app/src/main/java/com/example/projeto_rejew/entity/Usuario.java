@@ -5,12 +5,11 @@ import java.util.Date;
 
 public class Usuario {
 
-    private Long idUsuario;
     private String nomeUsuario;
     private String nomePerfil;
     private String emailEntrada;
     private String senhaEntrada;
-    private LocalDate dataNascimento;
+    private String dataNascimento;
     private String caminhoImagem;
     private String caminhoImagemFundo;
     private String recadoPerfil;
@@ -24,25 +23,11 @@ public class Usuario {
         this.senhaEntrada = senhaEntrada;
     }
 
-    public Usuario(String nomeUsuario, String nomePerfil, String emailEntrada, String senhaEntrada,
-                   LocalDate dataNascimentoU, String uniqueFilename, String uniqueFilename2, String recadoPerfil) {
-
+    public Usuario(String nome, String nomeUsuario, String email, String senha) {
+        this.nomePerfil = nome;
         this.nomeUsuario = nomeUsuario;
-        this.nomePerfil = nomePerfil;
-        this.emailEntrada = emailEntrada;
-        this.senhaEntrada = senhaEntrada;
-        this.dataNascimento = dataNascimentoU;
-        this.caminhoImagem = uniqueFilename;
-        this.caminhoImagemFundo = uniqueFilename2;
-        this.recadoPerfil = recadoPerfil;
-    }
-
-    public Long getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(Long idUsuario) {
-        this.idUsuario = idUsuario;
+        this.emailEntrada = email;
+        this.senhaEntrada = senha;
     }
 
     public String getNomeUsuario() {
@@ -77,11 +62,11 @@ public class Usuario {
         this.senhaEntrada = senhaEntrada;
     }
 
-    public LocalDate getDataNascimento() {
+    public String getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(LocalDate dataNascimento) {
+    public void setDataNascimento(String dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 

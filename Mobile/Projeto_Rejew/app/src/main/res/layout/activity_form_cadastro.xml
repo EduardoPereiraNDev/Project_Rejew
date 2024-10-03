@@ -40,7 +40,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/nome"
         style="@style/EditText"
         android:hint="@string/nome"
         app:layout_constraintEnd_toEndOf="@+id/view"
@@ -48,62 +48,67 @@
         app:layout_constraintTop_toTopOf="@+id/view" />
 
     <ImageView
+        android:id="@+id/imageView4"
         style="@style/Icons_p"
         android:src="@drawable/boneco"
-        app:layout_constraintBottom_toBottomOf="@+id/editText4"
-        app:layout_constraintEnd_toEndOf="@+id/editText4"
-        app:layout_constraintTop_toTopOf="@+id/editText4" />
+        app:layout_constraintBottom_toBottomOf="@+id/nome"
+        app:layout_constraintEnd_toEndOf="@+id/nome"
+        app:layout_constraintTop_toTopOf="@+id/nome" />
 
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/nomeUsuario"
         style="@style/EditText"
         android:hint="@string/nome_usuario"
+
         app:layout_constraintEnd_toEndOf="@+id/view"
         app:layout_constraintStart_toStartOf="@+id/view"
-        app:layout_constraintTop_toBottomOf="@+id/editText4" />
-
+        app:layout_constraintTop_toBottomOf="@+id/nome" />
 
     <ImageView
         android:id="@+id/imageView10"
         style="@style/Icons_p"
         android:src="@drawable/boneco2"
-        app:layout_constraintBottom_toBottomOf="@+id/editText"
-        app:layout_constraintEnd_toEndOf="@+id/editText"
-        app:layout_constraintTop_toTopOf="@+id/editText" />
+        app:layout_constraintBottom_toBottomOf="@+id/nomeUsuario"
+        app:layout_constraintEnd_toEndOf="@+id/nomeUsuario"
+        app:layout_constraintTop_toTopOf="@+id/nomeUsuario" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/email"
         style="@style/EditText"
         android:hint="@string/email"
         app:layout_constraintEnd_toEndOf="@+id/view"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/view"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/nomeUsuario" />
+
 
     <ImageView
         android:id="@+id/imageView3"
         style="@style/Icons_p"
+        android:layout_marginEnd="44dp"
         android:src="@drawable/email"
-        app:layout_constraintBottom_toBottomOf="@+id/editText3"
-        app:layout_constraintEnd_toEndOf="@+id/editText3"
-        app:layout_constraintTop_toTopOf="@+id/editText3" />
-
+        app:layout_constraintBottom_toBottomOf="@+id/email"
+        app:layout_constraintEnd_toEndOf="@+id/email"
+        app:layout_constraintTop_toTopOf="@+id/email"
+        />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/senha"
         style="@style/EditText"
         android:hint="@string/senha"
         app:layout_constraintEnd_toEndOf="@+id/view"
         app:layout_constraintStart_toStartOf="@+id/view"
-        app:layout_constraintTop_toBottomOf="@+id/editText3" />
+        app:layout_constraintTop_toBottomOf="@+id/email"
+         />
 
     <ImageView
         android:id="@+id/imageView9"
         style="@style/Icons_p"
         android:src="@drawable/olho"
-        app:layout_constraintBottom_toBottomOf="@+id/editText2"
-        app:layout_constraintEnd_toEndOf="@+id/editText2"
-        app:layout_constraintTop_toTopOf="@+id/editText2" />
+        app:layout_constraintBottom_toBottomOf="@+id/senha"
+        app:layout_constraintEnd_toEndOf="@+id/senha"
+        app:layout_constraintTop_toTopOf="@+id/senha" />
 
     <TextView
         android:id="@+id/textView3"
@@ -132,7 +137,7 @@
         android:id="@+id/buttonLogin"
         style="@style/ButtonPag"
         android:text="@string/textCadastre"
-        android:onClick="passarTelaCat"
+        android:onClick="realizarCadastro"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />

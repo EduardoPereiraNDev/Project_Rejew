@@ -12,6 +12,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,7 +36,7 @@ public class UsuarioController {
 
     private static final String UPLOAD_DIR = "C:/Users/rm2869/Desktop/Project_Rejew/Database/UploadsIMGUsuarioPerfil/";
     private static final String UPLOAD_DIR2 = "C:/Users/rm2869/Desktop/Project_Rejew/Database/UploadsIMGUsuarioFundo/";
-
+    
     @Autowired
     private UsuarioRepository usuarioRepository;
     
@@ -47,8 +48,9 @@ public class UsuarioController {
     }
 
     @PostMapping("/login")
-    public Usuario loginUsuario(@RequestBody Usuario Usuario) {
-    	Usuario usuarioEncontrado = usuarioRepository.realizarLogin(Usuario.getEmailEntrada(), Usuario.getSenhaEntrada());
+    public Usuario loginUsuario(@RequestBody Usuario usuario) {
+    	
+    	Usuario usuarioEncontrado = usuarioRepository.realizarLogin(usuario.getEmailEntrada(), usuario.getSenhaEntrada());
 
         if (usuarioEncontrado != null)
         {
@@ -56,6 +58,7 @@ public class UsuarioController {
         } else {
         	Usuario usuarioVazio = new Usuario();
             return usuarioVazio;
+
         }
     }
     
@@ -90,73 +93,29 @@ public class UsuarioController {
 
     // Adicionar um novo usuário
     @PostMapping
-    public ResponseEntity<String> adicionarUsuario(
-            @RequestParam("nomeUsuario") String nomeUsuario,
-            @RequestParam("nomePerfil") String nomePerfil,
-            @RequestParam("emailEntrada") String emailEntrada,
-            @RequestParam("senhaEntrada") String senhaEntrada,
-            @RequestParam("dataNascimento") String dataNascimentoStr,
-            @RequestParam("caminhoImagem") MultipartFile caminhoImagem,
-            @RequestParam("caminhoImagemFundo") MultipartFile caminhoImagemFundo,
-            @RequestParam("recadoPerfil") String recadoPerfil) {
+    public ResponseEntity<String> adicionarUsuario(@RequestBody Usuario usuario) {
 
-    	Optional<Usuario> existingUsuario = usuarioRepository.findByEmailEntrada(emailEntrada);
+    	Optional<Usuario> existingUsuario = usuarioRepository.findByEmailEntrada(usuario.getEmailEntrada());
         if (existingUsuario.isPresent()) {
-            throw new IllegalArgumentException("Email já cadastrado: " + emailEntrada);
+            throw new IllegalArgumentException("Email já cadastrado: " + usuario.getEmailEntrada());
         }
-        if (nomeUsuario == null || nomeUsuario.isEmpty()) {
+        if (usuario.getNomeUsuario() == null || usuario.getNomeUsuario().isEmpty()) {
             return ResponseEntity.badRequest().body("Nome do usuário é obrigatório.");
         }
 
-        if (emailEntrada == null || emailEntrada.isEmpty()) {
+        if (usuario.getEmailEntrada() == null || usuario.getEmailEntrada().isEmpty()) {
             return ResponseEntity.badRequest().body("Email é obrigatório.");
         }
 
-        if (senhaEntrada == null || senhaEntrada.isEmpty()) {
+        if (usuario.getSenhaEntrada() == null || usuario.getSenhaEntrada().isEmpty()) {
             return ResponseEntity.badRequest().body("Senha é obrigatória.");
         }
 
-        // Lógica para salvar as imagens e o usuário
-        try {
-            File dir = new File(UPLOAD_DIR);
-            File dir2 = new File(UPLOAD_DIR2);
-            if (!dir.exists()) {
-                dir.mkdirs();
-            }
-            if (!dir2.exists()) {
-                dir2.mkdirs();
-            }
-
-            // Imagem de perfil
-            String originalFilename = caminhoImagem.getOriginalFilename();
-            String fileExtension = originalFilename != null ? originalFilename.substring(originalFilename.lastIndexOf(".")) : "";
-            String uniqueFilename = generateUniqueFilename(fileExtension);
-            Path path = Paths.get(UPLOAD_DIR + uniqueFilename);
-            Files.write(path, caminhoImagem.getBytes());
-
-            // Imagem de fundo
-            String originalFilename2 = caminhoImagemFundo.getOriginalFilename();
-            String fileExtension2 = originalFilename2 != null ? originalFilename2.substring(originalFilename2.lastIndexOf(".")) : "";
-            String uniqueFilename2 = generateUniqueFilename(fileExtension2);
-            Path path2 = Paths.get(UPLOAD_DIR2 + uniqueFilename2);
-            Files.write(path2, caminhoImagemFundo.getBytes());
-
-            // Converter String para LocalDate
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-            LocalDate dataNascimento = LocalDate.parse(dataNascimentoStr, formatter);
-
-            // Criar o novo usuário e salvar no banco de dados
-            Usuario usuario = new Usuario(nomeUsuario, nomePerfil, emailEntrada, senhaEntrada, dataNascimento, uniqueFilename, uniqueFilename2, recadoPerfil);
             usuarioRepository.save(usuario);
 
             return ResponseEntity.ok("Usuário cadastrado com sucesso.");
-        } catch (IOException e) {
-            e.printStackTrace();
-            return ResponseEntity.status(500).body("Erro ao enviar os arquivos.");
-        }
     }
 
-    // Atualizar um usuário por email
     @PutMapping("/{emailUsuario}")
     public ResponseEntity<Usuario> atualizarUsuario(
             @PathVariable String emailUsuario,
@@ -164,51 +123,42 @@ public class UsuarioController {
             @RequestParam("nomePerfil") String nomePerfil,
             @RequestParam("emailEntrada") String emailEntrada,
             @RequestParam("dataNascimento") String dataNascimentoStr,
-            @RequestParam("caminhoImagem") MultipartFile caminhoImagem,
-            @RequestParam("caminhoImagemFundo") MultipartFile caminhoImagemFundo,
+            @RequestParam(value = "caminhoImagem", required = false) MultipartFile caminhoImagem,
+            @RequestParam(value = "caminhoImagemFundo", required = false) MultipartFile caminhoImagemFundo,
             @RequestParam("recadoPerfil") String recadoPerfil) {
 
         Optional<Usuario> optionalUsuario = usuarioRepository.findByEmailEntrada(emailUsuario);
         if (optionalUsuario.isPresent()) {
             try {
                 Usuario usuarioAtual = optionalUsuario.get();
-
-                // Atualização das imagens
                 if (caminhoImagem != null && !caminhoImagem.isEmpty()) {
-                    String nomeAntigo = usuarioAtual.getCaminhoImagem();
-                    Path arquivoAntigo = Paths.get(UPLOAD_DIR + nomeAntigo);
-                    String nomeOriginal = caminhoImagem.getOriginalFilename();
-                    String extensaoArquivo = nomeOriginal != null ? nomeOriginal.substring(nomeOriginal.lastIndexOf(".")) : "";
-                    String nomeNovo = generateUniqueFilename(extensaoArquivo);
-                    Files.move(arquivoAntigo, arquivoAntigo.resolveSibling(nomeNovo));
+                    if (usuarioAtual.getCaminhoImagem() != null && !usuarioAtual.getCaminhoImagem().isEmpty()) {
+                        Path arquivoAntigo = Paths.get(UPLOAD_DIR + usuarioAtual.getCaminhoImagem());
+                        Files.deleteIfExists(arquivoAntigo);
+                    }
+                    String nomeNovo = generateUniqueFilename(extensaoArquivo(caminhoImagem.getOriginalFilename()));
+                    Path path = Paths.get(UPLOAD_DIR + nomeNovo);
+                    Files.write(path, caminhoImagem.getBytes());
                     usuarioAtual.setCaminhoImagem(nomeNovo);
-                    Path novoCaminho = Paths.get(UPLOAD_DIR + nomeNovo);
-                    Files.write(novoCaminho, caminhoImagem.getBytes());
                 }
-
                 if (caminhoImagemFundo != null && !caminhoImagemFundo.isEmpty()) {
-                    String nomeAntigoFundo = usuarioAtual.getCaminhoImagemFundo();
-                    Path arquivoAntigoFundo = Paths.get(UPLOAD_DIR2 + nomeAntigoFundo);
-                    String nomeOriginalFundo = caminhoImagemFundo.getOriginalFilename();
-                    String extensaoArquivoFundo = nomeOriginalFundo != null ? nomeOriginalFundo.substring(nomeOriginalFundo.lastIndexOf(".")) : "";
-                    String nomeNovoFundo = generateUniqueFilename(extensaoArquivoFundo);
-                    Files.move(arquivoAntigoFundo, arquivoAntigoFundo.resolveSibling(nomeNovoFundo));
+                    if (usuarioAtual.getCaminhoImagemFundo() != null && !usuarioAtual.getCaminhoImagemFundo().isEmpty()) {
+                        Path arquivoAntigoFundo = Paths.get(UPLOAD_DIR2 + usuarioAtual.getCaminhoImagemFundo());
+                        Files.deleteIfExists(arquivoAntigoFundo);
+                    }
+                    // Adiciona a nova imagem de fundo
+                    String nomeNovoFundo = generateUniqueFilename(extensaoArquivo(caminhoImagemFundo.getOriginalFilename()));
+                    Path pathFundo = Paths.get(UPLOAD_DIR2 + nomeNovoFundo);
+                    Files.write(pathFundo, caminhoImagemFundo.getBytes());
                     usuarioAtual.setCaminhoImagemFundo(nomeNovoFundo);
-                    Path novoCaminhoFundo = Paths.get(UPLOAD_DIR2 + nomeNovoFundo);
-                    Files.write(novoCaminhoFundo, caminhoImagemFundo.getBytes());
                 }
-
-                // Atualização de outros dados
                 usuarioAtual.setNomeUsuario(nomeUsuario);
                 usuarioAtual.setNomePerfil(nomePerfil);
                 usuarioAtual.setEmailEntrada(emailEntrada);
-
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
                 LocalDate dataNascimento = LocalDate.parse(dataNascimentoStr, formatter);
                 usuarioAtual.setDataNascimento(dataNascimento);
-
                 usuarioAtual.setRecadoPerfil(recadoPerfil);
-
                 Usuario usuarioAtualizado = usuarioRepository.save(usuarioAtual);
                 return ResponseEntity.ok(usuarioAtualizado);
             } catch (IOException e) {
@@ -216,7 +166,6 @@ public class UsuarioController {
                 return ResponseEntity.status(500).body(null);
             }
         }
-
         return ResponseEntity.notFound().build();
     }
 
@@ -246,5 +195,12 @@ public class UsuarioController {
         String timestamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
         String uniqueSuffix = String.valueOf(System.currentTimeMillis());
         return timestamp + "-" + uniqueSuffix + extension;
+    }
+    
+    private String extensaoArquivo(String filename) {
+        if (filename != null && filename.contains(".")) {
+            return filename.substring(filename.lastIndexOf("."));
+        }
+        return "";
     }
 }

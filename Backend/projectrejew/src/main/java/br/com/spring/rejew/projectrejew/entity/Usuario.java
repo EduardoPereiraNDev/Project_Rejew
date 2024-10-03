@@ -15,8 +15,6 @@ import lombok.Data;
 
 @Entity
 @Table(name = "usuario")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@Data
 public class Usuario implements Serializable {
 	
 	public Usuario() {
@@ -38,8 +36,7 @@ public class Usuario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	   
-
+	  
     @Column(name = "nome_Usuario")
     private String nomeUsuario;
 
@@ -64,5 +61,72 @@ public class Usuario implements Serializable {
 
     @Column(name = "recado_Perfil")
     private String recadoPerfil;
+    
+    
+
+	public String getNomeUsuario() {
+		return nomeUsuario;
+	}
+
+	public void setNomeUsuario(String nomeUsuario) {
+		this.nomeUsuario = nomeUsuario;
+	}
+
+	public String getNomePerfil() {
+		return nomePerfil;
+	}
+
+	public void setNomePerfil(String nomePerfil) {
+		this.nomePerfil = nomePerfil;
+	}
+
+	public String getEmailEntrada() {
+		return emailEntrada;
+	}
+
+	public void setEmailEntrada(String emailEntrada) {
+		this.emailEntrada = emailEntrada;
+	}
+
+	public String getSenhaEntrada() {
+		return senhaEntrada;
+	}
+
+	public void setSenhaEntrada(String senhaEntrada) {
+		this.senhaEntrada = senhaEntrada;
+	}
+
+	public LocalDate getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public void setDataNascimento(LocalDate dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+
+	public String getCaminhoImagem() {
+		return caminhoImagem;
+	}
+
+	public void setCaminhoImagem(String caminhoImagem) {
+		this.caminhoImagem = caminhoImagem;
+	}
+
+	public String getCaminhoImagemFundo() {
+		return caminhoImagemFundo;
+	}
+
+	public void setCaminhoImagemFundo(String caminhoImagemFundo) {
+		this.caminhoImagemFundo = caminhoImagemFundo;
+	}
+
+	public String getRecadoPerfil() {
+		return recadoPerfil;
+	}
+
+	public void setRecadoPerfil(String recadoPerfil) {
+		this.recadoPerfil = recadoPerfil;
+	}
+    
 
 }

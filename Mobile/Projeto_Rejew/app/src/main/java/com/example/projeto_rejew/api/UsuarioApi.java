@@ -44,15 +44,7 @@ public interface UsuarioApi {
 
     @Multipart
     @POST("usuarios")
-    Call<String> criarUsuario(
-            @Part("nomeUsuario") RequestBody nomeUsuario,
-            @Part("nomePerfil") RequestBody nomePerfil,
-            @Part("emailEntrada") RequestBody emailEntrada,
-            @Part("senhaEntrada") RequestBody senhaEntrada,
-            @Part("dataNascimento") RequestBody dataNascimento,
-            @Part MultipartBody.Part caminhoImagem,
-            @Part MultipartBody.Part caminhoImagemFundo,
-            @Part("recadoPerfil") RequestBody recadoPerfil);
+    Call<Usuario> criarUsuario(@Body Usuario usuario);
 
     @Multipart
     @PUT("usuarios/{emailUsuario}")

@@ -51,15 +51,20 @@ public class FormLogin extends AppCompatActivity {
 
             @Override
             public void onSuccess(Usuario usuario) {
+                AlertDialog.Builder alerta = new AlertDialog.Builder(FormLogin.this);
                 if (usuario.getEmailEntrada() == null){
-                    AlertDialog.Builder alerta = new AlertDialog.Builder(FormLogin.this);
                     alerta.setCancelable(false);
                     alerta.setTitle("Falha No Login");
                     alerta.setMessage("Não Existe nenhum usuário com estes dados");
-                    alerta.setNegativeButton("Ok",null);
+                    alerta.setNegativeButton("Voltar",null);
                     alerta.create().show();
                 }else{
-                    Intent intent = new Intent(FormLogin.this, EscolhaTipoConta.class);
+                    alerta.setCancelable(false);
+                    alerta.setTitle("Login");
+                    alerta.setMessage("Login feito com sucesso");
+                    alerta.setNegativeButton("Ok",null);
+                    alerta.create().show();
+                    Intent intent = new Intent(FormLogin.this, CatalogoRejew.class);
                     startActivity(intent);
                 }
             }
@@ -69,7 +74,7 @@ public class FormLogin extends AppCompatActivity {
                 alerta.setCancelable(false);
                 alerta.setTitle("Login");
                 alerta.setMessage("Falha ao realizar Login" +t.getMessage());
-                alerta.setNegativeButton("Falouu",null);
+                alerta.setNegativeButton("Voltar",null);
                 alerta.create().show();
             }
         });

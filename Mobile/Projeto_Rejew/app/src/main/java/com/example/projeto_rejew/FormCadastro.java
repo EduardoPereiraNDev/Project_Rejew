@@ -3,14 +3,25 @@ package com.example.projeto_rejew;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.projeto_rejew.api.RetrofitClient;
+import com.example.projeto_rejew.api.UsuarioAPIController;
+import com.example.projeto_rejew.entity.Usuario;
+
 public class FormCadastro extends AppCompatActivity {
+
+    private EditText email;
+    private EditText senha;
+    private EditText nome;
+    private EditText nomeUsuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +33,59 @@ public class FormCadastro extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        email = findViewById(R.id.email);
+        senha = findViewById(R.id.senha);
+        nome = findViewById(R.id.nome);
+        nomeUsuario = findViewById(R.id.nomeUsuario);
     }
+
+    public void realizarCadastro(View view){
+
+        String nome2 = nome.getText().toString();
+        String nomeUsuario2 = nomeUsuario.getText().toString();
+        String email2 = email.getText().toString();
+        String senha2 = email.getText().toString();
+
+        Usuario usuario = new Usuario(nome2, nomeUsuario2, email2 ,senha2);
+
+        RetrofitClient retrofitClient;
+        retrofitClient = new RetrofitClient();
+
+        UsuarioAPIController userAPIController = new UsuarioAPIController(retrofitClient);
+        userAPIController.cadastrarUsuario(usuario ,  new UsuarioAPIController.UsuarioCallback(){
+
+            @Override
+            public void onSuccess(Usuario usuario) {
+                AlertDialog.Builder alerta = new AlertDialog.Builder(FormCadastro.this);
+                if (usuario.getEmailEntrada() == null){
+                    alerta.setCancelable(false);
+                    alerta.setTitle("Falha no Cadastro");
+                    alerta.setMessage("Dados Vazios ou invalidos");
+                    alerta.setNegativeButton("Voltar",null);
+                    alerta.create().show();
+                }else{
+                    alerta.setCancelable(false);
+                    alerta.setTitle("Login");
+                    alerta.setMessage("Cadastro realizado com sucesso, faça login novamente");
+                    alerta.setNegativeButton("Ok",null);
+                    alerta.create().show();
+                    Intent intent = new Intent(FormCadastro.this, MainActivity.class);
+                    startActivity(intent);
+                }
+            }
+            @Override
+            public void onFailure(Throwable t) {
+                AlertDialog.Builder alerta = new AlertDialog.Builder(FormCadastro.this);
+                alerta.setCancelable(false);
+                alerta.setTitle("Cadastro");
+                alerta.setMessage("Falha ao realizar Cadastro" +t.getMessage());
+                alerta.setNegativeButton("Voltar",null);
+                alerta.create().show();
+            }
+        });
+
+    }
+
     public void passarTelaL(View v) {
         Intent intent = new Intent(FormCadastro.this, FormLogin.class);
         startActivity(intent);
