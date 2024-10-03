@@ -26,7 +26,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, String> {
     
     @Modifying
     @Transactional
-    @Query("DELETE FROM Usuario u WHERE u.emailEntrada = emailEntrada")
+    @Query("DELETE FROM Usuario u WHERE u.emailEntrada = :emailEntrada")
     void deleteByEmailEntrada(String emailEntrada);
     
     @Query("SELECT u FROM Usuario u WHERE u.emailEntrada LIKE %:emailEntrada%")

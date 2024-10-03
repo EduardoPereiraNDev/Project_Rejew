@@ -25,6 +25,9 @@ public interface LivroApi {
     @GET("livros/nome/{nome}")
     Call<List<Livro>> buscarLivroPorNome(@Path("nome") String nome);
 
+    @GET("livros/imagem/{caminho}")
+    Call<byte[]> retornarImagem(@Path("caminho") String caminho);
+
     @GET("livros/autor/{autor}")
     Call<List<Livro>> buscarLivroPorAutor(@Path("autor") String autor);
 

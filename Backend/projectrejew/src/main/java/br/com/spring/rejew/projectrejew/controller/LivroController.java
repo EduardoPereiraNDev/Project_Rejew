@@ -12,6 +12,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -34,6 +35,24 @@ public class LivroController {
     public ResponseEntity<List<Livro>> listarTodosLivros() {
         List<Livro> livros = livroRepository.findAll();
         return ResponseEntity.ok(livros);
+    }
+    
+    @GetMapping("/imagem/{caminho}")
+    public ResponseEntity<byte[]> retornarImagem(@PathVariable String caminho) {
+        if (caminho == null || caminho.trim().isEmpty()) {
+            return ResponseEntity.badRequest().body(null);
+        }
+        File imagemArquivo = new File(UPLOAD_DIR + caminho);
+        if (!imagemArquivo.exists()) {
+            return ResponseEntity.notFound().build();
+        }
+        try {
+            byte[] bytes = Files.readAllBytes(imagemArquivo.toPath());
+            return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(bytes);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
     }
 
     // Buscar um livro por ID
