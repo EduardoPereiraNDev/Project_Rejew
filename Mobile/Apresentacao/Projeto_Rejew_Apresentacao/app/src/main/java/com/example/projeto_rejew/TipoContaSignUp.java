@@ -28,7 +28,7 @@ public class TipoContaSignUp extends AppCompatActivity {
         startActivity(intent);
     }
     public void abrirAutor(View v) {
-        Intent intent = new Intent(TipoContaSignUp.this, FormSignUp.class);
+        Intent intent = new Intent(TipoContaSignUp.this, FormSignUp_Autor.class);
         startActivity(intent);
     }
     public void abrirLeitor(View v){

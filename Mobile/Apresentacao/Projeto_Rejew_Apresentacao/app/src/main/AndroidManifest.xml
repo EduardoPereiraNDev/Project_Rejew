@@ -39,10 +39,13 @@
             android:name=".PaginaInicial"
             android:exported="false" />
         <activity
-            android:name=".TipoContaLogin"
+            android:name=".TipoContaSignUp"
             android:exported="false" />
         <activity
             android:name=".FormSignUp"
+            android:exported="false" />
+        <activity
+            android:name=".FormSignUp_Autor"
             android:exported="false" />
         <activity
             android:name=".FormLogin"

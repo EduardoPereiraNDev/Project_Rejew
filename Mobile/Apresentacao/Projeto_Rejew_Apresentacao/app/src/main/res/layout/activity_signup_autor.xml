@@ -5,7 +5,8 @@
     android:id="@+id/main"
     android:background="@color/orange"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".FormSignUp_Autor">
 
     <ImageView
         android:id="@+id/circuloazul"
@@ -90,32 +91,20 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.307" />
 
-    <EditText
-        android:id="@+id/nomeUsuario"
-        style="@style/EditText"
-        android:layout_width="280dp"
-        android:layout_height="56dp"
-        android:fontFamily="@font/open_sans"
-        android:hint="Nome de usuário"
-        android:textColorHint="@color/black"
-        android:textSize="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.423" />
-
     <Spinner
         android:id="@+id/spinner"
         style="@style/EditText"
         android:layout_width="280dp"
         android:layout_height="56dp"
         android:fontFamily="@font/open_sans"
-        android:textColorHint="@color/black"
         android:textSize="16dp"
-        tools:layout_editor_absoluteX="40dp"
-        tools:layout_editor_absoluteY="649dp" />
+        android:padding="13dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.423"/>
 
     <EditText
         android:id="@+id/email"
@@ -178,18 +167,6 @@
         android:src="@drawable/boneco" />
 
     <ImageView
-        android:id="@+id/nomeusuarioIcon"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.8"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.446"
-        android:src="@drawable/boneco2" />
-
-    <ImageView
         android:id="@+id/emailIcon"
         android:layout_width="30dp"
         android:layout_height="30dp"
@@ -227,22 +204,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.916" />
-
-    <TextView
-        android:id="@+id/texto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="337dp"
-        tools:layout_editor_absoluteY="668dp" />
-
-    <Button
-        android:id="@+id/botao"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="242dp"
-        tools:layout_editor_absoluteY="704dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
