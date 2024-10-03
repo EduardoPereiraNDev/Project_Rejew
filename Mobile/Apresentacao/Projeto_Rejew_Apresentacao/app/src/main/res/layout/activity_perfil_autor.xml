@@ -5,13 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
     <View
         android:id="@+id/brancoquadrado"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:background="@color/white"
         android:backgroundTint="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,37 +39,220 @@
         app:layout_constraintVertical_bias="0.458"
         app:srcCompat="@drawable/setavoltarazul" />
 
+
     <TextView
         android:id="@+id/nomedoautor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
         android:text="stephenking💀"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/brancoquadrado"
+        app:layout_constraintEnd_toEndOf="@+id/brancoquadrado"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="461dp"
+                android:layout_height="269dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.126"
+                tools:srcCompat="@drawable/maostephen" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/fotostephen"
+                android:layout_width="213dp"
+                android:layout_height="284dp"
+                android:src="@drawable/stephen"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.474"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.358" />
+
+            <TextView
+        android:id="@+id/bio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Autor de livros"
+        android:textSize="12sp"
+        tools:layout_editor_absoluteX="167dp"
+        tools:layout_editor_absoluteY="513dp" />
+
+    <TextView
+        android:id="@+id/nomeautor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-condensed-light"
+        android:text="Stephen King"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fotostephen" />
+
+            <TextView
+                android:id="@+id/numerodelivros"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="60"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="@+id/numerosdeseguidores"
+                app:layout_constraintHorizontal_bias="0.431"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/numerosdeseguidores" />
+
+            <TextView
+        android:id="@+id/numerosdeseguindo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="756"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.538"
+        app:layout_constraintStart_toEndOf="@+id/numerosdeseguidores"
+        app:layout_constraintTop_toBottomOf="@+id/biografiatres" />
+
+    <TextView
+        android:id="@+id/numerosdeseguidores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="3M"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/brancoquadrado" />
+        app:layout_constraintTop_toBottomOf="@+id/biografiatres" />
 
-    <ImageView
-        android:id="@+id/anabelle"
-        android:layout_width="501dp"
-        android:layout_height="310dp"
-        android:layout_marginTop="24dp"
-        android:src="@drawable/fundoanabelle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
+    <TextView
+        android:id="@+id/titulolivros"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Livros"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toStartOf="@+id/tituloseguidores"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nomedoautor" />
+        app:layout_constraintTop_toBottomOf="@+id/numerodelivros" />
 
+<<<<<<< HEAD
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/fotostephen"
-        android:layout_width="p"
+        android:layout_width="match_parent"
         android:layout_height="202dp"
         android:src="@drawable/stephen"
         app:layout_constraintBottom_toBottomOf="parent"
+=======
+    <TextView
+        android:id="@+id/tituloseguidores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Seguidores"
+        android:textSize="16sp"
+>>>>>>> b37bcaab683c4c96742e219497abd5efd534da22
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.459" />
+        app:layout_constraintTop_toBottomOf="@+id/numerosdeseguidores" />
+
+    <TextView
+        android:id="@+id/tituloseguindo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Seguindo"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tituloseguidores"
+        app:layout_constraintTop_toBottomOf="@+id/numerosdeseguindo" />
+
+    <TextView
+        android:id="@+id/biografiaum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="📌 Portland, Maine - EUA "
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.511"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/biografiadois" />
+
+    <TextView
+        android:id="@+id/biografiadois"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="📅 1947 (76 anos) "
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bio" />
+
+    <TextView
+        android:id="@+id/biografiatres"
+        android:layout_width="175dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="12dp"
+        android:text="📚 Gêneros: ficção sobrenatural, suspense, ficção científica e fantasia."
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/biografiaum" />
+
+    <Button
+        android:id="@+id/buttonum"
+        android:layout_width="123dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="64dp"
+        android:backgroundTint="#F2CFCFCF"
+        android:text="SEGUIR"
+        android:textColor="#000000"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titulolivros"
+        app:strokeColor="#F1F1F1" />
+
+    <Button
+        android:id="@+id/buttondois"
+        android:layout_width="134dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="44dp"
+        android:backgroundTint="#F2CFCFCF"
+        android:text="MENSAGEM"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tituloseguindo" />
+
+            <TextView
+                android:id="@+id/livrosescritos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="LIVRO ESCRITOS"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.157"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/buttonum" />
+
+            <TextView
+                android:id="@+id/veja"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="VEJA TODOS"
+                android:textSize="8sp"
+                tools:layout_editor_absoluteX="153dp"
+                tools:layout_editor_absoluteY="853dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

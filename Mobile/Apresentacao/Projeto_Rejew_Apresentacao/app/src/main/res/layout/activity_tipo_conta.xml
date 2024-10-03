@@ -6,7 +6,7 @@
     android:background="@color/orange"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EscolhaTipoConta">
+    tools:context=".TipoContaLogin">
 
     <View
         android:id="@+id/brancoquadrado"
@@ -26,6 +26,7 @@
         android:id="@+id/setaazulautor"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:onClick="voltarHome"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.046"
@@ -94,6 +95,7 @@
         android:id="@+id/leitorIcon"
         android:layout_width="150dp"
         android:layout_height="150dp"
+        android:onClick="abrirLeitor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -110,6 +112,7 @@
         android:text="Leitor"
         android:textColor="@color/white"
         android:textSize="26dp"
+        android:onClick="abrirLeitor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"

@@ -10,28 +10,29 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class MainActivity extends AppCompatActivity {
+public class FormSignUp extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_form_signup);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
     }
-
-    public void passarTelaL(View v) {
-        Intent intent = new Intent(MainActivity.this, FormLogin.class);
+    public void passarLogin(View v) {
+        Intent intent = new Intent(FormSignUp.this, FormLogin.class);
         startActivity(intent);
     }
-
-    public void passarTelaEsc(View v) {
-        Intent intent = new Intent(MainActivity.this, EscolhaTipoConta.class);
+    public void cadastrar(View v) {
+        Intent intent = new Intent(FormSignUp.this, Home.class);
         startActivity(intent);
     }
-
+    public void voltarTipoConta(View v){
+        Intent intent = new Intent(FormSignUp.this, TipoContaSignUp.class);
+        startActivity(intent);
+    }
 }

@@ -5,10 +5,10 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GeneroChat">
+    tools:context=".GenerosChat">
 
     <View
-        android:id="@+id/quadroCinza"
+        android:id="@+id/quadrocinza"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:background="#d9d9d9"
@@ -36,7 +36,7 @@
         tools:ignore="MissingConstraints" />
 
     <ImageView
-        android:id="@+id/setaazulautor"
+        android:id="@+id/setaazulvoltar"
         android:layout_width="50dp"
         android:layout_height="50dp"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -6,7 +6,7 @@
     android:background="@color/orange"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FormCadastro">
+    tools:context=".FormSignUp">
 
     <ImageView
         android:id="@+id/circuloazul"
@@ -60,7 +60,7 @@
         app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.488" />
+        app:layout_constraintVertical_bias="0.489" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonCadastar"
@@ -68,7 +68,7 @@
         android:layout_width="265dp"
         android:layout_height="51dp"
         android:fontFamily="@font/open_sans_medium"
-        android:onClick="passarTelaCat"
+        android:onClick="cadastrar"
         android:text="CADASTRAR"
         android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -81,6 +81,7 @@
         android:id="@+id/logoCanto"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:onClick="voltarTipoConta"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.917"
@@ -192,7 +193,7 @@
         android:text="LOGIN"
         android:textColor="#004aad"
         android:textSize="11dp"
-        android:onClick="passarTelaL"
+        android:onClick="passarLogin"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.806"
