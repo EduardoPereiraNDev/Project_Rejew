@@ -42,7 +42,6 @@ public interface UsuarioApi {
     @POST("usuarios/login")
     Call<Usuario> loginUsuario(@Body Usuario usuario);
 
-    @Multipart
     @POST("usuarios")
     Call<Usuario> criarUsuario(@Body Usuario usuario);
 

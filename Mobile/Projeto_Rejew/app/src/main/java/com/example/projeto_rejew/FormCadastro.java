@@ -2,6 +2,7 @@ package com.example.projeto_rejew;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.EditText;
 
@@ -44,46 +45,53 @@ public class FormCadastro extends AppCompatActivity {
         String nome2 = nome.getText().toString();
         String nomeUsuario2 = nomeUsuario.getText().toString();
         String email2 = email.getText().toString();
-        String senha2 = email.getText().toString();
+        String senha2 = senha.getText().toString();
 
-        Usuario usuario = new Usuario(nome2, nomeUsuario2, email2 ,senha2);
+        if (nome2 == null || nomeUsuario2 == null || email2 == null || senha2 == null) {
+            AlertDialog.Builder alerta = new AlertDialog.Builder(FormCadastro.this);
+            alerta.setCancelable(false);
+            alerta.setTitle("Falha no Cadastro");
+            alerta.setMessage("Dados Vazios ou invalidos");
+            alerta.setNegativeButton("Voltar", null);
+            alerta.create().show();
+        }else {
 
-        RetrofitClient retrofitClient;
-        retrofitClient = new RetrofitClient();
+            Usuario usuario = new Usuario(nome2, nomeUsuario2, email2, senha2);
 
-        UsuarioAPIController userAPIController = new UsuarioAPIController(retrofitClient);
-        userAPIController.cadastrarUsuario(usuario ,  new UsuarioAPIController.UsuarioCallback(){
+            RetrofitClient retrofitClient;
+            retrofitClient = new RetrofitClient();
 
-            @Override
-            public void onSuccess(Usuario usuario) {
-                AlertDialog.Builder alerta = new AlertDialog.Builder(FormCadastro.this);
-                if (usuario.getEmailEntrada() == null){
-                    alerta.setCancelable(false);
-                    alerta.setTitle("Falha no Cadastro");
-                    alerta.setMessage("Dados Vazios ou invalidos");
-                    alerta.setNegativeButton("Voltar",null);
-                    alerta.create().show();
-                }else{
+            UsuarioAPIController userAPIController = new UsuarioAPIController(retrofitClient);
+            userAPIController.cadastrarUsuario(usuario, new UsuarioAPIController.UsuarioCallback() {
+
+                @Override
+                public void onSuccess(Usuario usuario) {
+                    AlertDialog.Builder alerta = new AlertDialog.Builder(FormCadastro.this);
                     alerta.setCancelable(false);
                     alerta.setTitle("Login");
                     alerta.setMessage("Cadastro realizado com sucesso, faça login novamente");
-                    alerta.setNegativeButton("Ok",null);
+                    alerta.setNegativeButton("Ok", null);
                     alerta.create().show();
-                    Intent intent = new Intent(FormCadastro.this, MainActivity.class);
-                    startActivity(intent);
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            Intent intent = new Intent(FormCadastro.this, MainActivity.class);
+                            startActivity(intent);
+                        }
+                    }, 5000);
                 }
-            }
-            @Override
-            public void onFailure(Throwable t) {
-                AlertDialog.Builder alerta = new AlertDialog.Builder(FormCadastro.this);
-                alerta.setCancelable(false);
-                alerta.setTitle("Cadastro");
-                alerta.setMessage("Falha ao realizar Cadastro" +t.getMessage());
-                alerta.setNegativeButton("Voltar",null);
-                alerta.create().show();
-            }
-        });
 
+                @Override
+                public void onFailure(Throwable t) {
+                    AlertDialog.Builder alerta = new AlertDialog.Builder(FormCadastro.this);
+                    alerta.setCancelable(false);
+                    alerta.setTitle("Cadastro");
+                    alerta.setMessage("Falha ao realizar Cadastro" + t.getMessage());
+                    alerta.setNegativeButton("Voltar", null);
+                    alerta.create().show();
+                }
+            });
+        }
     }
 
     public void passarTelaL(View v) {

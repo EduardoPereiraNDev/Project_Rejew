@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 
@@ -93,27 +94,24 @@ public class UsuarioController {
 
     // Adicionar um novo usuário
     @PostMapping
-    public ResponseEntity<String> adicionarUsuario(@RequestBody Usuario usuario) {
-
-    	Optional<Usuario> existingUsuario = usuarioRepository.findByEmailEntrada(usuario.getEmailEntrada());
+    public ResponseEntity<Map<String, String>> adicionarUsuario(@RequestBody Usuario usuario) {
+        Optional<Usuario> existingUsuario = usuarioRepository.findByEmailEntrada(usuario.getEmailEntrada());
+        
         if (existingUsuario.isPresent()) {
-            throw new IllegalArgumentException("Email já cadastrado: " + usuario.getEmailEntrada());
+            return ResponseEntity.badRequest().body(Map.of("error", "Email já cadastrado: " + usuario.getEmailEntrada()));
         }
         if (usuario.getNomeUsuario() == null || usuario.getNomeUsuario().isEmpty()) {
-            return ResponseEntity.badRequest().body("Nome do usuário é obrigatório.");
+            return ResponseEntity.badRequest().body(Map.of("error", "Nome do usuário é obrigatório."));
         }
-
         if (usuario.getEmailEntrada() == null || usuario.getEmailEntrada().isEmpty()) {
-            return ResponseEntity.badRequest().body("Email é obrigatório.");
+            return ResponseEntity.badRequest().body(Map.of("error", "Email é obrigatório."));
         }
-
         if (usuario.getSenhaEntrada() == null || usuario.getSenhaEntrada().isEmpty()) {
-            return ResponseEntity.badRequest().body("Senha é obrigatória.");
+            return ResponseEntity.badRequest().body(Map.of("error", "Senha é obrigatória."));
         }
 
-            usuarioRepository.save(usuario);
-
-            return ResponseEntity.ok("Usuário cadastrado com sucesso.");
+        usuarioRepository.save(usuario);
+        return ResponseEntity.ok(Map.of("message", "Usuário cadastrado com sucesso."));
     }
 
     @PutMapping("/{emailUsuario}")

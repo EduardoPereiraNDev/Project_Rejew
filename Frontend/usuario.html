@@ -66,7 +66,7 @@
                         row.insertCell(0).textContent = usuario.emailEntrada;
                         row.insertCell(1).textContent = usuario.nomeUsuario;
                         row.insertCell(2).textContent = usuario.nomePerfil;
-                        row.insertCell(3).textContent = new Date(usuario.dataNascimento).toLocaleDateString();
+                        row.insertCell(3).textContent = new Date(usuario.dataNascimento).toLocaleDateString() || "Não constatado";
                         row.insertCell(4).textContent = usuario.caminhoImagem;
                         row.insertCell(5).textContent = usuario.caminhoImagemFundo;
                         row.insertCell(6).textContent = usuario.recadoPerfil;
