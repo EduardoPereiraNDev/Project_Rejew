@@ -18,8 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+        android:layout_height="wrap_content">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/fotoperfil"
@@ -82,15 +81,17 @@
         app:layout_constraintStart_toStartOf="@+id/barrapesquisa"
         app:layout_constraintTop_toTopOf="@+id/barrapesquisa" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
+        <TextView
+            android:id="@+id/textView12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:fontFamily="@font/open_sans_medium"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="25dp"
+            android:text="Aventura"
+            android:textSize="25dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-            app:layoutManager="LinearLayoutManager"
-            android:orientation="horizontal"/>
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
         <LinearLayout
         android:id="@+id/linearLayout"
@@ -119,7 +120,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:fontFamily="@font/merriweather_bold"
+                android:fontFamily="@font/open_sans_medium"
                 android:gravity="center"
                 android:text="Aventura" />
         </LinearLayout>
@@ -142,7 +143,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:fontFamily="@font/merriweather_bold"
+                android:fontFamily="@font/open_sans_medium"
                 android:gravity="center"
                 android:text="Terror" />
         </LinearLayout>
@@ -165,7 +166,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:fontFamily="@font/merriweather_bold"
+                android:fontFamily="@font/open_sans_medium"
                 android:gravity="center"
                 android:text="Romance" />
         </LinearLayout>
@@ -189,7 +190,7 @@
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:fontFamily="@font/merriweather_bold"
+                android:fontFamily="@font/open_sans_medium"
                 android:gravity="center"
                 android:text="Ficção Científica" />
         </LinearLayout>
@@ -212,12 +213,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:fontFamily="@font/merriweather_bold"
+                android:fontFamily="@font/open_sans_medium"
                 android:gravity="center"
                 android:text="Culinária" />
         </LinearLayout>
 
     </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewAventura"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layoutManager="LinearLayoutManager"
+            android:layout_marginTop="-35dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView12" />
     </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
     <View
@@ -263,6 +275,7 @@
         app:layout_constraintTop_toTopOf="@+id/view5"
         app:layout_constraintVertical_bias="0.523"
         app:srcCompat="@drawable/amigosbrancooo" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,6 +7,10 @@
         <item name="android:layout_marginEnd">30dp</item>
     </style>
 
+    <style name="ViewRedonda">
+        <item name="android:background">@drawable/view_redonda</item>
+    </style>
+
     <style name="ButtonCadastrar">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>

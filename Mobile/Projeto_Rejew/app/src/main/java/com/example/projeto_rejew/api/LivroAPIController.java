@@ -6,6 +6,7 @@ import com.example.projeto_rejew.entity.Livro;
 
 import java.util.List;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -49,22 +50,27 @@ public class LivroAPIController {
             }
         });
     }
-    public void retornarImagem(LivroCallback responseCallback, String nomeImagem) {
-        Call<byte[]> call = livroApi.retornarImagem(nomeImagem);
-        call.enqueue(new Callback<byte[]>() {
+    public void retornarImagem(LivroCallback callback, String caminhoImgCapa) {
+        Call<ResponseBody> call = livroApi.retornarImagem(caminhoImgCapa);
+
+        call.enqueue(new Callback<ResponseBody>() {
             @Override
-            public void onResponse(Call<byte[]> call, Response<byte[]> response) {
-                if (response.isSuccessful() && response.body() != null) {
-                    responseCallback.onSuccessByte(response.body());  // Chama o callback com a imagem em bytes
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.isSuccessful()) {
+                    try {
+                        byte[] imageBytes = response.body().bytes();
+                        // Chama o callback passando os bytes
+                        callback.onSuccessByte(imageBytes);
+                    } catch (Exception e) {
+                        callback.onFailure(e);
+                    }
                 } else {
-                    Log.e("API Error", "Erro ao carregar imagem: " + response.code());
-                    responseCallback.onFailure(new Exception("Erro ao carregar imagem"));
+                    callback.onFailure(new Exception("Erro ao baixar a imagem: " + response.code()));
                 }
             }
             @Override
-            public void onFailure(Call<byte[]> call, Throwable t) {
-                Log.e("API Error", "Falha na chamada: " + t.getMessage());
-                responseCallback.onFailure(t);  // Trata a falha da requisição
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                callback.onFailure(t);
             }
         });
     }

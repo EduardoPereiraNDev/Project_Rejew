@@ -25,10 +25,23 @@ import java.util.List;
 
 public class CatalogoRejew extends AppCompatActivity {
 
-    private RecyclerView recyclerView;
     private LivroAdapter livroAdapter;
     private LivroAPIController livroAPIController;
     private ImageView imageView;
+
+    private RecyclerView recyclerViewAventura;
+    private RecyclerView recyclerViewTerror;
+    private RecyclerView recyclerViewRomance;
+    private RecyclerView recyclerViewFiccao;
+    private RecyclerView recyclerViewCulinaria;
+    private RecyclerView recyclerViewInfantil;
+
+    private LivroAdapter adapterAventura;
+    private LivroAdapter adapterTerror;
+    private LivroAdapter adapterRomance;
+    private LivroAdapter adapterFiccao;
+    private LivroAdapter adapterCulinaria;
+    private LivroAdapter adapterInfantil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +49,19 @@ public class CatalogoRejew extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_pagina_inicial);
 
-        recyclerView = findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        recyclerViewAventura = findViewById(R.id.recyclerViewAventura);
+        recyclerViewTerror = findViewById(R.id.recyclerViewTerror);
+        recyclerViewRomance = findViewById(R.id.recyclerViewRomance);
+        recyclerViewFiccao = findViewById(R.id.recyclerViewFiccao);
+        recyclerViewCulinaria = findViewById(R.id.recyclerViewCulinaria);
+        recyclerViewInfantil = findViewById(R.id.recyclerViewInfantil);
+
+        recyclerViewAventura.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        recyclerViewTerror.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        recyclerViewRomance.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        recyclerViewFiccao.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        recyclerViewCulinaria.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        recyclerViewInfantil.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
         RetrofitClient retrofitClient = new RetrofitClient();
         livroAPIController = new LivroAPIController(retrofitClient);
