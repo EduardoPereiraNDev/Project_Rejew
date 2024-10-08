@@ -10,30 +10,26 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class FormLogin extends AppCompatActivity {
+public class FormAutor extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_signup_leitor);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
     }
-    public void passarHome(View v){
-        Intent intent = new Intent(FormLogin.this, Home.class);
-        startActivity(intent);
-    }
-    public void entrar(View v){
-        Intent intent = new Intent(FormLogin.this, PaginaInicial.class);
-        startActivity(intent);
-    }
-    public void passarCadastro(View v) {
-        Intent intent = new Intent(FormLogin.this, TipoContaSignUp.class);
+    public void voltarPaginaAnterior(View v) {
+        Intent intent = new Intent(FormAutor.this, FormSignUp_Autor.class);
         startActivity(intent);
     }
 
+    public void cadastrarAutor(View v) {
+        Intent intent = new Intent(FormAutor.this, Home.class);
+        startActivity(intent);
+    }
 }

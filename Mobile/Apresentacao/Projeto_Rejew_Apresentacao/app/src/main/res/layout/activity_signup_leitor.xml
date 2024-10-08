@@ -210,7 +210,7 @@
         app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.339"
+        app:layout_constraintVertical_bias="0.335"
         android:src="@drawable/boneco" />
 
     <ImageView
@@ -222,7 +222,7 @@
         app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.446"
+        app:layout_constraintVertical_bias="0.443"
         android:src="@drawable/boneco2" />
 
     <ImageView
@@ -234,7 +234,7 @@
         app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.551"
+        app:layout_constraintVertical_bias="0.548"
         android:src="@drawable/email" />
 
     <ImageView

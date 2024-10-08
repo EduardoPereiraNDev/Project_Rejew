@@ -48,6 +48,9 @@
             android:name=".FormSignUp_Autor"
             android:exported="false" />
         <activity
+            android:name=".FormAutor"
+            android:exported="false" />
+        <activity
             android:name=".FormLogin"
             android:exported="false" />
         <activity
