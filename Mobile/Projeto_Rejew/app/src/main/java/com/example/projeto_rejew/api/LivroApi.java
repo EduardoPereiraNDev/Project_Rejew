@@ -6,6 +6,7 @@ import java.util.List;
 
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
@@ -26,7 +27,7 @@ public interface LivroApi {
     Call<List<Livro>> buscarLivroPorNome(@Path("nome") String nome);
 
     @GET("livros/imagem/{caminho}")
-    Call<byte[]> retornarImagem(@Path("caminho") String caminho);
+    Call<ResponseBody> retornarImagem(@Path("caminho") String caminho);
 
     @GET("livros/autor/{autor}")
     Call<List<Livro>> buscarLivroPorAutor(@Path("autor") String autor);
