@@ -18,13 +18,13 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="1.1" />
 
     <ImageView
         android:id="@+id/logoCanto"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:onClick="voltarPaginaAnterior"
+        android:onClick="passarTipoConta"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.917"
@@ -32,6 +32,19 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.04"
         android:src="@drawable/logocantoo"/>
+
+    <TextView
+        android:id="@+id/signup"
+        style="@style/ViewTitle"
+        android:fontFamily="@font/open_sans_semibold"
+        android:text="SIGN UP"
+        android:textColor="@color/white"
+        android:textSize="42dp"
+        app:layout_constraintBottom_toTopOf="@+id/view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.43" />
 
     <View
         android:id="@+id/view"
@@ -55,12 +68,13 @@
         android:hint="Nome artístico"
         android:textColorHint="@color/black"
         android:textSize="16dp"
+        android:paddingRight="45dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.396" />
+        app:layout_constraintVertical_bias="0.395" />
 
     <ImageView
         android:id="@+id/nomeIcon"
@@ -72,7 +86,8 @@
         app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.411" />
+        app:layout_constraintVertical_bias="0.419" />
+
 
     <EditText
         android:id="@+id/principaisgeneros"
@@ -84,12 +99,13 @@
         android:paddingBottom="55dp"
         android:textColorHint="@color/black"
         android:textSize="16dp"
+        android:paddingRight="22dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.715" />
+        app:layout_constraintVertical_bias="0.717" />
 
     <EditText
         android:id="@+id/livrosescritos"
@@ -100,6 +116,7 @@
         android:hint="Livros escritos"
         android:paddingBottom="55dp"
         android:textColorHint="@color/black"
+        android:paddingRight="22dp"
         android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -107,19 +124,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.534" />
-
-    <TextView
-        android:id="@+id/signup"
-        style="@style/ViewTitle"
-        android:fontFamily="@font/open_sans_semibold"
-        android:text="SIGN UP"
-        android:textColor="@color/white"
-        android:textSize="42dp"
-        app:layout_constraintBottom_toTopOf="@+id/view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.443" />
 
     <TextView
         android:id="@+id/aviso"
@@ -134,7 +138,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.836" />
+        app:layout_constraintVertical_bias="0.833" />
 
     <TextView
         android:id="@+id/avisoTermos"
@@ -150,7 +154,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.858" />
+        app:layout_constraintVertical_bias="0.856" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonCadastar"
@@ -163,7 +167,6 @@
         android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.445"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.938" />
@@ -177,7 +180,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.262" />
+        app:layout_constraintVertical_bias="0.260" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

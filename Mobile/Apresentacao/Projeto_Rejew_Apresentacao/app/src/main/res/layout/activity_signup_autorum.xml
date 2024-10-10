@@ -18,8 +18,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
-
+        app:layout_constraintVertical_bias="1.1" />
 
     <ImageView
         android:id="@+id/logoCanto"
@@ -34,6 +33,19 @@
         app:layout_constraintVertical_bias="0.04"
         android:src="@drawable/logocantoo"/>
 
+    <TextView
+        android:id="@+id/signup"
+        style="@style/ViewTitle"
+        android:fontFamily="@font/open_sans_semibold"
+        android:text="SIGN UP"
+        android:textColor="@color/white"
+        android:textSize="42dp"
+        app:layout_constraintBottom_toTopOf="@+id/view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.43" />
+
     <View
         android:id="@+id/view"
         style="@style/ElementosContainer"
@@ -47,65 +59,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.63" />
 
-    <EditText
-        android:id="@+id/nome"
-        style="@style/EditText"
-        android:layout_width="280dp"
-        android:layout_height="56dp"
-        android:fontFamily="@font/open_sans"
-        android:hint="Nome"
-        android:textColorHint="@color/black"
-        android:textSize="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.397" />
-
-    <EditText
-        android:id="@+id/email"
-        style="@style/EditText"
-        android:layout_width="280dp"
-        android:layout_height="56dp"
-        android:fontFamily="@font/open_sans"
-        android:hint="Email"
-        android:textColorHint="@color/black"
-        android:textSize="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.624" />
-
-    <TextView
-        android:id="@+id/pergunta"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/open_sans"
-        android:text="Já tem uma conta?"
-        android:textColor="@color/white"
-        android:textSize="11dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.642"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.93" />
-
-    <TextView
-        android:id="@+id/signup"
-        style="@style/ViewTitle"
-        android:fontFamily="@font/open_sans_semibold"
-        android:text="SIGN UP"
-        android:textColor="@color/white"
-        android:textSize="42dp"
-        app:layout_constraintBottom_toTopOf="@+id/view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.443" />
 
     <Spinner
         android:id="@+id/spinner"
@@ -120,27 +73,16 @@
         app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.514" />
-
-    <ImageView
-        android:id="@+id/setaspinner"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:src="@drawable/setaspinner"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.8"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.526" />
+        app:layout_constraintVertical_bias="0.509" />
 
     <EditText
-        android:id="@+id/senha"
+        android:id="@+id/email"
         style="@style/EditText"
         android:layout_width="280dp"
         android:layout_height="56dp"
         android:fontFamily="@font/open_sans"
-        android:hint="Senha"
+        android:hint="Email"
+        android:paddingRight="45dp"
         android:textColorHint="@color/black"
         android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -148,7 +90,24 @@
         app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.74" />
+        app:layout_constraintVertical_bias="0.616" />
+
+    <EditText
+        android:id="@+id/nome"
+        style="@style/EditText"
+        android:layout_width="280dp"
+        android:layout_height="56dp"
+        android:fontFamily="@font/open_sans"
+        android:hint="Nome"
+        android:textColorHint="@color/black"
+        android:textSize="16dp"
+        android:paddingRight="45dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.403" />
 
     <ImageView
         android:id="@+id/nomeIcon"
@@ -160,19 +119,75 @@
         app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.419" />
+        app:layout_constraintVertical_bias="0.424" />
+
+    <EditText
+        android:id="@+id/senha"
+        style="@style/EditText"
+        android:layout_width="280dp"
+        android:layout_height="56dp"
+        android:fontFamily="@font/open_sans"
+        android:hint="Senha"
+        android:paddingRight="45dp"
+        android:textColorHint="@color/black"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.725" />
 
     <ImageView
-        android:id="@+id/senhaIcon"
+        android:id="@+id/olhoIcon"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:src="@drawable/olhooff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.798"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.728" />
+
+    <ImageView
+        android:id="@+id/emailIcon"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:src="@drawable/olho"
+        android:src="@drawable/email"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.742" />
+        app:layout_constraintVertical_bias="0.625" />
+
+    <ImageView
+        android:id="@+id/setaspinner"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/setaspinner"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.525" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonCadastar"
+        style="@style/ButtonCadastrar"
+        android:layout_width="265dp"
+        android:layout_height="51dp"
+        android:fontFamily="@font/open_sans_medium"
+        android:onClick="continuarCadastro"
+        android:text="➞"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.897" />
 
     <TextView
         android:id="@+id/resposta"
@@ -188,22 +203,22 @@
         app:layout_constraintHorizontal_bias="0.806"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.93" />
+        app:layout_constraintVertical_bias="0.928" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/buttonCadastar"
-        style="@style/ButtonCadastrar"
-        android:layout_width="265dp"
-        android:layout_height="51dp"
-        android:fontFamily="@font/open_sans_medium"
-        android:onClick="continuarCadastro"
-        android:text="➞"
-        android:textSize="30dp"
+    <TextView
+        android:id="@+id/pergunta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/open_sans"
+        android:text="Já tem uma conta?"
+        android:textColor="@color/white"
+        android:textSize="11dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.642"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.902" />
+        app:layout_constraintVertical_bias="0.928" />
 
     <ImageView
         android:id="@+id/numeroum"
@@ -214,19 +229,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.262" />
-
-    <ImageView
-        android:id="@+id/emailIcon"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:src="@drawable/email"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.8"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.629" />
+        app:layout_constraintVertical_bias="0.257" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

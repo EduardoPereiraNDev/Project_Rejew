@@ -3,9 +3,12 @@ package com.example.projeto_rejew;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -18,7 +21,12 @@ import androidx.core.view.WindowInsetsCompat;
 public class FormSignUp_Autor extends AppCompatActivity {
     private Spinner menu;
 
-    String[] opcoes = {"Sexo", "Masculino", "Feminino", "Outro"};
+    String[] opcoes = {"Sexo", "Masculino", "Feminino"};
+
+
+    private EditText senha;
+    private ImageView olhoVisibilidade;
+    private boolean isPasswordVisible = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,14 +41,12 @@ public class FormSignUp_Autor extends AppCompatActivity {
             return insets;
         });
 
-        menu = findViewById(R.id.spinner);
 
-        // Criando um ArrayAdapter personalizado para lidar com o hint
+        menu = findViewById(R.id.spinner);
         final ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(
                 this, android.R.layout.simple_spinner_item, opcoes) {
             @Override
             public boolean isEnabled(int position) {
-                // Desabilita o primeiro item (o hint)
                 return position != 0;
             }
 
@@ -48,34 +54,51 @@ public class FormSignUp_Autor extends AppCompatActivity {
             public View getDropDownView(int position, View convertView, ViewGroup parent) {
                 View view = super.getDropDownView(position, convertView, parent);
                 TextView tv = (TextView) view;
-
                 if (position == 0) {
-                    // Deixa o hint em cinza
                     tv.setTextColor(Color.GRAY);
                 } else {
                     tv.setTextColor(Color.BLACK);
                 }
-
                 return view;
             }
         };
-
         spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         menu.setAdapter(spinnerArrayAdapter);
+
+
+        senha = findViewById(R.id.senha);
+        olhoVisibilidade = findViewById(R.id.olhoIcon);
+
+        olhoVisibilidade.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isPasswordVisible) {
+                    senha.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    olhoVisibilidade.setImageResource(R.drawable.olhoon);
+                } else {
+                    senha.setInputType(InputType.TYPE_CLASS_TEXT);
+                    olhoVisibilidade.setImageResource(R.drawable.olhooff);
+                }
+
+
+                senha.setSelection(senha.getText().length());
+                isPasswordVisible = !isPasswordVisible;
+            }
+        });
     }
 
-    public void passarTipoConta(View v){
+    public void passarTipoConta(View v) {
         Intent intent = new Intent(FormSignUp_Autor.this, TipoContaSignUp.class);
         startActivity(intent);
     }
 
-    public void voltarLogin(View v){
+    public void voltarLogin(View v) {
         Intent intent = new Intent(FormSignUp_Autor.this, FormLogin.class);
         startActivity(intent);
     }
 
-    public void continuarCadastro(View v){
-        Intent intent = new Intent(FormSignUp_Autor.this, FormAutor.class);
+    public void continuarCadastro(View v) {
+        Intent intent = new Intent(this, FormAutor.class);
         startActivity(intent);
     }
 }
