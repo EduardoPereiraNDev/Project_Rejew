@@ -5,16 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-
     <View
         android:id="@+id/brancoquadrado"
         android:layout_width="match_parent"
@@ -76,13 +66,14 @@
                 app:layout_constraintVertical_bias="0.358" />
 
             <TextView
-        android:id="@+id/bio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Autor de livros"
-        android:textSize="12sp"
-        tools:layout_editor_absoluteX="167dp"
-        tools:layout_editor_absoluteY="513dp" />
+                android:id="@+id/bio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Autor de livros"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nomeautor" />
 
     <TextView
         android:id="@+id/nomeautor"
@@ -222,29 +213,31 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tituloseguindo" />
 
-            <TextView
-                android:id="@+id/livrosescritos"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:text="LIVRO ESCRITOS"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.157"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/buttonum" />
+    <TextView
+        android:id="@+id/livrosescritos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="LIVRO ESCRITOS"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonum"
+        app:layout_constraintVertical_bias="0.206" />
 
-            <TextView
-                android:id="@+id/veja"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="VEJA TODOS"
-                android:textSize="8sp"
-                tools:layout_editor_absoluteX="153dp"
-                tools:layout_editor_absoluteY="853dp" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </ScrollView>
-
+    <TextView
+        android:id="@+id/vejatodoss"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="44dp"
+        android:text="Vej Todos"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.832"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttondois"
+        app:layout_constraintVertical_bias="0.941" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
