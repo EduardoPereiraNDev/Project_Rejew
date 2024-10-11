@@ -9,7 +9,9 @@ import jakarta.persistence.Column;
 	import jakarta.persistence.GeneratedValue;
 	import jakarta.persistence.GenerationType;
 	import jakarta.persistence.Id;
-	import lombok.Data;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import lombok.Data;
 
 	@Entity
 	@Data
@@ -27,9 +29,11 @@ import jakarta.persistence.Column;
 	    @Column(name = "data_Mensagem")
 	    private LocalDate dataMensagem;
 	    
-	    @Column(name = "usuario_Email_Entrada")
-	    private String usuarioEmailEntrada;
+	    @ManyToOne
+	    @JoinColumn(name="usuario_Email_Entrada", nullable = false)
+	    private Usuario usuarioMensagem;
 	    
-	    @Column(name = "chat_Mensagem")
-	    private String chatMensagem;
+	    @ManyToOne
+	    @JoinColumn(name="id_Chat", nullable = false)
+	    private Chat chatMensagem;
 	}

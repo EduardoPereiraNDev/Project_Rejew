@@ -63,6 +63,32 @@ public class UsuarioController {
         }
     }
     
+    public void seguirUsuario(String usuarioSeguindoEmail, String usuarioSeguidoEmail) {
+        Optional<Usuario> usuarioSeguindoOpt = usuarioRepository.findById(usuarioSeguindoEmail);
+        Optional<Usuario> usuarioSeguidoOpt = usuarioRepository.findById(usuarioSeguidoEmail);
+
+        if (usuarioSeguindoOpt.isPresent() && usuarioSeguidoOpt.isPresent()) {
+            Usuario usuarioSeguindo = usuarioSeguindoOpt.get();
+            Usuario usuarioSeguido = usuarioSeguidoOpt.get();
+
+            usuarioSeguindo.getUsuariosSeguindo().add(usuarioSeguido);
+            usuarioRepository.save(usuarioSeguindo);
+        }
+    }
+
+    public void deixarSeguirUsuario(String usuarioSeguindoEmail, String usuarioSeguidoEmail) {
+        Optional<Usuario> usuarioSeguindo2 = usuarioRepository.findById(usuarioSeguindoEmail);
+        Optional<Usuario> usuarioSeguido2 = usuarioRepository.findById(usuarioSeguidoEmail);
+
+        if (usuarioSeguindo2.isPresent() && usuarioSeguido2.isPresent()) {
+            Usuario usuarioSeguindo = usuarioSeguindo2.get();
+            Usuario usuarioSeguido = usuarioSeguido2.get();
+
+            usuarioSeguindo.getUsuariosSeguindo().remove(usuarioSeguido);
+            usuarioRepository.save(usuarioSeguindo);
+        }
+    }
+    
     // Buscar um usuário por email
     @GetMapping("/{email}")
     public ResponseEntity<Usuario> buscarUsuarioPorEmail(@PathVariable String email) {

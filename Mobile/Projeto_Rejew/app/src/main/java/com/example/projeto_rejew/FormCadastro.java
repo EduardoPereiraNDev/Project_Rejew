@@ -78,7 +78,7 @@ public class FormCadastro extends AppCompatActivity {
                             Intent intent = new Intent(FormCadastro.this, MainActivity.class);
                             startActivity(intent);
                         }
-                    }, 5000);
+                    }, 3000);
                 }
 
                 @Override

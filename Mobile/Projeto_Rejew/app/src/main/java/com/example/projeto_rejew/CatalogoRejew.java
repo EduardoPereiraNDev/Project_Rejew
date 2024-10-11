@@ -21,6 +21,7 @@ import com.example.projeto_rejew.api.LivroAPIController;
 import com.example.projeto_rejew.api.RetrofitClient;
 import com.example.projeto_rejew.entity.Livro;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CatalogoRejew extends AppCompatActivity {
@@ -74,22 +75,54 @@ public class CatalogoRejew extends AppCompatActivity {
         carregarLivros();
     }
 
+
     private void carregarLivros() {
         livroAPIController.carregarLivros(new LivroAPIController.LivroCallback() {
             @Override
-            public void onSuccess(Livro livro) {
-                // Aqui você pode manipular o sucesso se receber um único livro
-            }
+            public void onSuccess(Livro livro) { }
 
             @Override
             public void onSuccessList(List<Livro> livroList) {
-                atualizarRecyclerView(livroList);
+                List<Livro> aventura = new ArrayList<>();
+                List<Livro> terror = new ArrayList<>();
+                List<Livro> romance = new ArrayList<>();
+                List<Livro> ficcao = new ArrayList<>();
+                List<Livro> culinaria = new ArrayList<>();
+                List<Livro> infantil = new ArrayList<>();
+
+                for (Livro livro : livroList) {
+                    switch (livro.getGeneroLivro().toLowerCase()) {
+                        case "aventura":
+                            aventura.add(livro);
+                            break;
+                        case "terror":
+                            terror.add(livro);
+                            break;
+                        case "romance":
+                            romance.add(livro);
+                            break;
+                        case "ficção científica":
+                            ficcao.add(livro);
+                            break;
+                        case "culinária":
+                            culinaria.add(livro);
+                            break;
+                        case "infantil":
+                            infantil.add(livro);
+                            break;
+                    }
+                }
+
+                atualizarRecyclerViewAventura(aventura);
+                atualizarRecyclerViewTerror(terror);
+                atualizarRecyclerViewRomance(romance);
+                atualizarRecyclerViewFiccao(ficcao);
+                atualizarRecyclerViewCulinaria(culinaria);
+                atualizarRecyclerViewInfantil(infantil);
             }
 
             @Override
-            public void onSuccessByte(byte[] bytes) {
-                // Você pode lidar com a resposta de bytes aqui, se necessário
-            }
+            public void onSuccessByte(byte[] bytes) { }
 
             @Override
             public void onFailure(Throwable t) {
@@ -103,13 +136,34 @@ public class CatalogoRejew extends AppCompatActivity {
         });
     }
 
-    private void atualizarRecyclerView(List<Livro> livros) {
-        if (livroAdapter == null) {
-            livroAdapter = new LivroAdapter(this, livros, livroAPIController);
-            recyclerView.setAdapter(livroAdapter);
-        } else {
-            livroAdapter.atualizarLista(livros);
-        }
+    private void atualizarRecyclerViewAventura(List<Livro> livros) {
+        adapterAventura = new LivroAdapter(this, livros, livroAPIController);
+        recyclerViewAventura.setAdapter(adapterAventura);
+    }
+
+    private void atualizarRecyclerViewTerror(List<Livro> livros) {
+        adapterTerror = new LivroAdapter(this, livros, livroAPIController);
+        recyclerViewTerror.setAdapter(adapterTerror);
+    }
+
+    private void atualizarRecyclerViewRomance(List<Livro> livros) {
+        adapterRomance = new LivroAdapter(this, livros, livroAPIController);
+        recyclerViewRomance.setAdapter(adapterRomance);
+    }
+
+    private void atualizarRecyclerViewFiccao(List<Livro> livros) {
+        adapterFiccao = new LivroAdapter(this, livros, livroAPIController);
+        recyclerViewFiccao.setAdapter(adapterFiccao);
+    }
+
+    private void atualizarRecyclerViewCulinaria(List<Livro> livros) {
+        adapterCulinaria = new LivroAdapter(this, livros, livroAPIController);
+        recyclerViewCulinaria.setAdapter(adapterCulinaria);
+    }
+
+    private void atualizarRecyclerViewInfantil(List<Livro> livros) {
+        adapterInfantil = new LivroAdapter(this, livros, livroAPIController);
+        recyclerViewInfantil.setAdapter(adapterInfantil);
     }
 
     public void abrirMenu(View v) {

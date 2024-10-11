@@ -8,6 +8,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.Data;
 
@@ -28,12 +29,11 @@ public class Comentario implements Serializable {
     @Column(name = "conteudo_Coment")
     private String conteudoComent;
     
-    @Column(name = "email_Usuario_Coment")
-    private Long emailUsuarioComent;
+    @ManyToOne
+    @JoinColumn(name="email_Usuario_Coment", nullable = false)
+    private Usuario usuarioComent;
     
-    @Column(name = "id_Livro_Coment")
-    private Long idLivroComent;
-    
-    @Column(name = "Usuario_Coment")
-    private String usuarioComent;
+    @ManyToOne
+    @JoinColumn(name="isbn_Livro_Coment", nullable = false)
+    private Livro livroComent;
 }
