@@ -118,7 +118,7 @@ public class UsuarioController {
         return ResponseEntity.ok(usuarios);
     }
 
-    // Adicionar um novo usuário
+    // Adicionar um novo usuário APP
     @PostMapping
     public ResponseEntity<Map<String, String>> adicionarUsuario(@RequestBody Usuario usuario) {
         Optional<Usuario> existingUsuario = usuarioRepository.findByEmailEntrada(usuario.getEmailEntrada());

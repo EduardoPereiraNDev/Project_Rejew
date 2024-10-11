@@ -16,6 +16,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".entity.ChatAdapter"
+            android:exported="false" />
+        <activity
             android:name=".container_livro"
             android:exported="false" />
         <activity
