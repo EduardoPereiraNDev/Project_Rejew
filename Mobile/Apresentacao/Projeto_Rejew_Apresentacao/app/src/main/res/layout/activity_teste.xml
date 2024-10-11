@@ -24,25 +24,25 @@
                 android:id="@+id/logoazul"
                 android:layout_width="140dp"
                 android:layout_height="40dp"
+                android:src="@drawable/rejewazulnovo"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.098"
+                app:layout_constraintHorizontal_bias="0.099"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.046"
-                android:src="@drawable/rejewazulnovo" />
+                app:layout_constraintVertical_bias="0.019" />
 
             <ImageView
                 android:id="@+id/fotoperfil"
                 android:layout_width="47dp"
                 android:layout_height="47dp"
+                android:src="@drawable/fotoperfil"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.927"
+                app:layout_constraintHorizontal_bias="0.928"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.044"
-                android:src="@drawable/fotoperfil" />
+                app:layout_constraintVertical_bias="0.018" />
 
             <EditText
                 android:id="@+id/pesquisa"
@@ -63,26 +63,26 @@
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.152" />
+                app:layout_constraintVertical_bias="0.059" />
 
             <ImageView
                 android:id="@+id/lupa"
                 android:layout_width="23dp"
                 android:layout_height="23dp"
+                android:src="@drawable/lupanovo"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.889"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.160"
-                android:src="@drawable/lupanovo" />
+                app:layout_constraintVertical_bias="0.062" />
 
             <HorizontalScrollView
                 android:id="@+id/horizontalScrollView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
-                android:layout_marginBottom="260dp"
+                android:layout_marginBottom="1560dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -144,7 +144,7 @@
                 app:layout_constraintHorizontal_bias="0.069"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.529"
+                app:layout_constraintVertical_bias="0.195"
                 android:src="@drawable/aventurachat" />
 
             <ImageView
@@ -157,7 +157,7 @@
                 app:layout_constraintHorizontal_bias="0.240"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.529" />
+                app:layout_constraintVertical_bias="0.195" />
 
             <ImageView
                 android:id="@+id/generoromance"
@@ -169,7 +169,7 @@
                 app:layout_constraintHorizontal_bias="0.411"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.529" />
+                app:layout_constraintVertical_bias="0.195" />
 
             <ImageView
                 android:id="@+id/generoficcaocientifica"
@@ -181,7 +181,7 @@
                 app:layout_constraintHorizontal_bias="0.585"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.529" />
+                app:layout_constraintVertical_bias="0.195" />
 
             <ImageView
                 android:id="@+id/generoculinaria"
@@ -193,7 +193,7 @@
                 app:layout_constraintHorizontal_bias="0.756"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.529" />
+                app:layout_constraintVertical_bias="0.195" />
 
             <ImageView
                 android:id="@+id/generoinfantil"
@@ -205,7 +205,7 @@
                 app:layout_constraintHorizontal_bias="0.927"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.529" />
+                app:layout_constraintVertical_bias="0.195" />
 
             <TextView
                 android:id="@+id/aventura"
@@ -220,7 +220,7 @@
                 app:layout_constraintHorizontal_bias="0.067"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.576" />
+                app:layout_constraintVertical_bias="0.218" />
 
             <TextView
                 android:id="@+id/terror"
@@ -235,7 +235,7 @@
                 app:layout_constraintHorizontal_bias="0.25"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.576" />
+                app:layout_constraintVertical_bias="0.218" />
 
             <TextView
                 android:id="@+id/romance"
@@ -250,7 +250,7 @@
                 app:layout_constraintHorizontal_bias="0.410"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.576" />
+                app:layout_constraintVertical_bias="0.218" />
 
             <TextView
                 android:id="@+id/ficcaocientifica"
@@ -266,7 +266,7 @@
                 app:layout_constraintHorizontal_bias="0.585"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.588" />
+                app:layout_constraintVertical_bias="0.22" />
 
             <TextView
                 android:id="@+id/culinaria"
@@ -281,7 +281,7 @@
                 app:layout_constraintHorizontal_bias="0.756"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.576" />
+                app:layout_constraintVertical_bias="0.218" />
 
             <TextView
                 android:id="@+id/infantil"
@@ -296,7 +296,7 @@
                 app:layout_constraintHorizontal_bias="0.917"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.576" />
+                app:layout_constraintVertical_bias="0.218" />
 
             <TextView
                 android:id="@+id/sugestoes"
@@ -311,10 +311,10 @@
                 app:layout_constraintHorizontal_bias="0.108"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.669" />
+                app:layout_constraintVertical_bias="0.25" />
 
             <TextView
-                android:id="@+id/vejatodos"
+                android:id="@+id/vejatodos1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/arimo"
@@ -324,10 +324,10 @@
                 android:textStyle="italic"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.923"
+                app:layout_constraintHorizontal_bias="0.926"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.669" />
+                app:layout_constraintVertical_bias="0.251" />
 
             <View
                 android:id="@+id/fundocor1"
@@ -340,7 +340,7 @@
                 app:layout_constraintHorizontal_bias="0.141"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.897" />
+                app:layout_constraintVertical_bias="0.318" />
 
             <ImageView
                 android:id="@+id/livro1"
@@ -352,7 +352,7 @@
                 app:layout_constraintHorizontal_bias="0.203"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.862" />
+                app:layout_constraintVertical_bias="0.295" />
 
             <TextView
                 android:id="@+id/autornome1"
@@ -367,7 +367,7 @@
                 app:layout_constraintHorizontal_bias="0.201"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.975" />
+                app:layout_constraintVertical_bias="0.373" />
 
             <TextView
                 android:id="@+id/titulolivro1"
@@ -382,7 +382,7 @@
                 app:layout_constraintHorizontal_bias="0.111"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.949" />
+                app:layout_constraintVertical_bias="0.362" />
 
             <View
                 android:id="@+id/fundocor2"
@@ -395,7 +395,7 @@
                 app:layout_constraintHorizontal_bias="0.855"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.897" />
+                app:layout_constraintVertical_bias="0.318" />
 
             <ImageView
                 android:id="@+id/livro2"
@@ -407,7 +407,7 @@
                 app:layout_constraintHorizontal_bias="0.791"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.861" />
+                app:layout_constraintVertical_bias="0.295" />
 
             <TextView
                 android:id="@+id/titulolivro2"
@@ -422,7 +422,7 @@
                 app:layout_constraintHorizontal_bias="0.857"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.948" />
+                app:layout_constraintVertical_bias="0.362" />
 
             <TextView
                 android:id="@+id/autornome2"
@@ -434,11 +434,343 @@
                 android:textSize="11dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.762"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.373" />
+
+            <TextView
+                android:id="@+id/categoriaterror"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans_bold"
+                android:text="Terror"
+                android:textColor="#022e53"
+                android:textSize="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.074"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.41" />
+
+            <TextView
+                android:id="@+id/vejatodos2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/arimo"
+                android:text="VEJA TODOS"
+                android:textColor="#022e53"
+                android:textSize="11dp"
+                android:textStyle="italic"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.926"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.41" />
+
+            <View
+                android:id="@+id/fundocor3"
+                android:layout_width="150dp"
+                android:layout_height="110dp"
+                android:background="@drawable/container_cores_elemento"
+                android:backgroundTint="#d1cbc2"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.141"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.485" />
+
+            <ImageView
+                android:id="@+id/livro3"
+                android:layout_width="95dp"
+                android:layout_height="140dp"
+                android:src="@drawable/itacoisa"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.203"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.466" />
+
+            <TextView
+                android:id="@+id/titulolivro3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/merriweather_bold"
+                android:text="It: A Coisa"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.228"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.523" />
+
+            <TextView
+                android:id="@+id/autornome3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/arimo"
+                android:text="STEPHEN KING"
+                android:textColor="@color/black"
+                android:textSize="11dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.216"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.533" />
+
+            <View
+                android:id="@+id/fundocor4"
+                android:layout_width="150dp"
+                android:layout_height="110dp"
+                android:background="@drawable/container_cores_elemento"
+                android:backgroundTint="#510205"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.855"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.485" />
+
+            <ImageView
+                android:id="@+id/livro4"
+                android:layout_width="95dp"
+                android:layout_height="140dp"
+                android:src="@drawable/ovilarejo"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.791"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.466" />
+
+            <TextView
+                android:id="@+id/titulolivro4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/merriweather_bold"
+                android:text="O Vilarejo"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.763"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.973" />
+                app:layout_constraintVertical_bias="0.523" />
 
+            <TextView
+                android:id="@+id/autornome4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/arimo"
+                android:text="RAPHAEL MONTES"
+                android:textColor="@color/black"
+                android:textSize="11dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.788"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.533" />
+
+            <TextView
+                android:id="@+id/lancamentos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans_bold"
+                android:text="Lançados recentemente"
+                android:textColor="#022e53"
+                android:textSize="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.126"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.57" />
+
+            <TextView
+                android:id="@+id/vejatodos3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/arimo"
+                android:text="VEJA TODOS"
+                android:textColor="#022e53"
+                android:textSize="11dp"
+                android:textStyle="italic"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.926"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.57" />
+
+            <View
+                android:id="@+id/fundocor5"
+                android:layout_width="150dp"
+                android:layout_height="110dp"
+                android:background="@drawable/container_cores_elemento"
+                android:backgroundTint="#5c7d5c"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.141"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.656" />
+
+            <ImageView
+                android:id="@+id/livro5"
+                android:layout_width="95dp"
+                android:layout_height="140dp"
+                android:src="@drawable/persuasao"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.203"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.637" />
+
+            <TextView
+                android:id="@+id/titulolivro5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/merriweather_bold"
+                android:text="Persuasão"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.221"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.687" />
+
+            <TextView
+                android:id="@+id/autornome5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/arimo"
+                android:text="JANE AUSTEN"
+                android:textColor="@color/black"
+                android:textSize="11dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.221"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.697" />
+
+            <View
+                android:id="@+id/fundocor6"
+                android:layout_width="150dp"
+                android:layout_height="110dp"
+                android:background="@drawable/container_cores_elemento"
+                android:backgroundTint="#c77e4f"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.855"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.656" />
+
+            <ImageView
+                android:id="@+id/livro6"
+                android:layout_width="95dp"
+                android:layout_height="140dp"
+                android:src="@drawable/quartaasa"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.791"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.637" />
+
+            <TextView
+                android:id="@+id/titulolivro5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/merriweather_bold"
+                android:text="Quarta Asa"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.773"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.687" />
+
+            <TextView
+                android:id="@+id/autornome6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/arimo"
+                android:text="REBECCA YARROS"
+                android:textColor="@color/black"
+                android:textSize="11dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.8"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.697" />
+
+            <TextView
+                android:id="@+id/maisavaliados"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans_bold"
+                android:text="Mais avaliados"
+                android:textColor="#022e53"
+                android:textSize="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.085"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.737" />
+
+            <TextView
+                android:id="@+id/vejatodos4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/arimo"
+                android:text="VEJA TODOS"
+                android:textColor="#022e53"
+                android:textSize="11dp"
+                android:textStyle="italic"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.926"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.737" />
+
+            <ImageView
+                android:id="@+id/livro7"
+                android:layout_width="95dp"
+                android:layout_height="140dp"
+                android:src="@drawable/harrypotter"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.203"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.815" />
+
+            <View
+                android:id="@+id/teste"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@color/white"
+                tools:layout_editor_absoluteX="171dp"
+                tools:layout_editor_absoluteY="2050dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
