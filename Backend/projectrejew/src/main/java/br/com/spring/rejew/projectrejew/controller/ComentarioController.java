@@ -42,7 +42,7 @@ public class ComentarioController {
     // Buscar um comentario por Livro
     @GetMapping("/livro/{idLivro}")
     public ResponseEntity<List<Comentario>> buscarComentariosPorLivro(@PathVariable Long idLivro) {
-        List<Comentario> comentarios = comentarioRepository.findByIdLivroComent(idLivro);
+        List<Comentario> comentarios = comentarioRepository.findByLivroComent(idLivro);
         if (comentarios.isEmpty()) {
             return ResponseEntity.notFound().build();
         }

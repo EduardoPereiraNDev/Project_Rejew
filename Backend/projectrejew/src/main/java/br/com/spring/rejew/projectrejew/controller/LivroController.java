@@ -187,19 +187,25 @@ public class LivroController {
     // Deletar um livro por ID
     @DeleteMapping("/{isbn}")
     public ResponseEntity<Void> deletarLivro(@PathVariable Long isbn) {
-        if (livroRepository.existsById(isbn)) {
-        	try {
-        	Optional<Livro> livros = livroRepository.findById(isbn);
-        	 Livro livro = livros.get();
-        	 Path pathToDelete = Paths.get(UPLOAD_DIR + livro.getCaminhoImgCapa());
-             Files.deleteIfExists(pathToDelete);
-             livroRepository.deleteById(isbn);
-         } catch (IOException e) {
-             e.printStackTrace();
-             return ResponseEntity.ok().build();
-         }
+        if (!livroRepository.existsById(isbn)) {
+            return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.notFound().build();
+        
+        try {
+            Optional<Livro> livros = livroRepository.findById(isbn);
+            if (livros.isPresent()) {
+                Livro livro = livros.get();
+                Path pathToDelete = Paths.get(UPLOAD_DIR + livro.getCaminhoImgCapa());
+                Files.deleteIfExists(pathToDelete);
+                livroRepository.deleteById(isbn);
+                return ResponseEntity.ok().build();
+            } else {
+                return ResponseEntity.notFound().build();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
     
     

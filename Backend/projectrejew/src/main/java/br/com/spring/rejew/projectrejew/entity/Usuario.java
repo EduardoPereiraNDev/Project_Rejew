@@ -2,6 +2,7 @@ package br.com.spring.rejew.projectrejew.entity;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -10,6 +11,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -62,7 +67,32 @@ public class Usuario implements Serializable {
     @Column(name = "recado_Perfil")
     private String recadoPerfil;
     
+    @ManyToMany
+    @JoinTable(name="livro_favoritado",
+    joinColumns=@JoinColumn(name="usuario_favoritar"),
+    inverseJoinColumns = @JoinColumn(name="isbn_Livro"))
+    private Set<Livro> livros;
     
+    @ManyToMany
+    @JoinTable(name="livro_avaliado",
+    joinColumns=@JoinColumn(name="usuario_avaliar"),
+    inverseJoinColumns = @JoinColumn(name="isbn_Livro"))
+    private Set<Livro> livrosA;
+    
+    @OneToMany(mappedBy = "usuarioComent")
+    private Set<Comentario> comentario;
+    
+    @OneToMany(mappedBy = "usuarioMensagem")
+    private Set<Mensagem> mensagem;
+    
+    @ManyToMany
+    @JoinTable(name="usuarios_seguir",
+    joinColumns = @JoinColumn(name = "usuario_seguido"),
+    inverseJoinColumns = @JoinColumn(name="usuario_seguindo"))
+    Set<Usuario> usuariosSeguindo;
+    
+    @ManyToMany(mappedBy = "usuariosSeguindo")
+    Set<Usuario> usuariosSeguido;
 
 	public String getNomeUsuario() {
 		return nomeUsuario;
@@ -126,6 +156,22 @@ public class Usuario implements Serializable {
 
 	public void setRecadoPerfil(String recadoPerfil) {
 		this.recadoPerfil = recadoPerfil;
+	}
+
+	public Set<Usuario> getUsuariosSeguindo() {
+		return usuariosSeguindo;
+	}
+
+	public void setUsuariosSeguindo(Set<Usuario> usuariosSeguindo) {
+		this.usuariosSeguindo = usuariosSeguindo;
+	}
+
+	public Set<Usuario> getUsuariosSeguido() {
+		return usuariosSeguido;
+	}
+
+	public void setUsuariosSeguido(Set<Usuario> usuariosSeguido) {
+		this.usuariosSeguido = usuariosSeguido;
 	}
     
 

@@ -72,7 +72,6 @@ public class LivroAdapter extends RecyclerView.Adapter<LivroAdapter.LivroViewHol
             drawable.setColor(cor);
             drawable.setStroke(3, Color.BLACK);
             drawable.setCornerRadius(16);
-
             holder.viewCor.setBackground(drawable);
         } catch (NumberFormatException e) {
             holder.viewCor.setBackgroundColor(0xFFFFFFFF);
@@ -87,7 +86,6 @@ public class LivroAdapter extends RecyclerView.Adapter<LivroAdapter.LivroViewHol
             }
             @Override
             public void onSuccessByte(byte[] bytes) {
-                Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
                 Glide.with(context)
                         .load(bytes)
                         .override(larguraPadrao, alturaPadrao) // Tamanho padrão

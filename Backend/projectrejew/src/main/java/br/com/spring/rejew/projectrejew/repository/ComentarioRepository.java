@@ -15,9 +15,9 @@ import br.com.spring.rejew.projectrejew.entity.Comentario;
 @Repository
 public interface ComentarioRepository extends JpaRepository<Comentario, Long> {
 	
-	@Query("SELECT c FROM Comentario c WHERE c.usuarioComent LIKE %:usuarioComent%")
+	@Query("SELECT c FROM Comentario c WHERE c.usuarioComent.emailEntrada LIKE %:usuarioComent%")
 	List<Comentario> findByUsuarioComent(String usuarioComent);
 	
-	@Query("SELECT c FROM Comentario c WHERE c.idLivroComent = idLivroComent")
-	List<Comentario> findByIdLivroComent(Long idLivroComent);
+	@Query("SELECT c FROM Comentario c WHERE c.livroComent.isbnLivro = :idLivroComent")
+	List<Comentario> findByLivroComent(Long idLivroComent);
 }

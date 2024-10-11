@@ -1,11 +1,14 @@
 package br.com.spring.rejew.projectrejew.entity;
 
 import java.io.Serializable;
+import java.util.Set;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import lombok.Data;
 
 @Entity
@@ -26,7 +29,10 @@ public class Chat implements Serializable {
     private String caminhoImagemFundoChat;
 
     @Column(name = "caminho_Imagem_Logo")
-    private String caminhoImagemLogo;
+    private String caminhoImagemLogo; 
+    
+    @OneToMany(mappedBy = "chatMensagem")
+    private Set<Mensagem> mensagem;
     
     public Chat() {
     	
