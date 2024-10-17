@@ -24,6 +24,7 @@
         android:src="@drawable/setavoltarazul"
         app:layout_constraintBottom_toBottomOf="@+id/view6"
         app:layout_constraintStart_toStartOf="parent"
+        android:onClick="pessoasPaginicial"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -79,6 +80,7 @@
             app:layout_constraintEnd_toStartOf="@+id/chaticon"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/view4"
+            android:onClick="pessoasGenerochat"
             app:srcCompat="@drawable/chatbrancooooo" />
 
         <ImageView
@@ -91,6 +93,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/view4"
+            android:onClick="pessoasPaginicial"
             app:srcCompat="@drawable/casabrancaaa" />
 
         <ImageView
