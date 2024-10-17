@@ -1,6 +1,8 @@
 package com.example.projeto_rejew;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,5 +22,14 @@ public class Pessoas_Comentario extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+    }
+    public void pessoasPaginicial(View v) {
+        Intent intent = new Intent(Pessoas_Comentario.this, CatalogoRejew.class);
+        startActivity(intent);
+    }
+
+    public void pessoasGenerochat(View v) {
+        Intent intent = new Intent(Pessoas_Comentario.this, GeneroChat.class);
+        startActivity(intent);
     }
 }

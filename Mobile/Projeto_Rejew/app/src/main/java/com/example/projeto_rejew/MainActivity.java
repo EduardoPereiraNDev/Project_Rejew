@@ -24,12 +24,12 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void passarTelaL(View v) {
+    public void abrirLogin(View v) {
         Intent intent = new Intent(MainActivity.this, FormLogin.class);
         startActivity(intent);
     }
 
-    public void passarTelaEsc(View v) {
+    public void abrirSignUp(View v) {
         Intent intent = new Intent(MainActivity.this, EscolhaTipoConta.class);
         startActivity(intent);
     }

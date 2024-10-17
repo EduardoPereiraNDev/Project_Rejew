@@ -54,6 +54,9 @@
             android:name=".FormLogin"
             android:exported="false" />
         <activity
+            android:name=".MaisComentados"
+            android:exported="false" />
+        <activity
             android:name=".Home"
             android:exported="true">
             <intent-filter>

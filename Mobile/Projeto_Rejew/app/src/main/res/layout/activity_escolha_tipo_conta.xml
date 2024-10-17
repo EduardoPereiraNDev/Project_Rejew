@@ -9,102 +9,118 @@
     tools:context=".EscolhaTipoConta">
 
     <View
-        android:id="@+id/view2"
-        style="@style/QuadradoBrancoSB"
+        android:id="@+id/brancoquadrado"
         android:layout_width="match_parent"
-        android:layout_height="110dp"
+        android:layout_height="80dp"
+        android:background="@color/white"
+        android:backgroundTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints" />
 
     <ImageView
-        android:layout_width="70dp"
+        android:id="@+id/setaazulautor"
+        android:layout_width="50dp"
         android:layout_height="50dp"
-        android:src="@drawable/setavoltar"
         android:onClick="fecharJanela"
-        app:layout_constraintBottom_toBottomOf="@+id/view2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.065"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.021"
+        android:src="@drawable/setavoltarazul" />
 
     <TextView
-        android:id="@+id/textView5"
-        style="@style/LetraBrancaG"
-        android:layout_marginTop="30dp"
-        android:text="@string/Tipoconta"
+        android:id="@+id/escolha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/open_sans_medium"
+        android:text="Escolha um"
+        android:textColor="@color/white"
+        android:textSize="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view2" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.199" />
 
     <TextView
-        android:id="@+id/textView6"
-        style="@style/LetraBrancaG"
-        android:fontFamily="sans-serif-black"
-        android:text="@string/Tipoconta2"
+        android:id="@+id/tipoConta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/open_sans_bold"
+        android:text="Tipo de Conta"
+        android:textColor="@color/white"
+        android:textSize="34dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView5" />
-
-    <View
-        android:id="@+id/view3"
-        style="@style/circulo"
-        android:layout_width="170dp"
-        android:layout_height="170dp"
-        android:layout_marginTop="80dp"
-        android:alpha="0.4"
-        android:onClick="passarTelaC"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.252" />
 
     <ImageView
-        android:id="@+id/imageView11"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:src="@drawable/pena"
-        app:layout_constraintBottom_toBottomOf="@+id/view3"
-        app:layout_constraintEnd_toEndOf="@+id/view3"
-        app:layout_constraintStart_toStartOf="@+id/view3"
-        app:layout_constraintTop_toTopOf="@+id/view3" />
+        android:id="@+id/autorIcon"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:onClick="abrirAutor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/brancoquadrado"
+        app:layout_constraintVertical_bias="0.459"
+        android:src="@drawable/autoricon"/>
 
     <TextView
-        android:id="@+id/textView7"
-        style="@style/LetraBrancaG"
-        android:fontFamily="sans-serif-black"
-        android:text="@string/TipoAut"
+        android:id="@+id/autor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/open_sans_medium"
+        android:text="Autor"
+        android:textColor="@color/white"
+        android:textSize="26dp"
+        android:onClick="abrirAutor"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view3" />
-
-
-    <View
-        android:id="@+id/view4"
-        style="@style/circulo"
-        android:layout_width="170dp"
-        android:layout_height="170dp"
-        android:layout_marginTop="90dp"
-        android:alpha="0.4"
-        android:onClick="passarTelaC"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view3" />
+        app:layout_constraintTop_toTopOf="@+id/brancoquadrado"
+        app:layout_constraintVertical_bias="0.596" />
 
     <ImageView
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:src="@drawable/livrog"
-        app:layout_constraintBottom_toBottomOf="@+id/view4"
-        app:layout_constraintEnd_toEndOf="@+id/view4"
-        app:layout_constraintStart_toStartOf="@+id/view4"
-        app:layout_constraintTop_toTopOf="@+id/view4" />
+        android:id="@+id/leitorIcon"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:onClick="passarTelaC"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.826"
+        android:src="@drawable/leitoricon"/>
 
     <TextView
-        android:id="@+id/textView8"
-        style="@style/LetraBrancaG"
-        android:fontFamily="sans-serif-black"
-        android:text="@string/TipoLei"
+        android:id="@+id/leitor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/open_sans_medium"
+        android:text="Leitor"
+        android:textColor="@color/white"
+        android:textSize="26dp"
+        android:onClick="passarTelaC"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view4" />
+        app:layout_constraintTop_toTopOf="@+id/brancoquadrado"
+        app:layout_constraintVertical_bias="0.913" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

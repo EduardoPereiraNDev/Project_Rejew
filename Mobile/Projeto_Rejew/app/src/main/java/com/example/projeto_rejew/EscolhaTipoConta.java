@@ -31,4 +31,9 @@ public class EscolhaTipoConta extends AppCompatActivity {
         Intent intent = new Intent(EscolhaTipoConta.this, MainActivity.class);
         startActivity(intent);
     }
+
+    public void abrirAutor(View v) {
+        Intent intent = new Intent(EscolhaTipoConta.this, FormCadastro_AutorUm.class);
+        startActivity(intent);
+    }
 }
