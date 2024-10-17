@@ -52,6 +52,12 @@
             android:name=".FormCadastro"
             android:exported="false" />
         <activity
+            android:name=".FormCadastro_AutorUm"
+            android:exported="false" />
+        <activity
+            android:name=".FormCadastro_AutorDois"
+            android:exported="false" />
+        <activity
             android:name=".FormLogin"
             android:exported="false" />
         <activity
