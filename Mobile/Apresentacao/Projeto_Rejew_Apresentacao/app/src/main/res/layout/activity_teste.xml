@@ -634,7 +634,7 @@
                 app:layout_constraintHorizontal_bias="0.203"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.637" />
+                app:layout_constraintVertical_bias="0.639" />
 
             <TextView
                 android:id="@+id/titulolivro5"
@@ -689,10 +689,10 @@
                 app:layout_constraintHorizontal_bias="0.791"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.637" />
+                app:layout_constraintVertical_bias="0.639" />
 
             <TextView
-                android:id="@+id/titulolivro5"
+                android:id="@+id/titulolivro6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/merriweather_bold"
@@ -752,6 +752,19 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.737" />
 
+            <View
+                android:id="@+id/fundocor7"
+                android:layout_width="150dp"
+                android:layout_height="110dp"
+                android:background="@drawable/container_cores_elemento"
+                android:backgroundTint="#44090b"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.141"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.830" />
+
             <ImageView
                 android:id="@+id/livro7"
                 android:layout_width="95dp"
@@ -762,7 +775,38 @@
                 app:layout_constraintHorizontal_bias="0.203"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.815" />
+                app:layout_constraintVertical_bias="0.814" />
+
+            <TextView
+                android:id="@+id/titulolivro7"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:fontFamily="@font/merriweather_bold"
+                android:gravity="center"
+                android:text="Harry Potter e a   Pedra Filosofal"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.175"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.862" />
+
+            <TextView
+                android:id="@+id/autornome7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/arimo"
+                android:text="J.K.ROWLING"
+                android:textColor="@color/black"
+                android:textSize="11dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.221"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.874" />
 
             <View
                 android:id="@+id/teste"
