@@ -181,4 +181,12 @@ public class CatalogoRejew extends AppCompatActivity {
         Intent intent = new Intent(CatalogoRejew.this, MainActivity.class);
         startActivity(intent);
     }
+    public void paginicialChats(View v) {
+        Intent intent = new Intent(CatalogoRejew.this, GeneroChat.class);
+        startActivity(intent);
+    }
+    public void paginicialPessoas(View v) {
+        Intent intent = new Intent(CatalogoRejew.this, Pessoas_Comentario.class);
+        startActivity(intent);
+    }
 }
