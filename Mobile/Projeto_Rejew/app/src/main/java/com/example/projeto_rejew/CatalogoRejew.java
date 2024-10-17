@@ -17,8 +17,10 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.projeto_rejew.api.ChatAPIController;
 import com.example.projeto_rejew.api.LivroAPIController;
 import com.example.projeto_rejew.api.RetrofitClient;
+import com.example.projeto_rejew.entity.Chat;
 import com.example.projeto_rejew.entity.Livro;
 
 import java.util.ArrayList;
@@ -28,14 +30,18 @@ public class CatalogoRejew extends AppCompatActivity {
 
     private LivroAdapter livroAdapter;
     private LivroAPIController livroAPIController;
+    private ChatAPIController chatAPIController;
     private ImageView imageView;
 
+    private RecyclerView recyclerViewChat;
     private RecyclerView recyclerViewAventura;
     private RecyclerView recyclerViewTerror;
     private RecyclerView recyclerViewRomance;
     private RecyclerView recyclerViewFiccao;
     private RecyclerView recyclerViewCulinaria;
     private RecyclerView recyclerViewInfantil;
+
+    private ChatAdapter adapterImagens;
 
     private LivroAdapter adapterAventura;
     private LivroAdapter adapterTerror;
@@ -50,12 +56,16 @@ public class CatalogoRejew extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_pagina_inicial);
 
+        recyclerViewChat = findViewById(R.id.imagensChats);
+
         recyclerViewAventura = findViewById(R.id.recyclerViewAventura);
         recyclerViewTerror = findViewById(R.id.recyclerViewTerror);
         recyclerViewRomance = findViewById(R.id.recyclerViewRomance);
         recyclerViewFiccao = findViewById(R.id.recyclerViewFiccao);
         recyclerViewCulinaria = findViewById(R.id.recyclerViewCulinaria);
         recyclerViewInfantil = findViewById(R.id.recyclerViewInfantil);
+
+        recyclerViewChat.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
         recyclerViewAventura.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         recyclerViewTerror.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
@@ -67,12 +77,49 @@ public class CatalogoRejew extends AppCompatActivity {
         RetrofitClient retrofitClient = new RetrofitClient();
         livroAPIController = new LivroAPIController(retrofitClient);
 
+        chatAPIController = new ChatAPIController(retrofitClient);
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
         carregarLivros();
+        carregarChat();
+
+        String emailEntrada = getIntent().getStringExtra("emailEntrada");
+
+    }
+
+    private void carregarChat() {
+        chatAPIController.carregarChats(new ChatAPIController.ChatCallback() {
+
+            @Override
+            public void onSuccess(Chat chat) {
+
+            }
+
+            @Override
+            public void onSuccessByte(byte[] bytes) {
+
+            }
+
+            @Override
+            public void onSuccessList(List<Chat> chatL) {
+                adapterImagens = new ChatAdapter(CatalogoRejew.this, chatL, chatAPIController);
+                recyclerViewChat.setAdapter(adapterImagens);
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                AlertDialog.Builder alerta = new AlertDialog.Builder(CatalogoRejew.this);
+                alerta.setCancelable(false);
+                alerta.setTitle("Falha ao recarregar o catálogo");
+                alerta.setMessage("Error: " + t.getMessage());
+                alerta.setNegativeButton("Voltar", null);
+                alerta.create().show();
+            }
+        });
     }
 
 
@@ -101,7 +148,7 @@ public class CatalogoRejew extends AppCompatActivity {
                         case "romance":
                             romance.add(livro);
                             break;
-                        case "ficção científica":
+                        case "ficçãocientifica":
                             ficcao.add(livro);
                             break;
                         case "culinária":

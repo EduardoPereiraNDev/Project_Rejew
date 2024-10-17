@@ -1,6 +1,7 @@
 package com.example.projeto_rejew;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -25,7 +26,7 @@ public class LivroAdapter extends RecyclerView.Adapter<LivroAdapter.LivroViewHol
 
     private List<Livro> livros;
     private Context context;
-    private LivroAPIController livroAPIController; // Adicione o controller aqui
+    private LivroAPIController livroAPIController;
 
     public static class LivroViewHolder extends RecyclerView.ViewHolder {
         public ImageView imagemLivro;
@@ -33,8 +34,6 @@ public class LivroAdapter extends RecyclerView.Adapter<LivroAdapter.LivroViewHol
         public TextView nomeLivro;
         public TextView nomeAutor;
 
-        int larguraPadrao = 150;
-        int alturaPadrao = 120;
 
         public LivroViewHolder(View view) {
             super(view);
@@ -61,6 +60,11 @@ public class LivroAdapter extends RecyclerView.Adapter<LivroAdapter.LivroViewHol
     @Override
     public void onBindViewHolder(@NonNull LivroViewHolder holder, int position) {
         Livro livro = livros.get(position);
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, LivroInterface.class);
+            intent.putExtra("isbnLivro", livro.getIsbnLivro());
+            context.startActivity(intent);
+        });
         holder.nomeLivro.setText(livro.getNomeLivro());
         holder.nomeAutor.setText(livro.getAutorLivro());
         int larguraPadrao = 80;
@@ -70,8 +74,8 @@ public class LivroAdapter extends RecyclerView.Adapter<LivroAdapter.LivroViewHol
             int cor = Color.parseColor(livro.getCorPrimaria());
             GradientDrawable drawable = new GradientDrawable();
             drawable.setColor(cor);
-            drawable.setStroke(3, Color.BLACK);
-            drawable.setCornerRadius(16);
+            drawable.setStroke(2, Color.BLACK);
+            drawable.setCornerRadius(20);
             holder.viewCor.setBackground(drawable);
         } catch (NumberFormatException e) {
             holder.viewCor.setBackgroundColor(0xFFFFFFFF);
@@ -88,8 +92,8 @@ public class LivroAdapter extends RecyclerView.Adapter<LivroAdapter.LivroViewHol
             public void onSuccessByte(byte[] bytes) {
                 Glide.with(context)
                         .load(bytes)
-                        .override(larguraPadrao, alturaPadrao) // Tamanho padrão
-                        .centerCrop() // Pode usar outras opções como fitCenter
+                        .override(larguraPadrao, alturaPadrao)
+                        .centerCrop()
                         .into(holder.imagemLivro);
             }
 

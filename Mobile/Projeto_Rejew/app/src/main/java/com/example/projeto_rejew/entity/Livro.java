@@ -4,6 +4,7 @@ public class Livro {
     private Long isbnLivro;
     private String nomeLivro;
     private String autorLivro;
+    private String sinopseLivro;
     private int numeroPag;
     private int anoLancamento;
     private int NotaLivro;
@@ -15,7 +16,7 @@ public class Livro {
     public Livro() {
     }
 
-    public Livro(String nomeLivro, String autorLivro, int numeroPag, int anoLancamento, int notaLivro, String generoLivro, int qtdComentario, String corPrimaria, String caminhoImgCapa) {
+    public Livro(String nomeLivro, String autorLivro, int numeroPag, int anoLancamento, int notaLivro, String generoLivro, int qtdComentario, String corPrimaria, String caminhoImgCapa, String sinopseLivro) {
         this.nomeLivro = nomeLivro;
         this.autorLivro = autorLivro;
         this.numeroPag = numeroPag;
@@ -25,6 +26,7 @@ public class Livro {
         this.qtdComentario = qtdComentario;
         this.corPrimaria = corPrimaria;
         this.caminhoImgCapa = caminhoImgCapa;
+        this.sinopseLivro = sinopseLivro;
     }
 
     public Long getIsbnLivro() {
@@ -106,4 +108,8 @@ public class Livro {
     public void setCaminhoImgCapa(String caminhoImgCapa) {
         this.caminhoImgCapa = caminhoImgCapa;
     }
+
+    public String getSinopseLivro(){return sinopseLivro; }
+
+    public void setSinopseLivro(String sinopseLivro){ this.sinopseLivro = sinopseLivro;}
 }
