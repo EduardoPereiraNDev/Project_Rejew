@@ -81,6 +81,11 @@ public class PaginaInicial extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void abrirMaisComentados(View v) {
+        Intent intent = new Intent(PaginaInicial.this, MaisComentados.class);
+        startActivity(intent);
+    }
+
     public void sairConta(MenuItem item) {
     }
 }

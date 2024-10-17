@@ -44,6 +44,7 @@
         app:layout_constraintHorizontal_bias="0.046"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+<<<<<<< HEAD
         app:layout_constraintVertical_bias="0.021"
         android:src="@drawable/setavoltarazul"/>
 
@@ -62,6 +63,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.035" />
+=======
+        app:layout_constraintVertical_bias="0.05"
+        android:onClick="chatsPaginicial"
+        app:srcCompat="@drawable/setavoltarazul" />
+>>>>>>> 112c9e176fb39e1b93176d5ecf6be57cada43aee
 
     <ImageView
         android:id="@+id/ficcaocientificaChat"
@@ -183,6 +189,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.187"
+        android:onClick="chatAventura"
         android:src="@drawable/aventurachat" />
 
     <TextView
@@ -247,8 +254,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+<<<<<<< HEAD
         app:layout_constraintTop_toTopOf="@+id/quadrocinza"
         app:layout_constraintVertical_bias="0.992" />
+=======
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.991"
+        android:onClick="chatsPaginicial"
+        app:srcCompat="@drawable/casabrancaaa" />
+>>>>>>> 112c9e176fb39e1b93176d5ecf6be57cada43aee
 
     <ImageView
         android:id="@+id/pessoasLogo"
@@ -256,7 +270,28 @@
         android:layout_height="62dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+<<<<<<< HEAD
         app:layout_constraintHorizontal_bias="0.83"
+=======
+        app:layout_constraintStart_toEndOf="@+id/chaticon"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.991"
+        android:onClick="generochatPessoas"
+        app:srcCompat="@drawable/amigosbrancooo" />
+
+    <TextView
+        android:id="@+id/chattxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="@string/CHATS"
+        android:textColor="#022e53"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.476"
+>>>>>>> 112c9e176fb39e1b93176d5ecf6be57cada43aee
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.994"

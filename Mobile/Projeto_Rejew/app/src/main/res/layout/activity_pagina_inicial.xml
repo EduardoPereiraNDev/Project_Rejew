@@ -182,8 +182,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layoutManager="LinearLayoutManager"
             android:layout_marginTop="-35dp"
+            app:layoutManager="LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textFiccao" />
@@ -206,8 +206,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layoutManager="LinearLayoutManager"
             android:layout_marginTop="-35dp"
+            app:layoutManager="LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textCulinaria" />
@@ -257,6 +257,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/view5"
         app:layout_constraintVertical_bias="0.523"
+        android:onClick="paginicialChats"
         app:srcCompat="@drawable/chatbrancooooo" />
 
     <ImageView
@@ -276,6 +277,7 @@
         android:layout_width="54dp"
         android:layout_height="54dp"
         android:layout_marginEnd="48dp"
+        android:onClick="paginicialPessoas"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/view5"
