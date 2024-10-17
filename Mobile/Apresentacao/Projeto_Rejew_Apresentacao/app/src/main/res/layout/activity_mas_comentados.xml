@@ -3,11 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".MaisComentados">
 
 
     <View
-        android:id="@+id/view66"
+        android:id="@+id/quadradoazul"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:background="#d9d9d9"
@@ -38,10 +39,10 @@
         android:text="Autores mas Comentados"
         android:textColor="#022e53"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/view66"
-        app:layout_constraintEnd_toEndOf="@+id/view66"
-        app:layout_constraintStart_toStartOf="@+id/view66"
-        app:layout_constraintTop_toTopOf="@+id/view66" />
+        app:layout_constraintBottom_toBottomOf="@+id/quadradoazul"
+        app:layout_constraintEnd_toEndOf="@+id/quadradoazul"
+        app:layout_constraintStart_toStartOf="@+id/quadradoazul"
+        app:layout_constraintTop_toTopOf="@+id/quadradoazul" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/fotobibi"
