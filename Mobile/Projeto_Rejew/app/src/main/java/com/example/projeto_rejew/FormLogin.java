@@ -2,7 +2,6 @@ package com.example.projeto_rejew;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
@@ -65,9 +64,16 @@ public class FormLogin extends AppCompatActivity {
                     alerta.setNegativeButton("Ok",null);
                     alerta.create().show();
                     Intent intent = new Intent(FormLogin.this, CatalogoRejew.class);
+                    intent.putExtra("emailEntrada", usuario.getEmailEntrada());
                     startActivity(intent);
                 }
             }
+
+            @Override
+            public void onSuccessByte(byte[] bytes) {
+
+            }
+
             @Override
             public void onFailure(Throwable t) {
                 AlertDialog.Builder alerta = new AlertDialog.Builder(FormLogin.this);

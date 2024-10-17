@@ -12,6 +12,7 @@ import java.util.List;
 
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -23,15 +24,11 @@ import retrofit2.http.Part;
 import retrofit2.http.Path;
 
 public interface UsuarioApi {
-
     @GET("usuarios")
     Call<List<Usuario>> listarTodosUsuarios();
 
     @GET("usuarios/{email}")
     Call<Usuario> buscarUsuarioPorEmail(@Path("email") String email);
-
-    @GET("usuarios/email/{emailEntrada}")
-    Call<List<Usuario>> buscarUsuarioPorEmailLike(@Path("emailEntrada") String emailEntrada);
 
     @GET("usuarios/nome/{nome}")
     Call<List<Usuario>> buscarUsuarioPorNome(@Path("nome") String nome);
@@ -56,6 +53,11 @@ public interface UsuarioApi {
             @Part MultipartBody.Part caminhoImagem,
             @Part MultipartBody.Part caminhoImagemFundo,
             @Part("recadoPerfil") RequestBody recadoPerfil);
+
+    @GET("usuarios/imagem/fundo/{caminho}")
+    Call<ResponseBody> buscarImagemFundo(@Path("caminho") String caminho);
+    @GET("usuarios/imagem/{caminho}")
+    Call<ResponseBody> buscarImagemPerfil(@Path("caminho") String caminho);
 
     @DELETE("usuarios/{emailUsuario}")
     Call<Void> deletarUsuario(@Path("emailUsuario") String emailUsuario);

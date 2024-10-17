@@ -2,6 +2,7 @@ package com.example.projeto_rejew;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -17,21 +18,28 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.projeto_rejew.api.ChatAPIController;
 import com.example.projeto_rejew.api.LivroAPIController;
 import com.example.projeto_rejew.api.RetrofitClient;
+import com.example.projeto_rejew.api.UsuarioAPIController;
 import com.example.projeto_rejew.entity.Chat;
 import com.example.projeto_rejew.entity.Livro;
+import com.example.projeto_rejew.entity.Usuario;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class CatalogoRejew extends AppCompatActivity {
 
     private LivroAdapter livroAdapter;
     private LivroAPIController livroAPIController;
     private ChatAPIController chatAPIController;
+    private UsuarioAPIController usuarioAPIController;
     private ImageView imageView;
+    private String caminhoImagem;
 
     private RecyclerView recyclerViewChat;
     private RecyclerView recyclerViewAventura;
@@ -49,12 +57,15 @@ public class CatalogoRejew extends AppCompatActivity {
     private LivroAdapter adapterFiccao;
     private LivroAdapter adapterCulinaria;
     private LivroAdapter adapterInfantil;
+    private CircleImageView circleImageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_pagina_inicial);
+
+        circleImageView = findViewById(R.id.fotoperfil);
 
         recyclerViewChat = findViewById(R.id.imagensChats);
 
@@ -79,6 +90,9 @@ public class CatalogoRejew extends AppCompatActivity {
 
         chatAPIController = new ChatAPIController(retrofitClient);
 
+        usuarioAPIController = new UsuarioAPIController(retrofitClient);
+
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -86,9 +100,62 @@ public class CatalogoRejew extends AppCompatActivity {
         });
         carregarLivros();
         carregarChat();
-
+        Log.d("DADOS",getIntent().getStringExtra("emailEntrada"));
         String emailEntrada = getIntent().getStringExtra("emailEntrada");
+        carregarUsuario(emailEntrada);
 
+
+    }
+
+    private void carregarUsuario(String emailEntrada) {
+        usuarioAPIController.buscarUsuario(emailEntrada, new UsuarioAPIController.UsuarioCallback() {
+
+            @Override
+            public void onSuccess(Usuario usuario) {
+                if (usuario != null) {
+                    Log.d("DADOS", usuario.getCaminhoImagem() + usuario.getEmailEntrada());
+                    caminhoImagem = usuario.getCaminhoImagem();
+                    carregarImagemPerfil(caminhoImagem);
+                }
+            }
+
+            @Override
+            public void onSuccessByte(byte[] bytes) {
+
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                AlertDialog.Builder alerta = new AlertDialog.Builder(CatalogoRejew.this);
+                alerta.setCancelable(false);
+                alerta.setTitle("Falha ao recarregar o catálogo");
+                alerta.setMessage("Error: " + t.getMessage());
+                alerta.setNegativeButton("Voltar", null);
+                alerta.create().show();
+            }
+        });
+    }
+
+    private void carregarImagemPerfil(String caminhoImagem) {
+        int larguraPadrao = 65;
+        int alturaPadrao = 65;
+        usuarioAPIController.carregarImagemPerfil(caminhoImagem, new UsuarioAPIController.UsuarioCallback() {
+            @Override
+            public void onSuccess(Usuario usuario) {
+            }
+            @Override
+            public void onSuccessByte(byte[] bytes) {
+                Glide.with(CatalogoRejew.this)
+                        .load(bytes)
+                        .override(larguraPadrao,alturaPadrao)
+                        .centerCrop()
+                        .into(circleImageView);
+            }
+            @Override
+            public void onFailure(Throwable t) {
+                circleImageView.setImageResource(R.drawable.imagedefault);
+            }
+        });
     }
 
     private void carregarChat() {
@@ -214,7 +281,7 @@ public class CatalogoRejew extends AppCompatActivity {
     }
 
     public void abrirMenu(View v) {
-        PopupMenu popupMenu = new PopupMenu(CatalogoRejew.this, imageView);
+        PopupMenu popupMenu = new PopupMenu(CatalogoRejew.this, circleImageView);
         popupMenu.getMenuInflater().inflate(R.menu.main_menu, popupMenu.getMenu());
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             public boolean onMenuItemClick(MenuItem item) {

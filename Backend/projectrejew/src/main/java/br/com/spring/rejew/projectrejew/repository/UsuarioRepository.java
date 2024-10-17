@@ -29,8 +29,11 @@ public interface UsuarioRepository extends JpaRepository<Usuario, String> {
     @Query("DELETE FROM Usuario u WHERE u.emailEntrada = :emailEntrada")
     void deleteByEmailEntrada(String emailEntrada);
     
-    @Query("SELECT u FROM Usuario u WHERE u.emailEntrada LIKE %:emailEntrada%")
+    @Query("SELECT u FROM Usuario u WHERE u.emailEntrada LIKE %:emailEntrada")
     List<Usuario> buscarUsuarioPorEmailLike(String emailEntrada);
+    
+    @Query("SELECT u FROM Usuario u WHERE u.emailEntrada = :emailEntrada")
+    Optional<Usuario> buscarUsuarioPorEmail(String emailEntrada);
 
     @Query("SELECT u FROM Usuario u WHERE u.nomeUsuario LIKE %:nomeUsuario%")
     List<Usuario> buscarUsuarioPorNome(String nomeUsuario);

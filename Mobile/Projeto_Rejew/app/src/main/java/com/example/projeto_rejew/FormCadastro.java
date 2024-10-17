@@ -76,10 +76,13 @@ public class FormCadastro extends AppCompatActivity {
                         @Override
                         public void run() {
                                 Intent intent = new Intent(FormCadastro.this, CatalogoRejew.class);
-                                intent.putExtra("emailEntrada", usuario.getEmailEntrada());
                                 FormCadastro.this.startActivity(intent);
                         }
                     }, 3000);
+                }
+
+                @Override
+                public void onSuccessByte(byte[] bytes){
                 }
 
                 @Override

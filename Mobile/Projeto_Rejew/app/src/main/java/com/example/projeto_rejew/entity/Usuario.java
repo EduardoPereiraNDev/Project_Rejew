@@ -2,6 +2,7 @@ package com.example.projeto_rejew.entity;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 public class Usuario {
 
@@ -13,6 +14,9 @@ public class Usuario {
     private String caminhoImagem;
     private String caminhoImagemFundo;
     private String recadoPerfil;
+    private List<Usuario> usuariosSeguido;
+    private List<Usuario> usuariosSeguindo;
+    private List<Comentario> comentario;
 
     public Usuario() {
 
@@ -32,6 +36,30 @@ public class Usuario {
 
     public String getNomeUsuario() {
         return nomeUsuario;
+    }
+
+    public List<Usuario> getUsuariosSeguido() {
+        return usuariosSeguido;
+    }
+
+    public void setUsuariosSeguido(List<Usuario> usuariosSeguido) {
+        this.usuariosSeguido = usuariosSeguido;
+    }
+
+    public List<Usuario> getUsuariosSeguindo() {
+        return usuariosSeguindo;
+    }
+
+    public void setUsuariosSeguindo(List<Usuario> usuariosSeguindo) {
+        this.usuariosSeguindo = usuariosSeguindo;
+    }
+
+    public List<Comentario> getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(List<Comentario> comentario) {
+        this.comentario = comentario;
     }
 
     public void setNomeUsuario(String nomeUsuario) {

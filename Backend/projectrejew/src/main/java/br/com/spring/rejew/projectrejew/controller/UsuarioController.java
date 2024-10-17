@@ -16,6 +16,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -92,7 +93,7 @@ public class UsuarioController {
     // Buscar um usuário por email
     @GetMapping("/{email}")
     public ResponseEntity<Usuario> buscarUsuarioPorEmail(@PathVariable String email) {
-        Optional<Usuario> usuario = usuarioRepository.findByEmailEntrada(email);
+        Optional<Usuario> usuario = usuarioRepository.buscarUsuarioPorEmail(email);
         return usuario.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
     
@@ -109,6 +110,42 @@ public class UsuarioController {
     public ResponseEntity<List<Usuario>> buscarUsuarioPorNome(@PathVariable String nome) {
         List<Usuario> usuarios = usuarioRepository.buscarUsuarioPorNome(nome);
         return ResponseEntity.ok(usuarios);
+    }
+    
+    @GetMapping("/imagem/{caminho}")
+    public ResponseEntity<byte[]> retornarImagemPerfil(@PathVariable String caminho) {
+        if (caminho == null || caminho.trim().isEmpty()) {
+            return ResponseEntity.badRequest().body(null);
+        }
+        File imagemArquivo = new File(UPLOAD_DIR + caminho);
+        if (!imagemArquivo.exists()) {
+            return ResponseEntity.notFound().build();
+        }
+        try {
+            byte[] bytes = Files.readAllBytes(imagemArquivo.toPath());
+            return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(bytes);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
+    }
+    
+    @GetMapping("/imagem/fundo/{caminho}")
+    public ResponseEntity<byte[]> retornarImagemFundo(@PathVariable String caminho) {
+        if (caminho == null || caminho.trim().isEmpty()) {
+            return ResponseEntity.badRequest().body(null);
+        }
+        File imagemArquivo = new File(UPLOAD_DIR2 + caminho);
+        if (!imagemArquivo.exists()) {
+            return ResponseEntity.notFound().build();
+        }
+        try {
+            byte[] bytes = Files.readAllBytes(imagemArquivo.toPath());
+            return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(bytes);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
     }
 
     // Buscar um usuário por nome do perfil
