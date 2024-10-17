@@ -36,7 +36,7 @@ public class LivroAPIController {
             @Override
             public void onResponse(Call<List<Livro>> call, Response<List<Livro>> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    responseCallback.onSuccessList(response.body());  // Chama o callback com a lista de livros
+                    responseCallback.onSuccessList(response.body());
                 } else {
                     Log.e("API Error", "Erro ao carregar livros: " + response.code());
                     responseCallback.onFailure(new Exception("Erro ao carregar livros"));
@@ -46,10 +46,31 @@ public class LivroAPIController {
             @Override
             public void onFailure(Call<List<Livro>> call, Throwable t) {
                 Log.e("API Error", "Falha na chamada: " + t.getMessage());
-                responseCallback.onFailure(t);  // Trata a falha da requisição
+                responseCallback.onFailure(t);
             }
         });
     }
+
+    public void buscarLivroPorId( Long isbn , LivroCallback responseCallback) {
+        Call<Livro> call = livroApi.buscarLivroPorId(isbn);
+        call.enqueue(new Callback<Livro>() {
+            @Override
+            public void onResponse(Call<Livro> call, Response<Livro> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    responseCallback.onSuccess(response.body());
+                } else {
+                    Log.e("API Error", "Erro ao carregar livros: " + response.code());
+                    responseCallback.onFailure(new Exception("Erro ao carregar livros"));
+                }
+            }
+            @Override
+            public void onFailure(Call<Livro> call, Throwable t) {
+                Log.e("API Error", "Falha na chamada: " + t.getMessage());
+                responseCallback.onFailure(t);
+            }
+        });
+    }
+
     public void retornarImagem(LivroCallback callback, String caminhoImgCapa) {
         Call<ResponseBody> call = livroApi.retornarImagem(caminhoImgCapa);
 
@@ -59,7 +80,6 @@ public class LivroAPIController {
                 if (response.isSuccessful()) {
                     try {
                         byte[] imageBytes = response.body().bytes();
-                        // Chama o callback passando os bytes
                         callback.onSuccessByte(imageBytes);
                     } catch (Exception e) {
                         callback.onFailure(e);

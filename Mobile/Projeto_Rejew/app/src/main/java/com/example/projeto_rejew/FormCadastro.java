@@ -75,8 +75,9 @@ public class FormCadastro extends AppCompatActivity {
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            Intent intent = new Intent(FormCadastro.this, MainActivity.class);
-                            startActivity(intent);
+                                Intent intent = new Intent(FormCadastro.this, CatalogoRejew.class);
+                                intent.putExtra("emailEntrada", usuario.getEmailEntrada());
+                                FormCadastro.this.startActivity(intent);
                         }
                     }, 3000);
                 }
