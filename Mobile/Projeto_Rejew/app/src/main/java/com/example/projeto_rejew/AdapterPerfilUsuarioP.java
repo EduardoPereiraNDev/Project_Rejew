@@ -1,6 +1,7 @@
 package com.example.projeto_rejew;
 
 import android.content.Context;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,11 +23,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class AdapterPerfilUsuarioP extends RecyclerView.Adapter<AdapterPerfilUsuarioP.UsuarioViewHolder> {
 
-    private List<Usuario> usuarios;
+    private Usuario usuarioP;
     private Context context;
     private UsuarioAPIController usuarioAPIController;
-    private int larguraPadrao = 210;
-    private int alturaPadrao = 210;
 
     public static class UsuarioViewHolder extends RecyclerView.ViewHolder {
         public ImageView fotoFundo;
@@ -49,9 +48,9 @@ public class AdapterPerfilUsuarioP extends RecyclerView.Adapter<AdapterPerfilUsu
         }
     }
 
-    public AdapterPerfilUsuarioP(Context context, List<Usuario> usuarios, UsuarioAPIController usuarioAPIController) {
+    public AdapterPerfilUsuarioP(Context context, Usuario usuario, UsuarioAPIController usuarioAPIController) {
         this.context = context;
-        this.usuarios = usuarios;
+        this.usuarioP = usuario;
         this.usuarioAPIController = usuarioAPIController;
     }
 
@@ -64,7 +63,8 @@ public class AdapterPerfilUsuarioP extends RecyclerView.Adapter<AdapterPerfilUsu
 
     @Override
     public void onBindViewHolder(@NonNull UsuarioViewHolder holder, int position) {
-        Usuario usuario = usuarios.get(position);
+        Usuario usuario = usuarioP;
+
         holder.nomeUsuario.setText(usuario.getNomeUsuario());
 
 
@@ -80,6 +80,8 @@ public class AdapterPerfilUsuarioP extends RecyclerView.Adapter<AdapterPerfilUsu
 
             @Override
             public void onSuccessByte(byte[] bytes) {
+                int larguraPadrao = 210;
+                int alturaPadrao = 210;
                 Glide.with(context)
                         .load(bytes)
                         .override(larguraPadrao, alturaPadrao)
@@ -94,6 +96,8 @@ public class AdapterPerfilUsuarioP extends RecyclerView.Adapter<AdapterPerfilUsu
             }
         });
 
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        int larguraTela = displayMetrics.widthPixels;
         usuarioAPIController.carregarImagemFundo(usuario.getCaminhoImagemFundo() , new UsuarioAPIController.UsuarioCallback() {
             @Override
             public void onSuccess(Usuario usuario) {
@@ -101,9 +105,10 @@ public class AdapterPerfilUsuarioP extends RecyclerView.Adapter<AdapterPerfilUsu
 
             @Override
             public void onSuccessByte(byte[] bytes) {
+                int alturaPadrao = 650;
                 Glide.with(context)
                         .load(bytes)
-                        .override(larguraPadrao, alturaPadrao)
+                        .override(larguraTela, alturaPadrao)
                         .centerCrop()
                         .into(holder.fotoFundo);
             }
@@ -118,11 +123,11 @@ public class AdapterPerfilUsuarioP extends RecyclerView.Adapter<AdapterPerfilUsu
 
     @Override
     public int getItemCount() {
-        return usuarios.size();
+        return 1;
     }
 
-    public void atualizarLista(List<Usuario> novosUsuarios) {
-        this.usuarios = novosUsuarios;
+    public void atualizarLista(Usuario novoUsuario) {
+        this.usuarioP = novoUsuario;
         notifyDataSetChanged();
     }
 }

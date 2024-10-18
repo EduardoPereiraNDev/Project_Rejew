@@ -1,6 +1,7 @@
 package com.example.projeto_rejew;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
@@ -31,34 +32,28 @@ public class FormLogin extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_form_login);
 
-        // Configuração de layout para ajustar as barras de sistema
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        // Inicializa os campos de email, senha e o ícone de visibilidade da senha
         txtEmail = findViewById(R.id.email);
         txtPassword = findViewById(R.id.senha);
-        olhoVisibilidade = findViewById(R.id.senhaicon);  // Certifique-se de que o ícone está presente no layout XML
+        olhoVisibilidade = findViewById(R.id.senhaicon);
 
-        // Listener para alternar visibilidade da senha
         olhoVisibilidade.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (isPasswordVisible) {
                     txtPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-                    olhoVisibilidade.setImageResource(R.drawable.olhoon);  // Ícone de senha oculta
+                    olhoVisibilidade.setImageResource(R.drawable.olhoon);
                 } else {
                     txtPassword.setInputType(InputType.TYPE_CLASS_TEXT);
-                    olhoVisibilidade.setImageResource(R.drawable.olhooff);  // Ícone de senha visível
+                    olhoVisibilidade.setImageResource(R.drawable.olhooff);
                 }
 
-                // Mover o cursor para o final do texto da senha
                 txtPassword.setSelection(txtPassword.getText().length());
-
-                // Alterna o estado de visibilidade da senha
                 isPasswordVisible = !isPasswordVisible;
             }
         });
@@ -89,8 +84,11 @@ public class FormLogin extends AppCompatActivity {
                     alerta.setMessage("Login feito com sucesso");
                     alerta.setNegativeButton("Ok",null);
                     alerta.create().show();
+                    SharedPreferences sharedPreferences = getSharedPreferences("usuarioDados", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("emailEntrada", email);
+                    editor.apply();
                     Intent intent = new Intent(FormLogin.this, CatalogoRejew.class);
-                    intent.putExtra("emailEntrada", usuario.getEmailEntrada());
                     startActivity(intent);
                 }
             }
@@ -123,5 +121,6 @@ public class FormLogin extends AppCompatActivity {
         Intent intent = new Intent(FormLogin.this, CatalogoRejew.class);
         startActivity(intent);
     }
+
 
 }

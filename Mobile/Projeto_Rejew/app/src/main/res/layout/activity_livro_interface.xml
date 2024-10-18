@@ -17,6 +17,7 @@
         tools:context=".LivroInterface">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:paddingBottom="100dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -172,6 +173,51 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tituloSinopse" />
+
+            <TextView
+                android:id="@+id/comentariosTit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_extrabold"
+                android:layout_marginTop="40dp"
+                android:layout_marginLeft="40dp"
+                android:text="Cometarios"
+                android:textSize="30dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sinopse" />
+
+            <EditText
+                android:id="@+id/addComentario"
+                android:background="@drawable/add_comentario"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="40dp"
+                android:padding="15dp"
+                android:paddingRight="35dp"
+                android:hint="Que tal fazer um comentario?"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/comentariosTit" />
+
+            <ImageView
+                android:id="@+id/enviar"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/enviar"
+                android:onClick="chamarComentarioAdd"
+                android:layout_marginRight="20dp"
+                app:layout_constraintBottom_toBottomOf="@+id/addComentario"
+                app:layout_constraintEnd_toEndOf="@id/addComentario"
+                app:layout_constraintTop_toTopOf="@+id/addComentario" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/comentarios"
+                android:layout_marginTop="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/addComentario" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

@@ -21,19 +21,6 @@
         app:layout_constraintVertical_bias="0.0"
         tools:ignore="MissingConstraints" />
 
-    <View
-        android:id="@+id/quadroAzul"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="#022e53"
-        android:backgroundTint="#022e53"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/setaazulvoltar"
@@ -44,12 +31,11 @@
         app:layout_constraintHorizontal_bias="0.046"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-<<<<<<< HEAD
         app:layout_constraintVertical_bias="0.021"
         android:src="@drawable/setavoltarazul"/>
 
     <TextView
-        android:id="@+id/chat"
+        android:id="@+id/chatT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/open_sans_bold"
@@ -63,11 +49,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.035" />
-=======
-        app:layout_constraintVertical_bias="0.05"
-        android:onClick="chatsPaginicial"
-        app:srcCompat="@drawable/setavoltarazul" />
->>>>>>> 112c9e176fb39e1b93176d5ecf6be57cada43aee
+
 
     <ImageView
         android:id="@+id/ficcaocientificaChat"
@@ -246,56 +228,51 @@
         app:layout_constraintVertical_bias="0.991"
         android:src="@drawable/homelogo"/>
 
-    <ImageView
-        android:id="@+id/chatAzul"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:src="@drawable/chatazul"
+    <View
+        android:id="@+id/view5"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@color/orange"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-<<<<<<< HEAD
-        app:layout_constraintTop_toTopOf="@+id/quadrocinza"
-        app:layout_constraintVertical_bias="0.992" />
-=======
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.991"
-        android:onClick="chatsPaginicial"
-        app:srcCompat="@drawable/casabrancaaa" />
->>>>>>> 112c9e176fb39e1b93176d5ecf6be57cada43aee
+        />
 
     <ImageView
-        android:id="@+id/pessoasLogo"
-        android:layout_width="62dp"
-        android:layout_height="62dp"
+        android:id="@+id/chat"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="44dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view5"
+        app:layout_constraintVertical_bias="0.523"
+        android:onClick="paginicialChats"
+        app:srcCompat="@drawable/chatbrancooooo" />
+
+    <ImageView
+        android:id="@+id/homeicon"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-<<<<<<< HEAD
-        app:layout_constraintHorizontal_bias="0.83"
-=======
-        app:layout_constraintStart_toEndOf="@+id/chaticon"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.991"
-        android:onClick="generochatPessoas"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view5"
+        app:srcCompat="@drawable/casaazulll" />
+
+    <ImageView
+        android:id="@+id/pessoasicon"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        android:layout_marginEnd="48dp"
+        android:onClick="paginicialPessoas"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view5"
+        app:layout_constraintVertical_bias="0.523"
         app:srcCompat="@drawable/amigosbrancooo" />
-
-    <TextView
-        android:id="@+id/chattxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="@string/CHATS"
-        android:textColor="#022e53"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.476"
->>>>>>> 112c9e176fb39e1b93176d5ecf6be57cada43aee
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.994"
-        android:src="@drawable/pessoaslogo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

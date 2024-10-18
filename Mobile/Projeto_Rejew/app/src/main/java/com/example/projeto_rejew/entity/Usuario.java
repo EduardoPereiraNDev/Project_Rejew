@@ -1,6 +1,7 @@
 package com.example.projeto_rejew.entity;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -19,7 +20,9 @@ public class Usuario {
     private List<Comentario> comentario;
 
     public Usuario() {
-
+        this.usuariosSeguido = new ArrayList<>();
+        this.usuariosSeguindo = new ArrayList<>();
+        this.comentario = new ArrayList<>();
     }
 
     public Usuario( String emailEntrada, String senhaEntrada) {

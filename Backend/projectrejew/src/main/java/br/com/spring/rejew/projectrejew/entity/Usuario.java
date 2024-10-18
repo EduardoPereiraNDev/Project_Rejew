@@ -20,24 +20,8 @@ import lombok.Data;
 
 @Entity
 @Table(name = "usuario")
+@Data
 public class Usuario implements Serializable {
-	
-	public Usuario() {
-		
-	}
-
-	public Usuario(String nomeUsuario, String nomePerfil, String emailEntrada, String senhaEntrada,
-			LocalDate dataNascimentoU, String uniqueFilename, String uniqueFilename2, String recadoPerfil) {
-		
-		this.nomeUsuario = nomeUsuario;
-		this.nomePerfil = nomePerfil;
-		this.emailEntrada = emailEntrada;
-		this.senhaEntrada = senhaEntrada;
-		this.dataNascimento = dataNascimentoU;
-		this.caminhoImagem = uniqueFilename;
-		this.caminhoImagemFundo = uniqueFilename2;
-		this.recadoPerfil = recadoPerfil;
-	}
 
 	private static final long serialVersionUID = 1L;
 
@@ -89,90 +73,11 @@ public class Usuario implements Serializable {
     @JoinTable(name="usuarios_seguir",
     joinColumns = @JoinColumn(name = "usuario_seguido"),
     inverseJoinColumns = @JoinColumn(name="usuario_seguindo"))
-    Set<Usuario> usuariosSeguindo;
+    private Set<Usuario> usuariosSeguindo;
     
     @ManyToMany(mappedBy = "usuariosSeguindo")
-    Set<Usuario> usuariosSeguido;
+    private Set<Usuario> usuariosSeguido;
 
-	public String getNomeUsuario() {
-		return nomeUsuario;
-	}
-
-	public void setNomeUsuario(String nomeUsuario) {
-		this.nomeUsuario = nomeUsuario;
-	}
-
-	public String getNomePerfil() {
-		return nomePerfil;
-	}
-
-	public void setNomePerfil(String nomePerfil) {
-		this.nomePerfil = nomePerfil;
-	}
-
-	public String getEmailEntrada() {
-		return emailEntrada;
-	}
-
-	public void setEmailEntrada(String emailEntrada) {
-		this.emailEntrada = emailEntrada;
-	}
-
-	public String getSenhaEntrada() {
-		return senhaEntrada;
-	}
-
-	public void setSenhaEntrada(String senhaEntrada) {
-		this.senhaEntrada = senhaEntrada;
-	}
-
-	public LocalDate getDataNascimento() {
-		return dataNascimento;
-	}
-
-	public void setDataNascimento(LocalDate dataNascimento) {
-		this.dataNascimento = dataNascimento;
-	}
-
-	public String getCaminhoImagem() {
-		return caminhoImagem;
-	}
-
-	public void setCaminhoImagem(String caminhoImagem) {
-		this.caminhoImagem = caminhoImagem;
-	}
-
-	public String getCaminhoImagemFundo() {
-		return caminhoImagemFundo;
-	}
-
-	public void setCaminhoImagemFundo(String caminhoImagemFundo) {
-		this.caminhoImagemFundo = caminhoImagemFundo;
-	}
-
-	public String getRecadoPerfil() {
-		return recadoPerfil;
-	}
-
-	public void setRecadoPerfil(String recadoPerfil) {
-		this.recadoPerfil = recadoPerfil;
-	}
-
-	public Set<Usuario> getUsuariosSeguindo() {
-		return usuariosSeguindo;
-	}
-
-	public void setUsuariosSeguindo(Set<Usuario> usuariosSeguindo) {
-		this.usuariosSeguindo = usuariosSeguindo;
-	}
-
-	public Set<Usuario> getUsuariosSeguido() {
-		return usuariosSeguido;
-	}
-
-	public void setUsuariosSeguido(Set<Usuario> usuariosSeguido) {
-		this.usuariosSeguido = usuariosSeguido;
-	}
     
 
 }

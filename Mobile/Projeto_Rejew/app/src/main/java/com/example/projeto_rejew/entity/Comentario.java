@@ -4,16 +4,18 @@ import java.util.Date;
 
 public class Comentario {
     private Long idComentario;
-    private Date dataComentario;
+    private String dataComentario;
     private String conteudoComent;
-    private Long usuarioComent;
+    private Usuario usuarioComent;
+    private Livro livroComent;
 
     public Comentario() {
     }
-    public Comentario(Date dataComentario, String conteudoComent, Long usuarioComent) {
+    public Comentario(String dataComentario, String conteudoComent, Usuario usuarioComent, Livro livroComent) {
         this.dataComentario = dataComentario;
         this.conteudoComent = conteudoComent;
         this.usuarioComent = usuarioComent;
+        this.livroComent = livroComent;
     }
 
     public Long getIdComentario() {
@@ -24,11 +26,11 @@ public class Comentario {
         this.idComentario = idComentario;
     }
 
-    public Date getDataComentario() {
+    public String getDataComentario() {
         return dataComentario;
     }
 
-    public void setDataComentario(Date dataComentario) {
+    public void setDataComentario(String dataComentario) {
         this.dataComentario = dataComentario;
     }
 
@@ -40,11 +42,13 @@ public class Comentario {
         this.conteudoComent = conteudoComent;
     }
 
-    public Long getUsuarioComent() {
-        return usuarioComent;
-    }
+    public Usuario getUsuarioComent() {return usuarioComent;}
 
-    public void setUsuarioComent(Long usuarioComent) {
-        this.usuarioComent = usuarioComent;
-    }
+    public void setUsuarioComent(Usuario usuarioComent) {this.usuarioComent = usuarioComent;}
+
+    public Livro getLivroComent() {return livroComent;}
+
+    public void setLivroComent(Livro livroComent) {this.livroComent = livroComent;}
+
+
 }

@@ -1,5 +1,8 @@
 package com.example.projeto_rejew.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Livro {
     private Long isbnLivro;
     private String nomeLivro;
@@ -12,8 +15,14 @@ public class Livro {
     private int qtdComentario;
     private String corPrimaria;
     private String caminhoImgCapa;
+    List<Comentario> comentario;
+    List<Usuario> usuarioA ;
+    List<Usuario> usuario ;
 
     public Livro() {
+        this.comentario = new ArrayList<>();
+        this.usuarioA = new ArrayList<>();
+        this.usuario = new ArrayList<>();
     }
 
     public Livro(String nomeLivro, String autorLivro, int numeroPag, int anoLancamento, int notaLivro, String generoLivro, int qtdComentario, String corPrimaria, String caminhoImgCapa, String sinopseLivro) {

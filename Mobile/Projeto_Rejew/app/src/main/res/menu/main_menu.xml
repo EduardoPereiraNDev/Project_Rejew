@@ -2,6 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:id="@+id/ver_perfil"
+        android:onClick="irPerfil"
         android:title="@string/ver_perfil"/>
 
     <item android:id="@+id/configuração"

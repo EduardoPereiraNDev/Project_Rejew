@@ -1,6 +1,7 @@
 package com.example.projeto_rejew;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -41,6 +42,8 @@ public class CatalogoRejew extends AppCompatActivity {
     private ImageView imageView;
     private String caminhoImagem;
 
+    private String emailEntrada;
+    private Usuario usuario;
     private RecyclerView recyclerViewChat;
     private RecyclerView recyclerViewAventura;
     private RecyclerView recyclerViewTerror;
@@ -100,21 +103,28 @@ public class CatalogoRejew extends AppCompatActivity {
         });
         carregarLivros();
         carregarChat();
-        Log.d("DADOS",getIntent().getStringExtra("emailEntrada"));
-        String emailEntrada = getIntent().getStringExtra("emailEntrada");
+        emailEntrada = recuperarEmailUsuario();
         carregarUsuario(emailEntrada);
+        this.usuario = new Usuario();
 
 
+
+    }
+
+    private String recuperarEmailUsuario() {
+        SharedPreferences sharedPreferences = getSharedPreferences("usuarioDados", MODE_PRIVATE);
+        return sharedPreferences.getString("emailEntrada", null);
     }
 
     private void carregarUsuario(String emailEntrada) {
         usuarioAPIController.buscarUsuario(emailEntrada, new UsuarioAPIController.UsuarioCallback() {
 
             @Override
-            public void onSuccess(Usuario usuario) {
-                if (usuario != null) {
-                    Log.d("DADOS", usuario.getCaminhoImagem() + usuario.getEmailEntrada());
-                    caminhoImagem = usuario.getCaminhoImagem();
+            public void onSuccess(Usuario usuarioC) {
+                if (usuarioC != null) {
+                    usuario = usuarioC;
+                    Log.d("DADOS", usuarioC.getCaminhoImagem() + usuarioC.getEmailEntrada());
+                    caminhoImagem = usuarioC.getCaminhoImagem();
                     carregarImagemPerfil(caminhoImagem);
                 }
             }
@@ -290,6 +300,11 @@ public class CatalogoRejew extends AppCompatActivity {
             }
         });
         popupMenu.show();
+    }
+
+    public void irPerfil(MenuItem item) {
+        Intent intent = new Intent(CatalogoRejew.this, PerfilUsuarioPessoal.class);
+        startActivity(intent);
     }
     public void sairConta(MenuItem item) {
         Intent intent = new Intent(CatalogoRejew.this, MainActivity.class);

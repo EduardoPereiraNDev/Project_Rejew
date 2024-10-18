@@ -27,7 +27,7 @@ import lombok.Data;
 	    private String textoMensagem;
 	    
 	    @Column(name = "data_Mensagem")
-	    private LocalDate dataMensagem;
+	    private String dataMensagem;
 	    
 	    @ManyToOne
 	    @JoinColumn(name="usuario_Email_Entrada", nullable = false)

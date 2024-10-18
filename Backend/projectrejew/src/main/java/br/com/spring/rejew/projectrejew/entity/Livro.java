@@ -63,19 +63,7 @@ public class Livro implements Serializable {
     @ManyToMany(mappedBy = "livros")
     Set<Usuario> usuario ;
 
-    public Livro() {}
-
-	public Livro(String nomeLivro, String autorLivro, String sinopseLivro , int numeroPag, int anoLancamento,
-			 String generoLivro, String corPrimaria, String caminhoImgCapa) {
-		this.nomeLivro = nomeLivro;
-		this.autorLivro = autorLivro;
-		this.numeroPag = numeroPag;
-		this.sinopseLivro = sinopseLivro;
-		this.anoLancamento = anoLancamento;
-		this.generoLivro = generoLivro;
-		this.corPrimaria = corPrimaria;
-		this.caminhoImgCapa = caminhoImgCapa;
-	}
+  
 
     
 }
