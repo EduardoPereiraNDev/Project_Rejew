@@ -248,7 +248,7 @@
         app:layout_constraintTop_toTopOf="@+id/view5"
         app:layout_constraintVertical_bias="0.523"
         android:onClick="paginicialChats"
-        app:srcCompat="@drawable/chatbrancooooo" />
+        app:srcCompat="@drawable/chatazul" />
 
     <ImageView
         android:id="@+id/homeicon"
@@ -260,20 +260,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/view5"
-        app:srcCompat="@drawable/casaazulll" />
+        android:onClick="chatsPaginicial"
+        app:srcCompat="@drawable/casabrancaaa" />
 
     <ImageView
         android:id="@+id/pessoasicon"
         android:layout_width="54dp"
         android:layout_height="54dp"
         android:layout_marginEnd="48dp"
-        android:onClick="paginicialPessoas"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/view5"
         app:layout_constraintVertical_bias="0.523"
+        android:onClick="generochatPessoas"
         app:srcCompat="@drawable/amigosbrancooo" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
