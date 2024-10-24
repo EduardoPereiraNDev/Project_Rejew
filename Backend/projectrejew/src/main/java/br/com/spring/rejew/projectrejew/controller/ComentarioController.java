@@ -73,6 +73,7 @@ public class ComentarioController {
     public ResponseEntity<Void> deletarMensagem(@PathVariable Long id) {
         if (comentarioRepository.existsById(id)) {
         	comentarioRepository.deleteById(id);
+        	return ResponseEntity.ok().build();
         }
         return ResponseEntity.notFound().build();
     }

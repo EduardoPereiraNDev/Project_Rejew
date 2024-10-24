@@ -33,7 +33,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, String> {
     List<Usuario> buscarUsuarioPorEmailLike(String emailEntrada);
     
     @Query("SELECT u FROM Usuario u WHERE u.emailEntrada = :emailEntrada")
-    Optional<Usuario> buscarUsuarioPorEmail(String emailEntrada);
+    Usuario buscarUsuarioPorEmail(String emailEntrada);
 
     @Query("SELECT u FROM Usuario u WHERE u.nomeUsuario LIKE %:nomeUsuario%")
     List<Usuario> buscarUsuarioPorNome(String nomeUsuario);

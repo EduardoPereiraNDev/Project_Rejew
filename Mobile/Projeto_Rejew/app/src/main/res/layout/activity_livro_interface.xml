@@ -128,6 +128,7 @@
                 android:layout_height="55dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="60dp"
+                android:onClick="favoritarLivro"
                 android:text="Favoritar"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/qtdPaginas" />
@@ -192,7 +193,7 @@
                 android:layout_marginStart="40dp"
                 android:layout_marginEnd="40dp"
                 android:padding="15dp"
-                android:paddingRight="35dp"
+                android:paddingRight="30dp"
                 android:hint="Que tal fazer um comentario?"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -214,9 +215,13 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/comentarios"
-                android:layout_marginTop="25dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/addComentario" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

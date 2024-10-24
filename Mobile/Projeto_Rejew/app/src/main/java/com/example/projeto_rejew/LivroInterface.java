@@ -18,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -36,10 +37,13 @@ import java.util.List;
 public class LivroInterface extends AppCompatActivity {
 
     private LivroAPIController livroAPIController;
+    private RecyclerView recyclerComentarios;
+    private AdapterComentario adapterComentario;
     private ComentarioAPIController comentarioAPIController;
     private UsuarioAPIController usuarioAPIController;
     private Usuario usuario;
     private Livro livroC;
+    private long isbn;
     private String emailEntrada;
     private ImageView imagemLivro;
     private TextView autorLivro;
@@ -61,6 +65,11 @@ public class LivroInterface extends AppCompatActivity {
             return insets;
         });
 
+        recyclerComentarios = findViewById(R.id.comentarios);
+
+        recyclerComentarios.setLayoutManager(new LinearLayoutManager(this));
+
+
         RetrofitClient retrofitClient = new RetrofitClient();
         livroAPIController = new LivroAPIController(retrofitClient);
         usuarioAPIController = new UsuarioAPIController(retrofitClient);
@@ -79,8 +88,13 @@ public class LivroInterface extends AppCompatActivity {
 
         usuario = new Usuario();
 
-        long isbn = getIntent().getLongExtra("isbnLivro", -1);
+         isbn = getIntent().getLongExtra("isbnLivro", -1);
+
+        emailEntrada = recuperarEmailUsuario();
+        carregarUsuario(emailEntrada);
+
         buscarLivroID(isbn);
+        buscarcomntarioLivro(isbn);
     }
 
     private String recuperarEmailUsuario() {
@@ -99,8 +113,7 @@ public class LivroInterface extends AppCompatActivity {
         SimpleDateFormat formataData = new SimpleDateFormat("yyyy-MM-dd");
         Date data = new Date();
         String dataFormatada = formataData.format(data);
-        emailEntrada = recuperarEmailUsuario();
-        carregarUsuario(emailEntrada);
+
 
         Comentario comentario = new Comentario(dataFormatada, conteudoComent , usuario, livroC );
         comentarioAPIController.adicionarComentario(comentario, new ComentarioAPIController.ComentarioCallback() {
@@ -109,9 +122,10 @@ public class LivroInterface extends AppCompatActivity {
                 AlertDialog.Builder alerta = new AlertDialog.Builder(LivroInterface.this);
                 alerta.setCancelable(false);
                 alerta.setTitle("Login");
-                alerta.setMessage("Seu comentario foi realizado com sucesso" + comentario.getUsuarioComent().getNomeUsuario());
+                alerta.setMessage("Seu comentario foi realizado com sucesso " + comentario.getUsuarioComent().getNomeUsuario());
                 alerta.setNegativeButton("Ok", null);
                 alerta.create().show();
+                buscarcomntarioLivro(isbn);
             }
 
             @Override
@@ -154,11 +168,15 @@ public class LivroInterface extends AppCompatActivity {
                 alerta.setNegativeButton("Voltar", null);
                 alerta.create().show();
             }
+
+            @Override
+            public void onSuccessV(Void body) {
+            }
         });
     }
 
-    private void buscarLivroID(long isbn){
-        livroAPIController.buscarLivroPorId(isbn, new LivroAPIController.LivroCallback() {
+    private void buscarLivroID(long isbnl){
+        livroAPIController.buscarLivroPorId(isbnl, new LivroAPIController.LivroCallback() {
             @Override
             public void onSuccess(Livro livro) {
                 livroC = new Livro();
@@ -229,9 +247,66 @@ public class LivroInterface extends AppCompatActivity {
         }, caminhoImgCapa);
     }
 
+    private void buscarcomntarioLivro(long isbnl){
+        comentarioAPIController.BuscarComentarioLivro(isbnl, new ComentarioAPIController.ComentarioCallback() {
+            @Override
+            public void onSuccess(Comentario comentario) {
+            }
+
+            @Override
+            public void onSuccessList(List<Comentario> comentarioL) {
+                adapterComentario = new AdapterComentario(LivroInterface.this, comentarioL, usuarioAPIController);
+                recyclerComentarios.setAdapter(adapterComentario);
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                if (t.getMessage() != null && t.getMessage().contains("404")) {
+
+                } else {
+                    AlertDialog.Builder alerta = new AlertDialog.Builder(LivroInterface.this);
+                    alerta.setCancelable(false);
+                    alerta.setTitle("Falha ao carregar o livro");
+                    alerta.setMessage("Error: " + t.getMessage());
+                    alerta.setNegativeButton("Voltar", null);
+                    alerta.create().show();
+                }
+            }
+        });
+    }
+
+    public void favoritarLivro(View view) {
+        usuarioAPIController.favoritarLivro(emailEntrada, isbn, new UsuarioAPIController.UsuarioCallback() {
+
+            @Override
+            public void onSuccess(Usuario usuario) {
+            }
+
+            @Override
+            public void onSuccessByte(byte[] bytes) {
+            }
+
+            @Override
+            public void onSuccessV(Void body) {
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                AlertDialog.Builder alerta = new AlertDialog.Builder(LivroInterface.this);
+                alerta.setCancelable(false);
+                alerta.setTitle("Falha ao favoritar o livro");
+                alerta.setMessage("Error: " + t.getMessage());
+                alerta.setNegativeButton("Voltar", null);
+                alerta.create().show();
+            }
+        });
+    }
+
 
     public void passarTelaCat(View view) {
         Intent intent = new Intent(LivroInterface.this, CatalogoRejew.class);
         startActivity(intent);
     }
+
+
 }

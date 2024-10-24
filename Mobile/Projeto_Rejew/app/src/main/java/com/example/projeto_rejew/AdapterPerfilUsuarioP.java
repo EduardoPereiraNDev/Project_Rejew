@@ -94,6 +94,11 @@ public class AdapterPerfilUsuarioP extends RecyclerView.Adapter<AdapterPerfilUsu
                 Log.e("UsuarioAdapter", "Falha ao carregar a imagem: " + t.getMessage());
                 holder.fotoPerfil.setImageResource(R.drawable.imagedefault);
             }
+
+            @Override
+            public void onSuccessV(Void body) {
+
+            }
         });
 
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
@@ -117,6 +122,11 @@ public class AdapterPerfilUsuarioP extends RecyclerView.Adapter<AdapterPerfilUsu
             public void onFailure(Throwable t) {
                 Log.e("UsuarioAdapter", "Falha ao carregar a imagem: " + t.getMessage());
                 holder.fotoPerfil.setImageResource(R.drawable.imagedefault);
+            }
+
+            @Override
+            public void onSuccessV(Void body) {
+
             }
         });
     }

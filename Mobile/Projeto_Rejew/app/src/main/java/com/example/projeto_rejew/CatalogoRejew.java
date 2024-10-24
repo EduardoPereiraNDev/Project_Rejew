@@ -143,6 +143,11 @@ public class CatalogoRejew extends AppCompatActivity {
                 alerta.setNegativeButton("Voltar", null);
                 alerta.create().show();
             }
+
+            @Override
+            public void onSuccessV(Void body) {
+
+            }
         });
     }
 
@@ -164,6 +169,11 @@ public class CatalogoRejew extends AppCompatActivity {
             @Override
             public void onFailure(Throwable t) {
                 circleImageView.setImageResource(R.drawable.imagedefault);
+            }
+
+            @Override
+            public void onSuccessV(Void body) {
+
             }
         });
     }

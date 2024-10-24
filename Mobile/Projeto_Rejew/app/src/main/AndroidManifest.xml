@@ -16,6 +16,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".AdapterComentario"
+            android:exported="false" />
+        <activity
             android:name=".AdapterPerfilUsuarioP"
             android:exported="false" />
         <activity

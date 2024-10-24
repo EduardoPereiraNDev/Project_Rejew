@@ -23,6 +23,7 @@ public class UsuarioAPIController {
         void onSuccess(Usuario usuario);
         void onSuccessByte(byte[] bytes);
         void onFailure(Throwable t);
+        void onSuccessV(Void body);
     }
 
     public UsuarioAPIController(RetrofitClient retrofitClient) {
@@ -152,7 +153,28 @@ public class UsuarioAPIController {
         });
     }
 
+    public void favoritarLivro(String emailEntrada, Long isbnLivro, UsuarioAPIController.UsuarioCallback responseCallback) {
+        Log.d("API Call", "Fazendo chamada para favoritar livro com email: " + isbnLivro + emailEntrada);
+        Call<Void> call = this.usuarioApi.favoritarLivro(emailEntrada, isbnLivro);
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                Log.d("API Response", "Código de resposta: " + response.code());
+                if (response.isSuccessful() && response.body() != null) {
+                    Log.d("API Response", "Usuário encontrado: " + response.body().toString());
+                    responseCallback.onSuccessV(response.body());
+                } else {
+                    Log.e("API Error", "Erro ao encontrar usuário: " + response.errorBody());
+                    responseCallback.onFailure(new Exception("Erro: " + response.code()));
+                }
+            }
 
-
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Log.e("API Error", "Falha na chamada: " + t.getMessage());
+                responseCallback.onFailure(t);
+            }
+        });
+    }
 
 }

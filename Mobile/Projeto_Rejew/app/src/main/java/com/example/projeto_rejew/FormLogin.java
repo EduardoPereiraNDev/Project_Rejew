@@ -106,6 +106,10 @@ public class FormLogin extends AppCompatActivity {
                 alerta.setNegativeButton("Voltar",null);
                 alerta.create().show();
             }
+
+            @Override
+            public void onSuccessV(Void body) {
+            }
         });
     }
 

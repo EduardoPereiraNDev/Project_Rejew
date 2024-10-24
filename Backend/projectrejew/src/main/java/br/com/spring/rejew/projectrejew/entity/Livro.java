@@ -17,7 +17,7 @@ import lombok.Data;
 @Data
 public class Livro implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -62,8 +62,19 @@ public class Livro implements Serializable {
     
     @ManyToMany(mappedBy = "livros")
     Set<Usuario> usuario ;
+    
+    public Livro() {}
 
-  
+    public Livro(String nomeLivro2, String autorLivro2, String sinopseLivro2, int numeroPag2, int anoLancamento2,String generoLivro2, String corPrimaria2, String caminhoImgCapa2) {
+    	this.nomeLivro = nomeLivro2;
+    	this.autorLivro = autorLivro2;
+    	this.sinopseLivro = sinopseLivro2;
+    	this.numeroPag = numeroPag2;
+    	this.anoLancamento = anoLancamento2;
+    	this.generoLivro = generoLivro2;
+    	this.corPrimaria = corPrimaria2;
+    	this.caminhoImgCapa = caminhoImgCapa2;
+	}
 
     
 }

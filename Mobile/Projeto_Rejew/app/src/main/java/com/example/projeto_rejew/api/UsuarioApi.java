@@ -42,6 +42,12 @@ public interface UsuarioApi {
     @POST("usuarios")
     Call<Usuario> criarUsuario(@Body Usuario usuario);
 
+    @POST("usuarios/{emailEntrada}/favoritar/{isbnLivro}")
+    Call <Void> favoritarLivro(
+            @Path("emailEntrada") String emailEntrada,
+            @Path("isbnLivro") long isbnLivro);
+
+
     @Multipart
     @PUT("usuarios/{emailUsuario}")
     Call<Usuario> atualizarUsuario(
