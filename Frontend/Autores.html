@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Peras">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento de Autores</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="CSS/Autores.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <!-- Categorias -->
+        <ul class="nav nav-tabs" id="myTabs">
+            <li class="nav-item">
+                <a class="nav-link active" id="lista-tab" data-toggle="tab" href="#lista">Lista</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="Classificar-tab" data-toggle="tab" href="#Classificar">Classificar</a>
+            </li>
+        </ul>
+
+        <!-- Categorias2 -->
+        <div class="tab-content mt-2">
+            <!-- Aba Lista -->
+            <div class="tab-pane active" id="lista">
+                <h4>Lista de Autores</h4>
+                <input type="text" id="pesquisa" placeholder="Pesquisar.....">
+                <button class="btn btn-success" id="buttonPesquisar">Pesquisar</button>
+                <button class="btn btn-danger" id="buttonApagar">Apagar</button>
+                <table class="table table-bordered" id="tabela_lista">
+                    <thead>
+                        <tr>
+                            <th>ID de Autor </th>
+                            <th>Email do Usuario</th>
+                            <th>Quantidade de Paginas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Aba Classificar -->
+            <div class="tab-pane" id="Classificar">
+                <h4>Classificar Usuarios</h4>
+                <h4>Lista de Autores</h4>
+                <input type="text" id="pesquisaU" placeholder="Pesquisar.....">
+                <button class="btn btn-success" id="buttonPesquisarU">Pesquisar</button>
+                <button class="btn btn-danger" id="buttonApagarU">Apagar</button>
+                <table class="table table-bordered" id="tabela_listaU">
+                    <thead>
+                        <tr>
+                            <th>Email do Usuario</th>
+                            <th>Nome do Usuario</th>
+                            <th>Nome do Perfil</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            carregarListaAutores();
+            carregarListaUsuarios();
+        });
+        function carregarListaAutores() {
+            fetch('http://localhost:8080/autores')
+                .then(response => response.json())
+                .then(autores => {
+                    const tabelaLista = document.getElementById('tabela_lista').getElementsByTagName('tbody')[0];
+                    tabelaLista.innerHTML = '';
+                    autores.forEach(autor => {
+                        const row = tabelaLista.insertRow();
+                        row.insertCell(0).textContent = autor.idAutor;
+                        row.insertCell(1).textContent = autor.usuarioEmailEntrada;
+                        row.insertCell(2).textContent = autor.qtdLivros || "Sem Livros";
+
+
+                        //Botao excluir
+                        const cellExcluir = document.createElement('td');
+                        const btnExcluir = document.createElement('button');
+                        btnExcluir.textContent = 'Retirar';
+                        btnExcluir.className = 'btn btn-danger';
+                        btnExcluir.onclick = function () {
+                            excluirAutor(autor.idAutor);
+                        };
+                        cellExcluir.appendChild(btnExcluir);
+                        row.appendChild(cellExcluir);
+
+                    });
+                })
+                .catch(error => console.error('Erro ao carregar lista:', error));
+        }
+
+        function carregarListaUsuarios() {
+            fetch('http://localhost:8080/usuarios')
+                .then(response => response.json())
+                .then(usuarios => {
+                    const tabelaLista = document.getElementById('tabela_listaU').getElementsByTagName('tbody')[0];
+                    tabelaLista.innerHTML = '';
+                    usuarios.forEach(usuario => {
+                        const row = tabelaLista.insertRow();
+                        row.insertCell(0).textContent = usuario.emailEntrada;
+                        row.insertCell(1).textContent = usuario.nomeUsuario;
+                        row.insertCell(2).textContent = usuario.nomePerfil;
+
+                        //Botao Tornar Autor
+
+                        const cellAutor = document.createElement('td');
+                        const btnAutor = document.createElement('button');
+                        btnAutor.textContent = 'Tornar Autor';
+                        btnAutor.className = 'btn btn-primary';
+                        btnAutor.onclick = function () {
+                            tornarAutor(usuario.emailEntrada);
+                        };
+                        cellAutor.appendChild(btnAutor);
+                        row.appendChild(cellAutor);
+
+                    });
+                })
+                .catch(error => console.error('Erro ao carregar lista:', error));
+        }
+
+
+        //Função para tornar usuario um Autor 
+        function tornarAutor(emailEntrada) {
+            fetch(`http://localhost:8080/autores/usuarios/${emailEntrada}`)
+                .then(response => response.json())
+                .then(usuarios => {
+                    if (usuarios[0] != null) {
+                        Swal.fire({         
+                            icon: 'warning',
+                            title: 'Erro ao Tornar Autor',
+                            text: 'O usuário já é um autor'
+                        });
+                        return;
+                    }
+                    const data = {
+                        usuarioEmailEntrada: emailEntrada,
+                    };
+                    return fetch('http://localhost:8080/autores', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    });
+                })
+                .then(response => response.text())
+                .then(data => {
+                    alert("O usuário foi alterado como Autor");
+                    carregarListaAutores();
+                    carregarListaUsuarios();
+                })
+                .catch(error => console.error('Erro ao registrar o autor:', error));
+        }
+
+
+        // Função pra excluir Genero
+        function excluirAutor(id) {
+            const url = `http://localhost:8080/autores/${id}`;
+            const requestOptions = {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            };
+
+            Swal.fire({
+                title: 'Tem certeza?',
+                text: 'Esta ação não pode ser revertida!',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Sim, finalizar!',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    fetch(url, requestOptions)
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error(`Falha ao retitar modo Autor. Código de status: ${response.status}`);
+                            }
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Atenção',
+                                text: 'O Usuario teve seu modo Autor retirado com sucesso.'
+                            });
+                            carregarListaAutores();
+                            carregarListaUsuarios();
+                        })
+                        .catch(error => {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Atenção',
+                                text: `Houve um problema ao tentar excluir o autor: ${error.message}`
+                            });
+                            carregarListaAutores();
+                            carregarListaUsuarios();
+                        });
+                }
+            });
+        }
+
+        document.getElementById('buttonPesquisar').onclick = function () {
+            carregarListaAutores();
+            carregarListaUsuarios();
+        };
+        document.getElementById('buttonApagar').onclick = function () {
+            carregarListaAutores();
+            carregarListaUsuarios();
+            document.getElementById('pesquisa').value = "";
+        };
+
+    </script>
+</body>
+
+</html>

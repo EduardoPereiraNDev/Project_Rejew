@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
+.fundo2{
+    margin-left: -8px;
+    margin-top: -55px;
+    width: 100%;
+    height: 784px;
+    z-index: -1;
+    position: absolute;       
+}
+.fundoTransparente{
+    margin-left: -10px;
+    margin-top: -755px;
+    width: 1526px;
+    height: 747px;
+    z-index: -1;
+  }
