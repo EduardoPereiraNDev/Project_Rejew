@@ -47,6 +47,16 @@ public interface UsuarioApi {
             @Path("emailEntrada") String emailEntrada,
             @Path("isbnLivro") long isbnLivro);
 
+    @GET("usuarios/{emailEntrada}/verfavoritado/{isbnLivro}")
+    Call <Boolean> verfavoritarLivro(
+            @Path("emailEntrada") String emailEntrada,
+            @Path("isbnLivro") long isbnLivro);
+
+    @DELETE("usuarios/{emailEntrada}/desfavoritar/{isbnLivro}")
+    Call <Void> desfavoritarLivro(
+            @Path("emailEntrada") String emailEntrada,
+            @Path("isbnLivro") long isbnLivro);
+
 
     @Multipart
     @PUT("usuarios/{emailUsuario}")

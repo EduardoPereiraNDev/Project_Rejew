@@ -38,56 +38,166 @@
         app:layout_constraintStart_toStartOf="@+id/quadroBranco"
         app:layout_constraintTop_toTopOf="@+id/quadroBranco" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewLivro"
+    <ImageView
+        android:id="@+id/fotoFundo"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="220dp"
+        android:src="@drawable/imagedefaultdeitadaa"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/quadroBranco" />
 
-    <View
-        android:id="@+id/view5"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@color/orange"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/fotoPerfil"
+        android:layout_marginTop="100dp"
+        android:layout_width="210dp"
+        android:layout_height="210dp"
+        android:src="@drawable/imagedefault"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/quadroBranco" />
 
-    <ImageView
-        android:id="@+id/chat"
-        android:layout_width="54dp"
-        android:layout_height="54dp"
-        android:layout_marginStart="44dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/view5"
-        app:layout_constraintVertical_bias="0.523"
-        app:srcCompat="@drawable/chatbrancooooo" />
+        <TextView
+            android:id="@+id/nomeUsuario"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="NOME DO USUARIO"
+            android:textAlignment="center"
+            android:textSize="25dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fotoPerfil" />
 
-    <ImageView
-        android:id="@+id/homeicon"
-        android:layout_width="54dp"
-        android:layout_height="54dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="4dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/view5"
-        app:srcCompat="@drawable/casaazulll" />
+        <TextView
+            android:id="@+id/comentarios"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="Comentários"
+            android:textSize="17dp"
+            app:layout_constraintEnd_toStartOf="@+id/seguidores"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nomeUsuario" />
 
-    <ImageView
-        android:id="@+id/pessoasicon"
-        android:layout_width="54dp"
-        android:layout_height="54dp"
-        android:layout_marginEnd="48dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/view5"
-        app:layout_constraintVertical_bias="0.523"
-        app:srcCompat="@drawable/amigosbrancooo" />
+        <TextView
+            android:id="@+id/seguidores"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="Seguidores"
+            android:textSize="17dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nomeUsuario" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/seguindo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="Seguindo"
+            android:textSize="17dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/seguidores"
+            app:layout_constraintTop_toBottomOf="@+id/nomeUsuario" />
+
+        <TextView
+            android:id="@+id/comentariosQTD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="17dp"
+            app:layout_constraintEnd_toEndOf="@+id/comentarios"
+            app:layout_constraintStart_toStartOf="@+id/comentarios"
+            app:layout_constraintTop_toBottomOf="@+id/comentarios" />
+
+        <TextView
+            android:id="@+id/seguidoresQTD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="17dp"
+            app:layout_constraintEnd_toEndOf="@+id/seguidores"
+            app:layout_constraintStart_toStartOf="@+id/seguidores"
+            app:layout_constraintTop_toBottomOf="@+id/seguidores" />
+
+        <TextView
+            android:id="@+id/seguindoQTD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="52dp"
+            android:text="0"
+            android:textSize="17dp"
+            app:layout_constraintEnd_toEndOf="@+id/seguindo"
+            app:layout_constraintStart_toStartOf="@+id/seguindo"
+            app:layout_constraintTop_toBottomOf="@+id/nomeUsuario" />
+
+        <TextView
+            android:id="@+id/bio"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="AAAAAAAAA"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/seguidoresQTD" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            style="@style/ButtonFunc"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:onClick="editarPerfil"
+            android:text="Editar"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bio" />
+
+        <View
+            android:id="@+id/view5"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@color/orange"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/chat"
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            android:layout_marginStart="44dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/view5"
+            app:layout_constraintVertical_bias="0.523"
+            app:srcCompat="@drawable/chatbrancooooo" />
+
+        <ImageView
+            android:id="@+id/homeicon"
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/view5"
+            app:srcCompat="@drawable/casaazulll" />
+
+        <ImageView
+            android:id="@+id/pessoasicon"
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            android:layout_marginEnd="48dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/view5"
+            app:layout_constraintVertical_bias="0.523"
+            app:srcCompat="@drawable/amigosbrancooo" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>

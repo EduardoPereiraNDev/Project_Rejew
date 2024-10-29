@@ -2,6 +2,7 @@ package br.com.spring.rejew.projectrejew.repository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -10,7 +11,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 
-
+import br.com.spring.rejew.projectrejew.entity.Livro;
 import br.com.spring.rejew.projectrejew.entity.Usuario;
 import jakarta.transaction.Transactional;
 
@@ -40,6 +41,9 @@ public interface UsuarioRepository extends JpaRepository<Usuario, String> {
 
     @Query("SELECT u FROM Usuario u WHERE u.nomePerfil LIKE %:nomePerfil%")
     List<Usuario> buscarUsuarioPorNomePerfil(String nomePerfil);
+    
+    @Query("SELECT l FROM Usuario u JOIN u.livros l WHERE u.emailEntrada = :emailEntrada")
+    Set<Livro> favoritadoPeloUsuario( String emailEntrada);
     
     @Query("SELECT u FROM Usuario u WHERE u.emailEntrada = :email AND u.senhaEntrada = :password") 
     Usuario realizarLogin(@Param("email") String email, @Param("password") String password);  

@@ -92,6 +92,11 @@ public class FormLogin extends AppCompatActivity {
                     startActivity(intent);
                 }
             }
+
+            @Override
+            public void onSuccessBoolean(Boolean favoritado) {
+            }
+
             @Override
             public void onSuccessByte(byte[] bytes) {
 

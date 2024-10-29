@@ -1,6 +1,7 @@
 package com.example.projeto_rejew.api;
 
 import com.example.projeto_rejew.entity.Comentario;
+import com.example.projeto_rejew.entity.Usuario;
 
 import java.util.List;
 
@@ -18,6 +19,9 @@ public interface ComentarioApi {
 
     @GET("comentarios/{id}")
     Call<Comentario> buscarComentarioPorId(@Path("id") Long id);
+
+    @GET("comentarios/usuario/comentario/{idComentario}")
+    Call<Usuario> buscarUsuarioporComentario(@Path("idComentario") Long idComentario);
 
     @GET("comentarios/usuario/{usuarioComent}")
     Call<List<Comentario>> buscarComentariosPorUsuario(@Path("usuarioComent") String usuarioComent);

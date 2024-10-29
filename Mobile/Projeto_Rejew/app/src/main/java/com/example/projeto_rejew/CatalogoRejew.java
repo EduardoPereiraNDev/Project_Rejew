@@ -130,6 +130,10 @@ public class CatalogoRejew extends AppCompatActivity {
             }
 
             @Override
+            public void onSuccessBoolean(Boolean favoritado) {
+            }
+
+            @Override
             public void onSuccessByte(byte[] bytes) {
 
             }
@@ -158,6 +162,11 @@ public class CatalogoRejew extends AppCompatActivity {
             @Override
             public void onSuccess(Usuario usuario) {
             }
+
+            @Override
+            public void onSuccessBoolean(Boolean favoritado) {
+            }
+
             @Override
             public void onSuccessByte(byte[] bytes) {
                 Glide.with(CatalogoRejew.this)

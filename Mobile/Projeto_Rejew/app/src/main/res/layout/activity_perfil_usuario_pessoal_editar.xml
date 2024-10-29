@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cinzinhaclaro2"
+    tools:context=".PerfilUsuarioPessoalEditar">
+
+    <ImageView
+        android:id="@+id/setavoltar"
+        android:layout_width="50dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:onClick="passarTelaCat"
+        android:src="@drawable/setavoltarazul"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/editarPerfil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Editar Perfil"
+        android:textAlignment="center"
+        android:textSize="26dp"
+        android:layout_marginStart="30dp"
+        app:layout_constraintBottom_toBottomOf="@+id/setavoltar"
+        app:layout_constraintStart_toEndOf="@+id/setavoltar"
+        app:layout_constraintTop_toTopOf="@+id/setavoltar" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imagemPerfil"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:src="@drawable/imagedefault"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="45dp"
+        app:layout_constraintEnd_toEndOf="@+id/editarPerfil"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/setavoltar" />
+
+    <ImageView
+        android:id="@+id/imagemFundo"
+        android:layout_width="170dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="50dp"
+        android:src="@drawable/imagedefaultdeitadaa"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editarPerfil" />
+
+    <View
+        android:id="@+id/viewToda"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/container_edit"
+        app:layout_constraintTop_toBottomOf="@+id/imagemFundo" />
+
+    <TextView
+        android:id="@+id/emailUsuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email........"
+        android:layout_marginTop="20dp"
+        android:textSize="28dp"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/viewToda"
+        app:layout_constraintStart_toStartOf="@+id/viewToda"
+        app:layout_constraintTop_toTopOf="@+id/viewToda" />
+
+    <EditText
+        android:id="@+id/nomePerfil"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/edit_usuario"
+        android:padding="10dp"
+        android:text="Nome_Usuario"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="@+id/viewToda"
+        app:layout_constraintStart_toStartOf="@+id/viewToda"
+        app:layout_constraintTop_toBottomOf="@+id/emailUsuario" />
+
+    <EditText
+        android:id="@+id/nomeUsuario"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/edit_usuario"
+        android:padding="10dp"
+        android:text="Nome_Perfil"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="@+id/viewToda"
+        app:layout_constraintStart_toStartOf="@+id/viewToda"
+        app:layout_constraintTop_toBottomOf="@+id/nomePerfil" />
+
+    <EditText
+        android:id="@+id/senha"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/edit_usuario"
+        android:padding="10dp"
+        android:text="Senha_Usuario"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="@+id/viewToda"
+        app:layout_constraintStart_toStartOf="@+id/viewToda"
+        app:layout_constraintTop_toBottomOf="@+id/nomeUsuario" />
+
+    <EditText
+        android:id="@+id/dataNascimento"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/edit_usuario"
+        android:padding="10dp"
+        android:text="Data_Nascimento"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="@+id/viewToda"
+        app:layout_constraintStart_toStartOf="@+id/viewToda"
+        app:layout_constraintTop_toBottomOf="@+id/senha" />
+
+    <EditText
+        android:id="@+id/recadoPerfil"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/edit_usuario"
+        android:padding="10dp"
+        android:text="Recado_Perfil"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/viewToda"
+        app:layout_constraintStart_toStartOf="@+id/viewToda"
+        app:layout_constraintTop_toBottomOf="@+id/dataNascimento" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="170dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/buttoncadas"
+        android:text="Enviar"
+        android:textColor="@color/white"
+        android:textSize="22dp"
+        app:layout_constraintBottom_toBottomOf="@+id/viewToda"
+        app:layout_constraintEnd_toEndOf="@+id/viewToda"
+        app:layout_constraintStart_toStartOf="@+id/viewToda"
+        app:layout_constraintTop_toBottomOf="@+id/recadoPerfil" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

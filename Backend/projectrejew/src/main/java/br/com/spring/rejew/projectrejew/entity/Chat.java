@@ -3,16 +3,22 @@ package br.com.spring.rejew.projectrejew.entity;
 import java.io.Serializable;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Data
+@Getter
+@Setter
 public class Chat implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -31,7 +37,8 @@ public class Chat implements Serializable {
     @Column(name = "caminho_Imagem_Logo")
     private String caminhoImagemLogo; 
     
-    @OneToMany(mappedBy = "chatMensagem")
+    @OneToMany(mappedBy = "chatMensagem",fetch = FetchType.EAGER)
+    @JsonManagedReference(value = "chatMensagem")
     private Set<Mensagem> mensagem;
     
     public Chat() {

@@ -2,21 +2,19 @@ package br.com.spring.rejew.projectrejew.entity;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Date;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import jakarta.persistence.*;
+
 import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Data
+@Getter
+@Setter
 public class Comentario implements Serializable {
-
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -29,12 +27,16 @@ public class Comentario implements Serializable {
 
     @Column(name = "conteudo_Coment")
     private String conteudoComent;
-    
-    @ManyToOne
-    @JoinColumn(name="email_Usuario_Coment", nullable = false)
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JsonBackReference(value = "usuario_comentario")
+    @JoinColumn(name = "email_Usuario_Coment", nullable = false)
     private Usuario usuarioComent;
-    
-    @ManyToOne
-    @JoinColumn(name="isbn_Livro_Coment", nullable = false)
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JsonBackReference(value = "livro_comentario")  
+    @JoinColumn(name = "isbn_Livro_Coment", nullable = false)
     private Livro livroComent;
+    
+    
 }

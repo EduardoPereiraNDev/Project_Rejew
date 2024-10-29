@@ -1,24 +1,20 @@
 package com.example.projeto_rejew;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.projeto_rejew.api.LivroAPIController;
+import com.example.projeto_rejew.api.ComentarioAPIController;
 import com.example.projeto_rejew.api.UsuarioAPIController;
 import com.example.projeto_rejew.entity.Comentario;
-import com.example.projeto_rejew.entity.Livro;
 import com.example.projeto_rejew.entity.Usuario;
 
 import java.util.List;
@@ -29,6 +25,7 @@ public class AdapterComentario extends RecyclerView.Adapter<AdapterComentario.Co
 
     private List<Comentario> comentarios;
     private UsuarioAPIController usuarioAPIController;
+    private ComentarioAPIController comentarioAPIController;
     private Context context;
 
     public static class ComentarioViewHolder extends RecyclerView.ViewHolder {
@@ -46,10 +43,11 @@ public class AdapterComentario extends RecyclerView.Adapter<AdapterComentario.Co
         }
     }
 
-    public AdapterComentario(Context context, List<Comentario> comentarios, UsuarioAPIController usuarioAPIController) {
+    public AdapterComentario(Context context, List<Comentario> comentarios, UsuarioAPIController usuarioAPIController, ComentarioAPIController comentarioAPIController) {
         this.context = context;
         this.comentarios = comentarios;
         this.usuarioAPIController = usuarioAPIController;
+        this.comentarioAPIController = comentarioAPIController;
     }
 
     @NonNull
@@ -63,38 +61,49 @@ public class AdapterComentario extends RecyclerView.Adapter<AdapterComentario.Co
     @Override
     public void onBindViewHolder(@NonNull ComentarioViewHolder holder, int position) {
         Comentario comentario = comentarios.get(position);
-        holder.nomeUsuario.setText(comentario.getUsuarioComent().getNomeUsuario());
         holder.comentarioConteudo.setText(comentario.getConteudoComent());
         holder.dataComentario.setText(comentario.getDataComentario());
 
+        Long idComentario = comentario.getIdComentario();
 
-        int larguraPadrao = 90;
-        int alturaPadrao = 90;
-        usuarioAPIController.carregarImagemPerfil( comentario.getUsuarioComent().getCaminhoImagem() , new UsuarioAPIController.UsuarioCallback() {
-
+        comentarioAPIController.buscarUsuarioPorComentario(idComentario, new ComentarioAPIController.ComentarioCallback() {
             @Override
-            public void onSuccess(Usuario usuario) {
-            }
+            public void onSuccessUsuario(Usuario usuario) {
+                // Exibir nome e carregar imagem
+                holder.nomeUsuario.setText(usuario.getNomeUsuario());
 
-            @Override
-            public void onSuccessByte(byte[] bytes) {
-                Glide.with(context)
-                        .load(bytes)
-                        .override(larguraPadrao, alturaPadrao)
-                        .centerCrop()
-                        .into(holder.imgFotoPerfil);
+                usuarioAPIController.carregarImagemPerfil(usuario.getCaminhoImagem(), new UsuarioAPIController.UsuarioCallback() {
+                    @Override
+                    public void onSuccessByte(byte[] bytes) {
+                        Glide.with(context)
+                                .load(bytes)
+                                .override(90, 90)
+                                .centerCrop()
+                                .into(holder.imgFotoPerfil);
+                    }
+
+                    @Override
+                    public void onFailure(Throwable t) {
+                        Log.e("Error", "Falha ao carregar imagem: " + t.getMessage());
+                        holder.imgFotoPerfil.setImageResource(R.drawable.imagedefault);
+                    }
+
+                    @Override public void onSuccess(Usuario usuario) {}
+                    @Override public void onSuccessBoolean(Boolean favoritado) {}
+                    @Override public void onSuccessV(Void body) {}
+                });
             }
 
             @Override
             public void onFailure(Throwable t) {
-                Log.e("Error", "onFailure: "+ t );
+                Log.e("API Error", "Erro ao buscar usuário do comentário: " + t.getMessage());
+                holder.nomeUsuario.setText("Usuário desconhecido");
                 holder.imgFotoPerfil.setImageResource(R.drawable.imagedefault);
             }
 
-            @Override
-            public void onSuccessV(Void body) {
-
-            }
+            // Métodos não utilizados do callback
+            @Override public void onSuccess(Comentario comentario) {}
+            @Override public void onSuccessList(List<Comentario> ComentarioL) {}
         });
     }
 

@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import br.com.spring.rejew.projectrejew.entity.Comentario;
+import br.com.spring.rejew.projectrejew.entity.Usuario;
 
 /*
  * Estende CrudRepository e fornece funcionalidades adicionais específicas do JPA.
@@ -17,6 +18,9 @@ public interface ComentarioRepository extends JpaRepository<Comentario, Long> {
 	
 	@Query("SELECT c FROM Comentario c WHERE c.usuarioComent.emailEntrada LIKE %:usuarioComent%")
 	List<Comentario> findByUsuarioComent(String usuarioComent);
+	
+	@Query("SELECT c.usuarioComent FROM Comentario c WHERE c.idComentario = :idComentario")
+	Usuario findUsuarioByComentarioId(Long idComentario);
 	
 	@Query("SELECT c FROM Comentario c WHERE c.livroComent.isbnLivro = :idLivroComent")
 	List<Comentario> findByLivroComent(Long idLivroComent);

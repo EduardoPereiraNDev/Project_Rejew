@@ -12,7 +12,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -157,14 +157,14 @@ public class UsuarioController {
         }
     }
 
-    // Buscar um usuário por nome do perfil
+
     @GetMapping("/perfil/{nome}")
     public ResponseEntity<List<Usuario>> buscarUsuarioPorNomePerfil(@PathVariable String nome) {
         List<Usuario> usuarios = usuarioRepository.buscarUsuarioPorNomePerfil(nome);
         return ResponseEntity.ok(usuarios);
     }
 
-    // Adicionar um novo usuário APP
+
     @PostMapping
     public ResponseEntity<Map<String, String>> adicionarUsuario(@RequestBody Usuario usuario) {
         Optional<Usuario> existingUsuario = usuarioRepository.findByEmailEntrada(usuario.getEmailEntrada());
@@ -189,32 +189,51 @@ public class UsuarioController {
     @PostMapping("/{emailEntrada}/favoritar/{isbnLivro}")
     public void favoritarLivro(@PathVariable String emailEntrada, @PathVariable Long isbnLivro) {
         Usuario usuario = usuarioRepository.buscarUsuarioPorEmail(emailEntrada);
-
-        Optional<Livro> optionalLivro = livroRepository.findById(isbnLivro);     
+        Optional<Livro> optionalLivro = livroRepository.findById(isbnLivro); 
+        Set<Livro> livrosF = usuarioRepository.favoritadoPeloUsuario(emailEntrada);
+        
         if (optionalLivro.isPresent()) {
-            Livro livro = optionalLivro.get(); 
-            
-            if (!usuario.getLivros().contains(livro)) {
+            Livro livro = optionalLivro.get();         
+            if (!livrosF.contains(livro)) {
                 usuario.getLivros().add(livro);
                 usuarioRepository.save(usuario); 
             }
         } 
     }
 
-
-    @PostMapping("/{emailEntrada}/desfavoritar/{isbnLivro}")
+    @DeleteMapping("/{emailEntrada}/desfavoritar/{isbnLivro}")
     public void desfavoritarLivro(@PathVariable String emailEntrada, @PathVariable Long isbnLivro) {
         Usuario usuario = usuarioRepository.buscarUsuarioPorEmail(emailEntrada);
+        Set<Livro> livrosF = usuarioRepository.favoritadoPeloUsuario(emailEntrada);
+        if (usuario == null) {
+     
+        }
+
         Optional<Livro> optionalLivro = livroRepository.findById(isbnLivro);
-       
+        if (!optionalLivro.isPresent()) {
+        
+        }
+
+        Livro livro = optionalLivro.get();
+
+        if (livrosF.contains(livro)) {
+            livrosF.remove(livro);
+            usuario.setLivros(livrosF); 
+            usuarioRepository.save(usuario);          
+        }
+    }
+    
+    @GetMapping("/{emailEntrada}/verfavoritado/{isbnLivro}")
+    public ResponseEntity<Boolean> verFavoritado(@PathVariable String emailEntrada, @PathVariable Long isbnLivro) {
+        Optional<Livro> optionalLivro = livroRepository.findById(isbnLivro);
         if (optionalLivro.isPresent()) {
-            Livro livro = optionalLivro.get(); 
-            
-            if (!usuario.getLivros().contains(livro)) {
-                usuario.getLivros().remove(livro);
-                usuarioRepository.save(usuario); 
-            }
-        }            
+        Livro livro = optionalLivro.get(); 
+        Set<Livro> livrosF = usuarioRepository.favoritadoPeloUsuario(emailEntrada);
+        boolean isFavoritado = livrosF.contains(livro);  
+        return ResponseEntity.ok(isFavoritado);
+       }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(false);
+                   
     }
 
     @PutMapping("/{emailUsuario}")
