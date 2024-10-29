@@ -21,6 +21,7 @@ public class UsuarioAPIController {
 
     public interface UsuarioCallback {
         void onSuccess(Usuario usuario);
+        void onSuccessBoolean(Boolean favoritado);
         void onSuccessByte(byte[] bytes);
         void onFailure(Throwable t);
         void onSuccessV(Void body);
@@ -162,7 +163,7 @@ public class UsuarioAPIController {
                 Log.d("API Response", "Código de resposta: " + response.code());
                 if (response.isSuccessful() && response.body() != null) {
                     Log.d("API Response", "Usuário encontrado: " + response.body().toString());
-                    responseCallback.onSuccessV(response.body());
+                    responseCallback.onSuccessV(null);
                 } else {
                     Log.e("API Error", "Erro ao encontrar usuário: " + response.errorBody());
                     responseCallback.onFailure(new Exception("Erro: " + response.code()));
@@ -172,6 +173,50 @@ public class UsuarioAPIController {
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
                 Log.e("API Error", "Falha na chamada: " + t.getMessage());
+                responseCallback.onFailure(t);
+            }
+        });
+    }
+
+
+    public void desfavoritarLivro(String emailEntrada, Long isbnLivro, UsuarioAPIController.UsuarioCallback responseCallback) {
+        Log.d("API Call", "Fazendo chamada para favoritar livro com email: " + isbnLivro + emailEntrada);
+        Call<Void> call = this.usuarioApi.desfavoritarLivro(emailEntrada, isbnLivro);
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                Log.d("API Response", "Código de resposta: " + response.code());
+                if (response.isSuccessful() && response.body() != null) {
+                    Log.d("API Response", "Usuário encontrado: " + response.body().toString());
+                    responseCallback.onSuccessV(null);
+                } else {
+                    Log.e("API Error", "Erro ao encontrar usuário: " + response.errorBody());
+                    responseCallback.onFailure(new Exception("Erro: " + response.code()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Log.e("API Error", "Falha na chamada: " + t.getMessage());
+                responseCallback.onFailure(t);
+            }
+        });
+    }
+
+    public void verFavoritadoLivro(String emailEntrada, long isbnLivro, UsuarioAPIController.UsuarioCallback responseCallback) {
+        Call<Boolean> call = usuarioApi.verfavoritarLivro(emailEntrada, isbnLivro);
+        call.enqueue(new Callback<Boolean>() {
+            @Override
+            public void onResponse(Call<Boolean> call, Response<Boolean> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    responseCallback.onSuccessBoolean(response.body());
+                } else {
+                    responseCallback.onSuccessBoolean(false);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Boolean> call, Throwable t) {
                 responseCallback.onFailure(t);
             }
         });

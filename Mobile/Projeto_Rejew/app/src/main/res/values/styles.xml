@@ -7,6 +7,7 @@
         <item name="android:layout_marginEnd">30dp</item>
     </style>
 
+
     <style name="ViewRedonda">
         <item name="android:background">@drawable/view_redonda</item>
     </style>
@@ -47,6 +48,24 @@
         <item name="android:layout_marginBottom">50dp</item>
         <item name="android:padding">15dp</item>
         <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="ButtonFavo">
+        <item name="android:layout_width">150dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/buttonfunc</item>
+        <item name="android:layout_marginBottom">50dp</item>
+        <item name="android:padding">15dp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="ButtonDesf">
+        <item name="android:layout_width">150dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/buttondesf</item>
+        <item name="android:layout_marginBottom">50dp</item>
+        <item name="android:padding">15dp</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 
     <style name="QuadradoBranco">

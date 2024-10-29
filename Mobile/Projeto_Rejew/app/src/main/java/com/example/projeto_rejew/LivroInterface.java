@@ -15,6 +15,7 @@ import android.widget.TextView;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -44,6 +45,8 @@ public class LivroInterface extends AppCompatActivity {
     private Usuario usuario;
     private Livro livroC;
     private long isbn;
+    private Boolean favoritadoBool;
+    private AppCompatButton buttonfavoritar;
     private String emailEntrada;
     private ImageView imagemLivro;
     private TextView autorLivro;
@@ -64,6 +67,8 @@ public class LivroInterface extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        buttonfavoritar = findViewById(R.id.buttonFavoritar);
 
         recyclerComentarios = findViewById(R.id.comentarios);
 
@@ -95,6 +100,7 @@ public class LivroInterface extends AppCompatActivity {
 
         buscarLivroID(isbn);
         buscarcomntarioLivro(isbn);
+        verificarFavoritacao(emailEntrada, isbn);
     }
 
     private String recuperarEmailUsuario() {
@@ -122,7 +128,7 @@ public class LivroInterface extends AppCompatActivity {
                 AlertDialog.Builder alerta = new AlertDialog.Builder(LivroInterface.this);
                 alerta.setCancelable(false);
                 alerta.setTitle("Login");
-                alerta.setMessage("Seu comentario foi realizado com sucesso " + comentario.getUsuarioComent().getNomeUsuario());
+                alerta.setMessage("Seu comentario foi realizado com sucesso " /*+ comentario.getUsuarioComent().getNomeUsuario()*/);
                 alerta.setNegativeButton("Ok", null);
                 alerta.create().show();
                 buscarcomntarioLivro(isbn);
@@ -130,6 +136,11 @@ public class LivroInterface extends AppCompatActivity {
 
             @Override
             public void onSuccessList(List<Comentario> ComentarioL) {
+            }
+
+            @Override
+            public void onSuccessUsuario(Usuario usuario) {
+
             }
 
             @Override
@@ -155,6 +166,10 @@ public class LivroInterface extends AppCompatActivity {
             }
 
             @Override
+            public void onSuccessBoolean(Boolean favoritado) {
+            }
+
+            @Override
             public void onSuccessByte(byte[] bytes) {
 
             }
@@ -163,7 +178,7 @@ public class LivroInterface extends AppCompatActivity {
             public void onFailure(Throwable t) {
                 AlertDialog.Builder alerta = new AlertDialog.Builder(LivroInterface.this);
                 alerta.setCancelable(false);
-                alerta.setTitle("Falha ao carregar usuario");
+                alerta.setTitle("Falha ao carregar usuarioo");
                 alerta.setMessage("Error: " + t.getMessage());
                 alerta.setNegativeButton("Voltar", null);
                 alerta.create().show();
@@ -255,8 +270,13 @@ public class LivroInterface extends AppCompatActivity {
 
             @Override
             public void onSuccessList(List<Comentario> comentarioL) {
-                adapterComentario = new AdapterComentario(LivroInterface.this, comentarioL, usuarioAPIController);
+                adapterComentario = new AdapterComentario(LivroInterface.this, comentarioL, usuarioAPIController, comentarioAPIController);
                 recyclerComentarios.setAdapter(adapterComentario);
+            }
+
+            @Override
+            public void onSuccessUsuario(Usuario usuario) {
+
             }
 
             @Override
@@ -275,11 +295,85 @@ public class LivroInterface extends AppCompatActivity {
         });
     }
 
-    public void favoritarLivro(View view) {
-        usuarioAPIController.favoritarLivro(emailEntrada, isbn, new UsuarioAPIController.UsuarioCallback() {
+    public void favoritarLivroDesfv(View view) {
+        if (favoritadoBool) {
+            usuarioAPIController.desfavoritarLivro(emailEntrada, isbn, new UsuarioAPIController.UsuarioCallback() {
+                @Override
+                public void onSuccessV(Void body) {
+                    favoritadoBool = false;
+                    atualizarBotaoFavoritar(favoritadoBool);
+                }
 
+                @Override
+                public void onSuccess(Usuario usuario) {
+                }
+
+                @Override
+                public void onSuccessBoolean(Boolean favoritado) {
+                }
+
+                @Override
+                public void onSuccessByte(byte[] bytes) {
+                }
+
+                @Override
+                public void onFailure(Throwable t) {
+                    Log.e("API Response", "Erro ao desfavoritar: " + t.getMessage());
+                }
+            });
+        } else {
+            usuarioAPIController.favoritarLivro(emailEntrada, isbn, new UsuarioAPIController.UsuarioCallback() {
+                @Override
+                public void onSuccessV(Void body) {
+                    favoritadoBool = true;
+                    atualizarBotaoFavoritar(favoritadoBool);
+                }
+
+                @Override
+                public void onSuccess(Usuario usuario) {
+                }
+
+                @Override
+                public void onSuccessBoolean(Boolean favoritado) {
+                }
+
+                @Override
+                public void onSuccessByte(byte[] bytes) {
+                }
+
+                @Override
+                public void onFailure(Throwable t) {
+                    Log.e("API Response", "Erro ao favoritar: " + t.getMessage());
+                }
+            });
+        }
+    }
+
+    private void atualizarBotaoFavoritar(Boolean favoritado) {
+        if (favoritado) {
+            buttonfavoritar.setText("Desfavoritar");
+            buttonfavoritar.setBackgroundResource(R.drawable.buttondesf);
+            buttonfavoritar.setTextAppearance(this, R.style.ButtonDesf);
+        } else {
+            buttonfavoritar.setText("Favoritar");
+            buttonfavoritar.setBackgroundResource(R.drawable.buttonfunc);
+            buttonfavoritar.setTextAppearance(this, R.style.ButtonFavo);
+        }
+    }
+
+
+
+    private void verificarFavoritacao(String emailUsuario, Long isbnLivro) {
+
+        usuarioAPIController.verFavoritadoLivro(emailUsuario, isbnLivro, new UsuarioAPIController.UsuarioCallback() {
             @Override
             public void onSuccess(Usuario usuario) {
+            }
+
+            @Override
+            public void onSuccessBoolean(Boolean favoritado) {
+                favoritadoBool = favoritado;
+                atualizarBotaoFavoritar(favoritadoBool);
             }
 
             @Override
@@ -287,20 +381,17 @@ public class LivroInterface extends AppCompatActivity {
             }
 
             @Override
-            public void onSuccessV(Void body) {
+            public void onFailure(Throwable t){
             }
 
             @Override
-            public void onFailure(Throwable t) {
-                AlertDialog.Builder alerta = new AlertDialog.Builder(LivroInterface.this);
-                alerta.setCancelable(false);
-                alerta.setTitle("Falha ao favoritar o livro");
-                alerta.setMessage("Error: " + t.getMessage());
-                alerta.setNegativeButton("Voltar", null);
-                alerta.create().show();
+            public void onSuccessV(Void body) {
             }
         });
     }
+
+
+
 
 
     public void passarTelaCat(View view) {

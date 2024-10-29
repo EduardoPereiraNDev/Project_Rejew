@@ -104,6 +104,10 @@ public class FormCadastro extends AppCompatActivity {
                 }
 
                 @Override
+                public void onSuccessBoolean(Boolean favoritado) {
+                }
+
+                @Override
                 public void onSuccessByte(byte[] bytes){
                 }
 

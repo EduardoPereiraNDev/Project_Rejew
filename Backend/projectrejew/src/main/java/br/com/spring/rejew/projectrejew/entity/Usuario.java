@@ -4,29 +4,22 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Set;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Inheritance;
-import jakarta.persistence.InheritanceType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import jakarta.persistence.*;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "usuario")
-@Data
+@Getter
+@Setter
 public class Usuario implements Serializable {
+    private static final long serialVersionUID = 1L;
 
-	private static final long serialVersionUID = 1L;
-
-	  
     @Column(name = "nome_Usuario")
     private String nomeUsuario;
 
@@ -51,34 +44,41 @@ public class Usuario implements Serializable {
 
     @Column(name = "recado_Perfil")
     private String recadoPerfil;
-    
-    @ManyToMany
-    @JoinTable(name="livro_favoritado",
-    joinColumns=@JoinColumn(name="usuario_favoritar"),
-    inverseJoinColumns = @JoinColumn(name="isbn_Livro"))
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+        name = "livro_favoritado",
+        joinColumns = @JoinColumn(name = "usuario_favoritar"),
+        inverseJoinColumns = @JoinColumn(name = "isbn_Livro")
+    )
     private Set<Livro> livros;
-    
-    @ManyToMany
-    @JoinTable(name="livro_avaliado",
-    joinColumns=@JoinColumn(name="usuario_avaliar"),
-    inverseJoinColumns = @JoinColumn(name="isbn_Livro"))
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+        name = "livro_avaliado",
+        joinColumns = @JoinColumn(name = "usuario_avaliar"),
+        inverseJoinColumns = @JoinColumn(name = "isbn_Livro")
+    )
     private Set<Livro> livrosA;
-    
-    @OneToMany(mappedBy = "usuarioComent")
+
+    @OneToMany(mappedBy = "usuarioComent", fetch = FetchType.EAGER)
+    @JsonManagedReference(value = "usuario_comentario")
     private Set<Comentario> comentario;
-    
-    @OneToMany(mappedBy = "usuarioMensagem")
+
+    @OneToMany(mappedBy = "usuarioMensagem", fetch = FetchType.EAGER)
+    @JsonManagedReference(value = "usuario_mensagem")
     private Set<Mensagem> mensagem;
-    
-    @ManyToMany
-    @JoinTable(name="usuarios_seguir",
-    joinColumns = @JoinColumn(name = "usuario_seguido"),
-    inverseJoinColumns = @JoinColumn(name="usuario_seguindo"))
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JsonIgnore
+    @JoinTable(
+        name = "usuarios_seguir",
+        joinColumns = @JoinColumn(name = "usuario_seguido"),
+        inverseJoinColumns = @JoinColumn(name = "usuario_seguindo")
+    )
     private Set<Usuario> usuariosSeguindo;
-    
-    @ManyToMany(mappedBy = "usuariosSeguindo")
+
+    @ManyToMany(mappedBy = "usuariosSeguindo", fetch = FetchType.EAGER)
+    @JsonIgnore
     private Set<Usuario> usuariosSeguido;
-
-    
-
 }

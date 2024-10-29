@@ -1,7 +1,9 @@
 package br.com.spring.rejew.projectrejew.controller;
 
 import br.com.spring.rejew.projectrejew.entity.Comentario;
+import br.com.spring.rejew.projectrejew.entity.Usuario;
 import br.com.spring.rejew.projectrejew.repository.ComentarioRepository;
+import br.com.spring.rejew.projectrejew.repository.UsuarioRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +18,9 @@ public class ComentarioController {
 
     @Autowired
     private ComentarioRepository comentarioRepository;
+    
+    @Autowired
+    private UsuarioRepository usuarioRepository;
 
     // Listar todas os comentarios
     @GetMapping
@@ -24,7 +29,7 @@ public class ComentarioController {
     }
    
     // Buscar um comentario por ID
-    @GetMapping("/{isbn}")
+    @GetMapping("/{id}")
     public ResponseEntity<Comentario> buscarComentarioID(@PathVariable Long id) {
         Optional<Comentario> comentario = comentarioRepository.findById(id);
         return comentario.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
@@ -38,6 +43,16 @@ public class ComentarioController {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(comentarios);
+    }
+    
+    // Buscar um comentario por Usuario
+    @GetMapping("/usuario/comentario/{usuarioComent}")
+    public ResponseEntity<Usuario> buscarUsuarioPorComentario(@PathVariable Long usuarioComent) {
+       Usuario usuario = comentarioRepository.findUsuarioByComentarioId(usuarioComent);
+        if (usuario == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(usuario);
     }
     
     // Buscar um comentario por Livro
@@ -54,6 +69,7 @@ public class ComentarioController {
     @PostMapping
     public ResponseEntity<Comentario> adicionarComentario(@RequestBody Comentario comentario){
     	Comentario comentarioSalvo = comentarioRepository.save(comentario);
+    	Usuario usuario = usuarioRepository.buscarUsuarioPorEmail(comentario.getUsuarioComent().getEmailEntrada());
         return ResponseEntity.ok(comentarioSalvo);
     }
     

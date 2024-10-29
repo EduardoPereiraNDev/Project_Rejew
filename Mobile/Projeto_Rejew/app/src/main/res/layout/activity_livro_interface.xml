@@ -111,24 +111,24 @@
                 app:layout_constraintTop_toBottomOf="@+id/imagemLivro" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/buttonComentar"
+                android:id="@+id/buttonAvaliar"
                 style="@style/ButtonFunc"
                 android:layout_width="140dp"
                 android:layout_height="55dp"
                 android:layout_marginStart="60dp"
                 android:layout_marginTop="20dp"
-                android:text="Comentar"
+                android:text="Avaliar"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/generoLivro" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/buttonFavoritar"
-                style="@style/ButtonFunc"
+                style="@style/ButtonFavo"
                 android:layout_width="140dp"
                 android:layout_height="55dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="60dp"
-                android:onClick="favoritarLivro"
+                android:onClick="favoritarLivroDesfv"
                 android:text="Favoritar"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/qtdPaginas" />
@@ -182,7 +182,7 @@
                 android:fontFamily="@font/montserrat_extrabold"
                 android:layout_marginTop="40dp"
                 android:layout_marginLeft="40dp"
-                android:text="Cometarios"
+                android:text="Comentarios"
                 android:textSize="30dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/sinopse" />

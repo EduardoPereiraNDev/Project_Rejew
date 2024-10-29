@@ -21,6 +21,7 @@ public class ComentarioAPIController {
     public interface ComentarioCallback {
         void onSuccess(Comentario comentario);
         void onSuccessList(List<Comentario> ComentarioL);
+        void onSuccessUsuario(Usuario usuario);
         void onFailure(Throwable t);
     }
 
@@ -95,4 +96,39 @@ public class ComentarioAPIController {
             }
         });
     }
+    public void buscarUsuarioPorComentario(Long idComentario, ComentarioAPIController.ComentarioCallback responseCallback) {
+        Log.d("API Call", "Realizando requisição para buscar usuário do comentário: " + idComentario);
+        Call<Usuario> call = this.comentarioApi.buscarUsuarioporComentario(idComentario);
+
+        call.enqueue(new Callback<Usuario>() {
+            @Override
+            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                Log.d("API Response", "Código de resposta: " + response.code());
+                if (response.isSuccessful() && response.body() != null) {
+                    Log.d("API Response", "Usuário buscado: " + response.body().toString());
+                    responseCallback.onSuccessUsuario(response.body());
+                } else {
+                    if (response.errorBody() != null) {
+                        try {
+                            String errorBody = response.errorBody().string();
+                            Log.e("API Error", "Corpo da resposta de erro: " + errorBody);
+                        } catch (IOException e) {
+                            Log.e("API Error", "Erro ao ler corpo da resposta de erro: " + e.getMessage());
+                        }
+                    } else {
+                        Log.e("API Error", "Resposta sem corpo de erro");
+                    }
+                    responseCallback.onFailure(new Exception("Erro: " + response.code()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Usuario> call, Throwable t) {
+                Log.e("API Error", "Falha na chamada: " + t.getMessage());
+                responseCallback.onFailure(t);
+            }
+        });
+    }
+
+
 }
