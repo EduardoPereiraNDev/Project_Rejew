@@ -15,9 +15,11 @@ import com.bumptech.glide.Glide;
 import com.example.projeto_rejew.api.ComentarioAPIController;
 import com.example.projeto_rejew.api.UsuarioAPIController;
 import com.example.projeto_rejew.entity.Comentario;
+import com.example.projeto_rejew.entity.Livro;
 import com.example.projeto_rejew.entity.Usuario;
 
 import java.util.List;
+import java.util.Set;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -80,6 +82,16 @@ public class AdapterComentario extends RecyclerView.Adapter<AdapterComentario.Co
                                 .override(90, 90)
                                 .centerCrop()
                                 .into(holder.imgFotoPerfil);
+                    }
+
+                    @Override
+                    public void onSuccessList(List<Usuario> usuarios) {
+
+                    }
+
+                    @Override
+                    public void onSuccessListL(List<Livro> livros) {
+
                     }
 
                     @Override

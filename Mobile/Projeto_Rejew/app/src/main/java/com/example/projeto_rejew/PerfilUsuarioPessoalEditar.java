@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -16,7 +17,11 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.projeto_rejew.api.RetrofitClient;
 import com.example.projeto_rejew.api.UsuarioAPIController;
+import com.example.projeto_rejew.entity.Livro;
 import com.example.projeto_rejew.entity.Usuario;
+
+import java.util.List;
+import java.util.Set;
 
 public class PerfilUsuarioPessoalEditar extends AppCompatActivity {
 
@@ -83,6 +88,16 @@ public class PerfilUsuarioPessoalEditar extends AppCompatActivity {
             @Override
             public void onSuccessByte(byte[] bytes) {
             }
+
+            @Override
+            public void onSuccessList(List<Usuario> usuarios) {
+            }
+
+            @Override
+            public void onSuccessListL(List<Livro> livros) {
+
+            }
+
             @Override
             public void onSuccessV(Void body) {
             }
@@ -92,6 +107,63 @@ public class PerfilUsuarioPessoalEditar extends AppCompatActivity {
 
             }
         });
+    }
+    private void atualizarUsuario() {
+        Usuario usuarioAtt = new Usuario();
+        String email = emailUsuario.getText().toString();
+        String nome = nomePerfil.getText().toString();
+        String usuario = nomeUsuario.getText().toString();
+        String senhaText = senha.getText().toString();
+        String dataNasc = dataNascimento.getText().toString();
+        String recado = recadoPerfil.getText().toString();
+
+        if (email == null || usuario == null || senhaText == null) {
+            AlertDialog.Builder alerta = new AlertDialog.Builder(PerfilUsuarioPessoalEditar.this);
+            alerta.setCancelable(false);
+            alerta.setTitle("Falha ao atualizar o usuario");
+            alerta.setMessage("Alguns dados Obrigatorios estão Vazios: email, nome de Usuario ou Senha");
+            alerta.setNegativeButton("Voltar", null);
+            alerta.create().show();
+        } else {
+            usuarioAtt.setNomeUsuario(usuario);
+            usuarioAtt.setEmailEntrada(email);
+            usuarioAtt.setNomePerfil(nome);
+            usuarioAtt.setSenhaEntrada(senhaText);
+            usuarioAtt.setDataNascimento(dataNasc);
+            usuarioAtt.setRecadoPerfil(recado);
+            usuarioAPIController.atualizarUsuario(usuarioAtt, emailEntrada, new UsuarioAPIController.UsuarioCallback() {
+
+                @Override
+                public void onSuccess(Usuario usuario) {
+                }
+
+                @Override
+                public void onSuccessBoolean(Boolean favoritado) {
+                }
+
+                @Override
+                public void onSuccessByte(byte[] bytes) {
+                }
+
+                @Override
+                public void onSuccessList(List<Usuario> usuarios) {
+                }
+
+                @Override
+                public void onSuccessListL(List<Livro> livros) {
+
+                }
+
+                @Override
+                public void onSuccessV(Void body) {
+                }
+
+                @Override
+                public void onFailure(Throwable t) {
+
+                }
+            });
+        }
     }
 
     public void passarTelaCat(View view) {

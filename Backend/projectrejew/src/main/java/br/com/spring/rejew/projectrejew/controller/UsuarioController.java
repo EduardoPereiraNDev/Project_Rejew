@@ -69,6 +69,7 @@ public class UsuarioController {
         }
     }
     
+    @PostMapping("seguir")
     public void seguirUsuario(String usuarioSeguindoEmail, String usuarioSeguidoEmail) {
         Optional<Usuario> usuarioSeguindoOpt = usuarioRepository.findById(usuarioSeguindoEmail);
         Optional<Usuario> usuarioSeguidoOpt = usuarioRepository.findById(usuarioSeguidoEmail);
@@ -81,7 +82,23 @@ public class UsuarioController {
             usuarioRepository.save(usuarioSeguindo);
         }
     }
+    
+    @GetMapping("estaSeguindo")
+    public boolean estaSeguindo(String usuarioSeguindoEmail, String usuarioSeguidoEmail) {
+        Optional<Usuario> usuarioSeguindoOpt = usuarioRepository.findById(usuarioSeguindoEmail);
+        Optional<Usuario> usuarioSeguidoOpt = usuarioRepository.findById(usuarioSeguidoEmail);
 
+        if (usuarioSeguindoOpt.isPresent() && usuarioSeguidoOpt.isPresent()) {
+            Usuario usuarioSeguindo = usuarioSeguindoOpt.get();
+            Usuario usuarioSeguido = usuarioSeguidoOpt.get();
+
+            return usuarioSeguindo.getUsuariosSeguindo().contains(usuarioSeguido);
+        }
+
+        return false; 
+    }
+
+    @PostMapping("deixarSeguir")
     public void deixarSeguirUsuario(String usuarioSeguindoEmail, String usuarioSeguidoEmail) {
         Optional<Usuario> usuarioSeguindo2 = usuarioRepository.findById(usuarioSeguindoEmail);
         Optional<Usuario> usuarioSeguido2 = usuarioRepository.findById(usuarioSeguidoEmail);
@@ -235,9 +252,16 @@ public class UsuarioController {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(false);
                    
     }
-
+    
+    @GetMapping("/{emailEntrada}/verfavoritados")
+    public List<Livro> verFavoritados(@PathVariable String emailEntrada) {
+        List<Livro> livrosF = usuarioRepository.favoritadosPeloUsuario(emailEntrada);  
+        return livrosF;
+                   
+    }
+    
     @PutMapping("/{emailUsuario}")
-    public ResponseEntity<Usuario> atualizarUsuario(
+    public ResponseEntity<Usuario> atualizarUsuarioWEB(
             @PathVariable String emailUsuario,
             @RequestParam("nomeUsuario") String nomeUsuario,
             @RequestParam("nomePerfil") String nomePerfil,
@@ -246,7 +270,7 @@ public class UsuarioController {
             @RequestParam(value = "caminhoImagem", required = false) MultipartFile caminhoImagem,
             @RequestParam(value = "caminhoImagemFundo", required = false) MultipartFile caminhoImagemFundo,
             @RequestParam("recadoPerfil") String recadoPerfil) {
-
+ 
         Optional<Usuario> optionalUsuario = usuarioRepository.findByEmailEntrada(emailUsuario);
         if (optionalUsuario.isPresent()) {
             try {
@@ -289,6 +313,50 @@ public class UsuarioController {
         return ResponseEntity.notFound().build();
     }
 
+    /*
+    @PutMapping("/{emailUsuario}")
+    public ResponseEntity<Usuario> atualizarUsuario(
+            @PathVariable String emailUsuario,      
+            @RequestBody Usuario usuario,
+            @RequestParam(value = "caminhoImagem", required = false) MultipartFile caminhoImagem,
+            @RequestParam(value = "caminhoImagemFundo", required = false) MultipartFile caminhoImagemFundo){
+
+        Optional<Usuario> optionalUsuario = usuarioRepository.findByEmailEntrada(emailUsuario);
+        if (optionalUsuario.isPresent()) {
+            try {
+                Usuario usuarioAtual = optionalUsuario.get();
+                if (caminhoImagem != null && !caminhoImagem.isEmpty()) {
+                    if (usuarioAtual.getCaminhoImagem() != null && !usuarioAtual.getCaminhoImagem().isEmpty()) {
+                        Path arquivoAntigo = Paths.get(UPLOAD_DIR + usuarioAtual.getCaminhoImagem());
+                        Files.deleteIfExists(arquivoAntigo);
+                    }
+                    String nomeNovo = generateUniqueFilename(extensaoArquivo(caminhoImagem.getOriginalFilename()));
+                    Path path = Paths.get(UPLOAD_DIR + nomeNovo);
+                    Files.write(path, caminhoImagem.getBytes());
+                    usuarioAtual.setCaminhoImagem(nomeNovo);
+                }
+                if (caminhoImagemFundo != null && !caminhoImagemFundo.isEmpty()) {
+                    if (usuarioAtual.getCaminhoImagemFundo() != null && !usuarioAtual.getCaminhoImagemFundo().isEmpty()) {
+                        Path arquivoAntigoFundo = Paths.get(UPLOAD_DIR2 + usuarioAtual.getCaminhoImagemFundo());
+                        Files.deleteIfExists(arquivoAntigoFundo);
+                    }
+                    // Adiciona a nova imagem de fundo
+                    String nomeNovoFundo = generateUniqueFilename(extensaoArquivo(caminhoImagemFundo.getOriginalFilename()));
+                    Path pathFundo = Paths.get(UPLOAD_DIR2 + nomeNovoFundo);
+                    Files.write(pathFundo, caminhoImagemFundo.getBytes());
+                    usuarioAtual.setCaminhoImagemFundo(nomeNovoFundo);
+                }
+               
+                Usuario usuarioAtualizado = usuarioRepository.save(usuarioAtual);
+                return ResponseEntity.ok(usuarioAtualizado);
+            } catch (IOException e) {
+                e.printStackTrace();
+                return ResponseEntity.status(500).body(null);
+            }
+        }
+        return ResponseEntity.notFound().build();
+    }
+*/
     // Deletar um usuário por email
     @DeleteMapping("/{emailUsuario}")
     public ResponseEntity<Void> deletaUsuario(@PathVariable String emailUsuario) {

@@ -18,7 +18,11 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.projeto_rejew.api.RetrofitClient;
 import com.example.projeto_rejew.api.UsuarioAPIController;
+import com.example.projeto_rejew.entity.Livro;
 import com.example.projeto_rejew.entity.Usuario;
+
+import java.util.List;
+import java.util.Set;
 
 public class FormLogin extends AppCompatActivity {
     private EditText txtEmail;
@@ -99,6 +103,14 @@ public class FormLogin extends AppCompatActivity {
 
             @Override
             public void onSuccessByte(byte[] bytes) {
+            }
+
+            @Override
+            public void onSuccessList(List<Usuario> usuarios) {
+            }
+
+            @Override
+            public void onSuccessListL(List<Livro> livros) {
 
             }
 

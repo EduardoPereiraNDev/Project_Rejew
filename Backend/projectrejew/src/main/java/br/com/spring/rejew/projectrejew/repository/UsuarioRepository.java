@@ -45,6 +45,9 @@ public interface UsuarioRepository extends JpaRepository<Usuario, String> {
     @Query("SELECT l FROM Usuario u JOIN u.livros l WHERE u.emailEntrada = :emailEntrada")
     Set<Livro> favoritadoPeloUsuario( String emailEntrada);
     
+    @Query("SELECT l FROM Usuario u JOIN u.livros l WHERE u.emailEntrada = :emailEntrada")
+    List<Livro> favoritadosPeloUsuario( String emailEntrada);
+    
     @Query("SELECT u FROM Usuario u WHERE u.emailEntrada = :email AND u.senhaEntrada = :password") 
     Usuario realizarLogin(@Param("email") String email, @Param("password") String password);  
 

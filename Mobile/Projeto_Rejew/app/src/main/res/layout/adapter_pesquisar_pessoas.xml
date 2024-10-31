@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:paddingBottom="15dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".PesquisarPessoas">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/fotoPerfilPesq"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:src="@drawable/imagedefault"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/nomeUsuarioPesq"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/open_sans_semibold"
+        android:layout_marginStart="25dp"
+        android:text="UsuarioNAME"
+        android:textSize="26dp"
+        app:layout_constraintBottom_toBottomOf="@+id/fotoPerfilPesq"
+        app:layout_constraintStart_toEndOf="@+id/fotoPerfilPesq"
+        app:layout_constraintTop_toTopOf="@+id/fotoPerfilPesq" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

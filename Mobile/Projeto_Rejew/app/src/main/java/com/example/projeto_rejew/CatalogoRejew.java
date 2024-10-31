@@ -30,6 +30,7 @@ import com.example.projeto_rejew.entity.Usuario;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -139,6 +140,16 @@ public class CatalogoRejew extends AppCompatActivity {
             }
 
             @Override
+            public void onSuccessList(List<Usuario> usuarios) {
+
+            }
+
+            @Override
+            public void onSuccessListL(List<Livro> livros) {
+
+            }
+
+            @Override
             public void onFailure(Throwable t) {
                 AlertDialog.Builder alerta = new AlertDialog.Builder(CatalogoRejew.this);
                 alerta.setCancelable(false);
@@ -175,6 +186,15 @@ public class CatalogoRejew extends AppCompatActivity {
                         .centerCrop()
                         .into(circleImageView);
             }
+
+            @Override
+            public void onSuccessList(List<Usuario> usuarios) {
+            }
+
+            @Override
+            public void onSuccessListL(List<Livro> livros) {
+            }
+
             @Override
             public void onFailure(Throwable t) {
                 circleImageView.setImageResource(R.drawable.imagedefault);

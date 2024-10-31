@@ -9,6 +9,7 @@ import com.example.projeto_rejew.entity.Mensagem;
 import com.example.projeto_rejew.entity.Usuario;
 
 import java.util.List;
+import java.util.Set;
 
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -57,18 +58,26 @@ public interface UsuarioApi {
             @Path("emailEntrada") String emailEntrada,
             @Path("isbnLivro") long isbnLivro);
 
+    @GET("usuarios//verfavoritados")
+    Call <List<Livro>> verFavoritados(
+            @Path("emailEntrada") String emailEntrada);
+
+    @POST("usuarios/seguir/{usuarioSeguindoEmail}/{usuarioSeguidoEmail}")
+    Call<Void> seguirUsuario(@Path("usuarioSeguindoEmail") String usuarioSeguindoEmail,
+                             @Path("usuarioSeguidoEmail") String usuarioSeguidoEmail);
+
+    @POST("usuarios/deixarSeguir/{usuarioSeguindoEmail}/{usuarioSeguidoEmail}")
+    Call<Void> deixarSeguirUsuario(@Path("usuarioSeguindoEmail") String usuarioSeguindoEmail,
+                                   @Path("usuarioSeguidoEmail") String usuarioSeguidoEmail);
+
+    @GET("usuarios/estaSeguindo/{usuarioSeguindoEmail}/{usuarioSeguidoEmail}")
+    Call<Boolean> estaSeguindo(@Path("usuarioSeguindoEmail") String usuarioSeguindoEmail,
+                               @Path("usuarioSeguidoEmail") String usuarioSeguidoEmail);
+
 
     @Multipart
     @PUT("usuarios/{emailUsuario}")
-    Call<Usuario> atualizarUsuario(
-            @Path("emailUsuario") String emailUsuario,
-            @Part("nomeUsuario") RequestBody nomeUsuario,
-            @Part("nomePerfil") RequestBody nomePerfil,
-            @Part("emailEntrada") RequestBody emailEntrada,
-            @Part("dataNascimento") RequestBody dataNascimento,
-            @Part MultipartBody.Part caminhoImagem,
-            @Part MultipartBody.Part caminhoImagemFundo,
-            @Part("recadoPerfil") RequestBody recadoPerfil);
+    Call<Usuario> atualizarUsuario(@Path("emailUsuario") String emailUsuario, @Body Usuario usuario);
 
     @GET("usuarios/imagem/fundo/{caminho}")
     Call<ResponseBody> buscarImagemFundo(@Path("caminho") String caminho);

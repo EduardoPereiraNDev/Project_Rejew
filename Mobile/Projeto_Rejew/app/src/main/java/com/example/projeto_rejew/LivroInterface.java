@@ -34,6 +34,7 @@ import com.example.projeto_rejew.entity.Usuario;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 public class LivroInterface extends AppCompatActivity {
 
@@ -171,6 +172,16 @@ public class LivroInterface extends AppCompatActivity {
 
             @Override
             public void onSuccessByte(byte[] bytes) {
+
+            }
+
+            @Override
+            public void onSuccessList(List<Usuario> usuarios) {
+
+            }
+
+            @Override
+            public void onSuccessListL(List<Livro> livros) {
 
             }
 
@@ -317,6 +328,16 @@ public class LivroInterface extends AppCompatActivity {
                 }
 
                 @Override
+                public void onSuccessList(List<Usuario> usuarios) {
+
+                }
+
+                @Override
+                public void onSuccessListL(List<Livro> livros) {
+
+                }
+
+                @Override
                 public void onFailure(Throwable t) {
                     Log.e("API Response", "Erro ao desfavoritar: " + t.getMessage());
                 }
@@ -339,6 +360,15 @@ public class LivroInterface extends AppCompatActivity {
 
                 @Override
                 public void onSuccessByte(byte[] bytes) {
+                }
+
+                @Override
+                public void onSuccessList(List<Usuario> usuarios) {
+                }
+
+                @Override
+                public void onSuccessListL(List<Livro> livros) {
+
                 }
 
                 @Override
@@ -378,6 +408,15 @@ public class LivroInterface extends AppCompatActivity {
 
             @Override
             public void onSuccessByte(byte[] bytes) {
+            }
+
+            @Override
+            public void onSuccessList(List<Usuario> usuarios) {
+            }
+
+            @Override
+            public void onSuccessListL(List<Livro> livros) {
+
             }
 
             @Override
