@@ -53,6 +53,10 @@ input::placeholder{
     color:rgb(200, 200, 200);
     font-size: 15px;
 }
+#botao::-webkit-inner-spin-button, #botaos::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0; 
+}
 h4{
     font-family: sans-serif;
     font-weight: 500;
