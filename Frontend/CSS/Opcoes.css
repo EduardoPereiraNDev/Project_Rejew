@@ -9,6 +9,13 @@
     margin-left: -10px;
     z-index: -1;
 }
+.setaSair{
+    width: 70px;
+    height: 20px;
+    margin-top: 20px;
+    margin-left: 20px;
+    cursor: pointer;
+}
 #logo4{
     width: 210px;
     height: 50px;
@@ -22,7 +29,7 @@
     align-items: center;
     flex-direction: row;
     gap: 0px 120px;
-    margin-top: 92px;
+    margin-top: 55px;
 }
 #icones2{
     display: flex;
