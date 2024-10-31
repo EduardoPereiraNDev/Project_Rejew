@@ -10,12 +10,55 @@
     <div class="caixa">
         <h1>Login</h1>
         <h3>Digite sua credencial e senha para acessar as configurações <br>do Administrador.</h3>
-        <div class="botao">
-            <input type="number" id="botao" name="email" placeholder="Credencial" required>
-            <input type="password" id="botao" name="senha" placeholder="Senha" required>
+        <br>
+        <p id="mensagem"></p>
+        <div class="botaodiv">
+            <input type="number" id="credencial" class="botao" name="credencial" placeholder="Credencial" required>
+            <input type="password" id="senhaadm" class="botao" name="senhaadm" placeholder="Senha" required>
         </div>
-        <a href="#"><h4>Esqueceu sua senha?</h4></a>
-        <a href="Opcoes.html"><button>ENTRAR</button></a>
+        <a onclick="loginAdmin()"><button>ENTRAR</button></a>
     </div>
-    </body>
+    
+
+    <script>
+        async function loginAdmin() {
+    // Pega os valores dos campos
+    const credencial = document.getElementById("credencial").value;
+    const senhaadm = document.getElementById("senhaadm").value;
+
+    try {
+        // Envia a requisição para o backend
+        const response = await fetch("http://localhost:8080/api/admin/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                credencial: credencial,
+                senhaadm: senhaadm
+            })
+        });
+
+        // Verifica o status da resposta
+        const result = await response.json();
+        const mensagemElement = document.getElementById("mensagem");
+
+        if (response.ok) {
+            // Login bem-sucedido
+            mensagemElement.textContent = result.message;
+            mensagemElement.style.color = "green";
+            window.location.href = "Opcoes.html";
+        } else {
+            // Falha no login
+            mensagemElement.textContent = result.message;
+            mensagemElement.style.color = "red";
+        }
+    } catch (error) {
+        console.error("Erro na requisição:", error);
+        document.getElementById("mensagem").textContent = "Erro ao tentar fazer login.";
+    }
+}
+    </script>
+
+    </body>     
 </html>
