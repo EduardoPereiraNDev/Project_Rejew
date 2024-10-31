@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
+.fundo1{
+    background-repeat: no-repeat;
+    position: fixed;
+    width: 1538px;
+    margin-top: -92px;
+    margin-left: -10px;
+    z-index: -1;
+}
+.setaSair{
+    width: 70px;
+    height: 20px;
+    margin-top: 20px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+#logo4{
+    width: 210px;
+    height: 50px;
+    margin-top: 5px;
+    margin-left: 10px;
+    padding: -20px;
+}
+#icones1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 0px 120px;
+    margin-top: 55px;
+}
+#icones2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 0px 120px;
+    margin-top: 50px;
+}
+p{
+    margin-top: 25px;
+    font-family: Open Sans;
+    font-size: 24px;
+    color:white;
+}
+#texto{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.icon1, .icon2, .icon3{
+    margin-top: 20px;
+    width: 150px;
+    height: 150px;
+}
+.icon1:hover{
+    transform: scale(1.1);
+}
+.icon2:hover{
+    transform: scale(1.1);
+}
+.icon3:hover{
+    transform: scale(1.1);
+}
+h1{
+    margin-top: -9px;
+    margin-left: 5px;
+    font-family: Open Sans;
+    font-size: 55px;
+    font-weight: 300px;
+    color:white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+button{
+    margin-top: 35px;
+    margin-left: 662px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1%;
+    font-family: Roboto;
+    color: white;
+    background: none;
+    border: solid 1px white;
+    height: 40px;
+    letter-spacing: 3px;
+    cursor: pointer;
+}
+a{
+    text-decoration: none;
+}

@@ -2,6 +2,7 @@ package com.example.projeto_rejew;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -19,7 +20,7 @@ public class PaginaInicial extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_pagina_inicial);
+        setContentView(R.layout.activity_paginainicial);
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -27,7 +28,6 @@ public class PaginaInicial extends AppCompatActivity {
             return insets;
         });
     }
-
     public void abrirMenu(View v) {
         Intent intent = new Intent(PaginaInicial.this, PerfilUsuario.class);
         startActivity(intent);

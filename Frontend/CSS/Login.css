@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
+@import url('https://fonts.cdnfonts.com/css/gilroy-bold');
+body{
+    background-color:#022e53;
+}
+#logoCanto{
+    width: 65px;
+    height: 65px;
+    display: flex;
+    margin-top: 45px;
+    margin-left: 1390px;
+}
+#logoCanto:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+.caixa{
+    height: 505px;
+    width:480px;
+    border:none;
+    background-color: none;
+    margin-top: 78px;
+    margin-left: 528px;
+}
+h1{
+    font-family: sans-serif;
+    font-size: 35px;
+    font-weight:bold;
+    color:white;
+}
+h3{
+    font-family: sans-serif;
+    font-weight: 100;
+    font-size: 16.6px;
+    color:rgb(200, 200, 200);
+    margin-top:15px;
+}
+.botao{
+    border: 2px solid rgb(200, 200, 200);
+    border-radius: 4px;
+    background-color:#021d33;
+    width: 450px;
+    height: 55px;
+    padding: 2%;
+    color:rgb(200, 200, 200);
+    margin-top: -5px;
+    font-family: sans-serif;
+    font-size: 15px;
+}
+input::placeholder{
+    font-family: sans-serif;
+    color:rgb(200, 200, 200);
+    font-size: 15px;
+}
+.botao::-webkit-inner-spin-button, #botaos::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0; 
+}
+h4{
+    font-family: sans-serif;
+    font-weight: 500;
+    color:white;
+    margin-left: 319px;
+    font-size: 13px;
+    margin-top: 8px;
+}
+.botaodiv{
+    display: flex;
+    flex-direction: column;
+    gap: 30px 0px;
+    margin-top: 30px;
+}
+button{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    background-color:#638499;
+    font-family: sans-serif;
+    color:white;
+    font-size: 19px;
+    font-weight: 500;
+    border: none;
+    border-radius: 4px;
+    width: 450px;
+    height: 55px;
+    margin-top: 40px;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+button:hover{
+    background-color: white;
+    color:#638499;
+}
+input:focus{
+    outline:none;
+}
+a{
+    text-decoration: none;
+}
+p{
+    font-family: sans-serif;
+    font-weight: 500;
+    color:white;
+    font-size: 13px;
+    margin-top: 20px;
+}
+#p{
+    font-weight: bold;
+    margin-left: 5px;
+}
+#mensagem{
+    margin-top: -30px;
+    margin-bottom: -15px;
+}
+.textofinal{
+    display: flex;
+    flex-direction: row;
+}
