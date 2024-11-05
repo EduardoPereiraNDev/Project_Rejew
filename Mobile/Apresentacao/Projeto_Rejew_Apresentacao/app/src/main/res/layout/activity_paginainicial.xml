@@ -445,7 +445,7 @@
     </ScrollView>
 
     <View
-        android:id="@+id/quadroAzul"
+        android:id="@+id/quadroazul"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:background="#022e53"
