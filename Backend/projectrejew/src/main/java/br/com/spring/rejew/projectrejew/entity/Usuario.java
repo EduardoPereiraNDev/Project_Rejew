@@ -53,13 +53,9 @@ public class Usuario implements Serializable {
     )
     private Set<Livro> livros;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-        name = "livro_avaliado",
-        joinColumns = @JoinColumn(name = "usuario_avaliar"),
-        inverseJoinColumns = @JoinColumn(name = "isbn_Livro")
-    )
-    private Set<Livro> livrosA;
+    @OneToMany(mappedBy = "usuarioA", fetch = FetchType.EAGER)
+    @JsonManagedReference(value = "usuario_Livro_A")
+    private Set<UsuarioLivroA> UsuariosLivrosA;
 
     @OneToMany(mappedBy = "usuarioComent", fetch = FetchType.EAGER)
     @JsonManagedReference(value = "usuario_comentario")
@@ -73,8 +69,8 @@ public class Usuario implements Serializable {
     @JsonIgnore
     @JoinTable(
         name = "usuarios_seguir",
-        joinColumns = @JoinColumn(name = "usuario_seguido"),
-        inverseJoinColumns = @JoinColumn(name = "usuario_seguindo")
+        joinColumns = @JoinColumn(name = "usuario_seguindo"),
+        inverseJoinColumns = @JoinColumn(name = "usuario_seguido")
     )
     private Set<Usuario> usuariosSeguindo;
 

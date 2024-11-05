@@ -31,8 +31,8 @@ import br.com.spring.rejew.projectrejew.repository.ChatRepository;
 @RequestMapping("/chats")
 public class ChatController {
     
-	private static final String UPLOAD_DIR = "C:/Users/rm2877/Desktop/Project_Rejew/Database/UploadsIMGChatLogo/";
-	private static final String UPLOAD_DIR2 = "C:/Users/rm2877/Desktop/Project_Rejew/Database/UploadsIMGChatFundo/";
+	private static final String UPLOAD_DIR = "C:/Users/rm2869/Desktop/Project_Rejew/Database/UploadsIMGChatLogo/";
+	private static final String UPLOAD_DIR2 = "C:/Users/rm2869/Desktop/Project_Rejew/Database/UploadsIMGChatFundo/";
 	
     @Autowired
     private ChatRepository chatRepository;

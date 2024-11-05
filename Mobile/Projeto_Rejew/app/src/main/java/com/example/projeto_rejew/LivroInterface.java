@@ -6,11 +6,15 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AlertDialog;
@@ -27,22 +31,27 @@ import com.example.projeto_rejew.api.ComentarioAPIController;
 import com.example.projeto_rejew.api.LivroAPIController;
 import com.example.projeto_rejew.api.RetrofitClient;
 import com.example.projeto_rejew.api.UsuarioAPIController;
+import com.example.projeto_rejew.api.UsuarioLivroAPIController;
 import com.example.projeto_rejew.entity.Comentario;
 import com.example.projeto_rejew.entity.Livro;
 import com.example.projeto_rejew.entity.Usuario;
+import com.example.projeto_rejew.entity.UsuarioLivroADTO;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
-public class LivroInterface extends AppCompatActivity {
+import okhttp3.ResponseBody;
+
+public class LivroInterface extends AppCompatActivity implements ComentarioDeleteCallback {
 
     private LivroAPIController livroAPIController;
     private RecyclerView recyclerComentarios;
     private AdapterComentario adapterComentario;
     private ComentarioAPIController comentarioAPIController;
     private UsuarioAPIController usuarioAPIController;
+    private UsuarioLivroAPIController usuarioLivroAPIController;
     private Usuario usuario;
     private Livro livroC;
     private long isbn;
@@ -73,13 +82,16 @@ public class LivroInterface extends AppCompatActivity {
 
         recyclerComentarios = findViewById(R.id.comentarios);
 
-        recyclerComentarios.setLayoutManager(new LinearLayoutManager(this));
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerComentarios.setLayoutManager(layoutManager);
+
 
 
         RetrofitClient retrofitClient = new RetrofitClient();
         livroAPIController = new LivroAPIController(retrofitClient);
         usuarioAPIController = new UsuarioAPIController(retrofitClient);
         comentarioAPIController = new ComentarioAPIController(retrofitClient);
+        usuarioLivroAPIController = new UsuarioLivroAPIController(retrofitClient);
 
 
         imagemLivro = findViewById(R.id.imagemLivro);
@@ -92,6 +104,7 @@ public class LivroInterface extends AppCompatActivity {
 
         comentEdit = findViewById(R.id.addComentario);
 
+        livroC = new Livro();
         usuario = new Usuario();
 
          isbn = getIntent().getLongExtra("isbnLivro", -1);
@@ -99,7 +112,10 @@ public class LivroInterface extends AppCompatActivity {
         emailEntrada = recuperarEmailUsuario();
         carregarUsuario(emailEntrada);
 
+
+        carregarMedia();
         buscarLivroID(isbn);
+        buscarcomntarioLivro(isbn);
         buscarcomntarioLivro(isbn);
         verificarFavoritacao(emailEntrada, isbn);
     }
@@ -108,6 +124,102 @@ public class LivroInterface extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("usuarioDados", MODE_PRIVATE);
         return sharedPreferences.getString("emailEntrada", null);
     }
+
+    @Override
+    public void onComentarioDeleted() {
+        Toast.makeText(this, "Comentário deletado com sucesso!", Toast.LENGTH_SHORT).show();
+        Log.d("TAG", "comentario deletado: ");
+        buscarcomntarioLivro(isbn);
+    }
+
+    public void carregarMedia(){
+        usuarioLivroAPIController.calcularMedia(isbn, new UsuarioLivroAPIController.UsuarioLivroCallback() {
+            @Override
+            public void onSuccess(UsuarioLivroADTO usuarioLivroADTO) {
+            }
+
+            @Override
+            public void onSuccessList(List<UsuarioLivroADTO> usuariosLivroADTO) {
+
+            }
+
+            @Override
+            public void onSuccessBoolean(Boolean booleano) {
+
+            }
+
+            @Override
+            public void onSuccessDouble(Double doble) {
+                if (doble == null || doble == 0){
+                    ratingBar.setRating(0);
+                }
+                ratingBar.setRating(doble.floatValue());
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                AlertDialog.Builder alerta = new AlertDialog.Builder(LivroInterface.this);
+                alerta.setCancelable(false);
+                alerta.setTitle("Erro ao carregar Media");
+                alerta.setMessage("Error: " + t.getMessage());
+                alerta.setNegativeButton("Voltar", null);
+                alerta.create().show();
+                Log.e("ERROR", "onFailure: "+ t );
+            }
+        });
+    }
+
+    public void mostrarDialogoDeAvaliacao(View view) {
+        View dialogView = getLayoutInflater().inflate(R.layout.popup_ratingbar, null);
+
+        RatingBar dialogRatingBar = dialogView.findViewById(R.id.dialogRatingBar);
+        Button btnSubmitRating = dialogView.findViewById(R.id.btnSubmitRating);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setView(dialogView);
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+        btnSubmitRating.setOnClickListener(v -> {
+            float rating = dialogRatingBar.getRating();
+            avaliarLivro(rating);
+
+            dialog.dismiss();
+        });
+    }
+
+    public void avaliarLivro(Float ratin){
+        Double nota = ratin.doubleValue();
+        usuarioLivroAPIController.adicionarAvaliacao(emailEntrada,isbn,nota , new UsuarioLivroAPIController.UsuarioLivroCallback() {
+            @Override
+            public void onSuccess(UsuarioLivroADTO usuarioLivroADTO) {
+            }
+
+            @Override
+            public void onSuccessList(List<UsuarioLivroADTO> usuariosLivroADTO) {
+
+            }
+
+            @Override
+            public void onSuccessBoolean(Boolean booleano) {
+
+            }
+
+            @Override
+            public void onSuccessDouble(Double doble) {
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                AlertDialog.Builder alerta = new AlertDialog.Builder(LivroInterface.this);
+                alerta.setCancelable(false);
+                alerta.setTitle("Falha ao Avaliar");
+                alerta.setMessage("Error: " + t.getMessage());
+                alerta.setNegativeButton("Voltar", null);
+                alerta.create().show();
+            }
+        });
+    }
+
 
     public void chamarComentarioAdd(View view) {
         adicionarComentario();
@@ -129,10 +241,20 @@ public class LivroInterface extends AppCompatActivity {
                 AlertDialog.Builder alerta = new AlertDialog.Builder(LivroInterface.this);
                 alerta.setCancelable(false);
                 alerta.setTitle("Login");
-                alerta.setMessage("Seu comentario foi realizado com sucesso " /*+ comentario.getUsuarioComent().getNomeUsuario()*/);
+                alerta.setMessage("Seu comentario foi realizado com sucesso ");
                 alerta.setNegativeButton("Ok", null);
                 alerta.create().show();
                 buscarcomntarioLivro(isbn);
+            }
+
+            @Override
+            public void onSuccessString(String string) {
+
+            }
+
+            @Override
+            public void onSuccessResponse(ResponseBody responseBody) {
+
             }
 
             @Override
@@ -171,6 +293,11 @@ public class LivroInterface extends AppCompatActivity {
             }
 
             @Override
+            public void onSuccessInt(Integer integer) {
+
+            }
+
+            @Override
             public void onSuccessByte(byte[] bytes) {
 
             }
@@ -186,6 +313,16 @@ public class LivroInterface extends AppCompatActivity {
             }
 
             @Override
+            public void onSuccessResponse(ResponseBody body) {
+
+            }
+
+            @Override
+            public void onSuccessString(String string) {
+
+            }
+
+            @Override
             public void onFailure(Throwable t) {
                 AlertDialog.Builder alerta = new AlertDialog.Builder(LivroInterface.this);
                 alerta.setCancelable(false);
@@ -195,17 +332,15 @@ public class LivroInterface extends AppCompatActivity {
                 alerta.create().show();
             }
 
-            @Override
-            public void onSuccessV(Void body) {
-            }
         });
     }
+
+
 
     private void buscarLivroID(long isbnl){
         livroAPIController.buscarLivroPorId(isbnl, new LivroAPIController.LivroCallback() {
             @Override
             public void onSuccess(Livro livro) {
-                livroC = new Livro();
                 livroC = livro;
                 tituloLivro.setText(livro.getNomeLivro());
                 autorLivro.setText(livro.getAutorLivro());
@@ -280,9 +415,23 @@ public class LivroInterface extends AppCompatActivity {
             }
 
             @Override
+            public void onSuccessString(String string) {
+
+            }
+
+            @Override
+            public void onSuccessResponse(ResponseBody responseBody) {
+
+            }
+
+            @Override
             public void onSuccessList(List<Comentario> comentarioL) {
-                adapterComentario = new AdapterComentario(LivroInterface.this, comentarioL, usuarioAPIController, comentarioAPIController);
-                recyclerComentarios.setAdapter(adapterComentario);
+                if (adapterComentario == null) {
+                    adapterComentario = new AdapterComentario(LivroInterface.this, comentarioL, usuario, usuarioAPIController, comentarioAPIController, LivroInterface.this);
+                    recyclerComentarios.setAdapter(adapterComentario);
+                } else {
+                    adapterComentario.atualizarLista(comentarioL);
+                }
             }
 
             @Override
@@ -310,9 +459,8 @@ public class LivroInterface extends AppCompatActivity {
         if (favoritadoBool) {
             usuarioAPIController.desfavoritarLivro(emailEntrada, isbn, new UsuarioAPIController.UsuarioCallback() {
                 @Override
-                public void onSuccessV(Void body) {
-                    favoritadoBool = false;
-                    atualizarBotaoFavoritar(favoritadoBool);
+                public void onSuccessString(String string) {
+
                 }
 
                 @Override
@@ -321,6 +469,11 @@ public class LivroInterface extends AppCompatActivity {
 
                 @Override
                 public void onSuccessBoolean(Boolean favoritado) {
+                }
+
+                @Override
+                public void onSuccessInt(Integer integer) {
+
                 }
 
                 @Override
@@ -335,6 +488,12 @@ public class LivroInterface extends AppCompatActivity {
                 @Override
                 public void onSuccessListL(List<Livro> livros) {
 
+                }
+
+                @Override
+                public void onSuccessResponse(ResponseBody body) {
+                    favoritadoBool = false;
+                    atualizarBotaoFavoritar(favoritadoBool);
                 }
 
                 @Override
@@ -345,9 +504,8 @@ public class LivroInterface extends AppCompatActivity {
         } else {
             usuarioAPIController.favoritarLivro(emailEntrada, isbn, new UsuarioAPIController.UsuarioCallback() {
                 @Override
-                public void onSuccessV(Void body) {
-                    favoritadoBool = true;
-                    atualizarBotaoFavoritar(favoritadoBool);
+                public void onSuccessString(String string) {
+
                 }
 
                 @Override
@@ -356,6 +514,11 @@ public class LivroInterface extends AppCompatActivity {
 
                 @Override
                 public void onSuccessBoolean(Boolean favoritado) {
+                }
+
+                @Override
+                public void onSuccessInt(Integer integer) {
+
                 }
 
                 @Override
@@ -369,6 +532,12 @@ public class LivroInterface extends AppCompatActivity {
                 @Override
                 public void onSuccessListL(List<Livro> livros) {
 
+                }
+
+                @Override
+                public void onSuccessResponse(ResponseBody body) {
+                    favoritadoBool = true;
+                    atualizarBotaoFavoritar(favoritadoBool);
                 }
 
                 @Override
@@ -407,6 +576,11 @@ public class LivroInterface extends AppCompatActivity {
             }
 
             @Override
+            public void onSuccessInt(Integer integer) {
+
+            }
+
+            @Override
             public void onSuccessByte(byte[] bytes) {
             }
 
@@ -420,11 +594,17 @@ public class LivroInterface extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Throwable t){
+            public void onSuccessResponse(ResponseBody body) {
+
             }
 
             @Override
-            public void onSuccessV(Void body) {
+            public void onSuccessString(String string) {
+
+            }
+
+            @Override
+            public void onFailure(Throwable t){
             }
         });
     }

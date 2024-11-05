@@ -5,6 +5,7 @@ import com.example.projeto_rejew.entity.Usuario;
 
 import java.util.List;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -36,5 +37,5 @@ public interface ComentarioApi {
     Call<Comentario> atualizarComentario(@Path("id") Long id, @Body Comentario comentario);
 
     @DELETE("comentarios/{id}")
-    Call<Void> deletarComentario(@Path("id") Long id);
+    Call<ResponseBody> deletarComentario(@Path("id") Long id);
 }

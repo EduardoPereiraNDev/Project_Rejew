@@ -24,11 +24,13 @@ public class UsuarioAPIController {
     public interface UsuarioCallback {
         void onSuccess(Usuario usuario);
         void onSuccessBoolean(Boolean booleano);
+        void onSuccessInt(Integer integer);
         void onSuccessByte(byte[] bytes);
         void onSuccessList(List<Usuario> usuarios);
         void onSuccessListL(List<Livro> livros);
+        void onSuccessResponse(ResponseBody body);
+        void onSuccessString(String string);
         void onFailure(Throwable t);
-        void onSuccessV(Void body);
     }
 
     public UsuarioAPIController(RetrofitClient retrofitClient) {
@@ -207,16 +209,16 @@ public class UsuarioAPIController {
         });
     }
 
-    public void favoritarLivro(String emailEntrada, Long isbnLivro, UsuarioAPIController.UsuarioCallback responseCallback) {
-        Log.d("API Call", "Fazendo chamada para favoritar livro com email: " + isbnLivro + emailEntrada);
-        Call<Void> call = this.usuarioApi.favoritarLivro(emailEntrada, isbnLivro);
-        call.enqueue(new Callback<Void>() {
+    public void buscarUsuariosNome(String pesquisaNome, UsuarioAPIController.UsuarioCallback responseCallback) {
+        Log.d("API Call", "Fazendo chamada para buscar usuário com nome Usuario: " + pesquisaNome);
+        Call<List<Usuario>> call = this.usuarioApi.buscarUsuarioPorNome(pesquisaNome);
+        call.enqueue(new Callback<List<Usuario>>() {
             @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
+            public void onResponse(Call<List<Usuario>> call, Response<List<Usuario>> response) {
                 Log.d("API Response", "Código de resposta: " + response.code());
                 if (response.isSuccessful() && response.body() != null) {
                     Log.d("API Response", "Usuário encontrado: " + response.body().toString());
-                    responseCallback.onSuccessV(null);
+                    responseCallback.onSuccessList(response.body());
                 } else {
                     Log.e("API Error", "Erro ao encontrar usuário: " + response.errorBody());
                     responseCallback.onFailure(new Exception("Erro: " + response.code()));
@@ -224,7 +226,55 @@ public class UsuarioAPIController {
             }
 
             @Override
-            public void onFailure(Call<Void> call, Throwable t) {
+            public void onFailure(Call<List<Usuario>> call, Throwable t) {
+                Log.e("API Error", "Falha na chamada: " + t.getMessage());
+                responseCallback.onFailure(t);
+            }
+        });
+    }
+
+    public void buscarUsuariosNomeP(String pesquisaNome, UsuarioAPIController.UsuarioCallback responseCallback) {
+        Log.d("API Call", "Fazendo chamada para buscar usuários com nome: " + pesquisaNome);
+        Call<List<Usuario>> call = this.usuarioApi.buscarUsuarioPorNomePerfil(pesquisaNome);
+        call.enqueue(new Callback<List<Usuario>>() {
+            @Override
+            public void onResponse(Call<List<Usuario>> call, Response<List<Usuario>> response) {
+                Log.d("API Response", "Código de resposta: " + response.code());
+                if (response.isSuccessful() && response.body() != null) {
+                    Log.d("API Response", "Usuário encontrado: " + response.body().toString());
+                    responseCallback.onSuccessList(response.body());
+                } else {
+                    Log.e("API Error", "Erro ao encontrar usuário: " + response.errorBody());
+                    responseCallback.onFailure(new Exception("Erro: " + response.code()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Usuario>> call, Throwable t) {
+                Log.e("API Error", "Falha na chamada: " + t.getMessage());
+                responseCallback.onFailure(t);
+            }
+        });
+    }
+
+    public void favoritarLivro(String emailEntrada, Long isbnLivro, UsuarioAPIController.UsuarioCallback responseCallback) {
+        Log.d("API Call", "Fazendo chamada para favoritar livro com email: " + isbnLivro + emailEntrada);
+        Call<ResponseBody> call = this.usuarioApi.favoritarLivro(emailEntrada, isbnLivro);
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                Log.d("API Response", "Código de resposta: " + response.code());
+                if (response.isSuccessful() && response.body() != null) {
+                    Log.d("API Response", "Usuário encontrado: " + response.body().toString());
+                    responseCallback.onSuccessResponse(response.body());
+                } else {
+                    Log.e("API Error", "Erro ao encontrar usuário: " + response.errorBody());
+                    responseCallback.onFailure(new Exception("Erro: " + response.code()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
                 Log.e("API Error", "Falha na chamada: " + t.getMessage());
                 responseCallback.onFailure(t);
             }
@@ -234,14 +284,14 @@ public class UsuarioAPIController {
 
     public void desfavoritarLivro(String emailEntrada, Long isbnLivro, UsuarioAPIController.UsuarioCallback responseCallback) {
         Log.d("API Call", "Fazendo chamada para favoritar livro com email: " + isbnLivro + emailEntrada);
-        Call<Void> call = this.usuarioApi.desfavoritarLivro(emailEntrada, isbnLivro);
-        call.enqueue(new Callback<Void>() {
+        Call<ResponseBody> call = this.usuarioApi.desfavoritarLivro(emailEntrada, isbnLivro);
+        call.enqueue(new Callback<ResponseBody>() {
             @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 Log.d("API Response", "Código de resposta: " + response.code());
                 if (response.isSuccessful() && response.body() != null) {
                     Log.d("API Response", "Usuário encontrado: " + response.body().toString());
-                    responseCallback.onSuccessV(null);
+                    responseCallback.onSuccessResponse(response.body());
                 } else {
                     Log.e("API Error", "Erro ao encontrar usuário: " + response.errorBody());
                     responseCallback.onFailure(new Exception("Erro: " + response.code()));
@@ -249,7 +299,7 @@ public class UsuarioAPIController {
             }
 
             @Override
-            public void onFailure(Call<Void> call, Throwable t) {
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
                 Log.e("API Error", "Falha na chamada: " + t.getMessage());
                 responseCallback.onFailure(t);
             }
@@ -299,23 +349,23 @@ public class UsuarioAPIController {
 
     public void seguirUsuario(String usuarioSeguindoEmail, String usuarioSeguidoEmail, UsuarioAPIController.UsuarioCallback responseCallback) {
 
-        Call <Void> call = this.usuarioApi.seguirUsuario(usuarioSeguindoEmail, usuarioSeguidoEmail);
+        Call <ResponseBody> call = this.usuarioApi.seguirUsuario(usuarioSeguindoEmail, usuarioSeguidoEmail);
         Log.d("API Call", "Fazendo chamada de seguir para"+ usuarioSeguindoEmail + usuarioSeguidoEmail);
 
-        call.enqueue(new Callback <Void>() {
+        call.enqueue(new Callback <ResponseBody>() {
             @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 Log.d("API Response", "Código de resposta: " + response.code());
                 if (response.isSuccessful() && response.body() != null) {
                     Log.d("API Response", "Usuários retornado: " + response.body().toString());
-                    responseCallback.onSuccessV(response.body());
+                    responseCallback.onSuccessResponse(response.body());
                 } else {
                     Log.e("API Error", "Erro ao fazer login: " + response.errorBody());
                     responseCallback.onFailure(new Exception("Erro: " + response.code()));
                 }
             }
             @Override
-            public void onFailure(Call<Void> call, Throwable t) {
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
                 Log.e("API Error", "Falha na chamada: " + t.getMessage());
                 responseCallback.onFailure(t);
             }
@@ -325,23 +375,23 @@ public class UsuarioAPIController {
 
     public void deixarSeguirUsuario(String usuarioSeguindoEmail, String usuarioSeguidoEmail, UsuarioAPIController.UsuarioCallback responseCallback) {
 
-        Call <Void> call = this.usuarioApi.deixarSeguirUsuario(usuarioSeguindoEmail, usuarioSeguidoEmail);
+        Call <ResponseBody> call = this.usuarioApi.deixarSeguirUsuario(usuarioSeguindoEmail, usuarioSeguidoEmail);
         Log.d("API Call", "Fazendo chamada de seguir para"+ usuarioSeguindoEmail + usuarioSeguidoEmail);
 
-        call.enqueue(new Callback <Void>() {
+        call.enqueue(new Callback <ResponseBody>() {
             @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 Log.d("API Response", "Código de resposta: " + response.code());
                 if (response.isSuccessful() && response.body() != null) {
                     Log.d("API Response", "Usuários retornado: " + response.body().toString());
-                    responseCallback.onSuccessV(response.body());
+                    responseCallback.onSuccessResponse(response.body());
                 } else {
                     Log.e("API Error", "Erro ao fazer login: " + response.errorBody());
                     responseCallback.onFailure(new Exception("Erro: " + response.code()));
                 }
             }
             @Override
-            public void onFailure(Call<Void> call, Throwable t) {
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
                 Log.e("API Error", "Falha na chamada: " + t.getMessage());
                 responseCallback.onFailure(t);
             }
@@ -375,5 +425,57 @@ public class UsuarioAPIController {
         });
     }
 
+    public void qtdSeguidores(String emailEntrada, UsuarioAPIController.UsuarioCallback responseCallback) {
+
+        Call<Integer> call = this.usuarioApi.qtdSeguidores(emailEntrada);
+        Log.d("API Call", "Fazendo chamada de seguir para" + emailEntrada);
+
+        call.enqueue(new Callback<Integer>() {
+            @Override
+            public void onResponse(Call<Integer> call, Response<Integer> response) {
+                Log.d("API Response", "Código de resposta: " + response.code());
+                if (response.isSuccessful() && response.body() != null) {
+                    Log.d("API Response", "Usuários retornado: " + response.body().toString());
+                    responseCallback.onSuccessInt(response.body());
+                } else {
+                    Log.e("API Error", "Erro ao fazer login: " + response.errorBody());
+                    responseCallback.onFailure(new Exception("Erro: " + response.code()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Integer> call, Throwable t) {
+                Log.e("API Error", "Falha na chamada: " + t.getMessage());
+                responseCallback.onFailure(t);
+            }
+
+        });
+    }
+    public void qtdSeguindo(String emailEntrada, UsuarioAPIController.UsuarioCallback responseCallback) {
+
+        Call<Integer> call = this.usuarioApi.qtdSeguindo(emailEntrada);
+        Log.d("API Call", "Fazendo chamada de seguir para" + emailEntrada);
+
+        call.enqueue(new Callback<Integer>() {
+            @Override
+            public void onResponse(Call<Integer> call, Response<Integer> response) {
+                Log.d("API Response", "Código de resposta: " + response.code());
+                if (response.isSuccessful() && response.body() != null) {
+                    Log.d("API Response", "Usuários retornado: " + response.body().toString());
+                    responseCallback.onSuccessInt(response.body());
+                } else {
+                    Log.e("API Error", "Erro ao fazer login: " + response.errorBody());
+                    responseCallback.onFailure(new Exception("Erro: " + response.code()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Integer> call, Throwable t) {
+                Log.e("API Error", "Falha na chamada: " + t.getMessage());
+                responseCallback.onFailure(t);
+            }
+
+        });
+    }
 
 }

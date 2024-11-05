@@ -33,6 +33,7 @@ import java.util.List;
 import java.util.Set;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import okhttp3.ResponseBody;
 
 public class CatalogoRejew extends AppCompatActivity {
 
@@ -135,6 +136,11 @@ public class CatalogoRejew extends AppCompatActivity {
             }
 
             @Override
+            public void onSuccessInt(Integer integer) {
+
+            }
+
+            @Override
             public void onSuccessByte(byte[] bytes) {
 
             }
@@ -150,6 +156,16 @@ public class CatalogoRejew extends AppCompatActivity {
             }
 
             @Override
+            public void onSuccessResponse(ResponseBody body) {
+
+            }
+
+            @Override
+            public void onSuccessString(String string) {
+
+            }
+
+            @Override
             public void onFailure(Throwable t) {
                 AlertDialog.Builder alerta = new AlertDialog.Builder(CatalogoRejew.this);
                 alerta.setCancelable(false);
@@ -159,10 +175,6 @@ public class CatalogoRejew extends AppCompatActivity {
                 alerta.create().show();
             }
 
-            @Override
-            public void onSuccessV(Void body) {
-
-            }
         });
     }
 
@@ -176,6 +188,11 @@ public class CatalogoRejew extends AppCompatActivity {
 
             @Override
             public void onSuccessBoolean(Boolean favoritado) {
+            }
+
+            @Override
+            public void onSuccessInt(Integer integer) {
+
             }
 
             @Override
@@ -196,13 +213,18 @@ public class CatalogoRejew extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Throwable t) {
-                circleImageView.setImageResource(R.drawable.imagedefault);
+            public void onSuccessResponse(ResponseBody body) {
+
             }
 
             @Override
-            public void onSuccessV(Void body) {
+            public void onSuccessString(String string) {
 
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                circleImageView.setImageResource(R.drawable.imagedefault);
             }
         });
     }

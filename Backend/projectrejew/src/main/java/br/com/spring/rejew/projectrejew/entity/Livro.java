@@ -54,10 +54,9 @@ public class Livro implements Serializable {
     @JsonManagedReference(value = "livro_comentario")
     private Set<Comentario> comentario;
 
-    @ManyToMany(mappedBy = "livrosA", fetch = FetchType.EAGER)
-    @JsonIgnore
-    @JsonBackReference(value = "usuario_livro_avaliado")
-    private Set<Usuario> usuarioA;
+    @OneToMany(mappedBy = "livroA", fetch = FetchType.EAGER)
+    @JsonManagedReference(value = "Livro_Avaliado")
+    private Set<UsuarioLivroA> UsuariosLivrosA;
 
     @ManyToMany(mappedBy = "livros", fetch = FetchType.EAGER)
     @JsonIgnore

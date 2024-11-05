@@ -33,6 +33,15 @@
         app:layout_constraintStart_toEndOf="@+id/imgFotoPerfil"
         app:layout_constraintTop_toTopOf="@+id/imgFotoPerfil" />
 
+    <ImageView
+        android:id="@+id/tresPontos"
+        android:layout_width="20dp"
+        android:layout_height="40dp"
+        android:src="@drawable/trespontos"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/nomeUsuario" />
+
     <TextView
         android:id="@+id/comentarioConteudo"
         android:layout_width="match_parent"
