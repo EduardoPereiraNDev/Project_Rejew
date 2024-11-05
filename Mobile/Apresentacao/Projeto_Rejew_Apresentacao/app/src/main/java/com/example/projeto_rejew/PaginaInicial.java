@@ -33,6 +33,7 @@ public class PaginaInicial extends AppCompatActivity {
         startActivity(intent);
     }
 
+
     /*
     public void abrirMenu(View v) {
         imageView = findViewById(R.id.fotoperfil);
