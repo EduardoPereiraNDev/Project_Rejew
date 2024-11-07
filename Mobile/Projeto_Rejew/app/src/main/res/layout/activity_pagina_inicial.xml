@@ -80,6 +80,7 @@
                 android:layout_height="30dp"
                 android:layout_marginBottom="8dp"
                 android:src="@drawable/lupapreta"
+                android:onClick="pesquisarLivros"
                 app:layout_constraintBottom_toBottomOf="@+id/barrapesquisa"
                 app:layout_constraintEnd_toEndOf="@+id/barrapesquisa"
                 app:layout_constraintHorizontal_bias="0.965"

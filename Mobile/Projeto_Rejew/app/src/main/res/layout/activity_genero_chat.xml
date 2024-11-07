@@ -229,51 +229,49 @@
         android:src="@drawable/homelogo"/>
 
     <View
-        android:id="@+id/view5"
+        android:id="@+id/barramenu"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="75dp"
         android:background="@color/orange"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/homebranco"
-        android:layout_width="58dp"
-        android:layout_height="58dp"
-        android:layout_marginStart="44dp"
+        android:id="@+id/home"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/chaticon"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/view5"
-        app:layout_constraintVertical_bias="0.523"
-        android:onClick="chatsPaginicial"
-        app:srcCompat="@drawable/homebranco" />
+        app:layout_constraintTop_toTopOf="@+id/barramenu"
+        app:srcCompat="@drawable/chatazulllll" />
 
     <ImageView
-        android:id="@+id/chatazul"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:src="@drawable/chatazul"
+        android:id="@+id/chaticon"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
         android:layout_marginStart="4dp"
         android:layout_marginEnd="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/view5"
-        android:onClick="paginicialChats"/>
+        app:layout_constraintTop_toTopOf="@+id/barramenu"
+        app:srcCompat="@drawable/casabrancaaa" />
 
     <ImageView
-        android:id="@+id/pessoaslogo"
-        android:layout_width="62dp"
-        android:layout_height="62dp"
-        android:layout_marginEnd="48dp"
+        android:id="@+id/pessoasicon"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/view5"
-        app:layout_constraintVertical_bias="0.523"
-        android:onClick="generochatPessoas"
-        android:src="@drawable/pessoasbranco" />
+        app:layout_constraintStart_toEndOf="@+id/chaticon"
+        app:layout_constraintTop_toTopOf="@+id/barramenu"
+        app:srcCompat="@drawable/amigosbrancooo" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 

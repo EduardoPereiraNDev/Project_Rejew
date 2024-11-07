@@ -560,6 +560,7 @@ public class PerfilUsuario extends AppCompatActivity implements ComentarioDelete
 
                 @Override
                 public void onSuccessResponse(ResponseBody body) {
+                    qtdSeguidores(emailEntrada);
                     estaSeguindo = false;
                     atualizarBotaoFavoritar(estaSeguindo);
                 }
@@ -605,6 +606,7 @@ public class PerfilUsuario extends AppCompatActivity implements ComentarioDelete
 
                 @Override
                 public void onSuccessResponse(ResponseBody body) {
+                    qtdSeguidores(emailEntrada);
                     estaSeguindo = true;
                     atualizarBotaoFavoritar(estaSeguindo);
                 }

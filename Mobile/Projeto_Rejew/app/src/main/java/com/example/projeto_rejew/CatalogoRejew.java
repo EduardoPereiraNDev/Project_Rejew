@@ -6,8 +6,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
+import android.widget.RatingBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -29,8 +33,10 @@ import com.example.projeto_rejew.entity.Livro;
 import com.example.projeto_rejew.entity.Usuario;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import okhttp3.ResponseBody;
@@ -62,6 +68,16 @@ public class CatalogoRejew extends AppCompatActivity {
     private LivroAdapter adapterFiccao;
     private LivroAdapter adapterCulinaria;
     private LivroAdapter adapterInfantil;
+
+    private EditText pesquisa;
+
+    private TextView textAventura;
+    private TextView textTerror;
+    private TextView textRomance;
+    private TextView textFiccao;
+    private TextView textCulinaria;
+    private TextView textInfantil;
+
     private CircleImageView circleImageView;
 
     @Override
@@ -71,6 +87,15 @@ public class CatalogoRejew extends AppCompatActivity {
         setContentView(R.layout.activity_pagina_inicial);
 
         circleImageView = findViewById(R.id.fotoperfil);
+
+        pesquisa = findViewById(R.id.barrapesquisa);
+
+        textAventura = findViewById(R.id.textAventura);
+        textTerror = findViewById(R.id.textTerror);
+        textRomance = findViewById(R.id.textRomance);
+        textFiccao = findViewById(R.id.textFiccao);
+        textCulinaria = findViewById(R.id.textCulinaria);
+        textInfantil = findViewById(R.id.textInfantil);
 
         recyclerViewChat = findViewById(R.id.imagensChats);
 
@@ -228,6 +253,59 @@ public class CatalogoRejew extends AppCompatActivity {
             }
         });
     }
+
+    public void pesquisarLivros(View view) {
+        if (pesquisa.getText().toString() != null && !pesquisa.getText().toString().isEmpty()) {
+            // Infla o layout do popup
+            View dialogView = getLayoutInflater().inflate(R.layout.popup_pesquisar_livros, null);
+            RecyclerView recyclerViewResultado = dialogView.findViewById(R.id.resultadoPesquisa);
+            LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+            recyclerViewResultado.setLayoutManager(layoutManager);
+
+            List<Livro> livroFiltrado = new ArrayList<>();
+            AdapterLivrosPesquisa adapterLivrosPesquisa = new AdapterLivrosPesquisa(this, livroFiltrado, livroAPIController);
+            recyclerViewResultado.setAdapter(adapterLivrosPesquisa);
+
+            Set<String> idsLivros = new HashSet<>();
+
+            // Cria o diálogo
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setView(dialogView);
+            AlertDialog dialog = builder.create();
+            dialog.show();
+
+            LivroAPIController.LivroCallback callback = new LivroAPIController.LivroCallback() {
+                @Override
+                public void onSuccess(Livro livro) {
+                }
+
+                @Override
+                public void onSuccessList(List<Livro> livroList) {
+                    for (Livro livro : livroList) {
+                        if (idsLivros.add(String.valueOf(livro.getIsbnLivro()))) {
+                            livroFiltrado.add(livro);
+                        }
+                    }
+                    adapterLivrosPesquisa.notifyDataSetChanged();
+                }
+
+                @Override
+                public void onSuccessByte(byte[] bytes) {
+                }
+
+                @Override
+                public void onFailure(Throwable t) {
+                    Toast.makeText(CatalogoRejew.this, "Erro: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            };
+            livroAPIController.buscarLivrosPorNome(pesquisa.getText().toString(), callback);
+            livroAPIController.buscarLivrosPorAutor(pesquisa.getText().toString(), callback);
+        }
+    }
+
+
+
+
 
     private void carregarChat() {
         chatAPIController.carregarChats(new ChatAPIController.ChatCallback() {

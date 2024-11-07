@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_margin="15dp"
+    android:padding="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".AdapterLivrosPesquisa">
+
+    <View
+        android:id="@+id/corFundo"
+        android:layout_width="100dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="15dp"
+        style="@style/ViewRedonda"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imagemLivro"
+        android:layout_width="70dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="15dp"
+        android:src="@drawable/imagedefault"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/corFundo"
+        app:layout_constraintStart_toStartOf="@+id/corFundo"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tituloLivro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:text="Titulo Do Livro"
+        android:textSize="23dp"
+        app:layout_constraintStart_toEndOf="@+id/corFundo"
+        app:layout_constraintTop_toTopOf="@+id/corFundo" />
+
+    <TextView
+        android:id="@+id/autorLivro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="45dp"
+        android:text="Autor Do Livro"
+        android:textSize="19dp"
+        app:layout_constraintStart_toEndOf="@+id/corFundo"
+        app:layout_constraintTop_toBottomOf="@+id/tituloLivro" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
