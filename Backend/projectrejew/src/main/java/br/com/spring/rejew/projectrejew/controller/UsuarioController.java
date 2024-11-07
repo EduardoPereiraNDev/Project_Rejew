@@ -38,8 +38,8 @@ import br.com.spring.rejew.projectrejew.repository.UsuarioRepository;
 @RequestMapping("/usuarios")
 public class UsuarioController {
 
-    private static final String UPLOAD_DIR = "C:/Users/rm2869/Desktop/Project_Rejew/Database/UploadsIMGUsuarioPerfil/";
-    private static final String UPLOAD_DIR2 = "C:/Users/rm2869/Desktop/Project_Rejew/Database/UploadsIMGUsuarioFundo/";
+    private static final String UPLOAD_DIR = "C:/Users/rm2965/Desktop/Project_Rejew/Database/UploadsIMGUsuarioPerfil/";
+    private static final String UPLOAD_DIR2 = "C:/Users/rm2965/Desktop/Project_Rejew/Database/UploadsIMGUsuarioFundo/";
     
     @Autowired
     private UsuarioRepository usuarioRepository;

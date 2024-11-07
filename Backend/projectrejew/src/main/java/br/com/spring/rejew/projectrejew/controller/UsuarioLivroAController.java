@@ -63,7 +63,7 @@ public class UsuarioLivroAController {
     }
     
     
-    @PostMapping("/avaliar/{email}/isbnLivro}/{notaAvaliacao}")
+    @PostMapping("/avaliar/{email}/{isbnLivro}/{notaAvaliacao}")
     public UsuarioLivroADTO insert(@PathVariable String email ,@PathVariable Long isbnLivro , @PathVariable double notaAvaliacao) {
     	Usuario usuario = usuarioRepository.buscarUsuarioPorEmail(email);
     	Optional<Livro> livroP = livroRepository.findById(isbnLivro);
