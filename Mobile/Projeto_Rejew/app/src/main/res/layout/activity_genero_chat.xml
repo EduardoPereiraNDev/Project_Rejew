@@ -28,7 +28,7 @@
         android:layout_height="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.046"
+        app:layout_constraintHorizontal_bias="0.06"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.021"
@@ -239,41 +239,41 @@
         />
 
     <ImageView
-        android:id="@+id/chat"
-        android:layout_width="54dp"
-        android:layout_height="54dp"
+        android:id="@+id/homebranco"
+        android:layout_width="58dp"
+        android:layout_height="58dp"
         android:layout_marginStart="44dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/view5"
         app:layout_constraintVertical_bias="0.523"
-        android:onClick="paginicialChats"
-        app:srcCompat="@drawable/chatazul" />
+        android:onClick="chatsPaginicial"
+        app:srcCompat="@drawable/homebranco" />
 
     <ImageView
-        android:id="@+id/homeicon"
-        android:layout_width="54dp"
-        android:layout_height="54dp"
+        android:id="@+id/chatazul"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:src="@drawable/chatazul"
         android:layout_marginStart="4dp"
         android:layout_marginEnd="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/view5"
-        android:onClick="chatsPaginicial"
-        app:srcCompat="@drawable/casabrancaaa" />
+        android:onClick="paginicialChats"/>
 
     <ImageView
-        android:id="@+id/pessoasicon"
-        android:layout_width="54dp"
-        android:layout_height="54dp"
+        android:id="@+id/pessoaslogo"
+        android:layout_width="62dp"
+        android:layout_height="62dp"
         android:layout_marginEnd="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/view5"
         app:layout_constraintVertical_bias="0.523"
         android:onClick="generochatPessoas"
-        app:srcCompat="@drawable/amigosbrancooo" />
+        android:src="@drawable/pessoasbranco" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 

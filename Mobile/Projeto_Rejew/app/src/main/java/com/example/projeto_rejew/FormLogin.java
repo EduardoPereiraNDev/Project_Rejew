@@ -24,6 +24,8 @@ import com.example.projeto_rejew.entity.Usuario;
 import java.util.List;
 import java.util.Set;
 
+import okhttp3.ResponseBody;
+
 public class FormLogin extends AppCompatActivity {
     private EditText txtEmail;
     private EditText txtPassword;
@@ -102,6 +104,11 @@ public class FormLogin extends AppCompatActivity {
             }
 
             @Override
+            public void onSuccessInt(Integer integer) {
+
+            }
+
+            @Override
             public void onSuccessByte(byte[] bytes) {
             }
 
@@ -115,6 +122,16 @@ public class FormLogin extends AppCompatActivity {
             }
 
             @Override
+            public void onSuccessResponse(ResponseBody body) {
+
+            }
+
+            @Override
+            public void onSuccessString(String string) {
+
+            }
+
+            @Override
             public void onFailure(Throwable t) {
                 AlertDialog.Builder alerta = new AlertDialog.Builder(FormLogin.this);
                 alerta.setCancelable(false);
@@ -122,10 +139,6 @@ public class FormLogin extends AppCompatActivity {
                 alerta.setMessage("Falha ao realizar Login" + t.getMessage());
                 alerta.setNegativeButton("Voltar",null);
                 alerta.create().show();
-            }
-
-            @Override
-            public void onSuccessV(Void body) {
             }
         });
     }

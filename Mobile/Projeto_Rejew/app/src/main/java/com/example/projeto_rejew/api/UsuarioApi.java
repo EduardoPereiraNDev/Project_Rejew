@@ -44,7 +44,7 @@ public interface UsuarioApi {
     Call<Usuario> criarUsuario(@Body Usuario usuario);
 
     @POST("usuarios/{emailEntrada}/favoritar/{isbnLivro}")
-    Call <Void> favoritarLivro(
+    Call <ResponseBody> favoritarLivro(
             @Path("emailEntrada") String emailEntrada,
             @Path("isbnLivro") long isbnLivro);
 
@@ -54,20 +54,28 @@ public interface UsuarioApi {
             @Path("isbnLivro") long isbnLivro);
 
     @DELETE("usuarios/{emailEntrada}/desfavoritar/{isbnLivro}")
-    Call <Void> desfavoritarLivro(
+    Call <ResponseBody> desfavoritarLivro(
             @Path("emailEntrada") String emailEntrada,
             @Path("isbnLivro") long isbnLivro);
 
-    @GET("usuarios//verfavoritados")
+    @GET("usuarios/{emailEntrada}/verfavoritados")
     Call <List<Livro>> verFavoritados(
             @Path("emailEntrada") String emailEntrada);
 
+    @GET("usuarios/{emailEntrada}/quantidadeSeguidores")
+    Call <Integer> qtdSeguidores(
+            @Path("emailEntrada") String emailEntrada);
+
+    @GET("usuarios/{emailEntrada}/quantidadeSeguindo")
+    Call <Integer> qtdSeguindo(
+            @Path("emailEntrada") String emailEntrada);
+
     @POST("usuarios/seguir/{usuarioSeguindoEmail}/{usuarioSeguidoEmail}")
-    Call<Void> seguirUsuario(@Path("usuarioSeguindoEmail") String usuarioSeguindoEmail,
+    Call<ResponseBody> seguirUsuario(@Path("usuarioSeguindoEmail") String usuarioSeguindoEmail,
                              @Path("usuarioSeguidoEmail") String usuarioSeguidoEmail);
 
     @POST("usuarios/deixarSeguir/{usuarioSeguindoEmail}/{usuarioSeguidoEmail}")
-    Call<Void> deixarSeguirUsuario(@Path("usuarioSeguindoEmail") String usuarioSeguindoEmail,
+    Call<ResponseBody> deixarSeguirUsuario(@Path("usuarioSeguindoEmail") String usuarioSeguindoEmail,
                                    @Path("usuarioSeguidoEmail") String usuarioSeguidoEmail);
 
     @GET("usuarios/estaSeguindo/{usuarioSeguindoEmail}/{usuarioSeguidoEmail}")
@@ -85,6 +93,6 @@ public interface UsuarioApi {
     Call<ResponseBody> buscarImagemPerfil(@Path("caminho") String caminho);
 
     @DELETE("usuarios/{emailUsuario}")
-    Call<Void> deletarUsuario(@Path("emailUsuario") String emailUsuario);
+    Call<ResponseBody> deletarUsuario(@Path("emailUsuario") String emailUsuario);
 
 }

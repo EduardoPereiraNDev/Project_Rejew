@@ -1,8 +1,12 @@
 package com.example.projeto_rejew;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AlertDialog;
@@ -13,6 +17,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.projeto_rejew.api.ComentarioAPIController;
 import com.example.projeto_rejew.api.LivroAPIController;
 import com.example.projeto_rejew.api.RetrofitClient;
@@ -21,13 +26,21 @@ import com.example.projeto_rejew.entity.Comentario;
 import com.example.projeto_rejew.entity.Livro;
 import com.example.projeto_rejew.entity.Usuario;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import okhttp3.ResponseBody;
 
 public class Pessoas_Comentario extends AppCompatActivity {
 
     private UsuarioAPIController usuarioAPIController;
     private PesquisarPessoas pesquisarPessoas;
+    private List<Usuario> usuariosPesquisados;
+    private String emailEntrada;
+    private Usuario usuarioPe;
     private RecyclerView pessoas;
+    private EditText pesquisaText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,13 +53,216 @@ public class Pessoas_Comentario extends AppCompatActivity {
             return insets;
         });
 
+        usuariosPesquisados = new ArrayList<>();
+
+        pesquisaText = findViewById(R.id.pesquisarPessoas);
+
         pessoas = findViewById(R.id.perfilUsuarios);
         pessoas.setLayoutManager(new LinearLayoutManager(this));
 
         RetrofitClient retrofitClient = new RetrofitClient();
         usuarioAPIController = new UsuarioAPIController(retrofitClient);
 
-        carregarUsuarios();
+        emailEntrada = recuperarEmailUsuario();
+
+        carregarUsuario(emailEntrada);
+
+    }
+
+    private String recuperarEmailUsuario() {
+        SharedPreferences sharedPreferences = getSharedPreferences("usuarioDados", MODE_PRIVATE);
+        return sharedPreferences.getString("emailEntrada", null);
+    }
+
+    private void carregarUsuario(String emailEntrada) {
+        usuarioAPIController.buscarUsuario(emailEntrada, new UsuarioAPIController.UsuarioCallback() {
+
+            @Override
+            public void onSuccess(Usuario usuario) {
+                usuarioPe = usuario;
+                carregarUsuarios();
+            }
+
+            @Override
+            public void onSuccessBoolean(Boolean booleano) {
+            }
+
+            @Override
+            public void onSuccessInt(Integer integer) {
+
+            }
+
+            @Override
+            public void onSuccessByte(byte[] bytes) {
+            }
+
+            @Override
+            public void onSuccessList(List<Usuario> usuarios) {
+            }
+
+            @Override
+            public void onSuccessListL(List<Livro> livros) {
+            }
+
+            @Override
+            public void onSuccessResponse(ResponseBody body) {
+
+            }
+
+            @Override
+            public void onSuccessString(String string) {
+
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                AlertDialog.Builder alerta = new AlertDialog.Builder(Pessoas_Comentario.this);
+                alerta.setCancelable(false);
+                alerta.setTitle("Falha ao carregar o livro");
+                alerta.setMessage("Error: " + t.getMessage());
+                alerta.setNegativeButton("Voltar", null);
+                alerta.create().show();
+            }
+        });
+    }
+
+
+    public void pesquisarPessoas(View view) {
+        usuariosPesquisados.clear();
+        String pesquisa = pesquisaText.getText().toString();
+        Log.d("TAG", "pesquisarPessoas: "+ pesquisa);
+
+        if (pesquisa == null || pesquisa.isEmpty()) {
+            carregarUsuarios();
+        }else {
+            usuarioAPIController.buscarUsuariosNomeP(pesquisa, new UsuarioAPIController.UsuarioCallback() {
+                @Override
+                public void onSuccess(Usuario usuario) {
+                }
+
+                @Override
+                public void onSuccessBoolean(Boolean favoritado) {
+                }
+
+                @Override
+                public void onSuccessInt(Integer integer) {
+
+                }
+
+                @Override
+                public void onSuccessByte(byte[] bytes) {
+                }
+
+                @Override
+                public void onSuccessList(List<Usuario> usuarios) {
+                    adicionarUsuarios(usuarios);
+                    atualizarListaUsuarios();
+                }
+
+                @Override
+                public void onSuccessListL(List<Livro> livros) {
+                }
+
+                @Override
+                public void onSuccessResponse(ResponseBody body) {
+
+                }
+
+                @Override
+                public void onSuccessString(String string) {
+
+                }
+
+                @Override
+                public void onFailure(Throwable t) {
+                    if (t.getMessage() != null && t.getMessage().contains("404")) {
+
+                    } else {
+                        AlertDialog.Builder alerta = new AlertDialog.Builder(Pessoas_Comentario.this);
+                        alerta.setCancelable(false);
+                        alerta.setTitle("Falha ao carregar o livro");
+                        alerta.setMessage("Error: " + t.getMessage());
+                        alerta.setNegativeButton("Voltar", null);
+                        alerta.create().show();
+                    }
+                }
+            });
+            usuarioAPIController.buscarUsuariosNome(pesquisa, new UsuarioAPIController.UsuarioCallback() {
+                @Override
+                public void onSuccess(Usuario usuario) {
+                }
+
+                @Override
+                public void onSuccessBoolean(Boolean favoritado) {
+                }
+
+                @Override
+                public void onSuccessInt(Integer integer) {
+
+                }
+
+                @Override
+                public void onSuccessByte(byte[] bytes) {
+                }
+
+                @Override
+                public void onSuccessList(List<Usuario> usuarios) {
+                    adicionarUsuarios(usuarios);
+                    atualizarListaUsuarios();
+                }
+
+                @Override
+                public void onSuccessListL(List<Livro> livros) {
+                }
+
+                @Override
+                public void onSuccessResponse(ResponseBody body) {
+
+                }
+
+                @Override
+                public void onSuccessString(String string) {
+
+                }
+
+                @Override
+                public void onFailure(Throwable t) {
+                    if (t.getMessage() != null && t.getMessage().contains("404")) {
+
+                    } else {
+                        AlertDialog.Builder alerta = new AlertDialog.Builder(Pessoas_Comentario.this);
+                        alerta.setCancelable(false);
+                        alerta.setTitle("Falha ao carregar o livro");
+                        alerta.setMessage("Error: " + t.getMessage());
+                        alerta.setNegativeButton("Voltar", null);
+                        alerta.create().show();
+                    }
+                }
+            });
+        }
+    }
+
+    private void adicionarUsuarios(List<Usuario> novosUsuarios) {
+        for (Usuario usuario : novosUsuarios) {
+            if (!usuariosPesquisados.contains(usuario)) {
+                usuariosPesquisados.add(usuario);
+            }
+        }
+    }
+
+
+    private void atualizarListaUsuarios() {
+        List<Usuario> usuariosFiltrados = usuariosPesquisados.stream()
+                .filter(usuario -> !usuario.equals(usuarioPe))
+                .collect(Collectors.toList());
+        if (pesquisarPessoas == null) {
+            pesquisarPessoas = new PesquisarPessoas(Pessoas_Comentario.this, usuariosFiltrados, usuarioAPIController);
+            pessoas.setAdapter(pesquisarPessoas);
+        } else {
+            pesquisarPessoas = null;
+            pesquisarPessoas = new PesquisarPessoas(Pessoas_Comentario.this, usuariosFiltrados, usuarioAPIController);
+            pessoas.setAdapter(pesquisarPessoas);
+        }
     }
 
     private void carregarUsuarios(){
@@ -60,17 +276,35 @@ public class Pessoas_Comentario extends AppCompatActivity {
             }
 
             @Override
+            public void onSuccessInt(Integer integer) {
+
+            }
+
+            @Override
             public void onSuccessByte(byte[] bytes) {
             }
 
             @Override
             public void onSuccessList(List<Usuario> usuarios) {
-                pesquisarPessoas = new PesquisarPessoas(Pessoas_Comentario.this, usuarios, usuarioAPIController);
+                List<Usuario> usuariosFiltrados = usuarios.stream()
+                        .filter(usuario -> !usuario.equals(usuarioPe))
+                        .collect(Collectors.toList());
+                pesquisarPessoas = new PesquisarPessoas(Pessoas_Comentario.this, usuariosFiltrados, usuarioAPIController);
                 pessoas.setAdapter(pesquisarPessoas);
             }
 
             @Override
             public void onSuccessListL(List<Livro> livros) {
+            }
+
+            @Override
+            public void onSuccessResponse(ResponseBody body) {
+
+            }
+
+            @Override
+            public void onSuccessString(String string) {
+
             }
 
             @Override
@@ -87,10 +321,7 @@ public class Pessoas_Comentario extends AppCompatActivity {
                 }
             }
 
-            @Override
-            public void onSuccessV(Void body) {
 
-            }
         });
     }
 

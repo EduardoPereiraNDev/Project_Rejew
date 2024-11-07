@@ -23,6 +23,8 @@ import com.example.projeto_rejew.entity.Usuario;
 import java.util.List;
 import java.util.Set;
 
+import okhttp3.ResponseBody;
+
 public class PerfilUsuarioPessoalEditar extends AppCompatActivity {
 
     private UsuarioAPIController usuarioAPIController;
@@ -85,6 +87,12 @@ public class PerfilUsuarioPessoalEditar extends AppCompatActivity {
             @Override
             public void onSuccessBoolean(Boolean favoritado) {
             }
+
+            @Override
+            public void onSuccessInt(Integer integer) {
+
+            }
+
             @Override
             public void onSuccessByte(byte[] bytes) {
             }
@@ -99,7 +107,13 @@ public class PerfilUsuarioPessoalEditar extends AppCompatActivity {
             }
 
             @Override
-            public void onSuccessV(Void body) {
+            public void onSuccessResponse(ResponseBody body) {
+
+            }
+
+            @Override
+            public void onSuccessString(String string) {
+
             }
 
             @Override
@@ -142,6 +156,11 @@ public class PerfilUsuarioPessoalEditar extends AppCompatActivity {
                 }
 
                 @Override
+                public void onSuccessInt(Integer integer) {
+
+                }
+
+                @Override
                 public void onSuccessByte(byte[] bytes) {
                 }
 
@@ -155,7 +174,13 @@ public class PerfilUsuarioPessoalEditar extends AppCompatActivity {
                 }
 
                 @Override
-                public void onSuccessV(Void body) {
+                public void onSuccessResponse(ResponseBody body) {
+
+                }
+
+                @Override
+                public void onSuccessString(String string) {
+
                 }
 
                 @Override
