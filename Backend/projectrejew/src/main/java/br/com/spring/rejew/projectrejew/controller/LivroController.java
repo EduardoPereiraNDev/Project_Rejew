@@ -25,7 +25,11 @@ import br.com.spring.rejew.projectrejew.repository.LivroRepository;
 @RequestMapping("/livros")
 public class LivroController {
     
+<<<<<<< HEAD
 	private static final String UPLOAD_DIR = "C:/Users/rm2965/Desktop/Project_Rejew/Database/UploadsIMG/";
+=======
+	private static final String UPLOAD_DIR = "C:/Users/rm3364/Desktop/Project_Rejew/Database/UploadsIMG/";
+>>>>>>> 1a72cc86e41ca60848ff302b07157257c3e8275e
 	
     @Autowired
     private LivroRepository livroRepository;
