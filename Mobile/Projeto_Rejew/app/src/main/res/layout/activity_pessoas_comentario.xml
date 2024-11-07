@@ -41,7 +41,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText7"
+        android:id="@+id/pesquisarPessoas"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginTop="20dp"
@@ -56,22 +56,23 @@
         tools:ignore="TouchTargetSizeCheck" />
 
     <ImageView
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="28dp"
+        android:layout_height="38dp"
         android:src="@drawable/lupapreta"
-        android:layout_marginEnd="25dp"
-        app:layout_constraintBottom_toBottomOf="@+id/editText7"
-        app:layout_constraintEnd_toEndOf="@+id/editText7"
-        app:layout_constraintTop_toTopOf="@+id/editText7" />
+        android:onClick="pesquisarPessoas"
+        android:layout_marginEnd="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/pesquisarPessoas"
+        app:layout_constraintEnd_toEndOf="@+id/pesquisarPessoas"
+        app:layout_constraintTop_toTopOf="@+id/pesquisarPessoas" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/perfilUsuarios"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText7" />
+        app:layout_constraintTop_toBottomOf="@+id/pesquisarPessoas" />
 
     <View
         android:id="@+id/view4"

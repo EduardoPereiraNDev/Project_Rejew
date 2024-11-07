@@ -6,10 +6,13 @@ import br.com.spring.rejew.projectrejew.repository.ComentarioRepository;
 import br.com.spring.rejew.projectrejew.repository.UsuarioRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -84,13 +87,13 @@ public class ComentarioController {
         return ResponseEntity.notFound().build();
     }
 
-    // Deletar um comentario
+ // Deletar um comentario
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletarMensagem(@PathVariable Long id) {
+    public ResponseEntity<String> deletarComentario(@PathVariable Long id) {
         if (comentarioRepository.existsById(id)) {
-        	comentarioRepository.deleteById(id);
-        	return ResponseEntity.ok().build();
+            comentarioRepository.deleteById(id);
+            return ResponseEntity.ok("Comentário deletado com sucesso!");  // Retorna uma String normal
         }
-        return ResponseEntity.notFound().build();
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Comentário não encontrado.");
     }
 }

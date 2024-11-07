@@ -38,8 +38,8 @@ import br.com.spring.rejew.projectrejew.repository.UsuarioRepository;
 @RequestMapping("/usuarios")
 public class UsuarioController {
 
-    private static final String UPLOAD_DIR = "C:/Users/rm2965/Desktop/Project_Rejew/Database/UploadsIMGUsuarioPerfil/";
-    private static final String UPLOAD_DIR2 = "C:/Users/rm2965/Desktop/Project_Rejew/Database/UploadsIMGUsuarioFundo/";
+    private static final String UPLOAD_DIR = "C:/Users/rm2869/Desktop/Project_Rejew/Database/UploadsIMGUsuarioPerfil/";
+    private static final String UPLOAD_DIR2 = "C:/Users/rm2869/Desktop/Project_Rejew/Database/UploadsIMGUsuarioFundo/";
     
     @Autowired
     private UsuarioRepository usuarioRepository;
@@ -69,8 +69,8 @@ public class UsuarioController {
         }
     }
     
-    @PostMapping("seguir")
-    public void seguirUsuario(String usuarioSeguindoEmail, String usuarioSeguidoEmail) {
+    @PostMapping("seguir/{usuarioSeguindoEmail}/{usuarioSeguidoEmail}")
+    public ResponseEntity<String> seguirUsuario(@PathVariable String usuarioSeguindoEmail, @PathVariable String usuarioSeguidoEmail) {
         Optional<Usuario> usuarioSeguindoOpt = usuarioRepository.findById(usuarioSeguindoEmail);
         Optional<Usuario> usuarioSeguidoOpt = usuarioRepository.findById(usuarioSeguidoEmail);
 
@@ -80,11 +80,14 @@ public class UsuarioController {
 
             usuarioSeguindo.getUsuariosSeguindo().add(usuarioSeguido);
             usuarioRepository.save(usuarioSeguindo);
+            return ResponseEntity.ok("Usuario seguido com sucesso");
         }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuarios não encontrados");
+		
     }
     
-    @GetMapping("estaSeguindo")
-    public boolean estaSeguindo(String usuarioSeguindoEmail, String usuarioSeguidoEmail) {
+    @GetMapping("estaSeguindo/{usuarioSeguindoEmail}/{usuarioSeguidoEmail}")
+    public boolean estaSeguindo(@PathVariable String usuarioSeguindoEmail,@PathVariable String usuarioSeguidoEmail) {
         Optional<Usuario> usuarioSeguindoOpt = usuarioRepository.findById(usuarioSeguindoEmail);
         Optional<Usuario> usuarioSeguidoOpt = usuarioRepository.findById(usuarioSeguidoEmail);
 
@@ -98,8 +101,8 @@ public class UsuarioController {
         return false; 
     }
 
-    @PostMapping("deixarSeguir")
-    public void deixarSeguirUsuario(String usuarioSeguindoEmail, String usuarioSeguidoEmail) {
+    @PostMapping("deixarSeguir/{usuarioSeguindoEmail}/{usuarioSeguidoEmail}")
+    public ResponseEntity<String> deixarSeguirUsuario(@PathVariable String usuarioSeguindoEmail,@PathVariable String usuarioSeguidoEmail) {
         Optional<Usuario> usuarioSeguindo2 = usuarioRepository.findById(usuarioSeguindoEmail);
         Optional<Usuario> usuarioSeguido2 = usuarioRepository.findById(usuarioSeguidoEmail);
 
@@ -108,8 +111,10 @@ public class UsuarioController {
             Usuario usuarioSeguido = usuarioSeguido2.get();
 
             usuarioSeguindo.getUsuariosSeguindo().remove(usuarioSeguido);
-            usuarioRepository.save(usuarioSeguindo);
+            usuarioRepository.save(usuarioSeguido);
+            return ResponseEntity.ok("Usuario Deixado de seguir com sucesso");
         }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuarios não encontrados");
     }
     
     // Buscar um usuário por email
@@ -135,6 +140,13 @@ public class UsuarioController {
     @GetMapping("/nome/{nome}")
     public ResponseEntity<List<Usuario>> buscarUsuarioPorNome(@PathVariable String nome) {
         List<Usuario> usuarios = usuarioRepository.buscarUsuarioPorNome(nome);
+        return ResponseEntity.ok(usuarios);
+    }
+    
+ // Buscar um usuário por nome Perfil
+    @GetMapping("/perfil/{nome}")
+    public ResponseEntity<List<Usuario>> buscarUsuarioPorNomePerfil(@PathVariable String nome) {
+        List<Usuario> usuarios = usuarioRepository.buscarUsuarioPorNomePerfil(nome);
         return ResponseEntity.ok(usuarios);
     }
     
@@ -175,13 +187,6 @@ public class UsuarioController {
     }
 
 
-    @GetMapping("/perfil/{nome}")
-    public ResponseEntity<List<Usuario>> buscarUsuarioPorNomePerfil(@PathVariable String nome) {
-        List<Usuario> usuarios = usuarioRepository.buscarUsuarioPorNomePerfil(nome);
-        return ResponseEntity.ok(usuarios);
-    }
-
-
     @PostMapping
     public ResponseEntity<Map<String, String>> adicionarUsuario(@RequestBody Usuario usuario) {
         Optional<Usuario> existingUsuario = usuarioRepository.findByEmailEntrada(usuario.getEmailEntrada());
@@ -204,7 +209,7 @@ public class UsuarioController {
     }
     
     @PostMapping("/{emailEntrada}/favoritar/{isbnLivro}")
-    public void favoritarLivro(@PathVariable String emailEntrada, @PathVariable Long isbnLivro) {
+    public ResponseEntity<String> favoritarLivro(@PathVariable String emailEntrada, @PathVariable Long isbnLivro) {
         Usuario usuario = usuarioRepository.buscarUsuarioPorEmail(emailEntrada);
         Optional<Livro> optionalLivro = livroRepository.findById(isbnLivro); 
         Set<Livro> livrosF = usuarioRepository.favoritadoPeloUsuario(emailEntrada);
@@ -214,12 +219,15 @@ public class UsuarioController {
             if (!livrosF.contains(livro)) {
                 usuario.getLivros().add(livro);
                 usuarioRepository.save(usuario); 
+                return ResponseEntity.ok("Livro foi favoritado");
             }
+            
         } 
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Dados não encontrados");
     }
 
     @DeleteMapping("/{emailEntrada}/desfavoritar/{isbnLivro}")
-    public void desfavoritarLivro(@PathVariable String emailEntrada, @PathVariable Long isbnLivro) {
+    public ResponseEntity<String> desfavoritarLivro(@PathVariable String emailEntrada, @PathVariable Long isbnLivro) {
         Usuario usuario = usuarioRepository.buscarUsuarioPorEmail(emailEntrada);
         Set<Livro> livrosF = usuarioRepository.favoritadoPeloUsuario(emailEntrada);
         if (usuario == null) {
@@ -236,8 +244,10 @@ public class UsuarioController {
         if (livrosF.contains(livro)) {
             livrosF.remove(livro);
             usuario.setLivros(livrosF); 
-            usuarioRepository.save(usuario);          
+            usuarioRepository.save(usuario);  
+            return ResponseEntity.ok("Livro foi desfavoritado");
         }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Dados não encontrados");
     }
     
     @GetMapping("/{emailEntrada}/verfavoritado/{isbnLivro}")
@@ -257,8 +267,32 @@ public class UsuarioController {
     public List<Livro> verFavoritados(@PathVariable String emailEntrada) {
         List<Livro> livrosF = usuarioRepository.favoritadosPeloUsuario(emailEntrada);  
         return livrosF;
-                   
     }
+    
+    @GetMapping("/{emailEntrada}/quantidadeSeguidores")
+    public ResponseEntity<Integer> getQuantidadeSeguidores(@PathVariable String emailEntrada) {
+        Optional<Usuario> usuarioOpt = usuarioRepository.findById(emailEntrada);
+        if (usuarioOpt.isPresent()) {
+            Usuario usuario = usuarioOpt.get();
+            int quantidadeSeguidores = usuario.getUsuariosSeguido().size();
+            return ResponseEntity.ok(quantidadeSeguidores);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+    
+    @GetMapping("/{emailEntrada}/quantidadeSeguindo")
+    public ResponseEntity<Integer> getQuantidadeSeguindo(@PathVariable String emailEntrada) {
+        Optional<Usuario> usuarioOpt = usuarioRepository.findById(emailEntrada);
+        if (usuarioOpt.isPresent()) {
+            Usuario usuario = usuarioOpt.get();
+            int quantidadeSeguindo = usuario.getUsuariosSeguindo().size();
+            return ResponseEntity.ok(quantidadeSeguindo);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+    
     
     @PutMapping("/{emailUsuario}")
     public ResponseEntity<Usuario> atualizarUsuarioWEB(
@@ -359,7 +393,7 @@ public class UsuarioController {
 */
     // Deletar um usuário por email
     @DeleteMapping("/{emailUsuario}")
-    public ResponseEntity<Void> deletaUsuario(@PathVariable String emailUsuario) {
+    public ResponseEntity<String> deletaUsuario(@PathVariable String emailUsuario) {
         Optional<Usuario> usuario = usuarioRepository.findByEmailEntrada(emailUsuario);
         if (usuario.isPresent()) {
             try {

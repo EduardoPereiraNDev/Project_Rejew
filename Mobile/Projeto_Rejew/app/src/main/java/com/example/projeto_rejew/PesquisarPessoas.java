@@ -25,6 +25,7 @@ import com.example.projeto_rejew.entity.Usuario;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import okhttp3.ResponseBody;
 
 public class PesquisarPessoas extends RecyclerView.Adapter<PesquisarPessoas.UsuarioViewHolder> {
 
@@ -81,6 +82,11 @@ public class PesquisarPessoas extends RecyclerView.Adapter<PesquisarPessoas.Usua
             }
 
             @Override
+            public void onSuccessInt(Integer integer) {
+
+            }
+
+            @Override
             public void onSuccessByte(byte[] bytes) {
                 Glide.with(context)
                         .load(bytes)
@@ -98,15 +104,23 @@ public class PesquisarPessoas extends RecyclerView.Adapter<PesquisarPessoas.Usua
             }
 
             @Override
+            public void onSuccessResponse(ResponseBody body) {
+
+            }
+
+            @Override
+            public void onSuccessString(String string) {
+
+            }
+
+            @Override
             public void onFailure(Throwable t) {
                 Log.e("PesquisarPessoas", "Falha ao carregar a imagem: " + t.getMessage());
                 Log.e("PesquisarPessoas", "StackTrace", t);
                 holder.imagemPerfil.setImageResource(R.drawable.imagedefault);
             }
 
-            @Override
-            public void onSuccessV(Void body) {
-            }
+
         });
     }
 

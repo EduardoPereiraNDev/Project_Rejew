@@ -23,6 +23,8 @@ import android.widget.ImageView;
 import java.util.List;
 import java.util.Set;
 
+import okhttp3.ResponseBody;
+
 public class FormCadastro extends AppCompatActivity {
 
     private EditText email;
@@ -112,6 +114,11 @@ public class FormCadastro extends AppCompatActivity {
                 }
 
                 @Override
+                public void onSuccessInt(Integer integer) {
+
+                }
+
+                @Override
                 public void onSuccessByte(byte[] bytes){
                 }
 
@@ -126,6 +133,16 @@ public class FormCadastro extends AppCompatActivity {
                 }
 
                 @Override
+                public void onSuccessResponse(ResponseBody body) {
+
+                }
+
+                @Override
+                public void onSuccessString(String string) {
+
+                }
+
+                @Override
                 public void onFailure(Throwable t) {
                     AlertDialog.Builder alerta = new AlertDialog.Builder(FormCadastro.this);
                     alerta.setCancelable(false);
@@ -135,9 +152,6 @@ public class FormCadastro extends AppCompatActivity {
                     alerta.create().show();
                 }
 
-                @Override
-                public void onSuccessV(Void body) {
-                }
             });
         }
     }

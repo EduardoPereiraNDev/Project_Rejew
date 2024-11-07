@@ -5,9 +5,11 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AlertDialog;
@@ -30,8 +32,9 @@ import com.example.projeto_rejew.entity.Usuario;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import okhttp3.ResponseBody;
 
-public class PerfilUsuarioPessoal extends AppCompatActivity {
+public class PerfilUsuarioPessoal extends AppCompatActivity implements ComentarioDeleteCallback {
 
     private String emailEntrada;
     private RecyclerView recyclerViewFavoritados;
@@ -46,7 +49,7 @@ public class PerfilUsuarioPessoal extends AppCompatActivity {
     public TextView seguindoQTD;
     public TextView comentariosQTD;
     public TextView bio;
-
+    private Usuario usuarioPe;
     private ComentarioAPIController comentarioAPIController;
     private UsuarioAPIController usuarioAPIController;
     private LivroAPIController livroAPIController;
@@ -87,8 +90,11 @@ public class PerfilUsuarioPessoal extends AppCompatActivity {
         emailEntrada = recuperarEmailUsuario();
 
         carregarUsuario(emailEntrada);
+        qtdSeguindo(emailEntrada);
+        qtdSeguidores(emailEntrada);
         carregarLivrosFavoritados(emailEntrada);
-        buscarcomntarioLivro(emailEntrada);
+        buscarcomentarioUsuario(emailEntrada);
+        buscarcomentarioUsuario(emailEntrada);
     }
 
     private String recuperarEmailUsuario() {
@@ -96,16 +102,23 @@ public class PerfilUsuarioPessoal extends AppCompatActivity {
         return sharedPreferences.getString("emailEntrada", null);
     }
 
+    @Override
+    public void onComentarioDeleted() {
+        Toast.makeText(this, "Comentário deletado com sucesso!", Toast.LENGTH_SHORT).show();
+        buscarcomentarioUsuario(emailEntrada);
+    }
+
+
+
     private void carregarUsuario(String emailEntrada) {
         usuarioAPIController.buscarUsuario(emailEntrada, new UsuarioAPIController.UsuarioCallback() {
 
             @Override
             public void onSuccess(Usuario usuario) {
                 if (usuario != null) {
+                    usuarioPe = usuario;
                     nomeUsuario.setText(usuario.getNomeUsuario());
                     nomePerfil.setText(usuario.getNomePerfil());
-                    seguidoresQTD.setText(String.valueOf(usuario.getUsuariosSeguido().size()));
-                    seguindoQTD.setText(String.valueOf(usuario.getUsuariosSeguindo().size()));
                     comentariosQTD.setText(String.valueOf(usuario.getComentario().size()));
                     bio.setText(usuario.getRecadoPerfil());
 
@@ -116,6 +129,11 @@ public class PerfilUsuarioPessoal extends AppCompatActivity {
 
                         @Override
                         public void onSuccessBoolean(Boolean favoritado) {
+                        }
+
+                        @Override
+                        public void onSuccessInt(Integer integer) {
+
                         }
 
                         @Override
@@ -140,15 +158,21 @@ public class PerfilUsuarioPessoal extends AppCompatActivity {
                         }
 
                         @Override
+                        public void onSuccessResponse(ResponseBody body) {
+
+                        }
+
+                        @Override
+                        public void onSuccessString(String string) {
+
+                        }
+
+                        @Override
                         public void onFailure(Throwable t) {
                             Log.e("UsuarioAdapter", "Falha ao carregar a imagem: " + t.getMessage());
                             fotoPerfil.setImageResource(R.drawable.imagedefault);
                         }
 
-                        @Override
-                        public void onSuccessV(Void body) {
-
-                        }
                     });
 
                     DisplayMetrics displayMetrics = PerfilUsuarioPessoal.this.getResources().getDisplayMetrics();
@@ -160,6 +184,11 @@ public class PerfilUsuarioPessoal extends AppCompatActivity {
 
                         @Override
                         public void onSuccessBoolean(Boolean favoritado) {
+                        }
+
+                        @Override
+                        public void onSuccessInt(Integer integer) {
+
                         }
 
                         @Override
@@ -182,20 +211,32 @@ public class PerfilUsuarioPessoal extends AppCompatActivity {
                         }
 
                         @Override
+                        public void onSuccessResponse(ResponseBody body) {
+
+                        }
+
+                        @Override
+                        public void onSuccessString(String string) {
+
+                        }
+
+                        @Override
                         public void onFailure(Throwable t) {
                             Log.e("UsuarioAdapter", "Falha ao carregar a imagem: " + t.getMessage());
                             fotoFundo.setImageResource(R.drawable.imagedefault);
                         }
 
-                        @Override
-                        public void onSuccessV(Void body) {
-                        }
                     });
                 }
             }
 
             @Override
             public void onSuccessBoolean(Boolean favoritado) {
+            }
+
+            @Override
+            public void onSuccessInt(Integer integer) {
+
             }
 
             @Override
@@ -212,15 +253,111 @@ public class PerfilUsuarioPessoal extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Throwable t) {
-                Log.e("UsuarioAPI", "Falha ao carregar o usuário: " + t.getMessage());
+            public void onSuccessResponse(ResponseBody body) {
+
             }
 
             @Override
-            public void onSuccessV(Void body) {
+            public void onSuccessString(String string) {
+
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                Log.e("UsuarioAPI", "Falha ao carregar o usuário: " + t.getMessage());
             }
         });
     }
+
+    private void qtdSeguindo(String emailEntrada) {
+        usuarioAPIController.qtdSeguindo(emailEntrada, new UsuarioAPIController.UsuarioCallback() {
+            @Override
+            public void onSuccess(Usuario usuario) {
+            }
+
+            @Override
+            public void onSuccessBoolean(Boolean favoritado) {
+            }
+
+            @Override
+            public void onSuccessInt(Integer integer) {
+                seguindoQTD.setText(String.valueOf(integer));
+            }
+
+            @Override
+            public void onSuccessByte(byte[] bytes) {
+            }
+
+            @Override
+            public void onSuccessList(List<Usuario> usuarios) {
+            }
+
+            @Override
+            public void onSuccessListL(List<Livro> livros) {
+            }
+
+            @Override
+            public void onSuccessResponse(ResponseBody body) {
+
+            }
+
+            @Override
+            public void onSuccessString(String string) {
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                Log.e("UsuarioAPI", "Falha ao carregar qtd seguidores: " + t.getMessage());
+            }
+
+        });
+    }
+
+    private void qtdSeguidores(String emailEntrada) {
+        usuarioAPIController.qtdSeguidores(emailEntrada, new UsuarioAPIController.UsuarioCallback() {
+            @Override
+            public void onSuccess(Usuario usuario) {
+            }
+
+            @Override
+            public void onSuccessBoolean(Boolean favoritado) {
+            }
+
+            @Override
+            public void onSuccessInt(Integer integer) {
+                seguidoresQTD.setText(String.valueOf(integer));
+            }
+
+            @Override
+            public void onSuccessByte(byte[] bytes) {
+            }
+
+            @Override
+            public void onSuccessList(List<Usuario> usuarios) {
+            }
+
+            @Override
+            public void onSuccessListL(List<Livro> livros) {
+            }
+
+            @Override
+            public void onSuccessResponse(ResponseBody body) {
+
+            }
+
+            @Override
+            public void onSuccessString(String string) {
+
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                Log.e("UsuarioAPI", "Falha ao carregar qtd Seguindo : " + t.getMessage());
+            }
+
+        });
+    }
+
 
     private void carregarLivrosFavoritados(String emailEntrada) {
         usuarioAPIController.verFavoritados(emailEntrada, new UsuarioAPIController.UsuarioCallback() {
@@ -230,6 +367,11 @@ public class PerfilUsuarioPessoal extends AppCompatActivity {
 
             @Override
             public void onSuccessBoolean(Boolean favoritado) {
+            }
+
+            @Override
+            public void onSuccessInt(Integer integer) {
+
             }
 
             @Override
@@ -247,7 +389,12 @@ public class PerfilUsuarioPessoal extends AppCompatActivity {
             }
 
             @Override
-            public void onSuccessV(Void body) {
+            public void onSuccessResponse(ResponseBody body) {
+
+            }
+
+            @Override
+            public void onSuccessString(String string) {
 
             }
 
@@ -259,16 +406,28 @@ public class PerfilUsuarioPessoal extends AppCompatActivity {
         });
     }
 
-    private void buscarcomntarioLivro(String emailEntrada){
+
+    private void buscarcomentarioUsuario(String emailEntrada){
         comentarioAPIController.buscarComentarioPorUsuario(emailEntrada, new ComentarioAPIController.ComentarioCallback() {
             @Override
             public void onSuccess(Comentario comentario) {
             }
 
             @Override
+            public void onSuccessString(String string) {
+
+            }
+
+            @Override
+            public void onSuccessResponse(ResponseBody responseBody) {
+
+            }
+
+            @Override
             public void onSuccessList(List<Comentario> comentarioL) {
-                adapterComentario = new AdapterComentario(PerfilUsuarioPessoal.this, comentarioL, usuarioAPIController, comentarioAPIController);
+                adapterComentario = new AdapterComentario(PerfilUsuarioPessoal.this, comentarioL, usuarioPe, usuarioAPIController, comentarioAPIController, PerfilUsuarioPessoal.this);
                 recyclerViewComentarios.setAdapter(adapterComentario);
+                adapterComentario.notifyDataSetChanged();
             }
 
             @Override
