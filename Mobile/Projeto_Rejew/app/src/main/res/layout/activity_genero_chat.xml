@@ -61,6 +61,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.482"
+        android:onClick="goToChatGenero"
         android:src="@drawable/ficcaocientificachat" />
 
     <TextView
@@ -119,6 +120,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.482"
+        android:onClick="goToChatGenero"
         android:src="@drawable/romancechat" />
 
     <ImageView
@@ -131,6 +133,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.187"
+        android:onClick="goToChatGenero"
         android:src="@drawable/terrorchat" />
 
 
@@ -144,6 +147,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.78"
+        android:onClick="goToChatGenero"
         android:src="@drawable/infantilchat" />
 
     <TextView
@@ -171,7 +175,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.187"
-        android:onClick="chatAventura"
+        android:onClick="goToChatGenero"
         android:src="@drawable/aventurachat" />
 
     <TextView
@@ -214,6 +218,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.78"
+        android:onClick="goToChatGenero"
         android:src="@drawable/culinariachat" />
 
     <ImageView

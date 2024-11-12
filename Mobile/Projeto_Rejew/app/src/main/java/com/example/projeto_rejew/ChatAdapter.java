@@ -20,27 +20,26 @@ import java.util.List;
 public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder> {
 
     private List<Chat> chats;
-    private Context context;
-    private ChatAPIController chatAPIController;
-    int larguraPadrao = 40;
-    int alturaPadrao = 40;
+    private final Context context;
+    private final ChatAPIController chatAPIController;
+    private static final int LARGURA_PADRAO = 40;
+    private static final int ALTURA_PADRAO = 40;
+
+    public ChatAdapter(Context context, List<Chat> chats, ChatAPIController chatAPIController) {
+        this.context = context;
+        this.chats = chats;
+        this.chatAPIController = chatAPIController;
+    }
 
     public static class ChatViewHolder extends RecyclerView.ViewHolder {
-        public ImageView imagemLogo;
-        public TextView nomeChat;
-        public TextView ultimaMensagem;
+        public final ImageView imagemLogo;
+        public final TextView nomeChat;
 
         public ChatViewHolder(View view) {
             super(view);
             imagemLogo = view.findViewById(R.id.imagemLogo);
             nomeChat = view.findViewById(R.id.nomeChat);
         }
-    }
-
-    public ChatAdapter(Context context, List<Chat> chats, ChatAPIController chatAPIController) {
-        this.context = context;
-        this.chats = chats;
-        this.chatAPIController = chatAPIController;
     }
 
     @NonNull
@@ -54,31 +53,31 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
     public void onBindViewHolder(@NonNull ChatViewHolder holder, int position) {
         Chat chat = chats.get(position);
         holder.nomeChat.setText(chat.getGeneroChat());
+        carregarImagemLogo(chat.getCaminhoImagemLogo(), holder.imagemLogo);
+    }
 
-        chatAPIController.retornarImagem(new ChatAPIController.ChatCallback() {
-            @Override
-            public void onSuccess(Chat chat) {
-            }
-
-            @Override
-            public void onSuccessList(List<Chat> chatList) {
-            }
-
+    private void carregarImagemLogo(String caminhoImagemLogo, ImageView imageView) {
+        chatAPIController.retornarImagem(caminhoImagemLogo, new ChatAPIController.ChatCallback() {
             @Override
             public void onSuccessByte(byte[] bytes) {
                 Glide.with(context)
                         .load(bytes)
-                        .override(larguraPadrao,alturaPadrao)
+                        .override(LARGURA_PADRAO, ALTURA_PADRAO)
                         .centerCrop()
-                        .into(holder.imagemLogo);
+                        .into(imageView);
             }
 
             @Override
             public void onFailure(Throwable t) {
                 Log.e("ChatAdapter", "Falha ao carregar a imagem: " + t.getMessage());
-                holder.imagemLogo.setImageResource(R.drawable.imagedefault);
+                imageView.setImageResource(R.drawable.imagedefault);
             }
-        }, chat.getCaminhoImagemLogo());
+
+            @Override
+            public void onSuccess(Chat chat) {}
+            @Override
+            public void onSuccessList(List<Chat> chatList) {}
+        });
     }
 
     @Override
