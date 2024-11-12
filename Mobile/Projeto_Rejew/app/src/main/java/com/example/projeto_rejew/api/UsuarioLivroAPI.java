@@ -18,12 +18,12 @@ public interface UsuarioLivroAPI {
     @GET("usuarioLivro")
     Call<List<UsuarioLivroADTO>> listarTodasAvaliacoes();
 
-    @GET("usuarioLivro/media/{idLivro}")
-    Call<Double> calcularMedia(@Path("idLivro") Long idLivro);
+    @GET("usuarioLivro/media/{isbnLivro}")
+    Call<Double> calcularMedia(@Path("isbnLivro") Long idLivro);
 
     @GET("usuarioLivro/jaAvaliado/{emailUsuario}/{isbnLivro}")
     Call<Boolean> verificarJaAvaliado(@Path("emailUsuario") String emailUsuario, @Path("isbnLivro") Long isbnLivro);
 
-    @POST("/avaliar/{email}/{isbnLivro}/{notaAvaliacao}")
+    @POST("usuarioLivro/avaliar/{email}/{isbnLivro}/{notaAvaliacao}")
     Call<UsuarioLivroADTO> inserirAvaliacao(@Path("email") String email,@Path("isbnLivro") Long isbnLivro , @Path("notaAvaliacao") double notaAvaliacao);
 }

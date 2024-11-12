@@ -19,9 +19,9 @@ import br.com.spring.rejew.projectrejew.entity.UsuarioLivroA;
 public interface UsuarioLivroARepository extends JpaRepository<UsuarioLivroA, Long> {
 	
 	 @Query("SELECT u.NotaLivro FROM UsuarioLivroA u WHERE u.livroA.isbnLivro = :isbnLivro")
-	    List<Double> findNotasByLivroIsbn(@Param("isbn") Long isbnLivro);
+	    List<Double> findNotasByLivroIsbn(@Param("isbnLivro") Long isbnLivro);
 	 
 	 @Query("SELECT u FROM UsuarioLivroA u WHERE u.livroA.isbnLivro = :isbnLivro AND u.usuarioA.emailEntrada = :emailEntrada") 
-	    UsuarioLivroA findJaAvaliado(@Param("isbn") Long isbnLivro, String emailEntrada);
+	    UsuarioLivroA findJaAvaliado(@Param("isbnLivro") Long isbnLivro, String emailEntrada);
 
 }

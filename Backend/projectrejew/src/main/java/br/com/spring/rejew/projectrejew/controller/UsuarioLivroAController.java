@@ -41,9 +41,9 @@ public class UsuarioLivroAController {
          return usuariosLivrosA.stream().map(this::convertToDTO).collect(Collectors.toList());
     }
     
-    @GetMapping("/media/{idLivro}")
-    public ResponseEntity<Double> calcularMedia(@PathVariable Long idLivro) {
-        List<Double> notasLivro = usuarioLivroARepository.findNotasByLivroIsbn(idLivro);
+    @GetMapping("/media/{isbnLivro}")
+    public ResponseEntity<Double> calcularMedia(@PathVariable Long isbnLivro) {
+        List<Double> notasLivro = usuarioLivroARepository.findNotasByLivroIsbn(isbnLivro);
         
         if (notasLivro.isEmpty()) {
             return ResponseEntity.ok(0.0);
@@ -89,6 +89,7 @@ public class UsuarioLivroAController {
 
     private UsuarioLivroADTO convertToDTO(UsuarioLivroA usuarioLivroA) {
     	UsuarioLivroADTO dto = new UsuarioLivroADTO();
+    	   dto.setIdUsuarioLivro(usuarioLivroA.getIdUsuarioLivro());
 	       dto.setLivroISBN(usuarioLivroA.getLivroA().getIsbnLivro());
 	       dto.setLivroNome(usuarioLivroA.getLivroA().getNomeLivro());
 	       dto.setEmailUsuario(usuarioLivroA.getUsuarioA().getEmailEntrada());

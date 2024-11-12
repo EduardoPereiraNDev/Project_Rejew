@@ -31,32 +31,4 @@ public interface LivroApi {
 
     @GET("livros/autor/{autor}")
     Call<List<Livro>> buscarLivroPorAutor(@Path("autor") String autor);
-
-    @Multipart
-    @POST("livros")
-    Call<String> adicionarLivro(
-            @Part("nomeLivro") RequestBody nomeLivro,
-            @Part("autorLivro") RequestBody autorLivro,
-            @Part("sinopseLivro") RequestBody sinopseLivro,
-            @Part("numeroPag") RequestBody numeroPag,
-            @Part("anoLancamento") RequestBody anoLancamento,
-            @Part("generoLivro") RequestBody generoLivro,
-            @Part("corPrimaria") RequestBody corPrimaria,
-            @Part MultipartBody.Part caminhoImgCapa);
-
-    @Multipart
-    @PUT("livros/{isbn}")
-    Call<Livro> atualizarLivro(
-            @Path("isbn") Long isbn,
-            @Part("nomeLivro") RequestBody nomeLivro,
-            @Part("autorLivro") RequestBody autorLivro,
-            @Part("sinopseLivro") RequestBody sinopseLivro,
-            @Part("numeroPag") RequestBody numeroPag,
-            @Part("anoLancamento") RequestBody anoLancamento,
-            @Part("generoLivro") RequestBody generoLivro,
-            @Part("corPrimaria") RequestBody corPrimaria,
-            @Part MultipartBody.Part caminhoImgCapa);
-
-    @DELETE("livros/{isbn}")
-    Call<Void> deletarLivro(@Path("isbn") Long isbn);
 }
