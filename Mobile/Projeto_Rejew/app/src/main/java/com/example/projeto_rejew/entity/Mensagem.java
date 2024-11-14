@@ -6,14 +6,14 @@ public class Mensagem {
 
     private Long idMensagem;
     private String textoMensagem;
-    private Date dataMensagem;
-    private String usuarioMensagem;
-    private String chatMensagem;
+    private String dataMensagem;
+    private Usuario usuarioMensagem;
+    private Chat chatMensagem;
 
     public Mensagem() {
     }
 
-    public Mensagem(String textoMensagem, Date dataMensagem, String usuarioMensagem, String chatMensagem) {
+    public Mensagem(String textoMensagem, String dataMensagem, Usuario usuarioMensagem, Chat chatMensagem) {
         this.textoMensagem = textoMensagem;
         this.dataMensagem = dataMensagem;
         this.usuarioMensagem = usuarioMensagem;
@@ -36,27 +36,27 @@ public class Mensagem {
         this.textoMensagem = textoMensagem;
     }
 
-    public Date getDataMensagem() {
+    public String getDataMensagem() {
         return dataMensagem;
     }
 
-    public void setDataMensagem(Date dataMensagem) {
+    public void setDataMensagem(String dataMensagem) {
         this.dataMensagem = dataMensagem;
     }
 
-    public String getUsuarioMensagem() {
+    public Usuario getUsuarioMensagem() {
         return usuarioMensagem;
     }
 
-    public void setUsuarioMensagem(String usuarioMensagem) {
+    public void setUsuarioMensagem(Usuario usuarioMensagem) {
         this.usuarioMensagem = usuarioMensagem;
     }
 
-    public String getChatMensagem() {
+    public Chat getChatMensagem() {
         return chatMensagem;
     }
 
-    public void setChatMensagem(String chatMensagem) {
+    public void setChatMensagem(Chat chatMensagem) {
         this.chatMensagem = chatMensagem;
     }
 }

@@ -40,8 +40,11 @@ import jakarta.transaction.Transactional;
 @RequestMapping("/usuarios")
 public class UsuarioController {
 
+
     private static final String UPLOAD_DIR = "C:/Users/rm2869/Desktop/Project_Rejew/Database/UploadsIMGUsuarioPerfil/";
     private static final String UPLOAD_DIR2 = "C:/Users/rm2869/Desktop/Project_Rejew/Database/UploadsIMGUsuarioFundo/";
+
+
 
     
     @Autowired
