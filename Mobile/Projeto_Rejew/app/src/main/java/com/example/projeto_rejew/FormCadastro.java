@@ -164,8 +164,5 @@ public class FormCadastro extends AppCompatActivity {
         Intent intent = new Intent(FormCadastro.this, CatalogoRejew.class);
         startActivity(intent);
     }
-    public void voltarTipoConta(View v){
-        Intent intent = new Intent(FormCadastro.this, EscolhaTipoConta.class);
-        startActivity(intent);
-    }
+
 }

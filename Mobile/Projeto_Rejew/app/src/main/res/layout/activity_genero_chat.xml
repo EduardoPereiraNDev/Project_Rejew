@@ -26,6 +26,7 @@
         android:id="@+id/setaazulvoltar"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:onClick="chatsPaginicial"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.06"
@@ -243,23 +244,24 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/home"
+        android:id="@+id/chaticon"
         android:layout_width="54dp"
         android:layout_height="54dp"
         android:layout_marginStart="4dp"
         android:layout_marginEnd="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/chaticon"
+        app:layout_constraintEnd_toStartOf="@+id/homeicon"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/barramenu"
         app:srcCompat="@drawable/chatazulllll" />
 
     <ImageView
-        android:id="@+id/chaticon"
+        android:id="@+id/homeicon"
         android:layout_width="54dp"
         android:layout_height="54dp"
         android:layout_marginStart="4dp"
         android:layout_marginEnd="4dp"
+        android:onClick="chatsPaginicial"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -272,9 +274,10 @@
         android:layout_height="54dp"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="4dp"
+        android:onClick="generochatPessoas"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/chaticon"
+        app:layout_constraintStart_toEndOf="@+id/homeicon"
         app:layout_constraintTop_toTopOf="@+id/barramenu"
         app:srcCompat="@drawable/amigosbrancooo" />
 </androidx.constraintlayout.widget.ConstraintLayout>
