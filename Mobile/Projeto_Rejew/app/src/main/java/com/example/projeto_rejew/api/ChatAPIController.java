@@ -3,8 +3,6 @@ package com.example.projeto_rejew.api;
 import android.util.Log;
 
 import com.example.projeto_rejew.entity.Chat;
-import com.example.projeto_rejew.entity.Genero;
-import com.example.projeto_rejew.entity.Livro;
 
 import java.util.List;
 
@@ -15,59 +13,83 @@ import retrofit2.Response;
 
 public class ChatAPIController {
 
-    ChatApi chatApi;
-    private RetrofitClient retrofitClient;
+    private final ChatApi chatApi;
 
     public interface ChatCallback {
         void onSuccess(Chat chat);
         void onSuccessByte(byte[] bytes);
-        void onSuccessList(List<Chat> ChatL);
-
+        void onSuccessList(List<Chat> chatList);
         void onFailure(Throwable t);
     }
 
     public ChatAPIController(RetrofitClient retrofitClient) {
-        this.retrofitClient = retrofitClient;
         this.chatApi = retrofitClient.getRetrofit().create(ChatApi.class);
     }
 
-    public void carregarChats(ChatAPIController.ChatCallback responseCallback) {
-        Call<List<Chat>> call = chatApi.listarTodosChats();
-        call.enqueue(new Callback<List<Chat>>() {
+    // Método para carregar todos os chats
+    public void carregarChats(ChatCallback callback) {
+        chatApi.listarTodosChats().enqueue(new Callback<List<Chat>>() {
             @Override
             public void onResponse(Call<List<Chat>> call, Response<List<Chat>> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    responseCallback.onSuccessList(response.body());
+                    callback.onSuccessList(response.body());
                 } else {
                     Log.e("API Error", "Erro ao carregar chats: " + response.code());
-                    responseCallback.onFailure(new Exception("Erro ao carregar chats"));
+                    callback.onFailure(new Exception("Erro ao carregar chats"));
                 }
             }
+
             @Override
             public void onFailure(Call<List<Chat>> call, Throwable t) {
                 Log.e("API Error", "Falha na chamada: " + t.getMessage());
-                responseCallback.onFailure(t);
+                callback.onFailure(t);
             }
         });
     }
-    public void retornarImagem(ChatAPIController.ChatCallback callback, String caminhoImgCapa) {
-        Call<ResponseBody> call = chatApi.retornarImagem(caminhoImgCapa);
-        call.enqueue(new Callback<ResponseBody>() {
+
+    // Método para buscar um chat específico pelo ID
+    public void buscarChatPorId(long idChat, ChatCallback callback) {
+        chatApi.buscarChatPorId(idChat).enqueue(new Callback<Chat>() {
+            @Override
+            public void onResponse(Call<Chat> call, Response<Chat> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    callback.onSuccess(response.body());
+                } else {
+                    Log.e("API Error", "Erro ao carregar o chat: " + response.code());
+                    callback.onFailure(new Exception("Erro ao carregar o chat"));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Chat> call, Throwable t) {
+                Log.e("API Error", "Falha na chamada: " + t.getMessage());
+                callback.onFailure(t);
+            }
+        });
+    }
+
+    // Método para retornar imagem associada ao chat
+    public void retornarImagem(String caminhoImgCapa, ChatCallback callback) {
+        chatApi.retornarImagem(caminhoImgCapa).enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                if (response.isSuccessful()) {
+                if (response.isSuccessful() && response.body() != null) {
                     try {
                         byte[] imageBytes = response.body().bytes();
                         callback.onSuccessByte(imageBytes);
                     } catch (Exception e) {
+                        Log.e("API Error", "Erro ao processar a imagem: " + e.getMessage());
                         callback.onFailure(e);
                     }
                 } else {
-                    callback.onFailure(new Exception("Erro ao baixar a imagem: " + response.code()));
+                    Log.e("API Error", "Erro ao baixar a imagem: " + response.code());
+                    callback.onFailure(new Exception("Erro ao baixar a imagem"));
                 }
             }
+
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Log.e("API Error", "Falha na chamada: " + t.getMessage());
                 callback.onFailure(t);
             }
         });

@@ -2,6 +2,13 @@
 CREATE SCHEMA IF NOT EXISTS teste_projeto;
 USE teste_projeto;
 
+INSERT INTO `teste_projeto`.`adm` (`credencial`, `senhaadm`) VALUES ('8713', '8713');
+INSERT INTO `teste_projeto`.`adm` (`credencial`, `senhaadm`) VALUES ('3187', '3187');
+INSERT INTO `teste_projeto`.`adm` (`credencial`, `senhaadm`) VALUES ('1378', '1378');
+INSERT INTO `teste_projeto`.`adm` (`credencial`, `senhaadm`) VALUES ('7836', '7836');
+ 
+ 
+
 CREATE TABLE IF NOT EXISTS usuario (
 	email_Entrada VARCHAR(50) NOT NULL PRIMARY KEY,
     nome_Usuario VARCHAR(40) NOT NULL,

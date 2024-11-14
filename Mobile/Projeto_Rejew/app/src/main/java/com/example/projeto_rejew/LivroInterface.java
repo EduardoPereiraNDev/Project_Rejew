@@ -57,6 +57,7 @@ public class LivroInterface extends AppCompatActivity implements ComentarioDelet
     private long isbn;
     private Boolean favoritadoBool;
     private AppCompatButton buttonfavoritar;
+    private AppCompatButton buttonavaliar;
     private String emailEntrada;
     private ImageView imagemLivro;
     private TextView autorLivro;
@@ -64,6 +65,7 @@ public class LivroInterface extends AppCompatActivity implements ComentarioDelet
     private TextView qtdPaginas;
     private TextView tituloLivro;
     private TextView sinopse;
+    private Boolean booleanAvaliado;
     private RatingBar ratingBar;
     private EditText comentEdit;
 
@@ -79,6 +81,7 @@ public class LivroInterface extends AppCompatActivity implements ComentarioDelet
         });
 
         buttonfavoritar = findViewById(R.id.buttonFavoritar);
+        buttonavaliar = findViewById(R.id.buttonAvaliar);
 
         recyclerComentarios = findViewById(R.id.comentarios);
 
@@ -107,17 +110,21 @@ public class LivroInterface extends AppCompatActivity implements ComentarioDelet
         livroC = new Livro();
         usuario = new Usuario();
 
+        booleanAvaliado = false;
+
          isbn = getIntent().getLongExtra("isbnLivro", -1);
 
         emailEntrada = recuperarEmailUsuario();
         carregarUsuario(emailEntrada);
 
 
-        carregarMedia();
+
         buscarLivroID(isbn);
         buscarcomntarioLivro(isbn);
         buscarcomntarioLivro(isbn);
         verificarFavoritacao(emailEntrada, isbn);
+        carregarMedia();
+        verificarAvaliado();
     }
 
     private String recuperarEmailUsuario() {
@@ -170,21 +177,26 @@ public class LivroInterface extends AppCompatActivity implements ComentarioDelet
     }
 
     public void mostrarDialogoDeAvaliacao(View view) {
-        View dialogView = getLayoutInflater().inflate(R.layout.popup_ratingbar, null);
+        if (booleanAvaliado == true){
+            Toast.makeText(LivroInterface.this, "Livro Já Avaliado!", Toast.LENGTH_SHORT).show();
+        } else if (booleanAvaliado == false) {
+            View dialogView = getLayoutInflater().inflate(R.layout.popup_ratingbar, null);
 
-        RatingBar dialogRatingBar = dialogView.findViewById(R.id.dialogRatingBar);
-        Button btnSubmitRating = dialogView.findViewById(R.id.btnSubmitRating);
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setView(dialogView);
+            RatingBar dialogRatingBar = dialogView.findViewById(R.id.dialogRatingBar);
+            Button btnSubmitRating = dialogView.findViewById(R.id.btnSubmitRating);
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setView(dialogView);
 
-        AlertDialog dialog = builder.create();
-        dialog.show();
-        btnSubmitRating.setOnClickListener(v -> {
-            float rating = dialogRatingBar.getRating();
-            avaliarLivro(rating);
+            AlertDialog dialog = builder.create();
+            dialog.show();
+            btnSubmitRating.setOnClickListener(v -> {
 
-            dialog.dismiss();
-        });
+                float rating = dialogRatingBar.getRating();
+                avaliarLivro(rating);
+
+                dialog.dismiss();
+            });
+        }
     }
 
     public void avaliarLivro(Float ratin){
@@ -192,6 +204,9 @@ public class LivroInterface extends AppCompatActivity implements ComentarioDelet
         usuarioLivroAPIController.adicionarAvaliacao(emailEntrada,isbn,nota , new UsuarioLivroAPIController.UsuarioLivroCallback() {
             @Override
             public void onSuccess(UsuarioLivroADTO usuarioLivroADTO) {
+                Toast.makeText(LivroInterface.this, "Avaliação Enviada com sucesso!", Toast.LENGTH_SHORT).show();
+                carregarMedia();
+                verificarAvaliado();
             }
 
             @Override
@@ -219,6 +234,45 @@ public class LivroInterface extends AppCompatActivity implements ComentarioDelet
             }
         });
     }
+
+    public void verificarAvaliado(){
+        usuarioLivroAPIController.verificarJaAvaliado(emailEntrada,isbn, new UsuarioLivroAPIController.UsuarioLivroCallback() {
+            @Override
+            public void onSuccess(UsuarioLivroADTO usuarioLivroADTO) {
+            }
+
+            @Override
+            public void onSuccessList(List<UsuarioLivroADTO> usuariosLivroADTO) {
+
+            }
+
+            @Override
+            public void onSuccessBoolean(Boolean booleano) {
+                booleanAvaliado = booleano;
+                atualizarBotaoAvaliar(booleano);
+            }
+
+            @Override
+            public void onSuccessDouble(Double doble) {
+                if (doble == null || doble == 0){
+                    ratingBar.setRating(0);
+                }
+                ratingBar.setRating(doble.floatValue());
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                AlertDialog.Builder alerta = new AlertDialog.Builder(LivroInterface.this);
+                alerta.setCancelable(false);
+                alerta.setTitle("Erro ao carregar Media");
+                alerta.setMessage("Error: " + t.getMessage());
+                alerta.setNegativeButton("Voltar", null);
+                alerta.create().show();
+                Log.e("ERROR", "onFailure: "+ t );
+            }
+        });
+    }
+
 
 
     public void chamarComentarioAdd(View view) {
@@ -557,6 +611,18 @@ public class LivroInterface extends AppCompatActivity implements ComentarioDelet
             buttonfavoritar.setText("Favoritar");
             buttonfavoritar.setBackgroundResource(R.drawable.buttonfunc);
             buttonfavoritar.setTextAppearance(this, R.style.ButtonFavo);
+        }
+    }
+
+    private void atualizarBotaoAvaliar(Boolean avaliado) {
+        if (avaliado) {
+            buttonavaliar.setText("Avaliado");
+            buttonavaliar.setBackgroundResource(R.drawable.buttondesf);
+            buttonavaliar.setTextAppearance(this, R.style.ButtonDesf);
+        } else {
+            buttonavaliar.setText("Avaliar");
+            buttonavaliar.setBackgroundResource(R.drawable.buttonfunc);
+            buttonavaliar.setTextAppearance(this, R.style.ButtonFavo);
         }
     }
 

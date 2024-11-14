@@ -33,6 +33,7 @@ import br.com.spring.rejew.projectrejew.entity.Livro;
 import br.com.spring.rejew.projectrejew.entity.Usuario;
 import br.com.spring.rejew.projectrejew.repository.LivroRepository;
 import br.com.spring.rejew.projectrejew.repository.UsuarioRepository;
+import jakarta.transaction.Transactional;
 
 @RestController
 @RequestMapping("/usuarios")
@@ -212,20 +213,26 @@ public class UsuarioController {
     @PostMapping("/{emailEntrada}/favoritar/{isbnLivro}")
     public ResponseEntity<String> favoritarLivro(@PathVariable String emailEntrada, @PathVariable Long isbnLivro) {
         Usuario usuario = usuarioRepository.buscarUsuarioPorEmail(emailEntrada);
+        if (usuario == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuário não encontrado");
+        }
         Optional<Livro> optionalLivro = livroRepository.findById(isbnLivro); 
-        Set<Livro> livrosF = usuarioRepository.favoritadoPeloUsuario(emailEntrada);
+        if (!optionalLivro.isPresent()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Livro não encontrado");
+        }
         
-        if (optionalLivro.isPresent()) {
-            Livro livro = optionalLivro.get();         
-            if (!livrosF.contains(livro)) {
-                usuario.getLivros().add(livro);
-                usuarioRepository.save(usuario); 
-                return ResponseEntity.ok("Livro foi favoritado");
-            }
-            
-        } 
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Dados não encontrados");
+        Livro livro = optionalLivro.get();
+        Set<Livro> livrosFavoritados = usuario.getLivros();
+
+        if (livrosFavoritados.contains(livro)) {
+            return ResponseEntity.badRequest().body("O livro já foi favoritado anteriormente");
+        }
+        usuario.getLivros().add(livro);
+        usuarioRepository.save(usuario); 
+        return ResponseEntity.ok("Livro favoritado com sucesso");
+       
     }
+
 
     @DeleteMapping("/{emailEntrada}/desfavoritar/{isbnLivro}")
     public ResponseEntity<String> desfavoritarLivro(@PathVariable String emailEntrada, @PathVariable Long isbnLivro) {

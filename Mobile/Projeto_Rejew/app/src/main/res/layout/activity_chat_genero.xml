@@ -27,6 +27,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/nomeGenero"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/chat"
@@ -38,7 +39,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/barraMensagem"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginBottom="44dp"
@@ -50,32 +51,41 @@
         app:layout_constraintHorizontal_bias="0.288"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <View
-        android:id="@+id/view7"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="44dp"
-        android:background="@drawable/circulo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editText5" />
-
     <ImageView
+        android:id="@+id/enviar"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:background="@drawable/enviar"
-        app:layout_constraintBottom_toBottomOf="@+id/view7"
-        app:layout_constraintEnd_toEndOf="@+id/view7"
         android:layout_marginEnd="6dp"
         android:layout_marginBottom="3dp"
-        app:layout_constraintStart_toStartOf="@+id/view7" />
+        android:background="@drawable/enviar"
+        android:layout_marginStart="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/barraMensagem"
+        app:layout_constraintStart_toEndOf="@+id/barraMensagem" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView_Chat"
         android:layout_width="409dp"
         android:layout_height="715dp"
-        app:layout_constraintBottom_toTopOf="@+id/editText5"
+        app:layout_constraintBottom_toTopOf="@+id/barraMensagem"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view6" />
+
+    <ImageView
+        android:id="@+id/imagemLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="102dp"
+        tools:layout_editor_absoluteY="233dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageView
+        android:id="@+id/imagemFundo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="166dp"
+        tools:layout_editor_absoluteY="560dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

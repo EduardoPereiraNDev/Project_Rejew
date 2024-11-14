@@ -1,5 +1,6 @@
 package com.example.projeto_rejew.api;
 
+import com.example.projeto_rejew.entity.Comentario;
 import com.example.projeto_rejew.entity.Mensagem;
 
 import java.util.List;
@@ -28,9 +29,12 @@ public interface MensagemApi {
     @POST("mensagens")
     Call<Mensagem> salvarMensagem(@Body Mensagem mensagem);
 
+    @POST("mensagens")
+    Call<Mensagem> enviarMensagem(@Body Mensagem mensagem);
+
     @PUT("mensagens/{id}")
     Call<Mensagem> atualizarMensagem(@Path("id") Long id, @Body Mensagem mensagem);
 
     @DELETE("mensagens/{id}")
-    Call<Void> deletarMensagem(@Path("id") Long id);
+    Call<Void> deletarMensagem(@Path("id") Long idMensagem);
 }

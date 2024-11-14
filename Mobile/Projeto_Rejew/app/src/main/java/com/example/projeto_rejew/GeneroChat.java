@@ -23,6 +23,35 @@ public class GeneroChat extends AppCompatActivity {
             return insets;
         });
     }
+    public void goToChatGenero(View view) {
+        String generoChat = "";
+
+        switch (view.getId()) {
+            case R.id.aventuraChat:
+                generoChat = "Aventura";
+                break;
+            case R.id.terrorChat:
+                generoChat = "Terror";
+                break;
+            case R.id.ficcaocientificaChat:
+                generoChat = "Ficção-Científica";
+                break;
+            case R.id.romanceChat:
+                generoChat = "Romance";
+                break;
+            case R.id.infantilChat:
+                generoChat = "Infantil";
+                break;
+            case R.id.culinariaChat:
+                generoChat = "Culinária";
+                break;
+        }
+
+        Intent intent = new Intent(GeneroChat.this, Chat_Genero.class);
+        intent.putExtra("generoChat", generoChat);
+        startActivity(intent);
+    }
+
     public void chatsPaginicial(View v) {
         Intent intent = new Intent(GeneroChat.this, CatalogoRejew.class);
         startActivity(intent);
