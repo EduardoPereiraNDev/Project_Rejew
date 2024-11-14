@@ -27,33 +27,11 @@ public class MensagemAPIController {
         void onFailure(Throwable t);
     }
 
-    // Construtor
     public MensagemAPIController(RetrofitClient retrofitClient) {
         this.retrofitClient = retrofitClient;
         this.mensagemApi = retrofitClient.getRetrofit().create(MensagemApi.class);
     }
 
-    // Método para salvar uma mensagem
-    public void salvarMensagem(Mensagem mensagem, MensagemCallback responseCallback) {
-        Call<Mensagem> call = mensagemApi.salvarMensagem(mensagem);
-        call.enqueue(new Callback<Mensagem>() {
-            @Override
-            public void onResponse(Call<Mensagem> call, Response<Mensagem> response) {
-                if (response.isSuccessful() && response.body() != null) {
-                    responseCallback.onSuccess(response.body());
-                } else {
-                    Log.e("API Error", "Erro ao salvar mensagem: " + response.code());
-                    responseCallback.onFailure(new Exception("Erro ao salvar mensagem"));
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Mensagem> call, Throwable t) {
-                Log.e("API Error", "Falha na chamada: " + t.getMessage());
-                responseCallback.onFailure(t);
-            }
-        });
-    }
 
     // Método para deletar uma mensagem
     public void deletarMensagem(Long idMensagem, MensagemCallback responseCallback) {
@@ -121,9 +99,9 @@ public class MensagemAPIController {
         });
     }
 
-    // Método para enviar uma nova mensagem
     public void enviarMensagem(Mensagem mensagem, MensagemCallback responseCallback) {
-        Log.d("API Call", "Enviando mensagem para o usuário " + mensagem.getUsuarioMensagem().getEmailEntrada());
+        Log.d("API Call", "Enviando mensagem: " + mensagem.toString());
+
         Call<Mensagem> call = mensagemApi.enviarMensagem(mensagem);
         call.enqueue(new Callback<Mensagem>() {
             @Override
@@ -133,20 +111,15 @@ public class MensagemAPIController {
                     Log.d("API Response", "Mensagem enviada com sucesso: " + response.body().toString());
                     responseCallback.onSuccess(response.body());
                 } else {
-                    if (response.errorBody() != null) {
-                        try {
-                            String errorBody = response.errorBody().string();
-                            Log.e("API Error", "Corpo da resposta de erro: " + errorBody);
-                        } catch (IOException e) {
-                            Log.e("API Error", "Erro ao ler corpo da resposta de erro: " + e.getMessage());
-                        }
-                    } else {
-                        Log.e("API Error", "Erro sem corpo de resposta");
+                    try {
+                        String errorBody = response.errorBody() != null ? response.errorBody().string() : "Corpo vazio";
+                        Log.e("API Error", "Erro ao enviar mensagem - Código: " + response.code() + " - Corpo: " + errorBody);
+                        responseCallback.onFailure(new Exception("Erro ao enviar mensagem: " + errorBody));
+                    } catch (IOException e) {
+                        Log.e("API Error", "Erro ao processar erro: " + e.getMessage());
                     }
-                    responseCallback.onFailure(new Exception("Erro ao enviar mensagem: " + response.code()));
                 }
             }
-
             @Override
             public void onFailure(Call<Mensagem> call, Throwable t) {
                 Log.e("API Error", "Falha ao enviar mensagem: " + t.getMessage());
@@ -154,4 +127,5 @@ public class MensagemAPIController {
             }
         });
     }
+
 }

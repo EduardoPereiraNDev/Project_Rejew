@@ -2,6 +2,8 @@ package com.example.projeto_rejew;
 
 import android.content.Context;
 import android.graphics.drawable.GradientDrawable;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -137,16 +139,15 @@ public class AdapterComentario extends RecyclerView.Adapter<AdapterComentario.Co
         holder.dataComentario.setText(comentario.getDataComentario());
         Long idComentario = comentario.getIdComentario();
 
-
         comentarioAPIController.buscarUsuarioPorComentario(idComentario, new ComentarioAPIController.ComentarioCallback() {
             @Override
             public void onSuccessUsuario(Usuario usuarioAutorComentario) {
                 if (usuarioAutorComentario != null && usuarioAutorComentario.getEmailEntrada().equals(usuarioPe.getEmailEntrada())) {
+
                     holder.menuTresPontos.setVisibility(View.VISIBLE);
                 } else {
                     holder.menuTresPontos.setVisibility(View.GONE);
                 }
-
                 holder.nomeUsuario.setText(usuarioAutorComentario.getNomeUsuario());
 
                 usuarioAPIController.carregarImagemPerfil(usuarioAutorComentario.getCaminhoImagem(), new UsuarioAPIController.UsuarioCallback() {
@@ -159,24 +160,30 @@ public class AdapterComentario extends RecyclerView.Adapter<AdapterComentario.Co
                                 .into(holder.imgFotoPerfil);
                     }
 
-                    @Override public void onFailure(Throwable t) {
+                    @Override
+                    public void onFailure(Throwable t) {
                         holder.imgFotoPerfil.setImageResource(R.drawable.imagedefault);
                     }
-                    @Override public void onSuccessList(List<Usuario> usuarios) {}
-                    @Override public void onSuccessListL(List<Livro> livros) {}
 
                     @Override
-                    public void onSuccessResponse(ResponseBody body) {
-
-                    }
+                    public void onSuccessList(List<Usuario> usuarios) {}
+                    @Override
+                    public void onSuccessListL(List<Livro> livros) {}
 
                     @Override
-                    public void onSuccessString(String string) {
-                    }
-                    @Override public void onSuccess(Usuario usuario) {}
-                    @Override public void onSuccessBoolean(Boolean favoritado) {}
-                    @Override public void onSuccessInt(Integer integer) {}
+                    public void onSuccessResponse(ResponseBody body) {}
 
+                    @Override
+                    public void onSuccessString(String string) {}
+
+                    @Override
+                    public void onSuccess(Usuario usuario) {}
+
+                    @Override
+                    public void onSuccessBoolean(Boolean favoritado) {}
+
+                    @Override
+                    public void onSuccessInt(Integer integer) {}
                 });
             }
 
@@ -187,23 +194,19 @@ public class AdapterComentario extends RecyclerView.Adapter<AdapterComentario.Co
                 holder.imgFotoPerfil.setImageResource(R.drawable.imagedefault);
                 holder.menuTresPontos.setVisibility(View.GONE);
             }
-
-            // Métodos não utilizados do callback
             @Override public void onSuccess(Comentario comentario) {}
 
             @Override
-            public void onSuccessString(String string) {
-
-            }
+            public void onSuccessString(String string) {}
 
             @Override
-            public void onSuccessResponse(ResponseBody responseBody) {
-
-            }
+            public void onSuccessResponse(ResponseBody responseBody) {}
 
             @Override public void onSuccessList(List<Comentario> ComentarioL) {}
         });
+
     }
+
 
 
     @Override

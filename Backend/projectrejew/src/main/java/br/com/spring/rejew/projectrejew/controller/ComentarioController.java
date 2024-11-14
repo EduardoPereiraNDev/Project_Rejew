@@ -72,7 +72,6 @@ public class ComentarioController {
     @PostMapping
     public ResponseEntity<Comentario> adicionarComentario(@RequestBody Comentario comentario){
     	Comentario comentarioSalvo = comentarioRepository.save(comentario);
-    	Usuario usuario = usuarioRepository.buscarUsuarioPorEmail(comentario.getUsuarioComent().getEmailEntrada());
         return ResponseEntity.ok(comentarioSalvo);
     }
     

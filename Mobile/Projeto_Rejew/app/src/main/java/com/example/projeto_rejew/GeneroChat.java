@@ -5,12 +5,26 @@ import android.os.Bundle;
 import android.view.View;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.projeto_rejew.api.ChatAPIController;
+import com.example.projeto_rejew.api.RetrofitClient;
+import com.example.projeto_rejew.entity.Chat;
+
+import java.util.List;
 
 public class GeneroChat extends AppCompatActivity {
+
+    private AdapterChats chatAdapter;
+    private RecyclerView recyclerView;
+    private ChatAPIController chatAPIController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,35 +36,50 @@ public class GeneroChat extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-    }
-    public void goToChatGenero(View view) {
-        String generoChat = "";
 
-        switch (view.getId()) {
-            case R.id.aventuraChat:
-                generoChat = "Aventura";
-                break;
-            case R.id.terrorChat:
-                generoChat = "Terror";
-                break;
-            case R.id.ficcaocientificaChat:
-                generoChat = "Ficção-Científica";
-                break;
-            case R.id.romanceChat:
-                generoChat = "Romance";
-                break;
-            case R.id.infantilChat:
-                generoChat = "Infantil";
-                break;
-            case R.id.culinariaChat:
-                generoChat = "Culinária";
-                break;
-        }
+        RetrofitClient retrofitClient = new RetrofitClient();
+        chatAPIController = new ChatAPIController(retrofitClient);
 
-        Intent intent = new Intent(GeneroChat.this, Chat_Genero.class);
-        intent.putExtra("generoChat", generoChat);
-        startActivity(intent);
+        recyclerView = findViewById(R.id.recyclerChats);
+        int spanCount = 3;
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, spanCount, GridLayoutManager.HORIZONTAL, false);
+
+        recyclerView.setLayoutManager(gridLayoutManager);
+
+        carregarChat();
     }
+
+    private void carregarChat() {
+        chatAPIController.carregarChats(new ChatAPIController.ChatCallback() {
+
+            @Override
+            public void onSuccess(Chat chat) {
+
+            }
+
+            @Override
+            public void onSuccessByte(byte[] bytes) {
+
+            }
+
+            @Override
+            public void onSuccessList(List<Chat> chatL) {
+                chatAdapter = new AdapterChats(GeneroChat.this, chatL, chatAPIController);
+                recyclerView.setAdapter(chatAdapter);
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                AlertDialog.Builder alerta = new AlertDialog.Builder(GeneroChat.this);
+                alerta.setCancelable(false);
+                alerta.setTitle("Falha ao recarregar o catálogo");
+                alerta.setMessage("Error: " + t.getMessage());
+                alerta.setNegativeButton("Voltar", null);
+                alerta.create().show();
+            }
+        });
+    }
+
 
     public void chatsPaginicial(View v) {
         Intent intent = new Intent(GeneroChat.this, CatalogoRejew.class);

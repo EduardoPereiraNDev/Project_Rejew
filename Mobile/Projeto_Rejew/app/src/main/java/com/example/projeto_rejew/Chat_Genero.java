@@ -18,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -34,6 +35,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import okhttp3.ResponseBody;
 
 public class Chat_Genero extends AppCompatActivity implements MensagemDeleteCallBack {
@@ -50,13 +52,11 @@ public class Chat_Genero extends AppCompatActivity implements MensagemDeleteCall
     private ChatAPIController chatAPIController;
     private TextView nomeGenero;
     private ImageView imagemFundo;
-    private ImageView imagemLogo;
+    private CircleImageView imagemLogo;
 
-    private Handler handler = new Handler();  // Handler para polling
-    private static final int POLLING_INTERVAL = 5000; // 5 segundos
+    private Handler handler = new Handler();
+    private static final int POLLING_INTERVAL = 5000;
 
-    public Chat_Genero() {
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,37 +64,34 @@ public class Chat_Genero extends AppCompatActivity implements MensagemDeleteCall
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_chat_genero);
 
-        SharedPreferences sharedPreferences = getSharedPreferences("usuarioDados", MODE_PRIVATE);
-        email = sharedPreferences.getString("emailEntrada", null);
-        carregarUsuario(email);
-
         RetrofitClient retrofitClient = new RetrofitClient();
         mensagemAPIController = new MensagemAPIController(retrofitClient);
         usuarioAPIController = new UsuarioAPIController(retrofitClient);
         chatAPIController = new ChatAPIController(retrofitClient);
 
         mensagem = findViewById(R.id.barraMensagem);
+
         recyclerView = findViewById(R.id.recyclerView_Chat);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
 
         nomeGenero = findViewById(R.id.nomeGenero);
         imagemLogo = findViewById(R.id.imagemLogo);
         imagemFundo = findViewById(R.id.imagemFundo);
 
-        idChat = getIntent().getLongExtra("idChat", -1);
-
-        generoChat = getIntent().getStringExtra("generoChat");
-        TextView tituloGenero = findViewById(R.id.nomeGenero);
-        tituloGenero.setText(generoChat);
+        idChat = getIntent().getLongExtra("IdChat", -1);
 
         usuario = new Usuario();
         chat = new Chat();
 
+        SharedPreferences sharedPreferences = getSharedPreferences("usuarioDados", MODE_PRIVATE);
+        email = sharedPreferences.getString("emailEntrada", null);
+
+        carregarUsuario(email);
+        buscarChatPorID();
+
         configurarInsets();
-
-        buscarChatPorID(idChat);
-        buscarMensagemChat(generoChat);
-
-        // Inicie o polling
         startPolling();
     }
 
@@ -157,32 +154,12 @@ public class Chat_Genero extends AppCompatActivity implements MensagemDeleteCall
         });
     }
 
-    @Override
-    public void onMensagemDeleted() {
-        Toast.makeText(this, "Mensagem deletada com sucesso!", Toast.LENGTH_SHORT).show();
-        buscarMensagemChat(generoChat);
-    }
-
-    private void showAlert(String title, String message) {
-        AlertDialog.Builder alerta = new AlertDialog.Builder(Chat_Genero.this);
-        alerta.setCancelable(false);
-        alerta.setTitle(title);
-        alerta.setMessage(message);
-        alerta.setNegativeButton("Voltar", null);
-        alerta.create().show();
-    }
-
-    public void chamarBarraMensagem(View view) {
-        enviarMensagem();
-    }
-
-    private void enviarMensagem() {
+    public void enviarMensagem(View view) {
         String conteudoMensagem = mensagem.getText().toString().trim();
         if (conteudoMensagem.isEmpty()) {
             Toast.makeText(this, "A mensagem não pode estar vazia", Toast.LENGTH_SHORT).show();
             return;
         }
-
         SimpleDateFormat formataData = new SimpleDateFormat("dd/MM/yyyy");
         String dataFormatada = formataData.format(new Date());
 
@@ -190,8 +167,7 @@ public class Chat_Genero extends AppCompatActivity implements MensagemDeleteCall
         mensagemAPIController.enviarMensagem(mensagem, new MensagemAPIController.MensagemCallback() {
             @Override
             public void onSuccess(Mensagem mensagem) {
-                showAlert("Sucesso", "Sua mensagem foi enviada!");
-                buscarMensagemChat(generoChat);
+                buscarMensagemChat();
             }
 
             @Override
@@ -221,8 +197,8 @@ public class Chat_Genero extends AppCompatActivity implements MensagemDeleteCall
         });
     }
 
-    private void carregarImagem(String caminhoImagem, ImageView imageView, int largura, int altura) {
-        chatAPIController.retornarImagem(caminhoImagem, new ChatAPIController.ChatCallback() {
+    private void carregarImagemFundo(String caminhoImagemFundo) {
+        chatAPIController.retornarImagemFundo(caminhoImagemFundo, new ChatAPIController.ChatCallback() {
             @Override
             public void onSuccess(Chat chat) {
 
@@ -232,9 +208,9 @@ public class Chat_Genero extends AppCompatActivity implements MensagemDeleteCall
             public void onSuccessByte(byte[] bytes) {
                 Glide.with(Chat_Genero.this)
                         .load(bytes)
-                        .override(largura, altura)
+                        .override(1080, 1920)
                         .centerCrop()
-                        .into(imageView);
+                        .into(imagemFundo);
             }
 
             @Override
@@ -244,26 +220,51 @@ public class Chat_Genero extends AppCompatActivity implements MensagemDeleteCall
 
             @Override
             public void onFailure(Throwable t) {
+                imagemFundo.setImageResource(R.drawable.imagedefault);
                 showAlert("Falha ao carregar a imagem", "Erro: " + t.getMessage());
             }
         });
     }
 
-    private void carregarImagemFundo(String caminhoImagemFundo) {
-        carregarImagem(caminhoImagemFundo, imagemFundo, 1080, 1920);
-    }
-
     private void carregarImagemLogo(String caminhoImagemLogo) {
-        carregarImagem(caminhoImagemLogo, imagemLogo, 200, 200);
+        chatAPIController.retornarImagem(caminhoImagemLogo, new ChatAPIController.ChatCallback() {
+            @Override
+            public void onSuccess(Chat chat) {
+
+            }
+
+            @Override
+            public void onSuccessByte(byte[] bytes) {
+                Glide.with(Chat_Genero.this)
+                        .load(bytes)
+                        .override(400, 400)
+                        .centerCrop()
+                        .into(imagemLogo);
+            }
+
+            @Override
+            public void onSuccessList(List<Chat> chatList) {
+
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                imagemLogo.setImageResource(R.drawable.imagedefault);
+                showAlert("Falha ao carregar a imagem", "Erro: " + t.getMessage());
+            }
+        });
     }
 
-    private void buscarChatPorID(long idChat) {
+    private void buscarChatPorID() {
         chatAPIController.buscarChatPorId(idChat, new ChatAPIController.ChatCallback() {
             @Override
             public void onSuccess(Chat chatEncontrado) {
+                chat = chatEncontrado;
+                generoChat = chatEncontrado.getGeneroChat();
                 nomeGenero.setText(chatEncontrado.getGeneroChat());
                 carregarImagemFundo(chatEncontrado.getCaminhoImagemFundoChat());
                 carregarImagemLogo(chatEncontrado.getCaminhoImagemLogo());
+                buscarMensagemChat();
             }
 
             @Override
@@ -283,7 +284,7 @@ public class Chat_Genero extends AppCompatActivity implements MensagemDeleteCall
         });
     }
 
-    private void buscarMensagemChat(String generoChat) {
+    private void buscarMensagemChat() {
         mensagemAPIController.buscarMensagensPorChat(generoChat, new MensagemAPIController.MensagemCallback() {
             @Override
             public void onSuccess(Mensagem mensagem) {
@@ -324,15 +325,29 @@ public class Chat_Genero extends AppCompatActivity implements MensagemDeleteCall
         });
     }
 
-    // Método para iniciar o polling
     private void startPolling() {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                buscarMensagemChat(generoChat); // Atualiza as mensagens
-                handler.postDelayed(this, POLLING_INTERVAL); // Continua o polling
+                buscarMensagemChat();
+                handler.postDelayed(this, POLLING_INTERVAL);
             }
         }, POLLING_INTERVAL);
+    }
+
+    @Override
+    public void onMensagemDeleted() {
+        Toast.makeText(this, "Mensagem deletada com sucesso!", Toast.LENGTH_SHORT).show();
+        buscarMensagemChat();
+    }
+
+    private void showAlert(String title, String message) {
+        AlertDialog.Builder alerta = new AlertDialog.Builder(Chat_Genero.this);
+        alerta.setCancelable(false);
+        alerta.setTitle(title);
+        alerta.setMessage(message);
+        alerta.setNegativeButton("Voltar", null);
+        alerta.create().show();
     }
 
     @Override

@@ -67,8 +67,8 @@ public class LivroAdapter extends RecyclerView.Adapter<LivroAdapter.LivroViewHol
         });
         holder.nomeLivro.setText(livro.getNomeLivro());
         holder.nomeAutor.setText(livro.getAutorLivro());
-        int larguraPadrao = 80;
-        int alturaPadrao = 110;
+        int larguraPadrao = 160;
+        int alturaPadrao = 220;
 
         try {
             int cor = Color.parseColor(livro.getCorPrimaria());

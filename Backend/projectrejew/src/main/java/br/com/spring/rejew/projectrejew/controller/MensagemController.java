@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.spring.rejew.projectrejew.entity.Chat;
 import br.com.spring.rejew.projectrejew.entity.Mensagem;
+import br.com.spring.rejew.projectrejew.entity.Usuario;
+import br.com.spring.rejew.projectrejew.repository.ChatRepository;
 import br.com.spring.rejew.projectrejew.repository.MensagemRepository;
 
 @RestController
@@ -24,6 +26,9 @@ public class MensagemController {
 
     @Autowired
     private MensagemRepository mensagemRepository;
+    
+    @Autowired
+    private ChatRepository chatRepository;
 
     // Listar todas as mensagens
     @GetMapping
@@ -52,13 +57,30 @@ public class MensagemController {
         List<Mensagem> mensagens = mensagemRepository.findByUsuarioMensagem(usuario);
         return ResponseEntity.ok(mensagens);
     }
+    
+    @GetMapping("/usuario/mensagem/{idMensagem}")
+    public ResponseEntity<Usuario> buscarMensagensPorUsuario(@PathVariable Long idMensagem) {
+        Usuario usuario  = mensagemRepository.findUsuarioByMensagemId(idMensagem);
+        return ResponseEntity.ok(usuario);
+    }
 
     // Salvar uma nova mensagem
     @PostMapping
     public ResponseEntity<Mensagem> salvarMensagem(@RequestBody Mensagem mensagem) {
+    	System.out.println(mensagem.getDataMensagem() + mensagem.getTextoMensagem());
+        if (mensagem.getChatMensagem() != null && mensagem.getChatMensagem().getIdChat() == null) {
+            return ResponseEntity.badRequest().body(null);
+        }
+        if (mensagem.getChatMensagem().getIdChat() == null) {
+            Chat chatSalvo = mensagem.getChatMensagem();
+            chatSalvo = chatRepository.save(chatSalvo);
+            mensagem.setChatMensagem(chatSalvo); 
+        }
+
         Mensagem mensagemSalva = mensagemRepository.save(mensagem);
         return ResponseEntity.ok(mensagemSalva);
     }
+
 
     // Atualizar uma mensagem existente
     @PutMapping("/{id}")

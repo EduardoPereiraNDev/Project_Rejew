@@ -26,8 +26,6 @@ public interface MensagemApi {
     @GET("mensagens/usuario/{usuario}")
     Call<List<Mensagem>> buscarMensagensPorUsuario(@Path("usuario") String usuario);
 
-    @POST("mensagens")
-    Call<Mensagem> salvarMensagem(@Body Mensagem mensagem);
 
     @POST("mensagens")
     Call<Mensagem> enviarMensagem(@Body Mensagem mensagem);

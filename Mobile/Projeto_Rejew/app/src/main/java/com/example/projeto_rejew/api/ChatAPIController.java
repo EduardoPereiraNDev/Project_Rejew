@@ -3,6 +3,7 @@ package com.example.projeto_rejew.api;
 import android.util.Log;
 
 import com.example.projeto_rejew.entity.Chat;
+import com.example.projeto_rejew.entity.Livro;
 
 import java.util.List;
 
@@ -26,7 +27,6 @@ public class ChatAPIController {
         this.chatApi = retrofitClient.getRetrofit().create(ChatApi.class);
     }
 
-    // Método para carregar todos os chats
     public void carregarChats(ChatCallback callback) {
         chatApi.listarTodosChats().enqueue(new Callback<List<Chat>>() {
             @Override
@@ -47,28 +47,52 @@ public class ChatAPIController {
         });
     }
 
-    // Método para buscar um chat específico pelo ID
-    public void buscarChatPorId(long idChat, ChatCallback callback) {
-        chatApi.buscarChatPorId(idChat).enqueue(new Callback<Chat>() {
+    public void buscarChatPorId( Long id_chat , ChatAPIController.ChatCallback responseCallback) {
+        Call<Chat> call = chatApi.buscarChatPorId(id_chat);
+        call.enqueue(new Callback<Chat>() {
             @Override
             public void onResponse(Call<Chat> call, Response<Chat> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    callback.onSuccess(response.body());
+                    responseCallback.onSuccess(response.body());
                 } else {
-                    Log.e("API Error", "Erro ao carregar o chat: " + response.code());
-                    callback.onFailure(new Exception("Erro ao carregar o chat"));
+                    Log.e("API Error", "Erro ao carregar livros: " + response.code());
+                    responseCallback.onFailure(new Exception("Erro ao carregar livros"));
+                }
+            }
+            @Override
+            public void onFailure(Call<Chat> call, Throwable t) {
+                Log.e("API Error", "Falha na chamada: " + t.getMessage());
+                responseCallback.onFailure(t);
+            }
+        });
+    }
+
+    public void retornarImagemFundo(String caminhoImgCapa, ChatCallback callback) {
+        chatApi.retornarImagemFundo(caminhoImgCapa).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    try {
+                        byte[] imageBytes = response.body().bytes();
+                        callback.onSuccessByte(imageBytes);
+                    } catch (Exception e) {
+                        Log.e("API Error", "Erro ao processar a imagem: " + e.getMessage());
+                        callback.onFailure(e);
+                    }
+                } else {
+                    Log.e("API Error", "Erro ao baixar a imagem: " + response.code());
+                    callback.onFailure(new Exception("Erro ao baixar a imagem"));
                 }
             }
 
             @Override
-            public void onFailure(Call<Chat> call, Throwable t) {
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
                 Log.e("API Error", "Falha na chamada: " + t.getMessage());
                 callback.onFailure(t);
             }
         });
     }
 
-    // Método para retornar imagem associada ao chat
     public void retornarImagem(String caminhoImgCapa, ChatCallback callback) {
         chatApi.retornarImagem(caminhoImgCapa).enqueue(new Callback<ResponseBody>() {
             @Override

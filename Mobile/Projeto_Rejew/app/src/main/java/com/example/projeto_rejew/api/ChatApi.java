@@ -23,8 +23,11 @@ public interface ChatApi {
     @GET("chats/{id}")
     Call<Chat> buscarChatPorId(@Path("id") Long id);
 
-    @GET("chats/imagem/{caminho}")
+    @GET("chats/imagemLogo/{caminho}")
     Call<ResponseBody> retornarImagem(@Path("caminho") String caminho);
+
+    @GET("chats/imagemFundo/{caminho}")
+    Call<ResponseBody> retornarImagemFundo(@Path("caminho") String caminho);
 
     @GET("chats/chat/{genero}")
     Call<List<Chat>> buscarChatPorGenero(@Path("genero") String genero);

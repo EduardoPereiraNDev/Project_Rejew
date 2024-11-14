@@ -22,8 +22,8 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
     private List<Chat> chats;
     private final Context context;
     private final ChatAPIController chatAPIController;
-    private static final int LARGURA_PADRAO = 40;
-    private static final int ALTURA_PADRAO = 40;
+    private static final int LARGURA_PADRAO = 200;
+    private static final int ALTURA_PADRAO = 200;
 
     public ChatAdapter(Context context, List<Chat> chats, ChatAPIController chatAPIController) {
         this.context = context;

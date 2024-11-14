@@ -116,12 +116,30 @@ public class ChatController {
         }
     }
     
-    @GetMapping("/imagem/{caminho}")
+    @GetMapping("/imagemLogo/{caminho}")
     public ResponseEntity<byte[]> retornarImagem(@PathVariable String caminho) {
         if (caminho == null || caminho.trim().isEmpty()) {
             return ResponseEntity.badRequest().body(null);
         }
         File imagemArquivo = new File(UPLOAD_DIR + caminho);
+        if (!imagemArquivo.exists()) {
+            return ResponseEntity.notFound().build();
+        }
+        try {
+            byte[] bytes = Files.readAllBytes(imagemArquivo.toPath());
+            return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(bytes);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
+    }
+    
+    @GetMapping("/imagemFundo/{caminho}")
+    public ResponseEntity<byte[]> retornarImagemFundo(@PathVariable String caminho) {
+        if (caminho == null || caminho.trim().isEmpty()) {
+            return ResponseEntity.badRequest().body(null);
+        }
+        File imagemArquivo = new File(UPLOAD_DIR2 + caminho);
         if (!imagemArquivo.exists()) {
             return ResponseEntity.notFound().build();
         }

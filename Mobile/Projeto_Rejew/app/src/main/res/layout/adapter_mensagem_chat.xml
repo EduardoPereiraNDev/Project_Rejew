@@ -5,58 +5,63 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <View
         android:id="@+id/msguser"
-        android:layout_width="166dp"
-        android:layout_height="87dp"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/borda_msg_chat"
-        android:padding="8dp"
-        android:text="txtbase txtbase txtbase txtbase txtbase txtbase txtbase"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:padding="25dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.055" />
+        app:layout_constraintTop_toBottomOf="@+id/nomeuser1"
+        />
 
-    <TextView
+    <View
         android:id="@+id/msgoutros"
-        android:layout_width="166dp"
-        android:layout_height="87dp"
-        android:layout_marginStart="32dp"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
         android:background="@drawable/borda_msg_chat"
-        android:padding="8dp"
-        android:text="txtbase txtbase txtbase txtbase txtbase txtbase txtbase"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:layout_marginStart="32dp"
+        android:padding="25dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.256" />
-
-    <TextView
-        android:id="@+id/nomeuser1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.864"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.028" />
+        app:layout_constraintTop_toBottomOf="@+id/nomeuser2" />
 
     <TextView
         android:id="@+id/nomeuser2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.116"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/msgoutros"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.214" />
+         />
+
+    <TextView
+        android:id="@+id/conteudouser2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/msgoutros"
+        app:layout_constraintTop_toTopOf="@+id/msgoutros" />
+
+    <TextView
+        android:id="@+id/conteudouser1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/msguser"
+        app:layout_constraintTop_toTopOf="@+id/msguser" />
+
+    <TextView
+        android:id="@+id/nomeuser1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/msguser"
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
