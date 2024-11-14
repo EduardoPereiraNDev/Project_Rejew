@@ -141,7 +141,7 @@ public class AdapterComentario extends RecyclerView.Adapter<AdapterComentario.Co
         comentarioAPIController.buscarUsuarioPorComentario(idComentario, new ComentarioAPIController.ComentarioCallback() {
             @Override
             public void onSuccessUsuario(Usuario usuarioAutorComentario) {
-                if (usuarioAutorComentario != null && usuarioAutorComentario.equals(usuarioPe)) {
+                if (usuarioAutorComentario != null && usuarioAutorComentario.getEmailEntrada().equals(usuarioPe.getEmailEntrada())) {
                     holder.menuTresPontos.setVisibility(View.VISIBLE);
                 } else {
                     holder.menuTresPontos.setVisibility(View.GONE);
@@ -211,8 +211,10 @@ public class AdapterComentario extends RecyclerView.Adapter<AdapterComentario.Co
         return comentarios.size();
     }
 
-    public void atualizarLista(List<Comentario> novosComentarios) {
-        this.comentarios = novosComentarios;
+    public void atualizarLista(List<Comentario> novaLista) {
+        Log.d("AdapterComentario", "atualizarLista chamado com " + novaLista.size() + " comentários.");
+        this.comentarios.clear();
+        this.comentarios.addAll(novaLista);
         notifyDataSetChanged();
     }
 }

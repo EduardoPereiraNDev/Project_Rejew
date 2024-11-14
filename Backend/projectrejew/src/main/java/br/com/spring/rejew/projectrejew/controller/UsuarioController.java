@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -39,13 +40,9 @@ import jakarta.transaction.Transactional;
 @RequestMapping("/usuarios")
 public class UsuarioController {
 
-<<<<<<< HEAD
-    private static final String UPLOAD_DIR = "C:/Users/rm2965/Desktop/Project_Rejew/Database/UploadsIMGUsuarioPerfil/";
-    private static final String UPLOAD_DIR2 = "C:/Users/rm2965/Desktop/Project_Rejew/Database/UploadsIMGUsuarioFundo/";
-=======
-    private static final String UPLOAD_DIR = "C:/Users/rm3364/Desktop/Project_Rejew/Database/UploadsIMGUsuarioPerfil/";
-    private static final String UPLOAD_DIR2 = "C:/Users/rm3364/Desktop/Project_Rejew/Database/UploadsIMGUsuarioFundo/";
->>>>>>> 1a72cc86e41ca60848ff302b07157257c3e8275e
+    private static final String UPLOAD_DIR = "C:/Users/rm2869/Desktop/Project_Rejew/Database/UploadsIMGUsuarioPerfil/";
+    private static final String UPLOAD_DIR2 = "C:/Users/rm2869/Desktop/Project_Rejew/Database/UploadsIMGUsuarioFundo/";
+
     
     @Autowired
     private UsuarioRepository usuarioRepository;
@@ -358,6 +355,75 @@ public class UsuarioController {
         }
         return ResponseEntity.notFound().build();
     }
+    
+    
+    @PutMapping("/atualizar/{emailEntrada}")
+    public ResponseEntity<Usuario> atualizarUsuario(
+    		 @PathVariable String emailEntrada,
+    		 @RequestParam(value = "imagemPerfil", required = false) MultipartFile imagemPerfil,
+    	     @RequestParam(value = "imagemFundo", required = false) MultipartFile imagemFundo,   
+    	     @RequestParam("recadoPerfil") String recadoPerfil,
+    	     @RequestParam("nomeUsuario") String nomeUsuario,
+    	     @RequestParam("nomePerfil") String nomePerfil,
+    	     @RequestParam("senhaEntrada") String senhaEntrada,
+    	     @RequestParam("dataNascimento") String dataNascimentoStr) {
+
+        Optional<Usuario> optionalUsuario = usuarioRepository.findByEmailEntrada(emailEntrada);
+        if (optionalUsuario.isPresent()) {
+            try {
+                Usuario usuarioAtual = optionalUsuario.get();
+
+                // Atualizar imagem de perfil
+                if (imagemPerfil != null && !imagemPerfil.isEmpty()) {
+                    if (usuarioAtual.getCaminhoImagem() != null && !usuarioAtual.getCaminhoImagem().isEmpty()) {
+                        Path arquivoAntigo = Paths.get(UPLOAD_DIR + usuarioAtual.getCaminhoImagem());
+                        Files.deleteIfExists(arquivoAntigo);
+                    }
+                    String nomeNovo = generateUniqueFilename(extensaoArquivo(imagemPerfil.getOriginalFilename()));
+                    Path path = Paths.get(UPLOAD_DIR + nomeNovo);
+                    Files.write(path, imagemPerfil.getBytes());
+                    usuarioAtual.setCaminhoImagem(nomeNovo);
+                }
+
+                // Atualizar imagem de fundo
+                if (imagemFundo != null && !imagemFundo.isEmpty()) {
+                    if (usuarioAtual.getCaminhoImagemFundo() != null && !usuarioAtual.getCaminhoImagemFundo().isEmpty()) {
+                        Path arquivoAntigoFundo = Paths.get(UPLOAD_DIR2 + usuarioAtual.getCaminhoImagemFundo());
+                        Files.deleteIfExists(arquivoAntigoFundo);
+                    }
+                    String nomeNovoFundo = generateUniqueFilename(extensaoArquivo(imagemFundo.getOriginalFilename()));
+                    Path pathFundo = Paths.get(UPLOAD_DIR2 + nomeNovoFundo);
+                    Files.write(pathFundo, imagemFundo.getBytes());
+                    usuarioAtual.setCaminhoImagemFundo(nomeNovoFundo);
+                }
+
+                // Atualizar campos do usuário
+                usuarioAtual.setNomeUsuario(nomeUsuario.replaceAll("\"", ""));
+                usuarioAtual.setNomePerfil(nomePerfil.replaceAll("\"", ""));
+                usuarioAtual.setEmailEntrada(emailEntrada.replaceAll("\"", ""));
+                usuarioAtual.setSenhaEntrada(senhaEntrada.replaceAll("\"", ""));
+                usuarioAtual.setRecadoPerfil(recadoPerfil.replaceAll("\"", ""));
+
+                // Formatar a data de nascimento
+                dataNascimentoStr = dataNascimentoStr.trim();
+                dataNascimentoStr = dataNascimentoStr.replaceAll("\"", "");  
+                System.out.println("Data recebida para parse: " + dataNascimentoStr);
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                LocalDate dataNascimento = LocalDate.parse(dataNascimentoStr, formatter);
+                usuarioAtual.setDataNascimento(dataNascimento);
+
+                // Salvar alterações no banco de dados
+                Usuario usuarioAtualizado = usuarioRepository.save(usuarioAtual);
+                return ResponseEntity.ok(usuarioAtualizado);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+            }
+        }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    }
+
 
     /*
     @PutMapping("/{emailUsuario}")

@@ -299,6 +299,7 @@ public class LivroInterface extends AppCompatActivity implements ComentarioDelet
                 alerta.setNegativeButton("Ok", null);
                 alerta.create().show();
                 buscarcomntarioLivro(isbn);
+                comentEdit.setText("");
             }
 
             @Override

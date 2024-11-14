@@ -8,10 +8,13 @@ import com.example.projeto_rejew.entity.Usuario;
 import java.util.List;
 import java.util.Set;
 
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.http.Part;
 
 public class UsuarioAPIController {
 
@@ -161,16 +164,16 @@ public class UsuarioAPIController {
         });
     }
 
-    public void atualizarUsuario(Usuario usuario,String emailUsuario, UsuarioAPIController.UsuarioCallback responseCallback) {
-        Log.d("API Call", "Fazendo chamada de Atualização para: " + emailUsuario);
-        Call<Usuario> call = this.usuarioApi.atualizarUsuario(emailUsuario, usuario);
-        call.enqueue(new Callback<Usuario>() {
+    public void atualizarUsuario(MultipartBody.Part imagemPerfil, MultipartBody.Part imagemFundo, String emailEntrada, String recadoPerfil, String nomeUsuario, String nomePerfil, String senhaEntrada, String dataNascimento, UsuarioAPIController.UsuarioCallback responseCallback) {
+        Log.d("API Call", "Fazendo chamada de Atualização para: " + emailEntrada);
+        Call<ResponseBody> call = this.usuarioApi.atualizarUsuario(emailEntrada,imagemPerfil,imagemFundo,recadoPerfil,nomeUsuario,nomePerfil,senhaEntrada,dataNascimento);
+        call.enqueue(new Callback<ResponseBody>() {
             @Override
-            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 Log.d("API Response", "Código de resposta: " + response.code());
                 if (response.isSuccessful() && response.body() != null) {
                     Log.d("API Response", "Usuário atualizado: " + response.body().toString());
-                    responseCallback.onSuccess(response.body());
+                    responseCallback.onSuccessResponse(response.body());
                 } else {
                     Log.e("API Error", "Erro ao atualizar usuário: " + response.errorBody());
                     responseCallback.onFailure(new Exception("Erro: " + response.code()));
@@ -178,7 +181,7 @@ public class UsuarioAPIController {
             }
 
             @Override
-            public void onFailure(Call<Usuario> call, Throwable t) {
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
                 Log.e("API Error", "Falha na chamada: " + t.getMessage());
                 responseCallback.onFailure(t);
             }

@@ -43,7 +43,7 @@ public class ComentarioController {
     public ResponseEntity<List<Comentario>> buscarComentariosPorUsuario(@PathVariable String usuarioComent) {
         List<Comentario> comentarios = comentarioRepository.findByUsuarioComent(usuarioComent);
         if (comentarios.isEmpty()) {
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.ok(Collections.emptyList()); 
         }
         return ResponseEntity.ok(comentarios);
     }
@@ -63,7 +63,7 @@ public class ComentarioController {
     public ResponseEntity<List<Comentario>> buscarComentariosPorLivro(@PathVariable Long idLivro) {
         List<Comentario> comentarios = comentarioRepository.findByLivroComent(idLivro);
         if (comentarios.isEmpty()) {
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.ok(Collections.emptyList()); 
         }
         return ResponseEntity.ok(comentarios);
     }

@@ -50,6 +50,7 @@ public class UsuarioLivroAController {
         }
         
         Double media = notasLivro.stream().mapToDouble(Double::doubleValue).average().orElse(0.0);
+        media = Double.valueOf(String.format("%.1f", media).replace(",", "."));
         return ResponseEntity.ok(media);
     }
     

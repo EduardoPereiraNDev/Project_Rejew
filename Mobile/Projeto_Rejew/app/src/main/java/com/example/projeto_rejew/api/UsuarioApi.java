@@ -48,6 +48,17 @@ public interface UsuarioApi {
             @Path("emailEntrada") String emailEntrada,
             @Path("isbnLivro") long isbnLivro);
 
+    @Multipart
+    @PUT("usuarios/atualizar/{emailEntrada}")
+    Call<ResponseBody> atualizarUsuario( @Path("emailEntrada") String emailEntrada,
+                                         @Part MultipartBody.Part imagemPerfil,
+                                         @Part MultipartBody.Part imagemFundo,
+                                         @Part("recadoPerfil") String recadoPerfil,
+                                         @Part("nomeUsuario") String nomeUsuario,
+                                         @Part("nomePerfil") String nomePerfil,
+                                         @Part("senhaEntrada") String senhaEntrada,
+                                         @Part("dataNascimento") String dataNascimento );
+
     @GET("usuarios/{emailEntrada}/verfavoritado/{isbnLivro}")
     Call <Boolean> verfavoritarLivro(
             @Path("emailEntrada") String emailEntrada,
@@ -81,11 +92,6 @@ public interface UsuarioApi {
     @GET("usuarios/estaSeguindo/{usuarioSeguindoEmail}/{usuarioSeguidoEmail}")
     Call<Boolean> estaSeguindo(@Path("usuarioSeguindoEmail") String usuarioSeguindoEmail,
                                @Path("usuarioSeguidoEmail") String usuarioSeguidoEmail);
-
-
-    @Multipart
-    @PUT("usuarios/{emailUsuario}")
-    Call<Usuario> atualizarUsuario(@Path("emailUsuario") String emailUsuario, @Body Usuario usuario);
 
     @GET("usuarios/imagem/fundo/{caminho}")
     Call<ResponseBody> buscarImagemFundo(@Path("caminho") String caminho);
