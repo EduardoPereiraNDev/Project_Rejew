@@ -1,6 +1,7 @@
 package com.example.projeto_rejew;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,9 @@ import com.example.projeto_rejew.entity.Mensagem;
 import com.example.projeto_rejew.entity.Usuario;
 
 import java.util.List;
+import java.util.Objects;
+
+import okhttp3.ResponseBody;
 
 public class AdapterMensagem extends RecyclerView.Adapter<AdapterMensagem.MensagemViewHolder> {
     private Context context;
@@ -23,18 +27,16 @@ public class AdapterMensagem extends RecyclerView.Adapter<AdapterMensagem.Mensag
     private Usuario usuario;
     private UsuarioAPIController usuarioAPIController;
     private MensagemAPIController mensagemAPIController;
-    private MensagemDeleteCallBack deleteCallback;
 
     // Construtor
     public AdapterMensagem(Context context, List<Mensagem> mensagemList,
                            Usuario usuario, UsuarioAPIController usuarioAPIController,
-                           MensagemAPIController mensagemAPIController, MensagemDeleteCallBack deleteCallback) {
+                           MensagemAPIController mensagemAPIController) {
         this.context = context;
         this.mensagens = mensagemList;
         this.usuario = usuario;
         this.usuarioAPIController = usuarioAPIController;
         this.mensagemAPIController = mensagemAPIController;
-        this.deleteCallback = deleteCallback;
     }
 
     // ViewHolder
@@ -43,6 +45,8 @@ public class AdapterMensagem extends RecyclerView.Adapter<AdapterMensagem.Mensag
         TextView textoMensagemOutro;
         TextView nomePerfil;
         TextView nomePerfilOutro;
+        View msguser;
+        View msgoutros;
 
         public MensagemViewHolder(View itemView) {
             super(itemView);
@@ -51,6 +55,9 @@ public class AdapterMensagem extends RecyclerView.Adapter<AdapterMensagem.Mensag
 
             nomePerfil = itemView.findViewById(R.id.nomeuser1);
             nomePerfilOutro = itemView.findViewById(R.id.nomeuser2);
+
+            msguser = itemView.findViewById(R.id.msguser);
+            msgoutros = itemView.findViewById(R.id.msgoutros);
         }
     }
 
@@ -64,10 +71,56 @@ public class AdapterMensagem extends RecyclerView.Adapter<AdapterMensagem.Mensag
     @Override
     public void onBindViewHolder(@NonNull MensagemViewHolder holder, int position) {
         Mensagem mensagem = mensagens.get(position);
-        
-        holder.itemView.setOnLongClickListener(v -> {
-            deleteCallback.onDelete(mensagem);
-            return true;
+
+        mensagemAPIController.buscarUsuarioPorMensagem(mensagem.getIdMensagem(), new MensagemAPIController.MensagemCallback(){
+
+            @Override
+            public void onSuccess(Mensagem mensagem) {
+            }
+
+            @Override
+            public void onSuccessString(String string) {
+            }
+
+            @Override
+            public void onSuccessResponse(ResponseBody responseBody) {
+            }
+
+            @Override
+            public void onSuccessList(List<Mensagem> mensagemList) {
+            }
+
+            @Override
+            public void onSuccessUsuario(Usuario usuarioce) {
+                if (Objects.equals(usuario.getEmailEntrada(), usuarioce.getEmailEntrada())){
+                    holder.textoMensagem.setText(mensagem.getTextoMensagem());
+                    holder.nomePerfil.setText(usuarioce.getNomeUsuario());
+
+                    holder.textoMensagem.setVisibility(View.VISIBLE);
+                    holder.nomePerfil.setVisibility(View.VISIBLE);
+                    holder.msguser.setVisibility(View.VISIBLE);
+
+                    holder.textoMensagemOutro.setVisibility(View.GONE);
+                    holder.nomePerfilOutro.setVisibility(View.GONE);
+                    holder.msgoutros.setVisibility(View.GONE);
+                }else{
+                    holder.textoMensagemOutro.setText(mensagem.getTextoMensagem());
+                    holder.nomePerfilOutro.setText(usuarioce.getNomeUsuario());
+
+                    holder.textoMensagemOutro.setVisibility(View.VISIBLE);
+                    holder.nomePerfilOutro.setVisibility(View.VISIBLE);
+                    holder.msgoutros.setVisibility(View.VISIBLE);
+
+                    holder.textoMensagem.setVisibility(View.GONE);
+                    holder.nomePerfil.setVisibility(View.GONE);
+                    holder.msguser.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                Log.e("API Error", "Erro ao buscar Usuario da mensagem: " + t.getMessage());
+            }
         });
     }
 

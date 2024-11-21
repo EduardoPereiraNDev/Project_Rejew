@@ -2,6 +2,7 @@ package com.example.projeto_rejew.api;
 
 import com.example.projeto_rejew.entity.Comentario;
 import com.example.projeto_rejew.entity.Mensagem;
+import com.example.projeto_rejew.entity.Usuario;
 
 import java.util.List;
 
@@ -26,6 +27,8 @@ public interface MensagemApi {
     @GET("mensagens/usuario/{usuario}")
     Call<List<Mensagem>> buscarMensagensPorUsuario(@Path("usuario") String usuario);
 
+    @GET("mensagens/usuario/mensagem/{idMensagem}")
+    Call<Usuario> buscarUsuarioPorMensagens(@Path("idMensagem") Long idMensagem);
 
     @POST("mensagens")
     Call<Mensagem> enviarMensagem(@Body Mensagem mensagem);

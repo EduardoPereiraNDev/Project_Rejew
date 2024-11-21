@@ -104,8 +104,6 @@ public class PerfilUsuario extends AppCompatActivity implements ComentarioDelete
 
         carregarUsuario(emailEntrada);
         carregarLivrosFavoritados(emailEntrada);
-        buscarcomentarioUsuario(emailEntrada);
-        buscarcomentarioUsuario(emailEntrada);
         qtdSeguindo(emailEntrada);
         qtdSeguidores(emailEntrada);
         carregarUsuarioPessoal();
@@ -184,6 +182,8 @@ public class PerfilUsuario extends AppCompatActivity implements ComentarioDelete
                     nomePerfil.setText(usuario.getNomePerfil());
                     comentariosQTD.setText(String.valueOf(usuario.getComentario().size()));
                     bio.setText(usuario.getRecadoPerfil());
+
+                    buscarcomentarioUsuario(emailEntrada);
 
                     usuarioAPIController.carregarImagemPerfil(usuario.getCaminhoImagem(), new UsuarioAPIController.UsuarioCallback() {
                         @Override

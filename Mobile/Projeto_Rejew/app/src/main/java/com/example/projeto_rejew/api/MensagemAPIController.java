@@ -32,8 +32,6 @@ public class MensagemAPIController {
         this.mensagemApi = retrofitClient.getRetrofit().create(MensagemApi.class);
     }
 
-
-    // Método para deletar uma mensagem
     public void deletarMensagem(Long idMensagem, MensagemCallback responseCallback) {
         Call<Void> call = mensagemApi.deletarMensagem(idMensagem);
         call.enqueue(new Callback<Void>() {
@@ -55,7 +53,6 @@ public class MensagemAPIController {
         });
     }
 
-    // Método para buscar mensagens por chat
     public void buscarMensagensPorChat(String chatId, MensagemCallback responseCallback) {
         Call<List<Mensagem>> call = mensagemApi.buscarMensagensPorChat(chatId);
         call.enqueue(new Callback<List<Mensagem>>() {
@@ -77,7 +74,27 @@ public class MensagemAPIController {
         });
     }
 
-    // Método para buscar mensagem por ID
+    public void buscarUsuarioPorMensagem(Long idMensagem, MensagemCallback responseCallback) {
+        Call<Usuario> call = mensagemApi.buscarUsuarioPorMensagens(idMensagem);
+        call.enqueue(new Callback<Usuario>() {
+            @Override
+            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    responseCallback.onSuccessUsuario(response.body());
+                } else {
+                    Log.e("API Error", "Erro ao buscar mensagens: " + response.code());
+                    responseCallback.onFailure(new Exception("Erro ao buscar mensagens"));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Usuario> call, Throwable t) {
+                Log.e("API Error", "Falha na chamada: " + t.getMessage());
+                responseCallback.onFailure(t);
+            }
+        });
+    }
+
     public void buscarMensagemPorId(Long idMensagem, MensagemCallback responseCallback) {
         Call<Mensagem> call = mensagemApi.buscarMensagemPorId(idMensagem);
         call.enqueue(new Callback<Mensagem>() {

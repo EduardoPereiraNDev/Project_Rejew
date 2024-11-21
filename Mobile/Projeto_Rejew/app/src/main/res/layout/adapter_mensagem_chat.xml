@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <View
         android:id="@+id/msguser"
@@ -12,6 +12,7 @@
         android:layout_marginEnd="32dp"
         android:background="@drawable/borda_msg_chat"
         android:padding="25dp"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nomeuser1"
         />
@@ -23,6 +24,7 @@
         android:background="@drawable/borda_msg_chat"
         android:layout_marginStart="32dp"
         android:padding="25dp"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nomeuser2" />
 
@@ -31,27 +33,30 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="@+id/msgoutros"
         app:layout_constraintTop_toTopOf="parent"
          />
 
     <TextView
         android:id="@+id/conteudouser2"
-        android:layout_width="wrap_content"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:text="TextView"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/msgoutros"
         app:layout_constraintStart_toStartOf="@+id/msgoutros"
         app:layout_constraintTop_toTopOf="@+id/msgoutros" />
 
     <TextView
         android:id="@+id/conteudouser1"
-        android:layout_width="wrap_content"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:text="TextView"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/msguser"
         app:layout_constraintStart_toStartOf="@+id/msguser"
         app:layout_constraintTop_toTopOf="@+id/msguser" />
 
@@ -60,6 +65,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="@+id/msguser"
         app:layout_constraintTop_toTopOf="parent"
         />
