@@ -18,6 +18,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view6" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView_Chat"
+        android:layout_width="411dp"
+        android:layout_height="690dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view6" />
+
     <View
         android:id="@+id/view6"
         android:layout_width="match_parent"
@@ -54,9 +64,9 @@
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginBottom="44dp"
+        android:background="@drawable/view_redonda"
         android:hint="@string/digiteMsg"
         android:paddingStart="15dp"
-        android:background="@drawable/view_redonda"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.288"
@@ -74,14 +84,6 @@
         app:layout_constraintBottom_toBottomOf="@+id/barraMensagem"
         app:layout_constraintStart_toEndOf="@+id/barraMensagem" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView_Chat"
-        android:layout_width="match_parent"
-        android:layout_height="715dp"
-        app:layout_constraintBottom_toTopOf="@+id/barraMensagem"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view6" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imagemLogo"

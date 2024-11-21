@@ -45,7 +45,7 @@ public class Chat_Genero extends AppCompatActivity implements MensagemDeleteCall
     private AdapterMensagem adapterMensagem;
     private String email;
     private String generoChat;
-    private EditText mensagem;
+    private EditText mensagemm;
     private long idChat;
     private MensagemAPIController mensagemAPIController;
     private UsuarioAPIController usuarioAPIController;
@@ -55,7 +55,7 @@ public class Chat_Genero extends AppCompatActivity implements MensagemDeleteCall
     private CircleImageView imagemLogo;
 
     private Handler handler = new Handler();
-    private static final int POLLING_INTERVAL = 5000;
+    private static final int POLLING_INTERVAL = 10000;
 
 
     @Override
@@ -69,7 +69,7 @@ public class Chat_Genero extends AppCompatActivity implements MensagemDeleteCall
         usuarioAPIController = new UsuarioAPIController(retrofitClient);
         chatAPIController = new ChatAPIController(retrofitClient);
 
-        mensagem = findViewById(R.id.barraMensagem);
+        mensagemm = findViewById(R.id.barraMensagem);
 
         recyclerView = findViewById(R.id.recyclerView_Chat);
 
@@ -88,7 +88,6 @@ public class Chat_Genero extends AppCompatActivity implements MensagemDeleteCall
         SharedPreferences sharedPreferences = getSharedPreferences("usuarioDados", MODE_PRIVATE);
         email = sharedPreferences.getString("emailEntrada", null);
 
-        carregarUsuario(email);
         buscarChatPorID();
 
         configurarInsets();
@@ -109,6 +108,7 @@ public class Chat_Genero extends AppCompatActivity implements MensagemDeleteCall
             public void onSuccess(Usuario usuarioEncontrado) {
                 if (usuarioEncontrado != null) {
                     usuario = usuarioEncontrado;
+                    buscarMensagemChat();
                 }
             }
 
@@ -155,7 +155,7 @@ public class Chat_Genero extends AppCompatActivity implements MensagemDeleteCall
     }
 
     public void enviarMensagem(View view) {
-        String conteudoMensagem = mensagem.getText().toString().trim();
+        String conteudoMensagem = mensagemm.getText().toString().trim();
         if (conteudoMensagem.isEmpty()) {
             Toast.makeText(this, "A mensagem não pode estar vazia", Toast.LENGTH_SHORT).show();
             return;
@@ -167,6 +167,7 @@ public class Chat_Genero extends AppCompatActivity implements MensagemDeleteCall
         mensagemAPIController.enviarMensagem(mensagem, new MensagemAPIController.MensagemCallback() {
             @Override
             public void onSuccess(Mensagem mensagem) {
+                mensagemm.setText("");
                 buscarMensagemChat();
             }
 
@@ -264,7 +265,7 @@ public class Chat_Genero extends AppCompatActivity implements MensagemDeleteCall
                 nomeGenero.setText(chatEncontrado.getGeneroChat());
                 carregarImagemFundo(chatEncontrado.getCaminhoImagemFundoChat());
                 carregarImagemLogo(chatEncontrado.getCaminhoImagemLogo());
-                buscarMensagemChat();
+                carregarUsuario(email);
             }
 
             @Override
@@ -304,7 +305,7 @@ public class Chat_Genero extends AppCompatActivity implements MensagemDeleteCall
             @Override
             public void onSuccessList(List<Mensagem> mensagemList) {
                 if (adapterMensagem == null) {
-                    adapterMensagem = new AdapterMensagem(Chat_Genero.this, mensagemList, usuario, usuarioAPIController, mensagemAPIController, Chat_Genero.this);
+                    adapterMensagem = new AdapterMensagem(Chat_Genero.this, mensagemList, usuario, usuarioAPIController, mensagemAPIController);
                     recyclerView.setAdapter(adapterMensagem);
                 } else {
                     adapterMensagem.atualizarLista(mensagemList);

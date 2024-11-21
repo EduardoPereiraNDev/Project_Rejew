@@ -90,11 +90,11 @@ public class PerfilUsuarioPessoal extends AppCompatActivity implements Comentari
         emailEntrada = recuperarEmailUsuario();
 
         carregarUsuario(emailEntrada);
+
         qtdSeguindo(emailEntrada);
         qtdSeguidores(emailEntrada);
         carregarLivrosFavoritados(emailEntrada);
-        buscarcomentarioUsuario(emailEntrada);
-        buscarcomentarioUsuario(emailEntrada);
+
     }
 
     private String recuperarEmailUsuario() {
@@ -121,6 +121,8 @@ public class PerfilUsuarioPessoal extends AppCompatActivity implements Comentari
                     nomePerfil.setText(usuario.getNomePerfil());
                     comentariosQTD.setText(String.valueOf(usuario.getComentario().size()));
                     bio.setText(usuario.getRecadoPerfil());
+
+                    buscarcomentarioUsuario(emailEntrada);
 
                     usuarioAPIController.carregarImagemPerfil(usuario.getCaminhoImagem(), new UsuarioAPIController.UsuarioCallback() {
                         @Override
@@ -425,6 +427,7 @@ public class PerfilUsuarioPessoal extends AppCompatActivity implements Comentari
 
             @Override
             public void onSuccessList(List<Comentario> comentarioL) {
+                Log.d("TAG", "onSuccessList: "+ usuarioPe.getEmailEntrada());
                 adapterComentario = new AdapterComentario(PerfilUsuarioPessoal.this, comentarioL, usuarioPe, usuarioAPIController, comentarioAPIController, PerfilUsuarioPessoal.this);
                 recyclerViewComentarios.setAdapter(adapterComentario);
                 adapterComentario.notifyDataSetChanged();

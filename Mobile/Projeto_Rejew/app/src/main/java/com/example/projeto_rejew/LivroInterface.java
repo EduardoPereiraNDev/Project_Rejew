@@ -120,8 +120,6 @@ public class LivroInterface extends AppCompatActivity implements ComentarioDelet
 
 
         buscarLivroID(isbn);
-        buscarcomntarioLivro(isbn);
-        buscarcomntarioLivro(isbn);
         verificarFavoritacao(emailEntrada, isbn);
         carregarMedia();
         verificarAvaliado();
@@ -408,6 +406,8 @@ public class LivroInterface extends AppCompatActivity implements ComentarioDelet
                 viewFundo.setBackgroundColor(Color.parseColor(livro.getCorPrimaria()));
 
                 carregarImagem(livro.getCaminhoImgCapa());
+
+                buscarcomntarioLivro(isbn);
             }
 
             @Override

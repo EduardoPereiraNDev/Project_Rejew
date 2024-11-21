@@ -59,7 +59,7 @@ public class MensagemController {
     }
     
     @GetMapping("/usuario/mensagem/{idMensagem}")
-    public ResponseEntity<Usuario> buscarMensagensPorUsuario(@PathVariable Long idMensagem) {
+    public ResponseEntity<Usuario> buscarUsuarioPorMensagem(@PathVariable Long idMensagem) {
         Usuario usuario  = mensagemRepository.findUsuarioByMensagemId(idMensagem);
         return ResponseEntity.ok(usuario);
     }
