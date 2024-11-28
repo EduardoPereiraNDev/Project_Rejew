@@ -1,8 +1,10 @@
 package com.example.projeto_rejew;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -441,6 +443,77 @@ public class CatalogoRejew extends AppCompatActivity {
         popupMenu.show();
     }
 
+    public void deletarConta(MenuItem item) {
+        new AlertDialog.Builder(this)
+                .setTitle("Excluir Conta")
+                .setMessage("Você tem certeza que deseja deletar sua conta? Esta ação é irreversível.")
+                .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                       usuarioAPIController.deletarUsuario(emailEntrada, new UsuarioAPIController.UsuarioCallback() {
+                           @Override
+                           public void onSuccess(Usuario usuario) {
+
+                           }
+
+                           @Override
+                           public void onSuccessBoolean(Boolean booleano) {
+
+                           }
+
+                           @Override
+                           public void onSuccessInt(Integer integer) {
+
+                           }
+
+                           @Override
+                           public void onSuccessByte(byte[] bytes) {
+
+                           }
+
+                           @Override
+                           public void onSuccessList(List<Usuario> usuarios) {
+
+                           }
+
+                           @Override
+                           public void onSuccessListL(List<Livro> livros) {
+
+                           }
+
+                           @Override
+                           public void onSuccessResponse(ResponseBody body) {
+                               Toast.makeText(CatalogoRejew.this, "Conta deletada com sucesso!", Toast.LENGTH_SHORT).show();
+                               new Handler().postDelayed(new Runnable() {
+                                   @Override
+                                   public void run() {
+                                       Intent intent = new Intent(CatalogoRejew.this, MainActivity.class);
+                                       CatalogoRejew.this.startActivity(intent);
+                                   }
+                               }, 2000);
+                           }
+
+                           @Override
+                           public void onSuccessString(String string) {
+
+                           }
+
+                           @Override
+                           public void onFailure(Throwable t) {
+
+                           }
+                       });
+                    }
+                })
+                .setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .show();
+    }
+
     public void irPerfil(MenuItem item) {
         Intent intent = new Intent(CatalogoRejew.this, PerfilUsuarioPessoal.class);
         startActivity(intent);
@@ -456,5 +529,12 @@ public class CatalogoRejew extends AppCompatActivity {
     public void paginicialPessoas(View v) {
         Intent intent = new Intent(CatalogoRejew.this, Pessoas_Comentario.class);
         startActivity(intent);
+    }
+    public void passarCat(View v) {
+        Intent intent = new Intent(CatalogoRejew.this, CatalogoRejew.class);
+        startActivity(intent);
+    }
+    public void voltar(View view) {
+        finish();
     }
 }

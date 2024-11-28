@@ -1,5 +1,7 @@
 package com.example.projeto_rejew;
 
+import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -30,6 +32,7 @@ import com.example.projeto_rejew.entity.Livro;
 import com.example.projeto_rejew.entity.Usuario;
 
 import java.io.File;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Set;
 
@@ -72,6 +75,28 @@ public class PerfilUsuarioPessoalEditar extends AppCompatActivity {
 
         btnSelectImageFundo = findViewById(R.id.btn_select_image_fundo);
         btnSelectImageFundo.setOnClickListener(v -> openImagePickerFundo());
+
+        EditText editTextDate = findViewById(R.id.dataNascimento);
+
+        editTextDate.setOnClickListener(v -> {
+            Calendar calendar = Calendar.getInstance();
+            int year = calendar.get(Calendar.YEAR);
+            int month = calendar.get(Calendar.MONTH);
+            int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+            DatePickerDialog datePickerDialog = new DatePickerDialog(
+                    this,
+                    (view, year1, month1, dayOfMonth) -> {
+                        String selectedDate = String.format("%02d-%02d-%04d", dayOfMonth, month1 + 1, year1);
+                        editTextDate.setText(selectedDate);
+                    },
+                    year,
+                    month,
+                    day
+            );
+            datePickerDialog.show();
+        });
+
 
         emailUsuario = findViewById(R.id.emailUsuario);
 
@@ -332,6 +357,12 @@ public class PerfilUsuarioPessoalEditar extends AppCompatActivity {
                     public void onSuccessString(String string) { }
                     @Override
                     public void onFailure(Throwable t) {
+                        AlertDialog.Builder alerta = new AlertDialog.Builder(PerfilUsuarioPessoalEditar.this);
+                        alerta.setCancelable(false);
+                        alerta.setTitle("Login");
+                        alerta.setMessage("Falha ao realizar Login" + t.getMessage());
+                        alerta.setNegativeButton("Voltar",null);
+                        alerta.create().show();
                         Log.e("API_ERROR", "Falha ao atualizar usuário", t);
                     }
                 });
@@ -367,9 +398,7 @@ public class PerfilUsuarioPessoalEditar extends AppCompatActivity {
         return path;
     }
 
-
-    public void passarTelaCat(View view) {
-        Intent intent = new Intent(PerfilUsuarioPessoalEditar.this, PerfilUsuarioPessoal.class);
-        startActivity(intent);
+    public void VoltarFinish(View view) {
+        finish();
     }
 }

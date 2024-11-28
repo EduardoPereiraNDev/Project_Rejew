@@ -32,7 +32,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import br.com.spring.rejew.projectrejew.entity.Livro;
 import br.com.spring.rejew.projectrejew.entity.Usuario;
+import br.com.spring.rejew.projectrejew.repository.ComentarioRepository;
 import br.com.spring.rejew.projectrejew.repository.LivroRepository;
+import br.com.spring.rejew.projectrejew.repository.MensagemRepository;
+import br.com.spring.rejew.projectrejew.repository.UsuarioLivroARepository;
 import br.com.spring.rejew.projectrejew.repository.UsuarioRepository;
 import jakarta.transaction.Transactional;
 
@@ -52,6 +55,15 @@ public class UsuarioController {
     
     @Autowired
     private LivroRepository livroRepository;
+    
+    @Autowired
+    private MensagemRepository mensagemRepository;
+    
+    @Autowired
+    private ComentarioRepository comentarioRepository;
+    
+    @Autowired
+    private UsuarioLivroARepository usuarioLivroARepository;
     
     // Listar todos os usuários
     @GetMapping
@@ -220,22 +232,22 @@ public class UsuarioController {
         if (usuario == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuário não encontrado");
         }
-        Optional<Livro> optionalLivro = livroRepository.findById(isbnLivro); 
-        if (!optionalLivro.isPresent()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Livro não encontrado");
-        }
-        
-        Livro livro = optionalLivro.get();
-        Set<Livro> livrosFavoritados = usuario.getLivros();
 
-        if (livrosFavoritados.contains(livro)) {
-            return ResponseEntity.badRequest().body("O livro já foi favoritado anteriormente");
+        Livro livro = livroRepository.findById(isbnLivro)
+                .orElseThrow(() -> new RuntimeException("Livro não encontrado"));
+
+        usuario = usuarioRepository.findByIdWithLivros(usuario.getEmailEntrada());
+
+        if (usuario.getLivros().stream().anyMatch(l -> l.getIsbnLivro().equals(livro.getIsbnLivro()))) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("O livro já foi favoritado anteriormente");
         }
+
         usuario.getLivros().add(livro);
-        usuarioRepository.save(usuario); 
+        usuarioRepository.save(usuario);
+
         return ResponseEntity.ok("Livro favoritado com sucesso");
-       
     }
+
 
 
     @DeleteMapping("/{emailEntrada}/desfavoritar/{isbnLivro}")
@@ -411,7 +423,7 @@ public class UsuarioController {
                 dataNascimentoStr = dataNascimentoStr.trim();
                 dataNascimentoStr = dataNascimentoStr.replaceAll("\"", "");  
                 System.out.println("Data recebida para parse: " + dataNascimentoStr);
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
                 LocalDate dataNascimento = LocalDate.parse(dataNascimentoStr, formatter);
                 usuarioAtual.setDataNascimento(dataNascimento);
 
@@ -427,51 +439,6 @@ public class UsuarioController {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
-
-    /*
-    @PutMapping("/{emailUsuario}")
-    public ResponseEntity<Usuario> atualizarUsuario(
-            @PathVariable String emailUsuario,      
-            @RequestBody Usuario usuario,
-            @RequestParam(value = "caminhoImagem", required = false) MultipartFile caminhoImagem,
-            @RequestParam(value = "caminhoImagemFundo", required = false) MultipartFile caminhoImagemFundo){
-
-        Optional<Usuario> optionalUsuario = usuarioRepository.findByEmailEntrada(emailUsuario);
-        if (optionalUsuario.isPresent()) {
-            try {
-                Usuario usuarioAtual = optionalUsuario.get();
-                if (caminhoImagem != null && !caminhoImagem.isEmpty()) {
-                    if (usuarioAtual.getCaminhoImagem() != null && !usuarioAtual.getCaminhoImagem().isEmpty()) {
-                        Path arquivoAntigo = Paths.get(UPLOAD_DIR + usuarioAtual.getCaminhoImagem());
-                        Files.deleteIfExists(arquivoAntigo);
-                    }
-                    String nomeNovo = generateUniqueFilename(extensaoArquivo(caminhoImagem.getOriginalFilename()));
-                    Path path = Paths.get(UPLOAD_DIR + nomeNovo);
-                    Files.write(path, caminhoImagem.getBytes());
-                    usuarioAtual.setCaminhoImagem(nomeNovo);
-                }
-                if (caminhoImagemFundo != null && !caminhoImagemFundo.isEmpty()) {
-                    if (usuarioAtual.getCaminhoImagemFundo() != null && !usuarioAtual.getCaminhoImagemFundo().isEmpty()) {
-                        Path arquivoAntigoFundo = Paths.get(UPLOAD_DIR2 + usuarioAtual.getCaminhoImagemFundo());
-                        Files.deleteIfExists(arquivoAntigoFundo);
-                    }
-                    // Adiciona a nova imagem de fundo
-                    String nomeNovoFundo = generateUniqueFilename(extensaoArquivo(caminhoImagemFundo.getOriginalFilename()));
-                    Path pathFundo = Paths.get(UPLOAD_DIR2 + nomeNovoFundo);
-                    Files.write(pathFundo, caminhoImagemFundo.getBytes());
-                    usuarioAtual.setCaminhoImagemFundo(nomeNovoFundo);
-                }
-               
-                Usuario usuarioAtualizado = usuarioRepository.save(usuarioAtual);
-                return ResponseEntity.ok(usuarioAtualizado);
-            } catch (IOException e) {
-                e.printStackTrace();
-                return ResponseEntity.status(500).body(null);
-            }
-        }
-        return ResponseEntity.notFound().build();
-    }
-*/
     // Deletar um usuário por email
     @DeleteMapping("/{emailUsuario}")
     public ResponseEntity<String> deletaUsuario(@PathVariable String emailUsuario) {
@@ -483,8 +450,21 @@ public class UsuarioController {
                 Files.deleteIfExists(pathToDelete);
                 Path pathToDelete2 = Paths.get(UPLOAD_DIR2 + usuarioToDelete.getCaminhoImagemFundo());
                 Files.deleteIfExists(pathToDelete2);
+                
+                usuarioRepository.deleteFavoritosDoUsuario(emailUsuario);
+                usuarioLivroARepository.deleteByUsuarioLivroA(emailUsuario);
+                comentarioRepository.deleteByUsuarioComent(emailUsuario);
+                mensagemRepository.deleteByUsuarioMensagem(emailUsuario);
+                usuarioRepository.findUsuarioComSeguindo(emailUsuario);
+                Optional<Usuario> optionalUsuario = usuarioRepository.findUsuarioComSeguindo(emailUsuario);
+                if (optionalUsuario.isPresent()) {
+                    Usuario usuario2 = optionalUsuario.get();
+                    usuario2.getUsuariosSeguindo().clear();
+                    usuarioRepository.save(usuario2); 
+                }
                 usuarioRepository.deleteByEmailEntrada(emailUsuario);
-                return ResponseEntity.noContent().build(); 
+                         
+                return ResponseEntity.ok("Usuario foi Deletado");
             } catch (IOException e) {
                 e.printStackTrace();
                 return ResponseEntity.ok().build();

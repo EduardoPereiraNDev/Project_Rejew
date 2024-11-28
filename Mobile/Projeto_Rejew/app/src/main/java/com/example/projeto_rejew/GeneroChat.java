@@ -82,13 +82,19 @@ public class GeneroChat extends AppCompatActivity {
 
 
     public void chatsPaginicial(View v) {
+        finish();
+    }
+
+    public void chatCatalogo(View v) {
         Intent intent = new Intent(GeneroChat.this, CatalogoRejew.class);
         startActivity(intent);
     }
-    public void chatAventura(View v) {
-        Intent intent = new Intent(GeneroChat.this, Chat_Genero.class);
+
+    public void irChat(View v) {
+        Intent intent = new Intent(GeneroChat.this, GeneroChat.class);
         startActivity(intent);
     }
+
     public void generochatPessoas(View v) {
         Intent intent = new Intent(GeneroChat.this, Pessoas_Comentario.class);
         startActivity(intent);

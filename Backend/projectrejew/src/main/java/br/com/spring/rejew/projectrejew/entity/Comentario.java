@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.*;
 
@@ -22,7 +23,9 @@ public class Comentario implements Serializable {
     @Column(name = "id_Comentario")
     private Long idComentario;
 
+    
     @Column(name = "data_Comentario")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private LocalDate dataComentario;
 
     @Column(name = "conteudo_Coment")

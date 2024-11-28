@@ -24,7 +24,7 @@
         android:src="@drawable/setavoltarazul"
         app:layout_constraintBottom_toBottomOf="@+id/view6"
         app:layout_constraintStart_toStartOf="parent"
-        android:onClick="pessoasPaginicial"
+        android:onClick="VoltarFinish"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -93,7 +93,7 @@
             app:layout_constraintEnd_toStartOf="@+id/chaticon"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/view4"
-            android:onClick="pessoasGenerochat"
+            android:onClick="paginicialChats"
             app:srcCompat="@drawable/chatbrancooooo" />
 
         <ImageView
@@ -106,7 +106,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/view4"
-            android:onClick="pessoasPaginicial"
+            android:onClick="passarCat"
             app:srcCompat="@drawable/casabrancaaa" />
 
         <ImageView
@@ -115,6 +115,7 @@
             android:layout_height="54dp"
             android:layout_marginStart="5dp"
             android:layout_marginEnd="4dp"
+            android:onClick="paginicialPessoas"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/chaticon"

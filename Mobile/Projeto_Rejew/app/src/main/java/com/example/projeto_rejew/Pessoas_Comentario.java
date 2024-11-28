@@ -325,13 +325,21 @@ public class Pessoas_Comentario extends AppCompatActivity {
         });
     }
 
-    public void pessoasPaginicial(View v) {
+    public void paginicialChats(View v) {
+        Intent intent = new Intent(Pessoas_Comentario.this, GeneroChat.class);
+        startActivity(intent);
+    }
+    public void paginicialPessoas(View v) {
+        Intent intent = new Intent(Pessoas_Comentario.this, Pessoas_Comentario.class);
+        startActivity(intent);
+    }
+    public void passarCat(View v) {
         Intent intent = new Intent(Pessoas_Comentario.this, CatalogoRejew.class);
         startActivity(intent);
     }
 
-    public void pessoasGenerochat(View v) {
-        Intent intent = new Intent(Pessoas_Comentario.this, GeneroChat.class);
-        startActivity(intent);
+    public void VoltarFinish(View view) {
+        finish();
     }
+
 }

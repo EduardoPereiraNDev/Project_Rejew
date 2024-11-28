@@ -458,11 +458,19 @@ public class PerfilUsuarioPessoal extends AppCompatActivity implements Comentari
         Intent intent = new Intent(PerfilUsuarioPessoal.this, PerfilUsuarioPessoalEditar.class);
         startActivity(intent);
     }
-
-    public void passarCat(View view) {
-        Intent intent = new Intent(PerfilUsuarioPessoal.this,CatalogoRejew.class);
+    public void paginicialChats(View v) {
+        Intent intent = new Intent(PerfilUsuarioPessoal.this, GeneroChat.class);
         startActivity(intent);
     }
-
-
+    public void paginicialPessoas(View v) {
+        Intent intent = new Intent(PerfilUsuarioPessoal.this, Pessoas_Comentario.class);
+        startActivity(intent);
+    }
+    public void passarCat(View v) {
+        Intent intent = new Intent(PerfilUsuarioPessoal.this, CatalogoRejew.class);
+        startActivity(intent);
+    }
+    public void VoltarFinish(View view) {
+        finish();
+    }
 }

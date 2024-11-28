@@ -39,7 +39,7 @@
                 android:layout_width="50dp"
                 android:layout_height="34dp"
                 android:layout_marginStart="25dp"
-                android:onClick="passarCat"
+                android:onClick="VoltarFinish"
                 app:layout_constraintBottom_toBottomOf="@+id/quadroBranco"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -234,10 +234,10 @@
         android:layout_width="54dp"
         android:layout_height="54dp"
         android:layout_marginStart="44dp"
+        android:onClick="paginicialChats"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/view5"
-        app:layout_constraintVertical_bias="0.523"
         app:srcCompat="@drawable/chatbrancooooo" />
 
     <ImageView
@@ -246,6 +246,7 @@
         android:layout_height="54dp"
         android:layout_marginStart="4dp"
         android:layout_marginEnd="4dp"
+        android:onClick="passarTelaCat"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -257,6 +258,7 @@
         android:layout_width="54dp"
         android:layout_height="54dp"
         android:layout_marginEnd="48dp"
+        android:onClick="paginicialPessoas"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/view5"

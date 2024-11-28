@@ -5,69 +5,56 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <View
+    <TextView
         android:id="@+id/msguser"
-        android:layout_width="150dp"
-        android:layout_height="70dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
         android:background="@drawable/borda_msg_chat"
+        android:minWidth="140dp"
+        android:maxWidth="200dp"
+        android:minHeight="70dp"
         android:padding="25dp"
-        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nomeuser1"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <View
+    <TextView
         android:id="@+id/msgoutros"
-        android:layout_width="150dp"
-        android:layout_height="70dp"
-        android:background="@drawable/borda_msg_chat"
+        android:minWidth="140dp"
+        android:maxWidth="200dp"
+        android:minHeight="70dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
+        android:background="@drawable/borda_msg_chat"
         android:padding="25dp"
-        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nomeuser2" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/nomeuser2"
         android:layout_width="wrap_content"
+        android:maxWidth="130dp"
+        android:fontFamily="@font/merriweather_bold"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:textSize="12dp"
         android:text="TextView"
-        android:visibility="invisible"
-        app:layout_constraintStart_toStartOf="@+id/msgoutros"
-        app:layout_constraintTop_toTopOf="parent"
-         />
-
-    <TextView
-        android:id="@+id/conteudouser2"
-        android:layout_width="110dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="TextView"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@+id/msgoutros"
         app:layout_constraintStart_toStartOf="@+id/msgoutros"
         app:layout_constraintTop_toTopOf="@+id/msgoutros" />
-
-    <TextView
-        android:id="@+id/conteudouser1"
-        android:layout_width="110dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="TextView"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@+id/msguser"
-        app:layout_constraintStart_toStartOf="@+id/msguser"
-        app:layout_constraintTop_toTopOf="@+id/msguser" />
 
     <TextView
         android:id="@+id/nomeuser1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/merriweather_bold"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:textSize="12dp"
+        android:maxWidth="130dp"
         android:text="TextView"
-        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="@+id/msguser"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="@+id/msguser" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

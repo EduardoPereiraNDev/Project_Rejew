@@ -5,13 +5,11 @@
         android:onClick="irPerfil"
         android:title="@string/ver_perfil"/>
 
-    <item android:id="@+id/configuração"
-        android:title="@string/configuração" />
-
-    <item android:id="@+id/notificação"
-        android:title="@string/notificação" />
-
     <item android:id="@+id/sair_conta"
         android:onClick="sairConta"
         android:title="@string/sair_conta" />
+
+    <item android:id="@+id/deletar_conta"
+        android:onClick="deletarConta"
+        android:title="Deletar Conta" />
 </menu>

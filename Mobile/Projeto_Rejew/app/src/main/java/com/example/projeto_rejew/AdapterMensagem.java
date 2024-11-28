@@ -41,23 +41,20 @@ public class AdapterMensagem extends RecyclerView.Adapter<AdapterMensagem.Mensag
 
     // ViewHolder
     public static class MensagemViewHolder extends RecyclerView.ViewHolder {
-        TextView textoMensagem;
-        TextView textoMensagemOutro;
+
         TextView nomePerfil;
         TextView nomePerfilOutro;
-        View msguser;
-        View msgoutros;
+        TextView textoMensagem;
+        TextView textoMensagemOutro;
 
         public MensagemViewHolder(View itemView) {
             super(itemView);
-            textoMensagem = itemView.findViewById(R.id.conteudouser1);
-            textoMensagemOutro = itemView.findViewById(R.id.conteudouser2);
 
             nomePerfil = itemView.findViewById(R.id.nomeuser1);
             nomePerfilOutro = itemView.findViewById(R.id.nomeuser2);
 
-            msguser = itemView.findViewById(R.id.msguser);
-            msgoutros = itemView.findViewById(R.id.msgoutros);
+            textoMensagem = itemView.findViewById(R.id.msguser);
+            textoMensagemOutro = itemView.findViewById(R.id.msgoutros);
         }
     }
 
@@ -98,22 +95,18 @@ public class AdapterMensagem extends RecyclerView.Adapter<AdapterMensagem.Mensag
 
                     holder.textoMensagem.setVisibility(View.VISIBLE);
                     holder.nomePerfil.setVisibility(View.VISIBLE);
-                    holder.msguser.setVisibility(View.VISIBLE);
 
                     holder.textoMensagemOutro.setVisibility(View.GONE);
                     holder.nomePerfilOutro.setVisibility(View.GONE);
-                    holder.msgoutros.setVisibility(View.GONE);
                 }else{
                     holder.textoMensagemOutro.setText(mensagem.getTextoMensagem());
                     holder.nomePerfilOutro.setText(usuarioce.getNomeUsuario());
 
                     holder.textoMensagemOutro.setVisibility(View.VISIBLE);
                     holder.nomePerfilOutro.setVisibility(View.VISIBLE);
-                    holder.msgoutros.setVisibility(View.VISIBLE);
 
                     holder.textoMensagem.setVisibility(View.GONE);
                     holder.nomePerfil.setVisibility(View.GONE);
-                    holder.msguser.setVisibility(View.GONE);
                 }
             }
 

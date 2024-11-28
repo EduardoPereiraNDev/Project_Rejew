@@ -3,10 +3,12 @@ package br.com.spring.rejew.projectrejew.repository;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import br.com.spring.rejew.projectrejew.entity.Comentario;
 import br.com.spring.rejew.projectrejew.entity.Usuario;
+import jakarta.transaction.Transactional;
 
 /*
  * Estende CrudRepository e fornece funcionalidades adicionais específicas do JPA.
@@ -24,4 +26,10 @@ public interface ComentarioRepository extends JpaRepository<Comentario, Long> {
 	
 	@Query("SELECT c FROM Comentario c WHERE c.livroComent.isbnLivro = :idLivroComent")
 	List<Comentario> findByLivroComent(Long idLivroComent);
+	
+	@Modifying
+	@Transactional
+	@Query("DELETE FROM Comentario c WHERE c.usuarioComent.emailEntrada = :emailUsuario")
+	void deleteByUsuarioComent(String emailUsuario);
+
 }

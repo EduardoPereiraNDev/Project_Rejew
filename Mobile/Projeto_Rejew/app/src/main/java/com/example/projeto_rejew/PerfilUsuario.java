@@ -36,7 +36,8 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import kotlin.reflect.TypesJVMKt;
 import okhttp3.ResponseBody;
 
-public class PerfilUsuario extends AppCompatActivity implements ComentarioDeleteCallback {
+public class
+PerfilUsuario extends AppCompatActivity implements ComentarioDeleteCallback {
 
     private String emailEntrada;
     private String emailEntradaPessoal;
@@ -519,14 +520,6 @@ public class PerfilUsuario extends AppCompatActivity implements ComentarioDelete
         });
     }
 
-
-
-
-    public void passarCat(View view) {
-        Intent intent = new Intent(PerfilUsuario.this, Pessoas_Comentario.class);
-        startActivity(intent);
-    }
-
     public void SeguirOuDeixar(View view) {
         if (estaSeguindo) {
             usuarioAPIController.deixarSeguirUsuario(emailEntradaPessoal, emailEntrada, new UsuarioAPIController.UsuarioCallback() {
@@ -684,5 +677,21 @@ public class PerfilUsuario extends AppCompatActivity implements ComentarioDelete
 
 
         });
+    }
+
+    public void paginicialChats(View v) {
+        Intent intent = new Intent(PerfilUsuario.this, GeneroChat.class);
+        startActivity(intent);
+    }
+    public void paginicialPessoas(View v) {
+        Intent intent = new Intent(PerfilUsuario.this, Pessoas_Comentario.class);
+        startActivity(intent);
+    }
+    public void passarCat(View v) {
+        Intent intent = new Intent(PerfilUsuario.this, CatalogoRejew.class);
+        startActivity(intent);
+    }
+    public void VoltarFinish(View view) {
+        finish();
     }
 }

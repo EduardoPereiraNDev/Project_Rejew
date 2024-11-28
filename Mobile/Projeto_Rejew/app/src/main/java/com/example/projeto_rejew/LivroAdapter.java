@@ -65,6 +65,7 @@ public class LivroAdapter extends RecyclerView.Adapter<LivroAdapter.LivroViewHol
             intent.putExtra("isbnLivro", livro.getIsbnLivro());
             context.startActivity(intent);
         });
+
         holder.nomeLivro.setText(livro.getNomeLivro());
         holder.nomeAutor.setText(livro.getAutorLivro());
         int larguraPadrao = 160;

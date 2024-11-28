@@ -1,6 +1,7 @@
 package com.example.projeto_rejew;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -52,6 +53,13 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
     @Override
     public void onBindViewHolder(@NonNull ChatViewHolder holder, int position) {
         Chat chat = chats.get(position);
+
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, LivrosGenero.class);
+            intent.putExtra("generoChat", chat.getGeneroChat());
+            context.startActivity(intent);
+        });
+
         holder.nomeChat.setText(chat.getGeneroChat());
         carregarImagemLogo(chat.getCaminhoImagemLogo(), holder.imagemLogo);
     }
