@@ -10,10 +10,10 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/fotoPerfilPesq"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:layout_marginTop="20dp"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="40dp"
         android:src="@drawable/imagedefault"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,10 +22,11 @@
         android:id="@+id/nomeUsuarioPesq"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="25dp"
         android:fontFamily="@font/open_sans_semibold"
-        android:layout_marginStart="25dp"
+        android:textColor="#022e53"
+        android:layout_marginStart="30dp"
         android:text="UsuarioNAME"
-        android:textSize="26dp"
         app:layout_constraintBottom_toBottomOf="@+id/fotoPerfilPesq"
         app:layout_constraintStart_toEndOf="@+id/fotoPerfilPesq"
         app:layout_constraintTop_toTopOf="@+id/fotoPerfilPesq" />

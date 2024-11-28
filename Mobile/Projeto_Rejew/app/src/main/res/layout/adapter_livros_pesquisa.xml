@@ -11,45 +11,52 @@
 
     <View
         android:id="@+id/corFundo"
-        android:layout_width="100dp"
-        android:layout_height="90dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginLeft="15dp"
         style="@style/ViewRedonda"
+        android:layout_width="135dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="44dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.146"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imagemLivro"
-        android:layout_width="70dp"
-        android:layout_height="100dp"
-        android:layout_marginBottom="15dp"
-        android:src="@drawable/imagedefault"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/corFundo"
-        app:layout_constraintStart_toStartOf="@+id/corFundo"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tituloLivro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:text="Titulo Do Livro"
-        android:textSize="23dp"
-        app:layout_constraintStart_toEndOf="@+id/corFundo"
-        app:layout_constraintTop_toTopOf="@+id/corFundo" />
+        android:layout_width="85dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="8dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.21"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/imagedefault" />
 
     <TextView
         android:id="@+id/autorLivro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="45dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/arimo"
         android:text="Autor Do Livro"
-        android:textSize="19dp"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+        android:textSize="13dp"
         app:layout_constraintStart_toEndOf="@+id/corFundo"
         app:layout_constraintTop_toBottomOf="@+id/tituloLivro" />
+
+    <TextView
+        android:id="@+id/tituloLivro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/merriweather_bold"
+        android:text="Titulo Do Livro"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:layout_constraintStart_toEndOf="@+id/corFundo"
+        app:layout_constraintTop_toTopOf="@+id/corFundo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

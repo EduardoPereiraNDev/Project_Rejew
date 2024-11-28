@@ -8,57 +8,72 @@
     tools:context=".Pessoas_Comentario">
 
     <View
-        android:id="@+id/view6"
+        android:id="@+id/quadrocinza"
         android:layout_width="match_parent"
-        android:layout_height="75dp"
-        android:background="@color/cinzanovo"
+        android:layout_height="80dp"
+        android:background="#d9d9d9"
+        android:backgroundTint="#d9d9d9"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints" />
 
     <ImageView
-        android:id="@+id/setavoltar"
+        android:id="@+id/setaazulvoltar"
         android:layout_width="50dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="30dp"
-        android:src="@drawable/setavoltarazul"
-        app:layout_constraintBottom_toBottomOf="@+id/view6"
+        android:layout_height="50dp"
+        android:onClick="setavoltarazul"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.06"
         app:layout_constraintStart_toStartOf="parent"
-        android:onClick="VoltarFinish"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.021"
+        android:src="@drawable/setavoltarazul"/>
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/chatT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/pessoa"
-        android:textColor="@color/orange"
-        android:textSize="40sp"
+        android:fontFamily="@font/open_sans_bold"
+        android:text="PESSOAS"
+        android:textColor="#022e53"
+        android:textSize="20dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/view6"
-        app:layout_constraintEnd_toEndOf="@+id/view6"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.035" />
 
     <EditText
         android:id="@+id/pesquisarPessoas"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:background="@drawable/borda_radius"
-        android:hint="@string/pesquisePessoas"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:background="@drawable/pesquisaazul"
+        android:fontFamily="@font/open_sans"
+        android:hint="Pesquise por pessoas..."
         android:paddingLeft="15dp"
+        android:textColorHint="#d9d9d9"
+        android:textSize="13dp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view6"
-        tools:ignore="TouchTargetSizeCheck" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.157" />
 
     <ImageView
         android:layout_width="28dp"
         android:layout_height="38dp"
-        android:src="@drawable/lupapreta"
+        android:src="@drawable/lupacinza"
         android:onClick="pesquisarPessoas"
         android:layout_marginEnd="15dp"
         app:layout_constraintBottom_toBottomOf="@+id/pesquisarPessoas"
@@ -75,52 +90,56 @@
         app:layout_constraintTop_toBottomOf="@+id/pesquisarPessoas" />
 
     <View
-        android:id="@+id/view4"
+        android:id="@+id/quadroAzul"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:background="@color/orange"
+        android:background="#022e53"
+        android:backgroundTint="#022e53"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="MissingConstraints" />
 
     <ImageView
-            android:id="@+id/home"
-            android:layout_width="54dp"
-            android:layout_height="54dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginEnd="5dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/chaticon"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/view4"
-            android:onClick="paginicialChats"
-            app:srcCompat="@drawable/chatbrancooooo" />
+        android:id="@+id/homeLogo"
+        android:layout_width="58dp"
+        android:layout_height="58dp"
+        android:onClick="passarCat"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.176"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.991"
+        android:src="@drawable/homelogo"/>
 
-        <ImageView
-            android:id="@+id/chaticon"
-            android:layout_width="54dp"
-            android:layout_height="54dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginEnd="4dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/view4"
-            android:onClick="passarCat"
-            app:srcCompat="@drawable/casabrancaaa" />
+    <ImageView
+        android:id="@+id/chatAzul"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:src="@drawable/pessoasazul"
+        android:onClick="paginicialPessoas"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/quadrocinza"
+        app:layout_constraintVertical_bias="0.991" />
 
-        <ImageView
-            android:id="@+id/pessoasicon"
-            android:layout_width="54dp"
-            android:layout_height="54dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="4dp"
-            android:onClick="paginicialPessoas"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/chaticon"
-            app:layout_constraintTop_toTopOf="@+id/view4"
-            app:srcCompat="@drawable/amigosazull" />
+    <ImageView
+        android:id="@+id/pessoasLogo"
+        android:layout_width="62dp"
+        android:layout_height="62dp"
+        android:onClick="paginicialChats"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.83"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.994"
+        android:src="@drawable/chatbranco" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 

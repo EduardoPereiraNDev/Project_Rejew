@@ -26,8 +26,8 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/fotoperfil"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="50dp"
+                android:layout_height="80dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="25dp"
                 android:src="@drawable/imagedefault"
@@ -95,8 +95,8 @@
 
             <ImageView
                 android:id="@+id/rejewlogocat"
-                android:layout_width="137dp"
-                android:layout_height="75dp"
+                android:layout_width="140dp"
+                android:layout_height="85dp"
                 android:layout_marginTop="12dp"
                 android:src="@drawable/logorejewazes"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -112,10 +112,13 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="25dp"
                 android:background="@drawable/pesquisacinza"
-                android:hint="@string/pesquiseLivros"
-                android:paddingStart="15dp"
-                android:textColor="@color/orange"
-                android:textSize="15dp"
+                android:fontFamily="@font/open_sans"
+                android:hint="Pesquise por livros..."
+                android:paddingLeft="15dp"
+                android:paddingRight="45dp"
+                android:textColorHint="#022e53"
+                android:textSize="14dp"
+                android:textStyle="italic"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -124,10 +127,10 @@
 
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginBottom="8dp"
-                android:src="@drawable/lupapreta"
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:layout_marginBottom="2dp"
+                android:src="@drawable/lupanovo"
                 android:onClick="pesquisarLivros"
                 app:layout_constraintBottom_toBottomOf="@+id/barrapesquisa"
                 app:layout_constraintEnd_toEndOf="@+id/barrapesquisa"
@@ -156,9 +159,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="15dp"
-                android:fontFamily="@font/open_sans_medium"
+                android:fontFamily="@font/open_sans_bold"
                 android:text="Aventura"
-                android:textSize="25dp"
+                android:textColor="#022e53"
+                android:textSize="19dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imagensChats" />
 
@@ -180,9 +184,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="15dp"
-                android:fontFamily="@font/open_sans_medium"
                 android:text="Terror"
-                android:textSize="25dp"
+                android:fontFamily="@font/open_sans_bold"
+                android:textColor="#022e53"
+                android:textSize="19dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/recyclerViewAventura" />
 
@@ -203,9 +208,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="15dp"
-                android:fontFamily="@font/open_sans_medium"
+                android:fontFamily="@font/open_sans_bold"
+                android:textColor="#022e53"
+                android:textSize="19dp"
                 android:text="Romance"
-                android:textSize="25dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/recyclerViewTerror" />
 
@@ -226,9 +232,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="15dp"
-                android:fontFamily="@font/open_sans_medium"
                 android:text="Ficção-Científica"
-                android:textSize="25dp"
+                android:fontFamily="@font/open_sans_bold"
+                android:textColor="#022e53"
+                android:textSize="19dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/recyclerViewRomance" />
 
@@ -249,9 +256,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="15dp"
-                android:fontFamily="@font/open_sans_medium"
                 android:text="Culinária"
-                android:textSize="25dp"
+                android:fontFamily="@font/open_sans_bold"
+                android:textColor="#022e53"
+                android:textSize="19dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/recyclerViewFiccao" />
 
@@ -272,9 +280,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="15dp"
-                android:fontFamily="@font/open_sans_medium"
                 android:text="Infantil"
-                android:textSize="25dp"
+                android:fontFamily="@font/open_sans_bold"
+                android:textColor="#022e53"
+                android:textSize="19dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/recyclerViewCulinaria" />
 
