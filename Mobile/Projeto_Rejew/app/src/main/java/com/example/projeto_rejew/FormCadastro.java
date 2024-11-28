@@ -60,14 +60,14 @@ public class FormCadastro extends AppCompatActivity {
             public void onClick(View v) {
                 if (isPasswordVisible) {
                     senha.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-                    olhoVisibilidade.setImageResource(R.drawable.olhoon); // Ícone de olho fechado
+                    olhoVisibilidade.setImageResource(R.drawable.olhoon);
                 } else {
                     senha.setInputType(InputType.TYPE_CLASS_TEXT);
-                    olhoVisibilidade.setImageResource(R.drawable.olhooff); // Ícone de olho aberto
+                    olhoVisibilidade.setImageResource(R.drawable.olhooff);
                 }
 
-                senha.setSelection(senha.getText().length()); // Manter o cursor no final
-                isPasswordVisible = !isPasswordVisible; // Alterna o estado de visibilidade
+                senha.setSelection(senha.getText().length());
+                isPasswordVisible = !isPasswordVisible;
             }
         });
     }

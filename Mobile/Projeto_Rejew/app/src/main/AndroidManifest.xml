@@ -16,6 +16,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".LivrosGenero"
+            android:exported="false" />
+        <activity
+            android:name=".entity.AdapterLivroGenero"
+            android:exported="false" />
+        <activity
             android:name=".adapter_chats"
             android:exported="false" />
         <activity

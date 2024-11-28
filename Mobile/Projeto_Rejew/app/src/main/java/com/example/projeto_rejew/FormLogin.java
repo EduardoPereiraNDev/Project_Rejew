@@ -148,10 +148,8 @@ public class FormLogin extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void passarTelaCat(View v) {
-        Intent intent = new Intent(FormLogin.this, CatalogoRejew.class);
+    public void passarCadastro(View view) {
+        Intent intent = new Intent(FormLogin.this, FormCadastro.class);
         startActivity(intent);
     }
-
-
 }

@@ -481,4 +481,28 @@ public class UsuarioAPIController {
         });
     }
 
+    public void deletarUsuario(String emailEntrada, UsuarioAPIController.UsuarioCallback responseCallback) {
+        Log.d("API Call", "Fazendo chamada para DELETAR usuario com email: " + emailEntrada);
+        Call<ResponseBody> call = this.usuarioApi.deletarUsuario(emailEntrada);
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                Log.d("API Response", "Código de resposta: " + response.code());
+                if (response.isSuccessful() && response.body() != null) {
+                    Log.d("API Response", "Usuário encontrado: " + response.body().toString());
+                    responseCallback.onSuccessResponse(response.body());
+                } else {
+                    Log.e("API Error", "Erro ao encontrar usuário: " + response.errorBody());
+                    responseCallback.onFailure(new Exception("Erro: " + response.code()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Log.e("API Error", "Falha na chamada: " + t.getMessage());
+                responseCallback.onFailure(t);
+            }
+        });
+    }
+
 }

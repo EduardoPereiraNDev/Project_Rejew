@@ -48,6 +48,17 @@ public interface UsuarioRepository extends JpaRepository<Usuario, String> {
     @Query("SELECT l FROM Usuario u JOIN u.livros l WHERE u.emailEntrada = :emailEntrada")
     List<Livro> favoritadosPeloUsuario( String emailEntrada);
     
+    @Query("SELECT u FROM Usuario u JOIN FETCH u.usuariosSeguindo WHERE u.emailEntrada = :emailEntrada")
+    Optional<Usuario> findUsuarioComSeguindo(@Param("emailEntrada") String emailEntrada);
+    
+    @Query("SELECT u FROM Usuario u LEFT JOIN FETCH u.livros WHERE u.emailEntrada = :email")
+    Usuario findByIdWithLivros(@Param("email") String email);
+
+    @Modifying
+    @Transactional
+    @Query("DELETE FROM Usuario u JOIN u.livros l WHERE u.emailEntrada = :emailUsuario")
+    void deleteFavoritosDoUsuario(String emailUsuario);
+    
     @Query("SELECT u FROM Usuario u WHERE u.emailEntrada = :email AND u.senhaEntrada = :password") 
     Usuario realizarLogin(@Param("email") String email, @Param("password") String password);  
 

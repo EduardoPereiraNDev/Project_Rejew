@@ -103,6 +103,7 @@ public class LivroInterface extends AppCompatActivity implements ComentarioDelet
         qtdPaginas = findViewById(R.id.qtdPaginas);
         tituloLivro = findViewById(R.id.tituloLivro);
         sinopse = findViewById(R.id.sinopse);
+
         ratingBar = findViewById(R.id.ratingBar);
 
         comentEdit = findViewById(R.id.addComentario);
@@ -121,7 +122,6 @@ public class LivroInterface extends AppCompatActivity implements ComentarioDelet
 
         buscarLivroID(isbn);
         verificarFavoritacao(emailEntrada, isbn);
-        carregarMedia();
         verificarAvaliado();
     }
 
@@ -155,10 +155,14 @@ public class LivroInterface extends AppCompatActivity implements ComentarioDelet
 
             @Override
             public void onSuccessDouble(Double doble) {
-                if (doble == null || doble == 0){
-                    ratingBar.setRating(0);
+                Log.d("TAG", "onSuccessDouble: " + doble);
+                if (doble == null || doble == 0) {
+                    Log.d("TAG", "Rating set to 0");
+                    runOnUiThread(() -> ratingBar.setRating(0));
+                } else {
+                    Log.d("TAG", "Setting rating to: " + doble.floatValue());
+                    runOnUiThread(() -> ratingBar.setRating(doble.floatValue()));
                 }
-                ratingBar.setRating(doble.floatValue());
             }
 
             @Override
@@ -248,14 +252,11 @@ public class LivroInterface extends AppCompatActivity implements ComentarioDelet
             public void onSuccessBoolean(Boolean booleano) {
                 booleanAvaliado = booleano;
                 atualizarBotaoAvaliar(booleano);
+                carregarMedia();
             }
 
             @Override
             public void onSuccessDouble(Double doble) {
-                if (doble == null || doble == 0){
-                    ratingBar.setRating(0);
-                }
-                ratingBar.setRating(doble.floatValue());
             }
 
             @Override
@@ -281,10 +282,9 @@ public class LivroInterface extends AppCompatActivity implements ComentarioDelet
     private void adicionarComentario(){
         String conteudoComent = comentEdit.getText().toString();
 
-        SimpleDateFormat formataData = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat formataData = new SimpleDateFormat("dd-MM-yyyy");
         Date data = new Date();
         String dataFormatada = formataData.format(data);
-
 
         Comentario comentario = new Comentario(dataFormatada, conteudoComent , usuario, livroC );
         comentarioAPIController.adicionarComentario(comentario, new ComentarioAPIController.ComentarioCallback() {
@@ -676,14 +676,23 @@ public class LivroInterface extends AppCompatActivity implements ComentarioDelet
         });
     }
 
-
-
-
-
     public void passarTelaCat(View view) {
         Intent intent = new Intent(LivroInterface.this, CatalogoRejew.class);
         startActivity(intent);
     }
 
+    public void passarTelaPessoas(View view) {
+        Intent intent = new Intent(LivroInterface.this, Pessoas_Comentario.class);
+        startActivity(intent);
+    }
+
+    public void passarTelaChats(View view) {
+        Intent intent = new Intent(LivroInterface.this, GeneroChat.class);
+        startActivity(intent);
+    }
+
+    public void voltar(View view) {
+        finish();
+    }
 
 }

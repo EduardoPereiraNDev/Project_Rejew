@@ -149,7 +149,7 @@ public class LivroController {
             @RequestParam("anoLancamento") int anoLancamento,
             @RequestParam("generoLivro") String generoLivro,
             @RequestParam("corPrimaria") String corPrimaria,
-            @RequestParam("caminhoImgCapa") MultipartFile caminhoImgCapa) {
+            @RequestParam(value = "caminhoImgCapa", required = false) MultipartFile caminhoImgCapa ) {
     		if (livroRepository.existsById(isbn)) {
     				try {
     						Livro livroAtual = livroRepository.findById(isbn).orElse(null);

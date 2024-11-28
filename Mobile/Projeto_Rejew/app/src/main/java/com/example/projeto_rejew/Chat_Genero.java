@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -355,5 +356,9 @@ public class Chat_Genero extends AppCompatActivity implements MensagemDeleteCall
     protected void onDestroy() {
         super.onDestroy();
         handler.removeCallbacksAndMessages(null); // Para o polling quando a atividade for destruída
+    }
+
+    public void voltar(View view) {
+        finish();
     }
 }
