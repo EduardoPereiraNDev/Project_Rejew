@@ -9,16 +9,16 @@
     tools:context=".FormLogin">
 
     <ImageView
-        android:id="@+id/circuloazul"
+        android:id="@+id/circuloazul2"
         android:layout_width="410dp"
         android:layout_height="730dp"
-        android:src="@drawable/circuloazul"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.1" />
+        app:layout_constraintVertical_bias="1.1"
+        app:srcCompat="@drawable/circuloazul" />
 
     <TextView
         android:id="@+id/login"
@@ -59,24 +59,22 @@
         app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.476"/>
+        app:layout_constraintVertical_bias="0.499" />
 
-    <EditText
-        android:id="@+id/email"
-        style="@style/EditText"
-        android:layout_width="280dp"
-        android:layout_height="56dp"
+    <TextView
+        android:id="@+id/pergunta1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:fontFamily="@font/open_sans"
-        android:hint="Email"
-        android:textColorHint="@color/black"
-        android:textSize="16dp"
-        android:paddingRight="45dp"
+        android:text="Esqueceu a senha?"
+        android:textColor="@color/black"
+        android:textSize="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintHorizontal_bias="0.782"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.393"/>
+        app:layout_constraintVertical_bias="0.592" />
 
     <EditText
         android:id="@+id/senha"
@@ -93,7 +91,19 @@
         app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.511"/>
+        app:layout_constraintVertical_bias="0.529" />
+
+    <ImageView
+        android:id="@+id/emailicon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/email"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.432" />
 
     <ImageView
         android:id="@+id/senhaicon"
@@ -105,23 +115,40 @@
         app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.528"  />
+        app:layout_constraintVertical_bias="0.545" />
 
-    <TextView
-        android:id="@+id/pergunta1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <EditText
+        android:id="@+id/email"
+        style="@style/EditText"
+        android:layout_width="280dp"
+        android:layout_height="56dp"
         android:fontFamily="@font/open_sans"
-        android:text="Esqueceu a senha?"
-        android:textColor="@color/black"
-        android:textSize="12dp"
+        android:hint="Email"
+        android:paddingRight="45dp"
+        android:textColorHint="@color/black"
+        android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.782"
+        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.576" />
+        app:layout_constraintVertical_bias="0.412" />
 
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonEntrar"
+        style="@style/ButtonCadastrar"
+        android:layout_width="265dp"
+        android:layout_height="51dp"
+        android:fontFamily="@font/open_sans_medium"
+        android:onClick="getLogin"
+        android:text="ENTRAR"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.819" />
 
     <TextView
         android:id="@+id/resposta"
@@ -137,19 +164,7 @@
         app:layout_constraintHorizontal_bias="0.786"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.785"/>
-
-    <ImageView
-        android:id="@+id/emailicon"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:src="@drawable/email"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.8"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.414"  />
+        app:layout_constraintVertical_bias="0.853" />
 
     <TextView
         android:id="@+id/pergunta2"
@@ -161,25 +176,10 @@
         android:textSize="11dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.510"
+        app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.785"  />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/buttonEntrar"
-        style="@style/ButtonCadastrar"
-        android:layout_width="265dp"
-        android:layout_height="51dp"
-        android:fontFamily="@font/open_sans_medium"
-        android:onClick="getLogin"
-        android:text="ENTRAR"
-        android:textSize="18dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.748" />
+        app:layout_constraintVertical_bias="0.853" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
