@@ -25,21 +25,25 @@
             <View
                 android:id="@+id/viewFundo"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:background="@color/orange"
+                android:layout_height="290dp"
+                android:background="@drawable/fundo_livro_cor"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <View
+                android:id="@+id/quadrobranco"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="@color/white"
+                android:backgroundTint="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/view6" />
-
-            <View
-                android:id="@+id/view6"
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:background="@color/cinzanovo"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                tools:ignore="MissingConstraints" />
 
             <ImageView
                 android:id="@+id/setavoltar"
@@ -48,15 +52,15 @@
                 android:layout_marginStart="30dp"
                 android:onClick="voltar"
                 android:src="@drawable/setavoltarazul"
-                app:layout_constraintBottom_toBottomOf="@+id/view6"
+                app:layout_constraintBottom_toBottomOf="@+id/quadrobranco"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/imagemLivro"
-                android:layout_width="230dp"
-                android:layout_height="330dp"
-                android:layout_marginTop="50dp"
+                android:layout_width="195dp"
+                android:layout_height="270dp"
+                android:layout_marginTop="116dp"
                 android:src="@drawable/imagedefault"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -67,34 +71,53 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="AUTOR LIVRO"
-                android:textAlignment="center"
-                android:textSize="20dp"
+                android:text="Autor Livro"
+                android:fontFamily="@font/arimo"
+                android:gravity="center"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="18dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tituloLivro" />
 
             <TextView
                 android:id="@+id/generoLivro"
-                android:layout_width="110dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="90dp"
-                android:layout_marginTop="15dp"
-                android:text="TITULO LIVRO"
-                android:textAlignment="center"
-                android:textSize="15dp"
+                android:layout_marginStart="84dp"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/open_sans"
+                android:gravity="right"
+                android:text="Genero"
+                android:textColor="@color/black"
+                android:textSize="14dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/autorLivro" />
+
+            <View
+                android:id="@+id/circuloPreto"
+                android:layout_width="7dp"
+                android:layout_height="7dp"
+                android:background="@drawable/circle_black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.423" />
 
             <TextView
                 android:id="@+id/qtdPaginas"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:layout_marginEnd="90dp"
-                android:text="TITULO LIVRO"
-                android:textAlignment="center"
-                android:textSize="15dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="84dp"
+                android:fontFamily="@font/open_sans"
+                android:gravity="left"
+                android:text="Paginas"
+                android:textColor="@color/black"
+                android:textSize="14dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/autorLivro" />
 
@@ -103,8 +126,11 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
-                android:text="TITULO LIVRO"
-                android:textAlignment="center"
+                android:text="Nome Livro"
+                android:gravity="center"
+                android:fontFamily="@font/merriweather_bold"
+                android:textColor="@color/black"
+                android:textStyle="bold"
                 android:textSize="26dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -113,24 +139,32 @@
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/buttonAvaliar"
                 style="@style/ButtonFunc"
-                android:layout_width="140dp"
-                android:layout_height="55dp"
-                android:layout_marginStart="60dp"
+                android:layout_width="150dp"
+                android:layout_height="43dp"
+                android:layout_marginStart="44dp"
                 android:layout_marginTop="20dp"
+                android:fontFamily="arial"
                 android:onClick="mostrarDialogoDeAvaliacao"
+                android:padding="0dp"
                 android:text="Avaliar"
+                android:textColor="@color/black"
+                android:textSize="15dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/generoLivro" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/buttonFavoritar"
                 style="@style/ButtonFavo"
-                android:layout_width="140dp"
-                android:layout_height="55dp"
+                android:layout_width="150dp"
+                android:layout_height="43dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="60dp"
+                android:layout_marginEnd="44dp"
+                android:fontFamily="arial"
                 android:onClick="favoritarLivroDesfv"
+                android:padding="0dp"
                 android:text="Favoritar"
+                android:textColor="@color/black"
+                android:textSize="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/qtdPaginas" />
 
@@ -139,7 +173,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="25dp"
                 android:isIndicator="true"
                 android:numStars="5"
                 android:stepSize="0.1"
@@ -151,27 +185,26 @@
                 android:id="@+id/tituloSinopse"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="36dp"
                 android:fontFamily="@font/open_sans_bold"
                 android:text="SINOPSE"
                 android:textColor="@color/black"
-                android:textSize="12sp"
+                android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
 
             <TextView
                 android:id="@+id/sinopse"
-                android:layout_width="337dp"
-                android:layout_height="99dp"
-                android:layout_marginTop="20dp"
+                android:layout_width="340dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="52dp"
                 android:fontFamily="@font/open_sans"
-                android:gravity="left"
-                android:padding="5dp"
+                android:gravity="center"
                 android:text="Por dois séculos, todas as mulheres da família Darling desapareciam quando completavam dezoito anos. Na tarde do aniversário de dezoito anos de Winnie Darling, sua mãe tranca as janelas e portas. Mas não adianta nada. O rei da Terra do Nunca irá pegá-la, e ele e os Garotos Perdidos não a deixarão ir embora."
                 android:textColor="@color/black"
-                android:textSize="11sp"
+                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tituloSinopse" />
@@ -180,11 +213,12 @@
                 android:id="@+id/comentariosTit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_extrabold"
-                android:layout_marginTop="40dp"
-                android:layout_marginLeft="40dp"
-                android:text="Comentarios"
-                android:textSize="30dp"
+                android:layout_marginStart="140dp"
+                android:layout_marginTop="45dp"
+                android:fontFamily="@font/open_sans_bold"
+                android:text="Comentários"
+                android:textColor="#022e53"
+                android:textSize="20dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/sinopse" />
 
@@ -195,21 +229,25 @@
                 android:layout_marginEnd="40dp"
                 android:padding="15dp"
                 android:paddingRight="30dp"
-                android:hint="Que tal fazer um comentario?"
+                android:hint="Digite um comentário..."
+                android:fontFamily="@font/open_sans"
+                android:textColorHint="#022e53"
+                android:textSize="15dp"
+                android:textStyle="italic"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="25dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/comentariosTit" />
 
             <ImageView
                 android:id="@+id/enviar"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/enviar"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/enviarazul"
                 android:onClick="chamarComentarioAdd"
-                android:layout_marginRight="20dp"
+                android:layout_marginRight="10dp"
                 app:layout_constraintBottom_toBottomOf="@+id/addComentario"
                 app:layout_constraintEnd_toEndOf="@id/addComentario"
                 app:layout_constraintTop_toTopOf="@+id/addComentario" />
@@ -229,51 +267,51 @@
     </ScrollView>
 
     <View
-        android:id="@+id/barramenu"
+        android:id="@+id/quadroazul"
         android:layout_width="match_parent"
-        android:layout_height="75dp"
-        android:background="@color/orange"
+        android:layout_height="70dp"
+        android:background="#022e53"
+        android:backgroundTint="#022e53"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageView
-        android:id="@+id/home"
-        android:layout_width="54dp"
-        android:layout_height="54dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="5dp"
-        android:onClick="passarTelaChats"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/chaticon"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/barramenu"
-        app:srcCompat="@drawable/chatbrancooooo" />
+        />
 
     <ImageView
-        android:id="@+id/chaticon"
-        android:layout_width="54dp"
-        android:layout_height="54dp"
+        android:id="@+id/chatlogo"
+        android:layout_width="58dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="44dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/quadroazul"
+        app:layout_constraintVertical_bias="0.52"
+        android:onClick="passarTelaChats"
+        android:src="@drawable/chatbranco" />
+
+    <ImageView
+        android:id="@+id/homeazul"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
         android:layout_marginStart="4dp"
         android:layout_marginEnd="4dp"
         android:onClick="passarTelaCat"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/barramenu"
-        app:srcCompat="@drawable/casaazulll" />
+        app:layout_constraintTop_toTopOf="@+id/quadroazul"
+        android:src="@drawable/homeazul"/>
 
     <ImageView
-        android:id="@+id/pessoasicon"
-        android:layout_width="54dp"
-        android:layout_height="54dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="4dp"
+        android:id="@+id/pessoaslogo"
+        android:layout_width="62dp"
+        android:layout_height="62dp"
+        android:layout_marginEnd="48dp"
         android:onClick="passarTelaPessoas"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/chaticon"
-        app:layout_constraintTop_toTopOf="@+id/barramenu"
-        app:srcCompat="@drawable/amigosbrancooo" />
+        app:layout_constraintTop_toTopOf="@+id/quadroazul"
+        app:layout_constraintVertical_bias="0.523"
+        app:srcCompat="@drawable/pessoasbranco" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

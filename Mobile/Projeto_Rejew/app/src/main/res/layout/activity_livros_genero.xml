@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LivrosGenero">
+
     <View
         android:id="@+id/quadrocinza"
         android:layout_width="match_parent"
@@ -62,50 +63,50 @@
 
 
     <View
-        android:id="@+id/barramenu"
+        android:id="@+id/quadroazul"
         android:layout_width="match_parent"
-        android:layout_height="75dp"
-        android:background="@color/orange"
+        android:layout_height="70dp"
+        android:background="#022e53"
+        android:backgroundTint="#022e53"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageView
-        android:id="@+id/chaticon"
-        android:layout_width="54dp"
-        android:layout_height="54dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="5dp"
-        android:onClick="paginicialChats"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/homeicon"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/barramenu"
-        app:srcCompat="@drawable/chatazulllll" />
+        />
 
     <ImageView
-        android:id="@+id/homeicon"
-        android:layout_width="54dp"
-        android:layout_height="54dp"
+        android:id="@+id/chatlogo"
+        android:layout_width="58dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="44dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/quadroazul"
+        app:layout_constraintVertical_bias="0.52"
+        android:onClick="paginicialChats"
+        android:src="@drawable/chatbranco" />
+
+    <ImageView
+        android:id="@+id/homeazul"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
         android:layout_marginStart="4dp"
         android:layout_marginEnd="4dp"
         android:onClick="passarCat"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/barramenu"
-        app:srcCompat="@drawable/casabrancaaa" />
+        app:layout_constraintTop_toTopOf="@+id/quadroazul"
+        android:src="@drawable/homeazul"/>
 
     <ImageView
-        android:id="@+id/pessoasicon"
-        android:layout_width="54dp"
-        android:layout_height="54dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="4dp"
+        android:id="@+id/pessoaslogo"
+        android:layout_width="62dp"
+        android:layout_height="62dp"
+        android:layout_marginEnd="48dp"
         android:onClick="paginicialPessoas"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/homeicon"
-        app:layout_constraintTop_toTopOf="@+id/barramenu"
-        app:srcCompat="@drawable/amigosbrancooo" />
+        app:layout_constraintTop_toTopOf="@+id/quadroazul"
+        app:layout_constraintVertical_bias="0.523"
+        app:srcCompat="@drawable/pessoasbranco" />
 </androidx.constraintlayout.widget.ConstraintLayout>

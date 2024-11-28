@@ -3,53 +3,63 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:layout_width="180dp"
+    android:layout_width="190dp"
     android:layout_marginStart="3dp"
     android:layout_marginEnd="3dp"
     android:layout_height="wrap_content"
     tools:context=".LivroAdapter"
     android:orientation="vertical">
 
-        <View
-            android:id="@+id/corFundo"
-            android:layout_width="150dp"
-            android:layout_height="120dp"
-            android:layout_marginTop="45dp"
-            style="@style/ViewRedonda"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <View
+        android:id="@+id/corFundo"
+        style="@style/ViewRedonda"
+        android:layout_width="150dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imagemLivro"
-        android:layout_width="150dp"
-        android:layout_height="120dp"
+        android:layout_width="95dp"
+        android:layout_height="140dp"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toTopOf="@+id/nomeLivro"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/boneco" />
 
     <TextView
         android:id="@+id/nomeLivro"
-        android:layout_width="130dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/merriweather_bold"
+        android:gravity="center"
         android:text="Livro tal"
-        android:textSize="16dp"
-        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="14dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/corFundo" />
 
     <TextView
         android:id="@+id/nomeAutor"
-        android:layout_width="130dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/arimo"
+        android:gravity="center"
         android:text="Autor tal"
-        android:textSize="16dp"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+        android:textSize="11dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nomeLivro" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
