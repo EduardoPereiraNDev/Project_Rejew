@@ -32,10 +32,11 @@
 
     <TextView
         android:id="@+id/tituloLivro"
+        android:maxWidth="180dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:text="Titulo Do Livro"
         android:textSize="23dp"
         app:layout_constraintStart_toEndOf="@+id/corFundo"
@@ -43,6 +44,7 @@
 
     <TextView
         android:id="@+id/autorLivro"
+        android:maxWidth="175dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
